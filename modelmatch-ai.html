@@ -2,6 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <!-- ══ SECURITY HEADERS ══ -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'unsafe-inline';
+    style-src 'unsafe-inline' https://fonts.googleapis.com;
+    font-src https://fonts.gstatic.com;
+    connect-src https://api.anthropic.com https://api.openai.com https://api.perplexity.ai;
+    img-src 'self' data: https:;
+    frame-ancestors 'none';
+    base-uri 'self';
+    object-src 'none';
+    form-action 'self';
+  ">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ModelMatch AI — Enterprise LLM Intelligence Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -665,7 +681,7 @@ table.btbl td{padding:9px 12px;vertical-align:middle}
           </div>
           <div class="form-group">
             <label class="form-label"><span>Password</span><a href="#" class="forgot-link" onclick="swTab('fp');return false">Forgot password?</a></label>
-            <div class="input-wrap"><input class="form-input" id="siPass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"><button class="eye-btn" onclick="togglePwd('siPass',this)">👁</button></div>
+            <div class="input-wrap"><input class="form-input" id="siPass" type="password" autocomplete="current-password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"><button class="eye-btn" onclick="togglePwd('siPass',this)">👁</button></div>
           </div>
           <div class="auth-error" id="siErr"></div>
           <button class="auth-btn primary" onclick="doLogin()" id="loginBtn"><span>Sign In</span><span class="btn-arrow">→</span></button>
@@ -684,13 +700,13 @@ table.btbl td{padding:9px 12px;vertical-align:middle}
             <div class="auth-sub">Start exploring AI models for free</div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">First name</label><input class="form-input" id="suFirst" type="text" placeholder="John"></div>
-            <div class="form-group"><label class="form-label">Last name</label><input class="form-input" id="suLast" type="text" placeholder="Smith"></div>
+            <div class="form-group"><label class="form-label">First name</label><input class="form-input" id="suFirst" maxlength="50" type="text" placeholder="John"></div>
+            <div class="form-group"><label class="form-label">Last name</label><input class="form-input" id="suLast" maxlength="50" type="text" placeholder="Smith"></div>
           </div>
-          <div class="form-group"><label class="form-label">Work email</label><input class="form-input" id="suEmail" type="email" placeholder="you@company.com"></div>
-          <div class="form-group"><label class="form-label">Company</label><input class="form-input" id="suCompany" type="text" placeholder="Acme Corp (optional)"></div>
+          <div class="form-group"><label class="form-label">Work email</label><input class="form-input" id="suEmail" maxlength="100" type="email" placeholder="you@company.com"></div>
+          <div class="form-group"><label class="form-label">Company</label><input class="form-input" id="suCompany" maxlength="100" type="text" placeholder="Acme Corp (optional)"></div>
           <div class="form-group"><label class="form-label">Password</label>
-            <div class="input-wrap"><input class="form-input" id="suPass" type="password" placeholder="Min. 8 characters"><button class="eye-btn" onclick="togglePwd('suPass',this)">👁</button></div>
+            <div class="input-wrap"><input class="form-input" id="suPass" type="password" placeholder="Min. 8 characters" autocomplete="new-password"><button class="eye-btn" onclick="togglePwd('suPass',this)">👁</button></div>
           </div>
           <div class="auth-error" id="suErr"></div>
           <button class="auth-btn primary" onclick="doSignup()"><span>Create Account</span><span class="btn-arrow">→</span></button>
@@ -745,7 +761,7 @@ table.btbl td{padding:9px 12px;vertical-align:middle}
           <option value="openai">OpenAI (GPT)</option>
           <option value="perplexity">Perplexity (Sonar)</option>
         </select>
-        <input class="topbar-api-input" id="apiKey" type="password" placeholder="sk-ant-… API key" style="min-width:170px">
+        <input class="topbar-api-input" id="apiKey" type="password" autocomplete="off" spellcheck="false" maxlength="200" placeholder="sk-ant-… API key" style="min-width:170px">
       </div>
       <div class="user-menu" id="userMenuBtn">
         <div class="user-avatar" id="uAvatar">?</div>
@@ -2094,6 +2110,38 @@ const UC_DEF={
   code:{req:500,inp:2000,out:1000,type:'tok'},
 };
 
+
+// ══════════════════════════════════════════════════════════════════
+
+// SECURITY: Password hashing using Web Crypto (SHA-256)
+async function _hashPassword(password, salt){
+  try{
+    const encoder=new TextEncoder();
+    const data=encoder.encode(password+'::mm::'+salt);
+    const hashBuf=await crypto.subtle.digest('SHA-256',data);
+    return Array.from(new Uint8Array(hashBuf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }catch{return password;} // fallback if Web Crypto unavailable
+}
+
+// SECURITY: Rate limiting for login attempts
+// ══════════════════════════════════════════════════════════════════
+const _loginAttempts={};
+function _checkRateLimit(email){
+  const now=Date.now();
+  const key=email.toLowerCase().trim();
+  if(!_loginAttempts[key]) _loginAttempts[key]=[];
+  _loginAttempts[key]=_loginAttempts[key].filter(t=>now-t<300000); // 5-min window
+  if(_loginAttempts[key].length>=5) return false;
+  _loginAttempts[key].push(now);
+  return true;
+}
+function _getRemainingLockTime(email){
+  const key=email.toLowerCase().trim();
+  if(!_loginAttempts[key]||_loginAttempts[key].length<5) return 0;
+  const oldest=_loginAttempts[key][0];
+  return Math.ceil((300000-(Date.now()-oldest))/1000);
+}
+
 // ══════════════════════════════════════════════════════════════════
 // AUTH
 // ══════════════════════════════════════════════════════════════════
@@ -2111,20 +2159,29 @@ function togglePwd(id,btn){
   btn.textContent=inp.type==='password'?'👁':'🙈';
 }
 
-function doLogin(){
+async function doLogin(){
   const email=document.getElementById('siEmail').value.trim().toLowerCase();
   const pass=document.getElementById('siPass').value;
   const err=document.getElementById('siErr');
   err.textContent='';
   if(!email||!pass){err.textContent='⚠ Please fill in all fields';return;}
-  const u=USERS.find(x=>x.email===email&&x.password===pass);
+  // Rate limit check
+  if(!_checkRateLimit(email)){
+    const secs=_getRemainingLockTime(email);
+    err.textContent=`⚠ Too many attempts. Try again in ${secs}s`;return;
+  }
+  const passHash=await _hashPassword(pass,email);
+  const u=USERS.find(x=>x.email===email&&(x.passwordHash===passHash||x.password===pass));
   if(!u){err.textContent='⚠ Invalid email or password';return;}
+  // Upgrade legacy plaintext password to hash on successful login
+  if(u.password&&!u.passwordHash){u.passwordHash=passHash;delete u.password;localStorage.setItem('mm_users',JSON.stringify(USERS));}
   loginSuccess(u);
 }
 
-function doSignup(){
-  const first=document.getElementById('suFirst').value.trim();
-  const last=document.getElementById('suLast').value.trim();
+async function doSignup(){
+  const _strip=s=>s.replace(/[<>&"'`]/g,'').trim().slice(0,50);
+  const first=_strip(document.getElementById('suFirst').value);
+  const last=_strip(document.getElementById('suLast').value);
   const email=document.getElementById('suEmail').value.trim().toLowerCase();
   const company=document.getElementById('suCompany').value.trim();
   const pass=document.getElementById('suPass').value;
@@ -2132,9 +2189,12 @@ function doSignup(){
   err.textContent='';
   if(!first||!email||!pass){err.textContent='⚠ First name, email, and password are required';return;}
   if(pass.length<8){err.textContent='⚠ Password must be at least 8 characters';return;}
+  if(pass.length>128){err.textContent='⚠ Password too long';return;}
+  if(!/[A-Z]/.test(pass)||!/[0-9]/.test(pass)){err.textContent='⚠ Password must contain at least one uppercase letter and one number';return;}
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='⚠ Please enter a valid email address';return;}
   if(USERS.find(x=>x.email===email)){err.textContent='⚠ An account with this email already exists';return;}
-  const u={id:Date.now().toString(),first,last,email,company,password:pass,role:'Free',joined:new Date().toISOString()};
+  const passHash=await _hashPassword(pass,email);
+  const u={id:Date.now().toString(),first,last,email,company,passwordHash:passHash,role:'Free',joined:new Date().toISOString()};
   USERS.push(u);localStorage.setItem('mm_users',JSON.stringify(USERS));
   loginSuccess(u);
 }
@@ -2156,7 +2216,9 @@ function forgotPwd(){swTab('fp');}
 
 function loginSuccess(u){
   currentUser=u;
-  localStorage.setItem('mm_session',JSON.stringify(u));
+  // Strip password before persisting session
+  const sessionSafe={id:u.id,first:u.first,last:u.last,email:u.email,company:u.company,role:u.role,joined:u.joined};
+  localStorage.setItem('mm_session',JSON.stringify(sessionSafe));
   document.getElementById('loginPage').classList.remove('active');
   document.getElementById('appPage').classList.add('active');
   const name=u.first+(u.last?' '+u.last:'');
@@ -2642,7 +2704,8 @@ function autoR(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeig
 
 async function sendChat(){
   const inp=document.getElementById('chatIn');
-  const msg=inp.value.trim();if(!msg)return;
+  const rawMsg=inp.value.trim();if(!rawMsg)return;
+  const msg=rawMsg.slice(0,4000); // hard cap prevents oversized payloads
   const key=document.getElementById('apiKey').value.trim();
   inp.value='';autoR(inp);
   document.getElementById('chatSugs').style.display='none';
@@ -2668,7 +2731,7 @@ Guidelines:
 
   if(!key){
     removeTyping(tid);
-    addMsg('ai','⚠️ Please enter your API key in the top bar. Select your provider (Anthropic / OpenAI / Perplexity) then paste the key. You can still explore, filter and use the cost estimator without a key!');
+    addMsg('ai','⚠️ Please enter your API key in the top bar. 🔒 Note: Your key is only held in browser memory and is never stored or logged by this application. Select your provider (Anthropic / OpenAI / Perplexity) then paste the key. You can still explore, filter and use the cost estimator without a key!');
     document.getElementById('sendBtn').disabled=false;return;
   }
 
@@ -2730,7 +2793,8 @@ Guidelines:
 function addMsg(role,text){
   const el=document.getElementById('chatMsgs');
   const d=document.createElement('div');d.className='cmsg '+role;
-  const av=role==='user'?(currentUser?.first?.[0]?.toUpperCase()||'U'):'◆';
+  const rawAv=role==='user'?(currentUser?.first?.[0]?.toUpperCase()||'U'):'◆';
+  const av=rawAv.replace(/[<>&"'`]/g,'?');
   d.innerHTML=`<div class="cmsg-av">${av}</div><div class="cmsg-bubble">${renderMd(text)}</div>`;
   el.appendChild(d);el.scrollTop=el.scrollHeight;
 }
