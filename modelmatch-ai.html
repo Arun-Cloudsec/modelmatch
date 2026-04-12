@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ModelMatch AI — Enterprise LLM Intelligence Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════════════
+   DESIGN SYSTEM — Obsidian Intelligence Platform
+   Palette: Deep navy · Champagne gold · Arctic white
+   Fonts: Cabinet Grotesk (UI) · Instrument Serif (display) · Geist Mono (data)
+══════════════════════════════════════════════════════ */
+:root {
+  --void:      #060810;
+  --obsidian:  #0c0f1a;
+  --deep:      #111827;
+  --surface:   #161c2e;
+  --elevated:  #1d253d;
+  --rim:       rgba(255,255,255,.06);
+  --rim2:      rgba(255,255,255,.11);
+  --rim3:      rgba(255,255,255,.18);
+  --text:      #e8ecf5;
+  --text2:     #9aa3c0;
+  --text3:     #5c6480;
+  --gold:      #c9a84c;
+  --gold2:     #e6c56a;
+  --gold-bg:   rgba(201,168,76,.08);
+  --gold-rim:  rgba(201,168,76,.25);
+  --teal:      #3ecfb2;
+  --teal-bg:   rgba(62,207,178,.07);
+  --rose:      #f06b7a;
+  --sky:       #5bafd6;
+  --violet:    #9b7ff4;
+  --lime:      #7dcd6e;
+  --amber:     #e8a44a;
+  --r:         10px;
+  --r-lg:      16px;
+  --sidebar:   260px;
+  --header:    58px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100vh;background:var(--void);color:var(--text);font-family:'Cabinet Grotesk',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* Scrollbars */
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--rim2);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--rim3)}
+
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideRight{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-8px) rotate(1deg)}66%{transform:translateY(-4px) rotate(-1deg)}}
+@keyframes gridFade{from{opacity:0}to{opacity:.4}}
+@keyframes countUp{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+
+/* ══ PAGE ROUTER ══ */
+.page-screen{display:none}
+.page-screen.active{display:flex}
+
+/* ════════════════════════════════════════
+   LOGIN PAGE
+════════════════════════════════════════ */
+#loginPage {
+  min-height:100vh;width:100%;
+}
+.login-grid{display:grid;grid-template-columns:1fr 480px;min-height:100vh;width:100%}
+@media(max-width:900px){.login-grid{grid-template-columns:1fr}}
+
+/* Left panel */
+.login-left{
+  background:var(--obsidian);
+  padding:48px 60px;display:flex;flex-direction:column;gap:0;
+  position:relative;overflow:hidden;
+}
+.login-left::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(201,168,76,.07) 0%,transparent 55%),
+             radial-gradient(ellipse 60% 50% at 80% 90%,rgba(62,207,178,.05) 0%,transparent 55%);
+  pointer-events:none;
+}
+/* Subtle grid texture */
+.login-left::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+  background-size:60px 60px;animation:gridFade 1.5s ease both;
+}
+.login-canvas{position:absolute;inset:0;pointer-events:none;z-index:0}
+
+.login-brand{display:flex;align-items:center;gap:12px;margin-bottom:auto;padding-bottom:60px;position:relative;z-index:1}
+.brand-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--void);font-weight:900;box-shadow:0 0 30px rgba(201,168,76,.3)}
+.brand-hex{font-size:14px;font-weight:900;color:var(--void)}
+.brand-name{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em}
+.brand-ai{color:var(--gold)}
+
+.login-hero{position:relative;z-index:1;margin-bottom:48px}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);opacity:.6}
+.hero-title{font-family:'Instrument Serif',serif;font-size:clamp(36px,4.5vw,58px);line-height:1.06;letter-spacing:-.02em;color:var(--text);margin-bottom:20px}
+.hero-title em{font-style:italic;color:var(--gold2)}
+.hero-body{font-size:14px;color:var(--text2);line-height:1.75;max-width:480px;margin-bottom:36px}
+.hero-stats{display:flex;align-items:center;gap:24px}
+.stat{text-align:center}
+.stat-n{font-family:'Geist Mono',monospace;font-size:28px;font-weight:700;color:var(--gold2);line-height:1}
+.stat-l{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+.stat-div{width:1px;height:36px;background:var(--rim2)}
+
+.login-features{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1;margin-top:auto}
+.feat{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text2)}
+.feat-icon{width:28px;height:28px;background:var(--gold-bg);border:1px solid var(--gold-rim);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+
+/* Right panel */
+.login-right{
+  background:var(--surface);border-left:1px solid var(--rim);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:48px 40px;gap:24px;
+}
+.auth-card{
+  background:var(--elevated);border:1px solid var(--rim2);border-radius:var(--r-lg);
+  padding:36px;width:100%;max-width:380px;
+  box-shadow:0 24px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);
+  animation:fadeUp .5s ease both;
+}
+.auth-tabs{display:flex;background:var(--surface);border:1px solid var(--rim);border-radius:8px;padding:3px;gap:3px;margin-bottom:28px}
+.auth-tab{flex:1;padding:8px;border-radius:6px;border:none;background:none;color:var(--text3);font-size:13px;font-weight:600;cursor:pointer;transition:.2s;font-family:'Cabinet Grotesk',sans-serif}
+.auth-tab.active{background:var(--elevated);color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.auth-welcome{margin-bottom:24px}
+.auth-title{font-family:'Instrument Serif',serif;font-size:24px;color:var(--text);margin-bottom:4px}
+.auth-sub{font-size:13px;color:var(--text3)}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-group{margin-bottom:16px}
+.form-label{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px}
+.forgot-link{font-size:11px;color:var(--gold);text-decoration:none;text-transform:none;letter-spacing:0;font-weight:500}
+.forgot-link:hover{color:var(--gold2)}
+.input-wrap{position:relative}
+.form-input{
+  width:100%;background:var(--surface);border:1px solid var(--rim2);color:var(--text);
+  padding:10px 14px;border-radius:8px;font-size:13px;outline:none;
+  font-family:'Cabinet Grotesk',sans-serif;transition:.2s;
+}
+.form-input:focus{border-color:var(--gold);background:var(--deep);box-shadow:0 0 0 3px rgba(201,168,76,.08)}
+.form-input::placeholder{color:var(--text3)}
+.eye-btn{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:14px;color:var(--text3);padding:4px;transition:.2s}
+.eye-btn:hover{color:var(--text)}
+
+.auth-error{font-size:12px;color:var(--rose);margin-bottom:12px;min-height:18px;display:flex;align-items:center;gap:6px}
+.auth-success{font-size:12px;color:var(--lime);margin-bottom:12px;padding:10px 12px;background:rgba(125,205,110,.08);border:1px solid rgba(125,205,110,.2);border-radius:7px}
+
+.auth-btn{
+  width:100%;padding:12px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;
+  transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'Cabinet Grotesk',sans-serif;border:none;
+}
+.auth-btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--void);box-shadow:0 4px 20px rgba(201,168,76,.3)}
+.auth-btn.primary:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(201,168,76,.4)}
+.auth-btn.primary:active{transform:translateY(0)}
+.auth-btn.ghost{background:transparent;border:1px solid var(--rim2);color:var(--text2);margin-top:0}
+.auth-btn.ghost:hover{border-color:var(--rim3);color:var(--text)}
+.btn-arrow{transition:.2s}
+.auth-btn:hover .btn-arrow{transform:translateX(3px)}
+.auth-btn.loading{opacity:.7;pointer-events:none}
+
+.auth-divider{text-align:center;margin:18px 0;font-size:11px;color:var(--text3);position:relative}
+.auth-divider::before,.auth-divider::after{content:'';position:absolute;top:50%;width:calc(50% - 48px);height:1px;background:var(--rim)}
+.auth-divider::before{left:0}.auth-divider::after{right:0}
+.social-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.social-btn{padding:9px 12px;border-radius:8px;border:1px solid var(--rim2);background:var(--surface);color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;transition:.2s;font-family:'Cabinet Grotesk',sans-serif}
+.social-btn:hover{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg)}
+.auth-switch{text-align:center;font-size:12px;color:var(--text3);margin-top:16px}
+.auth-switch a{color:var(--gold);text-decoration:none;font-weight:600}
+.auth-switch a:hover{color:var(--gold2)}
+.auth-terms{font-size:11px;color:var(--text3);text-align:center;margin-top:12px;line-height:1.6}
+.auth-terms a{color:var(--text2);text-decoration:none}
+
+.auth-footer{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--text3)}
+.auth-footer a{color:var(--text3);text-decoration:none}.auth-footer a:hover{color:var(--text)}
+.auth-footer-dot{opacity:.4}
+
+/* ════════════════════════════════════════
+   MAIN APP
+════════════════════════════════════════ */
+#appPage{
+  display:none;flex-direction:column;min-height:100vh;
+}
+#appPage.active{display:flex}
+
+/* Top bar */
+.topbar{
+  height:var(--header);background:rgba(12,15,26,.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--rim);display:flex;align-items:center;
+  padding:0 24px;gap:20px;position:fixed;top:0;left:0;right:0;z-index:100;flex-shrink:0;
+}
+.topbar-logo{display:flex;align-items:center;gap:10px;width:var(--sidebar);flex-shrink:0;padding-left:4px}
+.topbar-mark{width:28px;height:28px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--void);font-weight:900}
+.topbar-name{font-weight:800;font-size:15px;letter-spacing:-.02em}
+.topbar-name span{color:var(--gold)}
+.topbar-center{flex:1;display:flex;align-items:center;gap:8px}
+.topbar-search{
+  background:var(--surface);border:1px solid var(--rim);color:var(--text);
+  padding:7px 14px 7px 36px;border-radius:8px;font-size:13px;width:300px;
+  outline:none;transition:.2s;font-family:'Cabinet Grotesk',sans-serif;
+}
+.topbar-search:focus{border-color:var(--gold-rim);background:var(--deep);width:360px}
+.topbar-search::placeholder{color:var(--text3)}
+.search-wrap{position:relative}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:14px;pointer-events:none}
+
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.topbar-api-wrap{display:flex;align-items:center;gap:8px}
+.topbar-api-label{font-size:11px;color:var(--text3);white-space:nowrap}
+.topbar-api-input{
+  background:var(--surface);border:1px solid var(--rim);color:var(--text);
+  padding:6px 10px;border-radius:7px;font-size:11px;font-family:'Geist Mono',monospace;
+  width:180px;outline:none;transition:.2s;
+}
+.topbar-api-input:focus{border-color:var(--gold-rim)}
+.topbar-api-input::placeholder{color:var(--text3)}
+
+.user-menu{display:flex;align-items:center;gap:10px;cursor:pointer;padding:5px 10px;border-radius:8px;transition:.2s;border:1px solid var(--rim)}
+.user-menu:hover{background:var(--surface);border-color:var(--rim2)}
+.user-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--void)}
+.user-name{font-size:13px;font-weight:600;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.user-role{font-size:10px;color:var(--gold);font-weight:600}
+.logout-btn{padding:5px 12px;border:1px solid var(--rim);background:none;color:var(--text3);border-radius:7px;cursor:pointer;font-size:12px;font-family:'Cabinet Grotesk',sans-serif;transition:.2s}
+.logout-btn:hover{border-color:var(--rose);color:var(--rose)}
+
+/* Sidebar */
+.sidebar{
+  width:var(--sidebar);background:var(--obsidian);border-right:1px solid var(--rim);
+  position:fixed;top:var(--header);bottom:0;left:0;z-index:90;
+  display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;
+  padding:20px 0 16px;
+}
+.sidebar-section{
+  font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text3);padding:0 20px;margin:18px 0 8px;
+}
+.sidebar-section:first-of-type{margin-top:0}
+.nav-item{
+  display:flex;align-items:center;gap:11px;padding:9px 20px;
+  cursor:pointer;color:var(--text2);font-size:13px;font-weight:500;
+  transition:.18s;position:relative;border-left:2px solid transparent;
+  white-space:nowrap;overflow:hidden;
+}
+.nav-item:hover{color:var(--text);background:rgba(255,255,255,.03)}
+.nav-item.active{color:var(--gold2);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(201,168,76,.08),transparent)}
+.nav-icon{font-size:16px;flex-shrink:0;width:20px;text-align:center}
+.nav-badge{margin-left:auto;background:var(--gold);color:var(--void);font-size:9px;font-weight:800;padding:1px 5px;border-radius:20px}
+
+.sidebar-bottom{margin-top:auto;padding:16px 20px;border-top:1px solid var(--rim)}
+.sidebar-user-card{background:var(--surface);border:1px solid var(--rim);border-radius:8px;padding:12px}
+.suc-name{font-size:13px;font-weight:700;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.suc-role{font-size:11px;color:var(--gold);font-weight:600;margin-bottom:8px}
+.suc-meta{font-size:11px;color:var(--text3)}
+
+/* Main content */
+.main-content{
+  margin-left:var(--sidebar);margin-top:var(--header);
+  flex:1;min-height:calc(100vh - var(--header));
+  overflow-y:auto;
+}
+.inner-page{display:none;padding:32px 36px;animation:fadeUp .3s ease both}
+.inner-page.active{display:block}
+
+/* ══ SHARED COMPONENTS ══ */
+.page-header{margin-bottom:28px}
+.page-title{font-family:'Instrument Serif',serif;font-size:28px;color:var(--text);margin-bottom:6px}
+.page-sub{font-size:14px;color:var(--text2);line-height:1.6}
+.sec-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--rim)}
+
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.filter-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.chips{display:flex;gap:5px;flex-wrap:wrap}
+.chip{padding:4px 12px;border-radius:20px;border:1px solid var(--rim);font-size:11px;cursor:pointer;transition:.15s;color:var(--text3);background:none;font-family:'Cabinet Grotesk',sans-serif;white-space:nowrap}
+.chip:hover{border-color:var(--rim2);color:var(--text)}
+.chip.active{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg);font-weight:700}
+
+/* ══ TASK CARDS ══ */
+#task-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-bottom:28px}
+.task-card{
+  background:var(--surface);border:1px solid var(--rim);border-radius:10px;
+  padding:14px 10px;cursor:pointer;transition:all .2s;text-align:center;
+  position:relative;overflow:hidden;
+}
+.task-card:hover{border-color:var(--rim2);background:var(--elevated);transform:translateY(-2px)}
+.task-card.active{border-color:var(--gold-rim);background:var(--gold-bg)}
+.task-card.active .task-name{color:var(--gold2)}
+.task-icon{font-size:22px;margin-bottom:7px;display:block}
+.task-name{font-size:12px;font-weight:700;color:var(--text)}
+.task-desc{font-size:10px;color:var(--text3);margin-top:2px}
+
+/* ══ MODEL CARDS ══ */
+#models-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.model-card{
+  background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);
+  padding:20px;cursor:pointer;transition:all .25s;
+  animation:fadeUp .35s ease both;position:relative;overflow:hidden;
+}
+.model-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.3),transparent);opacity:0;transition:.3s}
+.model-card:hover{border-color:var(--rim2);transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.5);background:var(--elevated)}
+.model-card:hover::before{opacity:1}
+.model-card.featured{border-color:rgba(201,168,76,.2)}
+.model-card.featured::after{content:'★ TOP PICK';position:absolute;top:14px;right:14px;font-size:9px;font-weight:800;letter-spacing:.08em;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-rim);padding:2px 8px;border-radius:20px}
+
+.card-top{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.card-badge{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.card-info{}
+.card-name{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:15px;line-height:1.15;margin-bottom:3px;letter-spacing:-.01em}
+.card-prov{font-size:11px;color:var(--text3);font-weight:500}
+.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.tag{font-size:9px;padding:2px 7px;border-radius:20px;font-weight:800;letter-spacing:.05em}
+.tag-t{background:rgba(91,175,214,.1);color:var(--sky);border:1px solid rgba(91,175,214,.2)}
+.tag-o{background:rgba(125,205,110,.1);color:var(--lime);border:1px solid rgba(125,205,110,.2)}
+.tag-3{background:rgba(240,107,122,.1);color:var(--rose);border:1px solid rgba(240,107,122,.2)}
+.card-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px}
+
+.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px}
+.score-box{background:var(--deep);border:1px solid var(--rim);border-radius:7px;padding:8px 10px}
+.score-lbl{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;font-weight:700}
+.score-bar{display:flex;align-items:center;gap:6px}
+.bar-track{flex:1;height:3px;background:var(--rim2);border-radius:2px;overflow:hidden}
+.bar-fill{height:100%;border-radius:2px;transition:width .7s ease}
+.bar-num{font-size:10px;color:var(--text3);min-width:22px;text-align:right;font-family:'Geist Mono',monospace}
+
+.card-langs{font-size:10px;color:var(--text3);margin-bottom:14px;line-height:1.5}
+.card-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rim);padding-top:12px}
+.card-price{font-family:'Geist Mono',monospace;font-size:12px;font-weight:500}
+.card-btns{display:flex;gap:6px}
+.btn-xs{padding:5px 11px;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;transition:.15s;font-family:'Cabinet Grotesk',sans-serif;border:1px solid var(--rim2);background:none;color:var(--text2)}
+.btn-xs:hover{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg)}
+.btn-xs.accent{background:var(--gold-bg);border-color:var(--gold-rim);color:var(--gold2)}
+
+/* ══ CATALOG TABLE ══ */
+.catalog-controls{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.tb-search{background:var(--surface);border:1px solid var(--rim2);color:var(--text);padding:8px 14px;border-radius:8px;font-size:13px;width:260px;outline:none;transition:.2s;font-family:'Cabinet Grotesk',sans-serif}
+.tb-search:focus{border-color:var(--gold-rim)}
+.tb-search::placeholder{color:var(--text3)}
+.tb-sort{background:var(--surface);border:1px solid var(--rim2);color:var(--text);padding:8px 12px;border-radius:8px;font-size:12px;cursor:pointer;outline:none;font-family:'Cabinet Grotesk',sans-serif}
+.tb-sort option{background:var(--surface)}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--rim);border-radius:var(--r-lg);background:var(--surface)}
+table.ctbl{width:100%;border-collapse:collapse;font-size:12px}
+table.ctbl thead th{
+  padding:10px 14px;text-align:left;font-size:10px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--text3);background:var(--deep);border-bottom:1px solid var(--rim);
+  white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:0;z-index:1;
+}
+table.ctbl thead th:hover{color:var(--text)}
+table.ctbl thead th.sorted{color:var(--gold2)}
+table.ctbl tbody tr{border-bottom:1px solid rgba(255,255,255,.03);transition:.15s;cursor:pointer}
+table.ctbl tbody tr:last-child{border-bottom:none}
+table.ctbl tbody tr:hover{background:rgba(201,168,76,.03)}
+table.ctbl td{padding:10px 14px;vertical-align:middle}
+.tbl-name{font-weight:800;font-size:13px;letter-spacing:-.01em}
+.tbl-prov{font-size:10px;color:var(--text3);margin-top:1px}
+.tbl-price-val{font-family:'Geist Mono',monospace;font-size:11px}
+.tbl-price-val.free{color:var(--teal)}.tbl-price-val.low{color:var(--lime)}.tbl-price-val.mid{color:var(--amber)}.tbl-price-val.high{color:var(--rose)}
+.tbl-ctx{font-family:'Geist Mono',monospace;font-size:11px;color:var(--sky)}
+.tbl-qbar{display:flex;align-items:center;gap:5px}
+.tbl-qtrack{width:44px;height:3px;background:var(--rim2);border-radius:2px;overflow:hidden}
+.tbl-qfill{height:100%;border-radius:2px}
+.tbl-qnum{font-size:11px;font-weight:700;min-width:24px;font-family:'Geist Mono',monospace}
+.add-est-btn{padding:4px 10px;border-radius:6px;font-size:9px;font-weight:800;cursor:pointer;border:1px solid var(--rim2);background:none;color:var(--text3);transition:.15s;font-family:'Cabinet Grotesk',sans-serif;white-space:nowrap;letter-spacing:.04em}
+.add-est-btn:hover,.add-est-btn.added{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg)}
+
+/* ══ COST ESTIMATOR ══ */
+.est-layout{display:grid;grid-template-columns:340px 1fr;gap:24px;align-items:start}
+@media(max-width:960px){.est-layout{grid-template-columns:1fr}}
+
+.est-config{background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);padding:24px;position:sticky;top:20px}
+.est-config-title{font-family:'Instrument Serif',serif;font-size:19px;margin-bottom:22px;display:flex;align-items:center;gap:8px;color:var(--text)}
+
+.cfg-group{margin-bottom:20px}
+.cfg-label{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.cfg-val{color:var(--gold2);font-family:'Geist Mono',monospace;font-weight:700;font-size:13px}
+.slider{width:100%;-webkit-appearance:none;appearance:none;height:3px;border-radius:2px;background:var(--rim2);outline:none;cursor:pointer}
+.slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--gold);cursor:pointer;box-shadow:0 0 10px rgba(201,168,76,.4);transition:.15s}
+.slider::-webkit-slider-thumb:hover{transform:scale(1.2)}
+.slider::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--gold);cursor:pointer;border:none}
+.cfg-select{width:100%;background:var(--deep);border:1px solid var(--rim2);color:var(--text);padding:9px 12px;border-radius:8px;font-size:13px;cursor:pointer;outline:none;font-family:'Cabinet Grotesk',sans-serif}
+.cfg-select option{background:var(--deep)}
+.cfg-note{font-size:11px;color:var(--text3);margin-top:5px;line-height:1.5}
+.cfg-note strong{color:var(--text2);font-family:'Geist Mono',monospace}
+
+.model-picker{background:var(--deep);border:1px solid var(--rim);border-radius:8px;padding:10px;max-height:220px;overflow-y:auto}
+.mpick-item{display:flex;align-items:center;gap:9px;padding:6px 4px;cursor:pointer;border-radius:6px;transition:.15s}
+.mpick-item:hover{background:var(--surface)}
+.mpick-item input{accent-color:var(--gold);cursor:pointer;width:13px;height:13px;flex-shrink:0}
+.mpick-label{font-size:12px;flex:1;cursor:pointer}
+.mpick-price{font-size:10px;color:var(--text3);font-family:'Geist Mono',monospace}
+
+.calc-btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;color:var(--void);padding:12px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;margin-top:6px;font-family:'Cabinet Grotesk',sans-serif;transition:.2s;letter-spacing:.02em}
+.calc-btn:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(201,168,76,.35)}
+
+.est-results{display:flex;flex-direction:column;gap:14px}
+
+.result-hero{background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);padding:22px}
+.result-kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+.rkpi{background:var(--deep);border:1px solid var(--rim);border-radius:9px;padding:14px}
+.rkpi-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:6px}
+.rkpi-val{font-family:'Instrument Serif',serif;font-size:24px;color:var(--text);line-height:1}
+.rkpi-sub{font-size:10px;color:var(--text3);margin-top:3px}
+
+.cost-cards{display:flex;flex-direction:column;gap:10px}
+.cost-card{background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);padding:18px;transition:.2s;position:relative}
+.cost-card:hover{border-color:var(--rim2)}
+.cost-card.winner{border-color:rgba(201,168,76,.3);background:linear-gradient(135deg,var(--surface),rgba(201,168,76,.02))}
+.winner-tag{position:absolute;top:-1px;left:20px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--void);font-size:9px;font-weight:800;padding:2px 10px;border-radius:0 0 8px 8px;letter-spacing:.06em}
+
+.cc-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.cc-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.cc-info{flex:1}
+.cc-name{font-weight:800;font-size:15px;letter-spacing:-.01em;margin-bottom:2px}
+.cc-prov{font-size:11px;color:var(--text3)}
+.cc-total{text-align:right}
+.cc-amount{font-family:'Instrument Serif',serif;font-size:26px;line-height:1}
+.cc-amount.free-tier{color:var(--teal)}.cc-amount.cheap-tier{color:var(--lime)}.cc-amount.mid-tier{color:var(--amber)}.cc-amount.high-tier{color:var(--rose)}
+.cc-period{font-size:10px;color:var(--text3);margin-top:2px;text-align:right}
+.cc-vs{font-size:11px;color:var(--rose);margin-top:4px;text-align:right;font-weight:700}
+
+.cc-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid var(--rim);padding-top:12px}
+.bk-item{text-align:center}
+.bk-label{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:3px;font-weight:700}
+.bk-val{font-family:'Geist Mono',monospace;font-size:12px;font-weight:500}
+
+.cc-bar-row{margin-top:10px;display:flex;align-items:center;gap:10px}
+.cc-bar-track{flex:1;height:4px;background:var(--rim2);border-radius:2px;overflow:hidden}
+.cc-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .7s ease}
+.cc-pct{font-size:10px;color:var(--text3);white-space:nowrap;font-family:'Geist Mono',monospace}
+
+/* ══ AI CHAT ══ */
+.chat-outer{display:grid;grid-template-columns:1fr 360px;gap:0;min-height:calc(100vh - var(--header) - 64px);margin:-32px -36px}
+@media(max-width:1000px){.chat-outer{grid-template-columns:1fr}}
+
+.chat-intro{padding:32px 36px;overflow-y:auto}
+.chat-intro-title{font-family:'Instrument Serif',serif;font-size:28px;margin-bottom:8px}
+.chat-intro-sub{font-size:14px;color:var(--text2);margin-bottom:28px;line-height:1.7}
+.quick-asks{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.quick-ask{background:var(--surface);border:1px solid var(--rim);border-radius:10px;padding:14px;cursor:pointer;transition:.2s}
+.quick-ask:hover{border-color:var(--gold-rim);background:var(--gold-bg)}
+.qa-title{font-size:13px;font-weight:700;margin-bottom:4px;color:var(--text)}
+.qa-sub{font-size:11px;color:var(--text3);line-height:1.5}
+
+.chat-sidebar{border-left:1px solid var(--rim);background:var(--obsidian);display:flex;flex-direction:column}
+.chat-sidebar-head{padding:16px 18px;border-bottom:1px solid var(--rim);background:var(--deep)}
+.chat-sidebar-title{font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px rgba(62,207,178,.5);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+.chat-sidebar-sub{font-size:11px;color:var(--text3);margin-top:3px}
+
+.chat-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.cmsg{display:flex;gap:8px;animation:fadeUp .2s ease both;max-width:100%}
+.cmsg.user{flex-direction:row-reverse}
+.cmsg-av{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:var(--surface);border:1px solid var(--rim)}
+.cmsg.user .cmsg-av{background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;color:var(--void);font-weight:900;font-size:10px}
+.cmsg-bubble{max-width:90%;padding:9px 13px;border-radius:11px;font-size:12px;line-height:1.65}
+.cmsg.user .cmsg-bubble{background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(201,168,76,.1));border:1px solid var(--gold-rim);border-bottom-right-radius:3px;color:var(--text)}
+.cmsg.ai .cmsg-bubble{background:var(--surface);border:1px solid var(--rim);border-bottom-left-radius:3px;color:var(--text)}
+.typing-row{display:flex;gap:3px;padding:2px 0}
+.typing-row span{width:5px;height:5px;border-radius:50%;background:var(--text3);animation:bounce .9s ease infinite}
+.typing-row span:nth-child(2){animation-delay:.15s}.typing-row span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+.chat-sugs{padding:8px 14px;display:flex;flex-wrap:wrap;gap:5px;border-top:1px solid var(--rim)}
+.csug{background:var(--surface);border:1px solid var(--rim);color:var(--text3);padding:4px 9px;border-radius:20px;font-size:10px;cursor:pointer;transition:.15s;font-family:'Cabinet Grotesk',sans-serif}
+.csug:hover{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg)}
+
+.chat-input-area{padding:10px 14px;border-top:1px solid var(--rim);display:flex;gap:7px;background:var(--deep)}
+.chat-in{flex:1;background:var(--surface);border:1px solid var(--rim2);color:var(--text);padding:8px 12px;border-radius:9px;font-size:12px;outline:none;transition:.2s;font-family:'Cabinet Grotesk',sans-serif;resize:none;max-height:72px}
+.chat-in:focus{border-color:var(--gold-rim)}
+.chat-in::placeholder{color:var(--text3)}
+.chat-send{width:34px;height:34px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--void);flex-shrink:0;align-self:flex-end;transition:.2s}
+.chat-send:hover{transform:scale(1.08);box-shadow:0 4px 16px rgba(201,168,76,.35)}
+.chat-send:disabled{opacity:.4;transform:none;cursor:default}
+
+/* ══ MODAL ══ */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:300;align-items:center;justify-content:center;backdrop-filter:blur(8px);padding:20px}
+.overlay.open{display:flex;animation:fadeIn .2s ease}
+.modal-box{background:var(--deep);border:1px solid var(--rim2);border-radius:var(--r-lg);width:min(700px,100%);max-height:88vh;overflow-y:auto;animation:fadeUp .25s ease;box-shadow:0 32px 100px rgba(0,0,0,.7)}
+.modal-head{padding:26px 30px 20px;border-bottom:1px solid var(--rim);display:flex;align-items:flex-start;gap:14px;background:var(--surface);border-radius:var(--r-lg) var(--r-lg) 0 0}
+.modal-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.modal-title{font-family:'Instrument Serif',serif;font-size:22px;margin-bottom:3px}
+.modal-sub{font-size:12px;color:var(--text3)}
+.modal-x{margin-left:auto;background:none;border:1px solid var(--rim);color:var(--text3);cursor:pointer;padding:5px 10px;border-radius:7px;font-size:14px;transition:.2s;flex-shrink:0}
+.modal-x:hover{border-color:var(--rose);color:var(--rose)}
+.modal-body{padding:26px 30px}
+.modal-kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.mkpi{background:var(--surface);border:1px solid var(--rim);border-radius:9px;padding:13px}
+.mkpi-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:5px}
+.mkpi-val{font-family:'Instrument Serif',serif;font-size:20px;color:var(--text)}
+.msec{margin-bottom:18px}
+.msec h3{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:10px}
+.mlang-grid{display:flex;flex-wrap:wrap;gap:5px}
+.ml{font-size:10px;padding:2px 8px;border-radius:5px;background:var(--gold-bg);color:var(--gold2);border:1px solid var(--gold-rim)}
+.mul{list-style:none}
+.mul li{font-size:12px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--rim);display:flex;gap:7px;line-height:1.5}
+.mul li:last-child{border-bottom:none}
+.mul li::before{content:'→';color:var(--gold);flex-shrink:0;font-size:11px;margin-top:2px}
+.modal-actions{display:flex;gap:10px;margin-top:6px}
+.mbtn{flex:1;padding:11px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;transition:.2s;text-decoration:none;display:block;text-align:center;font-family:'Cabinet Grotesk',sans-serif;border:none}
+.mbtn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--void)}
+.mbtn.secondary{background:var(--surface);border:1px solid var(--rim2);color:var(--text2)}
+.mbtn:hover{opacity:.9;transform:translateY(-1px)}
+
+/* ══ EMPTY STATE ══ */
+.empty{text-align:center;padding:60px 20px;grid-column:1/-1}
+.empty-icon{font-size:40px;margin-bottom:12px;opacity:.5}
+.empty-title{font-family:'Instrument Serif',serif;font-size:20px;color:var(--text2);margin-bottom:6px}
+.empty-sub{font-size:13px;color:var(--text3)}
+
+/* ══ TOAST ══ */
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--elevated);border:1px solid var(--gold-rim);color:var(--text);padding:10px 20px;border-radius:8px;font-size:13px;z-index:999;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     LOGIN PAGE
+═══════════════════════════════════ -->
+<div id="loginPage" class="page-screen active">
+  <div class="login-grid">
+    <div class="login-left">
+      <canvas class="login-canvas" id="loginCanvas"></canvas>
+      <div class="login-brand" style="position:relative;z-index:2">
+        <div class="brand-mark"><div class="brand-hex">◆</div></div>
+        <div class="brand-name">ModelMatch<span class="brand-ai">AI</span></div>
+      </div>
+      <div class="login-hero" style="position:relative;z-index:2">
+        <div class="hero-eyebrow">Enterprise Intelligence Platform</div>
+        <h1 class="hero-title">Find the <em>exact</em><br>model you need.</h1>
+        <p class="hero-body">60+ LLMs, TTS, STT, and embedding models from OpenAI, Anthropic, Google, Meta, Qwen, Cohere, DeepSeek, and 15+ providers — with live cost estimation and AI-powered recommendations.</p>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-n" id="sc1">0</div><div class="stat-l">Models</div></div>
+          <div class="stat-div"></div>
+          <div class="stat"><div class="stat-n" id="sc2">0</div><div class="stat-l">Providers</div></div>
+          <div class="stat-div"></div>
+          <div class="stat"><div class="stat-n" id="sc3">0</div><div class="stat-l">Languages</div></div>
+        </div>
+      </div>
+      <div class="login-features" style="position:relative;z-index:2;margin-top:auto">
+        <div class="feat"><span class="feat-icon">🔍</span><span>Smart explorer with task, language & provider filters</span></div>
+        <div class="feat"><span class="feat-icon">💰</span><span>Monthly cost estimator — compare any models side-by-side</span></div>
+        <div class="feat"><span class="feat-icon">🤖</span><span>AI advisor powered by Claude for personalized recommendations</span></div>
+        <div class="feat"><span class="feat-icon">📋</span><span>Complete sortable catalog with real-time pricing data</span></div>
+      </div>
+    </div>
+
+    <div class="login-right">
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="siTab" onclick="swTab('si')">Sign In</button>
+          <button class="auth-tab" id="suTab" onclick="swTab('su')">Create Account</button>
+        </div>
+
+        <!-- Sign In -->
+        <div id="siForm">
+          <div class="auth-welcome">
+            <div class="auth-title">Welcome back</div>
+            <div class="auth-sub">Sign in to your ModelMatch account</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email address</label>
+            <input class="form-input" id="siEmail" type="email" placeholder="you@company.com" onkeydown="if(event.key==='Enter')doLogin()">
+          </div>
+          <div class="form-group">
+            <label class="form-label"><span>Password</span><a href="#" class="forgot-link" onclick="swTab('fp');return false">Forgot password?</a></label>
+            <div class="input-wrap"><input class="form-input" id="siPass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"><button class="eye-btn" onclick="togglePwd('siPass',this)">👁</button></div>
+          </div>
+          <div class="auth-error" id="siErr"></div>
+          <button class="auth-btn primary" onclick="doLogin()" id="loginBtn"><span>Sign In</span><span class="btn-arrow">→</span></button>
+          <div class="auth-divider"><span>or continue with</span></div>
+          <div class="social-row">
+            <button class="social-btn" onclick="demoLogin()">🎭 Demo Account</button>
+            <button class="social-btn" onclick="guestLogin()">👤 Guest Access</button>
+          </div>
+          <div class="auth-switch">Don't have an account? <a href="#" onclick="swTab('su');return false">Create one free</a></div>
+        </div>
+
+        <!-- Sign Up -->
+        <div id="suForm" style="display:none">
+          <div class="auth-welcome">
+            <div class="auth-title">Create account</div>
+            <div class="auth-sub">Start exploring AI models for free</div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">First name</label><input class="form-input" id="suFirst" type="text" placeholder="John"></div>
+            <div class="form-group"><label class="form-label">Last name</label><input class="form-input" id="suLast" type="text" placeholder="Smith"></div>
+          </div>
+          <div class="form-group"><label class="form-label">Work email</label><input class="form-input" id="suEmail" type="email" placeholder="you@company.com"></div>
+          <div class="form-group"><label class="form-label">Company</label><input class="form-input" id="suCompany" type="text" placeholder="Acme Corp (optional)"></div>
+          <div class="form-group"><label class="form-label">Password</label>
+            <div class="input-wrap"><input class="form-input" id="suPass" type="password" placeholder="Min. 8 characters"><button class="eye-btn" onclick="togglePwd('suPass',this)">👁</button></div>
+          </div>
+          <div class="auth-error" id="suErr"></div>
+          <button class="auth-btn primary" onclick="doSignup()"><span>Create Account</span><span class="btn-arrow">→</span></button>
+          <div class="auth-terms">By creating an account you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a></div>
+          <div class="auth-switch">Already have an account? <a href="#" onclick="swTab('si');return false">Sign in</a></div>
+        </div>
+
+        <!-- Forgot Password -->
+        <div id="fpForm" style="display:none">
+          <div class="auth-welcome">
+            <div class="auth-title">Reset password</div>
+            <div class="auth-sub">Enter your email to receive a reset link</div>
+          </div>
+          <div class="form-group"><label class="form-label">Email address</label><input class="form-input" id="fpEmail" type="email" placeholder="you@company.com"></div>
+          <div class="auth-success" id="fpOk" style="display:none">✅ If that account exists, a reset link has been sent.</div>
+          <button class="auth-btn primary" onclick="sendReset()"><span>Send Reset Link</span><span class="btn-arrow">→</span></button>
+          <button class="auth-btn ghost" onclick="swTab('si')" style="margin-top:8px">← Back to Sign In</button>
+        </div>
+      </div>
+      <div class="auth-footer">
+        <span>© 2025 ModelMatch AI</span>
+        <span class="auth-footer-dot">·</span><a href="#">Privacy</a>
+        <span class="auth-footer-dot">·</span><a href="#">Terms</a>
+        <span class="auth-footer-dot">·</span><a href="#">Support</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     MAIN APP
+═══════════════════════════════════ -->
+<div id="appPage" class="page-screen" style="flex-direction:column">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-logo">
+      <div class="topbar-mark">◆</div>
+      <div class="topbar-name">ModelMatch<span>AI</span></div>
+    </div>
+    <div class="topbar-center">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input class="topbar-search" id="globalSearch" placeholder="Search models, providers, tasks…" oninput="onGlobalSearch()">
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-api-wrap">
+        <span class="topbar-api-label">Anthropic Key</span>
+        <input class="topbar-api-input" id="apiKey" type="password" placeholder="sk-ant-… (for AI advisor)">
+      </div>
+      <div class="user-menu" id="userMenuBtn">
+        <div class="user-avatar" id="uAvatar">?</div>
+        <div>
+          <div class="user-name" id="uName">User</div>
+          <div class="user-role" id="uRole">Free</div>
+        </div>
+      </div>
+      <button class="logout-btn" onclick="logout()">Sign out</button>
+    </div>
+  </div>
+
+  <div style="display:flex;flex:1">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-section">Explore</div>
+      <div class="nav-item active" onclick="goPage('explorer')"><span class="nav-icon">🔍</span>Model Explorer<span class="nav-badge" id="nb-exp">60+</span></div>
+      <div class="nav-item" onclick="goPage('catalog')"><span class="nav-icon">📋</span>Full Catalog</div>
+
+      <div class="sidebar-section">Evaluate</div>
+      <div class="nav-item" onclick="goPage('estimator')"><span class="nav-icon">💰</span>Cost Estimator</div>
+      <div class="nav-item" onclick="goPage('compare')"><span class="nav-icon">⚖️</span>Compare Models</div>
+
+      <div class="sidebar-section">Intelligence</div>
+      <div class="nav-item" onclick="goPage('chat')"><span class="nav-icon">🤖</span>AI Advisor</div>
+
+      <div class="sidebar-section">Filter By Task</div>
+      <div class="nav-item" onclick="quickTask('TTS')"><span class="nav-icon">🔊</span>Text-to-Speech</div>
+      <div class="nav-item" onclick="quickTask('STT')"><span class="nav-icon">🎤</span>Speech-to-Text</div>
+      <div class="nav-item" onclick="quickTask('LLM')"><span class="nav-icon">💬</span>LLM / Chatbot</div>
+      <div class="nav-item" onclick="quickTask('Code')"><span class="nav-icon">💻</span>Code Generation</div>
+      <div class="nav-item" onclick="quickTask('Vision')"><span class="nav-icon">👁️</span>Vision / VLM</div>
+      <div class="nav-item" onclick="quickTask('Embedding')"><span class="nav-icon">🔢</span>Embeddings</div>
+      <div class="nav-item" onclick="quickTask('Translation')"><span class="nav-icon">🌐</span>Translation</div>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-user-card">
+          <div class="suc-name" id="sbName">Loading…</div>
+          <div class="suc-role" id="sbRole">Free Account</div>
+          <div class="suc-meta" id="sbMeta">60 models · 20+ providers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="main-content">
+
+      <!-- ══ EXPLORER ══ -->
+      <div id="page-explorer" class="inner-page active">
+        <div class="page-header">
+          <div class="page-title">Model Explorer</div>
+          <div class="page-sub">Discover the right AI model for your use case, language, and budget</div>
+        </div>
+        <div class="sec-label">Select Use Case</div>
+        <div id="task-grid"></div>
+        <div class="sec-label">Filters</div>
+        <div class="filter-bar"><span class="filter-label">Provider</span><div class="chips" id="f-prov"></div></div>
+        <div class="filter-bar"><span class="filter-label">Language</span><div class="chips" id="f-lang"></div></div>
+        <div class="filter-bar"><span class="filter-label">Type</span><div class="chips" id="f-type"></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <div style="font-size:12px;color:var(--text3)">Showing <strong id="cnt" style="color:var(--text)">0</strong> models</div>
+        </div>
+        <div id="models-grid"></div>
+      </div>
+
+      <!-- ══ CATALOG ══ -->
+      <div id="page-catalog" class="inner-page">
+        <div class="page-header">
+          <div class="page-title">Complete Model Catalog</div>
+          <div class="page-sub">All 60+ models in a sortable table with real pricing data</div>
+        </div>
+        <div class="catalog-controls">
+          <input class="tb-search" id="catSearch" placeholder="Search models, providers…" oninput="renderCatalog()">
+          <select class="tb-sort" id="catSort" onchange="renderCatalog()">
+            <option value="quality">Sort: Quality ↓</option>
+            <option value="price_asc">Sort: Price ↑</option>
+            <option value="speed">Sort: Speed ↓</option>
+            <option value="name">Sort: Name A–Z</option>
+            <option value="context">Sort: Context ↓</option>
+          </select>
+          <div class="chips" id="cat-task-chips" style="flex-wrap:nowrap;overflow-x:auto"></div>
+          <span style="font-size:11px;color:var(--text3);margin-left:auto;white-space:nowrap" id="catCount"></span>
+        </div>
+        <div class="tbl-wrap">
+          <table class="ctbl">
+            <thead><tr>
+              <th onclick="catSort('name')">Model <span>↕</span></th>
+              <th onclick="catSort('tasks')">Tasks</th>
+              <th onclick="catSort('context')">Context <span>↕</span></th>
+              <th onclick="catSort('quality')">Quality <span>↕</span></th>
+              <th onclick="catSort('speed')">Speed <span>↕</span></th>
+              <th onclick="catSort('price_input')">Input /1M <span>↕</span></th>
+              <th onclick="catSort('price_output')">Output /1M <span>↕</span></th>
+              <th>Languages</th>
+              <th></th>
+            </tr></thead>
+            <tbody id="catBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══ COST ESTIMATOR ══ -->
+      <div id="page-estimator" class="inner-page">
+        <div class="page-header">
+          <div class="page-title">Cost Estimator</div>
+          <div class="page-sub">Configure your usage parameters and compare monthly costs across models</div>
+        </div>
+        <div class="est-layout">
+          <div class="est-config">
+            <div class="est-config-title">⚙️ Configure Usage</div>
+            <div class="cfg-group">
+              <div class="cfg-label">Use Case<span class="cfg-val" id="uc-lbl">Chat / Chatbot</span></div>
+              <select class="cfg-select" id="ucSel" onchange="onUCChange()">
+                <option value="chat">Chat / Chatbot</option>
+                <option value="rag">RAG / Document Q&A</option>
+                <option value="summarization">Summarization</option>
+                <option value="tts">Text-to-Speech</option>
+                <option value="stt">Speech-to-Text</option>
+                <option value="translation">Translation</option>
+                <option value="embedding">Embeddings / Search</option>
+                <option value="code">Code Generation</option>
+              </select>
+            </div>
+            <div id="tok-cfg">
+              <div class="cfg-group">
+                <div class="cfg-label">Requests / Day<span class="cfg-val" id="req-lbl">1,000</span></div>
+                <input class="slider" type="range" id="reqR" min="100" max="100000" value="1000" step="100" oninput="runCalc()">
+                <div class="cfg-note">Monthly: <strong id="req-mo">30,000</strong> requests</div>
+              </div>
+              <div class="cfg-group">
+                <div class="cfg-label">Avg Input Tokens<span class="cfg-val" id="in-lbl">500</span></div>
+                <input class="slider" type="range" id="inR" min="50" max="32000" value="500" step="50" oninput="runCalc()">
+                <div class="cfg-note">System prompt + user message</div>
+              </div>
+              <div class="cfg-group" id="out-cfg">
+                <div class="cfg-label">Avg Output Tokens<span class="cfg-val" id="out-lbl">300</span></div>
+                <input class="slider" type="range" id="outR" min="50" max="8000" value="300" step="50" oninput="runCalc()">
+                <div class="cfg-note">Model response length</div>
+              </div>
+            </div>
+            <div id="audio-cfg" style="display:none">
+              <div class="cfg-group">
+                <div class="cfg-label">Minutes / Day<span class="cfg-val" id="min-lbl">60</span></div>
+                <input class="slider" type="range" id="minR" min="1" max="10000" value="60" step="1" oninput="runCalc()">
+                <div class="cfg-note">Monthly: <strong id="min-mo">1,800</strong> minutes</div>
+              </div>
+            </div>
+            <div id="char-cfg" style="display:none">
+              <div class="cfg-group">
+                <div class="cfg-label">Characters / Day<span class="cfg-val" id="char-lbl">50K</span></div>
+                <input class="slider" type="range" id="charR" min="1000" max="10000000" value="50000" step="1000" oninput="runCalc()">
+                <div class="cfg-note">Monthly: <strong id="char-mo">1.5M</strong> characters</div>
+              </div>
+            </div>
+            <div class="cfg-group">
+              <div class="cfg-label" style="margin-bottom:8px">Models to Compare</div>
+              <div class="model-picker" id="modelPicker"></div>
+            </div>
+            <button class="calc-btn" onclick="runCalc()">📊 Calculate Monthly Cost</button>
+          </div>
+          <div class="est-results" id="estResults">
+            <div style="text-align:center;padding:60px 20px;color:var(--text3)">
+              <div style="font-size:48px;margin-bottom:14px;opacity:.4">💰</div>
+              <div style="font-family:'Instrument Serif',serif;font-size:22px;color:var(--text2);margin-bottom:8px">Configure & Calculate</div>
+              <div style="font-size:13px;line-height:1.7">Set your usage parameters on the left, select models to compare,<br>then click Calculate to see monthly cost estimates.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ COMPARE ══ -->
+      <div id="page-compare" class="inner-page">
+        <div class="page-header">
+          <div class="page-title">Compare Models</div>
+          <div class="page-sub">Select up to 4 models for a head-to-head comparison</div>
+        </div>
+        <div id="compareContent">
+          <div style="margin-bottom:16px">
+            <div class="sec-label">Choose Models to Compare</div>
+            <div class="chips" id="compare-chips" style="flex-wrap:wrap;gap:6px;display:flex"></div>
+          </div>
+          <div id="compare-table"></div>
+        </div>
+      </div>
+
+      <!-- ══ AI ADVISOR ══ -->
+      <div id="page-chat" class="inner-page" style="padding:0">
+        <div class="chat-outer">
+          <div class="chat-intro">
+            <div class="chat-intro-title">AI Model Advisor</div>
+            <div class="chat-intro-sub">Ask anything about AI models — best fit for your language, task, budget, scale, or use case. I have full knowledge of all 60+ models including real pricing.</div>
+            <div class="quick-asks" id="quickAsks"></div>
+          </div>
+          <div class="chat-sidebar">
+            <div class="chat-sidebar-head">
+              <div class="chat-sidebar-title"><div class="live-dot"></div>ModelMatch Advisor</div>
+              <div class="chat-sidebar-sub">Powered by Claude · 60+ models in context</div>
+            </div>
+            <div class="chat-msgs" id="chatMsgs">
+              <div class="cmsg ai"><div class="cmsg-av">◆</div><div class="cmsg-bubble">Hi! I'm your AI model advisor with knowledge of 60+ models across every category. Ask me about TTS, STT, LLMs, pricing, multilingual support, or get a recommendation for your specific use case.</div></div>
+            </div>
+            <div class="chat-sugs" id="chatSugs">
+              <div class="csug" onclick="askSug(this)">Best Arabic TTS?</div>
+              <div class="csug" onclick="askSug(this)">Cheapest frontier LLM?</div>
+              <div class="csug" onclick="askSug(this)">GPT-4.1 vs Claude 3.7?</div>
+              <div class="csug" onclick="askSug(this)">Chinese language models?</div>
+              <div class="csug" onclick="askSug(this)">Open source STT?</div>
+            </div>
+            <div class="chat-input-area">
+              <textarea class="chat-in" id="chatIn" placeholder="Ask about any model or use case…" rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat()}" oninput="autoR(this)"></textarea>
+              <button class="chat-send" id="sendBtn" onclick="sendChat()">➤</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /main-content -->
+  </div>
+</div><!-- /appPage -->
+
+<!-- Modal -->
+<div class="overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" id="modalBox"></div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// MODEL DATABASE
+// ══════════════════════════════════════════════════════════════════
+const M=[
+{id:'gpt41',name:'GPT-4.1',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code','Vision'],type:'commercial',featured:true,desc:"OpenAI's latest flagship. 1M context window, improved coding and instruction following over GPT-4o.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],pricing:'$2/1M in · $8/1M out',pIn:2,pOut:8,tier:'mid',ctx:'1M tokens',ctxN:1000000,params:'~200B',lat:'~500ms',uses:['Complex reasoning','Code generation','Long-context tasks','Document analysis'],pros:['1M context','Improved coding','Vision capable','Better instruction following'],cons:['Higher cost at scale','Data privacy'],link:'https://platform.openai.com',scores:{q:97,s:85,c:68,l:92}},
+{id:'gpt41-mini',name:'GPT-4.1 Mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',desc:'Efficient GPT-4.1 variant. Best cost-performance for production workloads.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],pricing:'$0.40/1M in · $1.60/1M out',pIn:0.40,pOut:1.60,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~8B',lat:'~250ms',uses:['High-volume chatbots','Classification','Summarization'],pros:['Very cheap','1M context','Fast'],cons:['Less capable for complex tasks'],link:'https://platform.openai.com',scores:{q:86,s:94,c:95,l:85}},
+{id:'gpt41-nano',name:'GPT-4.1 Nano',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM'],type:'commercial',desc:'Smallest, fastest GPT-4.1 variant. Ideal for latency-sensitive and high-throughput applications.',langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Italian'],pricing:'$0.10/1M in · $0.40/1M out',pIn:0.10,pOut:0.40,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~3B',lat:'<100ms',uses:['Real-time responses','Edge apps','Simple classification'],pros:['Cheapest GPT-4 class','Ultra-fast','1M context'],cons:['Lower quality for complex tasks'],link:'https://platform.openai.com',scores:{q:78,s:99,c:99,l:65}},
+{id:'gpt4o',name:'GPT-4o',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Vision','Code'],type:'commercial',featured:true,desc:"Flagship omni model. Multimodal: text, vision, audio. Strong multilingual performance.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],pricing:'$2.50/1M in · $10/1M out',pIn:2.50,pOut:10,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'~200B',lat:'~500ms',uses:['Chatbots','Code gen','Vision','Multimodal apps'],pros:['Multimodal','128K context','Fast'],cons:['Cost at scale'],link:'https://platform.openai.com',scores:{q:95,s:88,c:70,l:92}},
+{id:'gpt4o-mini',name:'GPT-4o Mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',desc:'Cost-efficient small model. High volume production workhorse.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian'],pricing:'$0.15/1M in · $0.60/1M out',pIn:0.15,pOut:0.60,tier:'low',ctx:'128K tokens',ctxN:128000,params:'~8B',lat:'~300ms',uses:['Bulk processing','Chatbots','Classification'],pros:['Very cheap','128K context','Good multilingual'],cons:['Less capable than GPT-4o'],link:'https://platform.openai.com',scores:{q:82,s:93,c:96,l:86}},
+{id:'o3',name:'o3',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',desc:"OpenAI's most powerful reasoning model. Extended thinking for complex math, science, coding.",langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Korean','Arabic'],pricing:'$10/1M in · $40/1M out',pIn:10,pOut:40,tier:'high',ctx:'200K tokens',ctxN:200000,params:'~300B',lat:'15–60s',uses:['Complex reasoning','Research','Advanced coding','Math & science'],pros:['Best reasoning','PhD-level performance'],cons:['Very expensive','High latency'],link:'https://platform.openai.com',scores:{q:99,s:30,c:35,l:75}},
+{id:'o4-mini',name:'o4-mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',desc:'Efficient reasoning model. Fast thinking at fraction of o3 cost. Excellent for STEM problems.',langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Arabic'],pricing:'$1.10/1M in · $4.40/1M out',pIn:1.10,pOut:4.40,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'~70B',lat:'5–30s',uses:['STEM reasoning','Code debugging','Math'],pros:['Affordable reasoning','Good for STEM'],cons:['Slower than standard models'],link:'https://platform.openai.com',scores:{q:92,s:50,c:78,l:68}},
+{id:'oai-tts',name:'TTS-1 / TTS-1-HD',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['TTS'],type:'commercial',desc:'Natural-sounding TTS with 6 voices. HD variant for higher quality. Easy API integration.',langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic','Hindi'],pricing:'$15/1M chars · HD: $30/1M',pIn:0,pOut:0,tier:'mid',pPerChar:0.000015,ctx:'4096 tokens',ctxN:4096,params:'Proprietary',lat:'~300ms',uses:['Developer integrations','Chatbot voices','Accessibility'],pros:['Simple API','6 voices','Good multilingual'],cons:['No voice cloning'],link:'https://platform.openai.com',scores:{q:86,s:90,c:75,l:82}},
+{id:'whisper',name:'Whisper v3 Large',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['STT'],type:'open-source',featured:true,desc:'State-of-the-art multilingual ASR. Open source or API. 99 language support.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish'],pricing:'API: $0.006/min · Open: Free',pIn:0,pOut:0,tier:'low',pPerMin:0.006,ctx:'30s chunks',ctxN:0,params:'1.5B',lat:'~1–3s',uses:['Transcription','Subtitles','Meeting notes','Multilingual STT'],pros:['99 languages','Open source','High accuracy'],cons:['Not real-time','30s chunk limit'],link:'https://openai.com/research/whisper',scores:{q:95,s:70,c:90,l:99}},
+{id:'claude37',name:'Claude 3.7 Sonnet',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Code','Vision'],type:'commercial',featured:true,desc:"Anthropic's most intelligent model with extended thinking. Hybrid reasoning for complex problems.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],pricing:'$3/1M in · $15/1M out',pIn:3,pOut:15,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'~100B',lat:'~600ms',uses:['Complex reasoning','Coding','Research','Long docs'],pros:['Extended thinking','200K context','Best-in-class coding'],cons:['High output cost'],link:'https://anthropic.com',scores:{q:98,s:80,c:62,l:90}},
+{id:'claude35',name:'Claude 3.5 Sonnet',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Code','Vision'],type:'commercial',desc:'Fast, intelligent Claude. Excellent coding and analysis. 200K context.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian'],pricing:'$3/1M in · $15/1M out',pIn:3,pOut:15,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'~100B',lat:'~550ms',uses:['Chatbots','Code','Document analysis','Enterprise AI'],pros:['200K context','Excellent coding','Vision'],cons:['High output cost'],link:'https://anthropic.com',scores:{q:95,s:83,c:65,l:88}},
+{id:'claude-haiku',name:'Claude 3.5 Haiku',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Code'],type:'commercial',desc:'Fastest Claude. Near-instant responses at very low cost. Customer-facing apps.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch'],pricing:'$0.80/1M in · $4/1M out',pIn:0.80,pOut:4,tier:'low',ctx:'200K tokens',ctxN:200000,params:'~20B',lat:'~250ms',uses:['Real-time chatbots','Classification','High-volume APIs'],pros:['Ultra-fast','200K context','Low cost'],cons:['Less capable for complex tasks'],link:'https://anthropic.com',scores:{q:83,s:97,c:92,l:83}},
+{id:'claude3-opus',name:'Claude 3 Opus',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Vision'],type:'commercial',desc:'Previous flagship Claude. Exceptional for nuanced analysis and long-form content.',langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Italian','Korean','Arabic'],pricing:'$15/1M in · $75/1M out',pIn:15,pOut:75,tier:'high',ctx:'200K tokens',ctxN:200000,params:'~200B',lat:'~1s',uses:['Complex analysis','Research','Premium apps'],pros:['High quality','200K context'],cons:['Most expensive Anthropic model'],link:'https://anthropic.com',scores:{q:91,s:65,c:30,l:80}},
+{id:'gemini25',name:'Gemini 2.5 Pro',prov:'Google DeepMind',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision','Code'],type:'commercial',featured:true,desc:"Google's most capable model. State-of-the-art reasoning with 2M token context.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],pricing:'$1.25/1M in · $10/1M out',pIn:1.25,pOut:10,tier:'mid',ctx:'2M tokens',ctxN:2000000,params:'~540B',lat:'~800ms',uses:['Long doc processing','Video analysis','Complex reasoning'],pros:['2M context','Multimodal','Competitive pricing'],cons:['Slower for very long context'],link:'https://ai.google.dev',scores:{q:96,s:74,c:82,l:90}},
+{id:'gemini20-flash',name:'Gemini 2.0 Flash',prov:'Google DeepMind',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision'],type:'commercial',desc:'Latest Flash. Real-time audio/video streaming. Ultra-fast with 1M context.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi'],pricing:'$0.10/1M in · $0.40/1M out',pIn:0.10,pOut:0.40,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~70B',lat:'~200ms',uses:['Real-time apps','High-volume APIs','Live streaming analysis'],pros:['Cheapest frontier','1M context','Real-time audio/video'],cons:['Less capable than Pro'],link:'https://ai.google.dev',scores:{q:85,s:98,c:99,l:82}},
+{id:'gemini15-flash',name:'Gemini 1.5 Flash',prov:'Google DeepMind',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision'],type:'commercial',desc:'Fast and efficient with 1M context. Excellent cost-to-capability ratio.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],pricing:'$0.075/1M in · $0.30/1M out',pIn:0.075,pOut:0.30,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~70B',lat:'~200ms',uses:['Summarization','Classification','Real-time chat'],pros:['Very cheap','1M context','Fast'],cons:['Less capable than Pro'],link:'https://ai.google.dev',scores:{q:83,s:97,c:98,l:82}},
+{id:'g-stt',name:'Speech-to-Text (Chirp)',prov:'Google Cloud',icon:'🔴',clr:'#ef4444',tasks:['STT'],type:'commercial',desc:"Google's Chirp model. 100+ languages. Batch and streaming transcription.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Swedish','Polish'],pricing:'$0.016/min · Free: 60min/mo',pIn:0,pOut:0,tier:'low',pPerMin:0.016,ctx:'Streaming',ctxN:0,params:'Chirp',lat:'~200ms',uses:['Mobile apps','Medical transcription','Accessibility'],pros:['100+ languages','Medical spec'],cons:['GCP dependency'],link:'https://cloud.google.com/speech-to-text',scores:{q:87,s:91,c:84,l:96}},
+{id:'g-tts',name:'Cloud TTS (WaveNet)',prov:'Google Cloud',icon:'🔴',clr:'#ef4444',tasks:['TTS'],type:'commercial',desc:'380+ voices, 50+ languages. WaveNet technology for natural-sounding synthesis.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Swedish'],pricing:'$4/1M chars Neural2 · $16/1M Studio',pIn:0,pOut:0,tier:'low',pPerChar:0.000004,ctx:'N/A',ctxN:0,params:'WaveNet',lat:'~250ms',uses:['Mobile apps','IVR','E-learning'],pros:['50+ languages','WaveNet quality','Free tier'],cons:['Studio voices expensive'],link:'https://cloud.google.com/text-to-speech',scores:{q:83,s:91,c:90,l:93}},
+{id:'llama33',name:'Llama 3.3-70B',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['LLM','Code'],type:'open-source',featured:true,desc:"Meta's latest open-source flagship. Near GPT-4o quality with fully open weights.",langs:['English','Spanish','French','German','Italian','Portuguese','Hindi','Chinese','Arabic','Japanese','Korean','Thai'],pricing:'Free (self-host) · $0.59/1M via APIs',pIn:0.59,pOut:0.79,tier:'low',ctx:'128K tokens',ctxN:128000,params:'70B',lat:'~400ms',uses:['Open-source production','General purpose AI','Fine-tuning'],pros:['Fully open source','Strong quality','No vendor lock-in'],cons:['Requires 140GB+ VRAM self-hosted'],link:'https://llama.meta.com',scores:{q:90,s:82,c:90,l:72}},
+{id:'llama32-v',name:'Llama 3.2-90B Vision',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['LLM','Vision'],type:'open-source',desc:'Open-source multimodal model with vision. Competitive with GPT-4o-mini.',langs:['English','Spanish','French','German','Italian','Portuguese','Hindi','Chinese','Arabic','Japanese','Korean'],pricing:'Free (self-host) · $0.90/1M via APIs',pIn:0.90,pOut:0.90,tier:'low',ctx:'128K tokens',ctxN:128000,params:'90B',lat:'~500ms',uses:['Open vision tasks','Document processing'],pros:['Open source vision','No vendor lock-in'],cons:['Significant hardware needed'],link:'https://llama.meta.com',scores:{q:87,s:78,c:90,l:70}},
+{id:'llama31-8b',name:'Llama 3.1-8B',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['LLM','Code'],type:'open-source',desc:'Runs on consumer hardware. Best open-source 8B model.',langs:['English','German','French','Italian','Portuguese','Hindi','Spanish','Thai'],pricing:'Free (self-host) · $0.10/1M via APIs',pIn:0.10,pOut:0.10,tier:'free',ctx:'128K tokens',ctxN:128000,params:'8B',lat:'<100ms',uses:['Edge deployment','Fine-tuning','Prototyping'],pros:['Runs on RTX 3090','Very fast','Free'],cons:['Limited multilingual'],link:'https://llama.meta.com',scores:{q:75,s:98,c:99,l:50}},
+{id:'seamless',name:'SeamlessM4T v2',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['STT','TTS','Translation'],type:'open-source',desc:'All-in-one: STT + Translation + TTS in one model. 100+ languages.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Bengali','Tamil','Swahili'],pricing:'Free (self-hosted)',pIn:0,pOut:0,tier:'free',ctx:'N/A',ctxN:0,params:'2.3B',lat:'~1s',uses:['Speech translation','Multilingual voice agents','Research'],pros:['All-in-one','100+ languages','Free'],cons:['Quality below specialized models'],link:'https://github.com/facebookresearch/seamless_communication',scores:{q:76,s:72,c:99,l:99}},
+{id:'qwen25-72b',name:'Qwen2.5-72B',prov:'Alibaba Cloud',icon:'☁️',clr:'#f97316',tasks:['LLM','Code'],type:'open-source',featured:true,desc:"Alibaba's flagship open LLM. Best Chinese AI model. Exceptional Arabic performance.",langs:['Chinese','English','Arabic','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Vietnamese','Thai','Indonesian'],pricing:'Free (self-host) · $0.40/1M in via APIs',pIn:0.40,pOut:1.20,tier:'low',ctx:'128K tokens',ctxN:128000,params:'72B',lat:'~400ms',uses:['Chinese NLP','Arabic AI','Multilingual chatbots','Code generation'],pros:['Best Chinese model','Strong Arabic','Open source','128K context'],cons:['Self-hosting requires 144GB+ VRAM'],link:'https://huggingface.co/Qwen',scores:{q:92,s:82,c:95,l:95}},
+{id:'qwen25-7b',name:'Qwen2.5-7B',prov:'Alibaba Cloud',icon:'☁️',clr:'#f97316',tasks:['LLM'],type:'open-source',desc:'Efficient 7B multilingual model. Resource-constrained deployments.',langs:['Chinese','English','Arabic','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian'],pricing:'Free (self-host) · ~$0.05/1M',pIn:0.05,pOut:0.10,tier:'free',ctx:'128K tokens',ctxN:128000,params:'7B',lat:'~150ms',uses:['Edge deployment','Mobile apps','Chinese chatbots'],pros:['Very lightweight','Strong Chinese','Free'],cons:['Less capable than 72B'],link:'https://huggingface.co/Qwen',scores:{q:76,s:97,c:99,l:87}},
+{id:'cohere-rplus',name:'Command R+',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['LLM','Code'],type:'commercial',featured:true,desc:'Enterprise RAG and tool-use model. Best-in-class for retrieval-augmented generation.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],pricing:'$2.50/1M in · $10/1M out',pIn:2.50,pOut:10,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'104B',lat:'~600ms',uses:['Enterprise RAG','Document Q&A','Agentic workflows'],pros:['RAG-optimized','Tool use','Citations','Enterprise SLA'],cons:['Less general than GPT-4o'],link:'https://cohere.com',scores:{q:88,s:80,c:68,l:82}},
+{id:'cohere-r',name:'Command R',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['LLM'],type:'commercial',desc:'Efficient RAG model. Low cost with 10 language support and grounded responses.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],pricing:'$0.15/1M in · $0.60/1M out',pIn:0.15,pOut:0.60,tier:'low',ctx:'128K tokens',ctxN:128000,params:'35B',lat:'~400ms',uses:['RAG pipelines','Summarization','Chatbots'],pros:['Very low cost','RAG-optimized'],cons:['10 language limit'],link:'https://cohere.com',scores:{q:80,s:88,c:96,l:65}},
+{id:'cohere-embed',name:'Embed v3 Multilingual',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['Embedding'],type:'commercial',featured:true,desc:'State-of-the-art multilingual embeddings. 100+ languages. Best for cross-lingual search.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish','Danish','Finnish','Norwegian'],pricing:'$0.10/1M tokens',pIn:0.10,pOut:0,tier:'low',ctx:'512 tokens',ctxN:512,params:'~600M',lat:'~50ms',uses:['Multilingual semantic search','RAG embeddings','Cross-lingual retrieval'],pros:['100+ languages','Best multilingual embeddings','Low cost'],cons:['Embedding only'],link:'https://cohere.com/embeddings',scores:{q:95,s:98,c:95,l:99}},
+{id:'mistral-large',name:'Mistral Large 2',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['LLM','Code'],type:'commercial',desc:'European frontier model. Strong French, German, Spanish, Italian.',langs:['English','French','Spanish','German','Italian','Portuguese','Dutch','Russian','Chinese','Japanese','Korean','Arabic','Hindi'],pricing:'$3/1M in · $9/1M out',pIn:3,pOut:9,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'123B',lat:'~500ms',uses:['European language apps','Code generation','GDPR-compliant AI'],pros:['Strong European languages','GDPR-friendly','Function calling'],cons:['Less multilingual than Qwen for Asian'],link:'https://mistral.ai',scores:{q:88,s:83,c:65,l:80}},
+{id:'mistral-nemo',name:'Mistral NeMo 12B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['LLM'],type:'open-source',desc:'12B open model with 128K context. Best open model for European languages.',langs:['English','French','Spanish','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic'],pricing:'Free (self-host) · $0.15/1M via APIs',pIn:0.15,pOut:0.15,tier:'free',ctx:'128K tokens',ctxN:128000,params:'12B',lat:'~200ms',uses:['European language deployments','Cost-efficient AI'],pros:['Great European languages','128K context','Open weights'],cons:['Less capable than Large 2'],link:'https://mistral.ai',scores:{q:78,s:92,c:95,l:72}},
+{id:'deepseek-v3',name:'DeepSeek V3',prov:'DeepSeek',icon:'🔬',clr:'#38bdf8',tasks:['LLM','Code'],type:'open-source',featured:true,desc:'Rivals GPT-4o at fraction of cost. Exceptional code and math. 671B MoE.',langs:['Chinese','English','Arabic','Spanish','French','German','Japanese','Korean','Russian','Italian','Portuguese'],pricing:'Free (self-host) · $0.14/1M in · $0.28/1M out',pIn:0.14,pOut:0.28,tier:'low',ctx:'128K tokens',ctxN:128000,params:'671B MoE',lat:'~400ms',uses:['Code generation','Math reasoning','Chinese NLP','Cost-sensitive production'],pros:['Cheapest frontier-class','Excellent coding','Open weights'],cons:['Privacy considerations'],link:'https://deepseek.com',scores:{q:93,s:82,c:99,l:78}},
+{id:'deepseek-r1',name:'DeepSeek R1',prov:'DeepSeek',icon:'🔬',clr:'#38bdf8',tasks:['LLM','Code'],type:'open-source',desc:'Open-source reasoning model rivaling o1. Transparent chain-of-thought.',langs:['Chinese','English','Spanish','French','German','Japanese','Korean','Arabic'],pricing:'Free (self-host) · $0.55/1M in · $2.19/1M out',pIn:0.55,pOut:2.19,tier:'low',ctx:'128K tokens',ctxN:128000,params:'671B MoE',lat:'10–60s',uses:['Complex reasoning','Math','Code debugging'],pros:['Open-source o1 alternative','Transparent thinking'],cons:['Slow','High compute needs'],link:'https://deepseek.com',scores:{q:95,s:40,c:85,l:68}},
+{id:'phi4',name:'Phi-4 (14B)',prov:'Microsoft',icon:'🔷',clr:'#38bdf8',tasks:['LLM','Code'],type:'open-source',desc:'Small but mighty. Outperforms larger models on STEM and reasoning.',langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Arabic'],pricing:'Free (self-host) · $0.07/1M via Azure AI',pIn:0.07,pOut:0.07,tier:'free',ctx:'16K tokens',ctxN:16000,params:'14B',lat:'~150ms',uses:['Device-side AI','Math & STEM','Code assistance'],pros:['Exceptional reasoning for size','Runs on laptops','Very low cost'],cons:['Short context (16K)'],link:'https://azure.microsoft.com/en-us/products/phi',scores:{q:82,s:97,c:98,l:58}},
+{id:'azure-tts',name:'Azure Neural TTS',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['TTS'],type:'commercial',desc:'500+ neural voices, 140+ languages. Enterprise-grade with custom voice training.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish','Russian','Turkish','Indonesian','Thai','Vietnamese'],pricing:'$4/1M chars · Free: 0.5M/mo',pIn:0,pOut:0,tier:'low',pPerChar:0.000004,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'~200ms',uses:['Enterprise apps','Call centers','Accessibility','140+ language TTS'],pros:['140+ languages','Custom voice','Low cost','SSML'],cons:['Azure lock-in'],link:'https://azure.microsoft.com',scores:{q:82,s:94,c:95,l:99}},
+{id:'azure-stt',name:'Azure Speech-to-Text',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['STT'],type:'commercial',desc:'100+ languages, custom models, real-time transcription. HIPAA compliant.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish','Russian','Turkish','Indonesian','Thai','Danish','Finnish','Norwegian'],pricing:'$1/hr · Free: 5hr audio/mo',pIn:0,pOut:0,tier:'low',pPerMin:0.0167,ctx:'Streaming',ctxN:0,params:'Proprietary',lat:'~300ms',uses:['Enterprise apps','Compliance recording','Call center analytics'],pros:['100+ languages','Custom models','Enterprise compliance'],cons:['Azure ecosystem'],link:'https://azure.microsoft.com',scores:{q:85,s:90,c:85,l:99}},
+{id:'elevenlabs',name:'ElevenLabs Multilingual v2',prov:'ElevenLabs',icon:'🎙️',clr:'#a78bfa',tasks:['TTS'],type:'third-party',featured:true,desc:'Industry-leading voice AI. Ultra-realistic synthesis, voice cloning, emotion control.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish'],pricing:'$0.30/1K chars · $0.18/1K Pro',pIn:0,pOut:0,tier:'mid',pPerChar:0.0003,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'~400ms',uses:['Audiobooks','Podcasts','Video narration','Voice cloning'],pros:['Emotional range','Voice cloning','29+ languages','Real-time streaming'],cons:['Per-character pricing','Not open source'],link:'https://elevenlabs.io',scores:{q:98,s:82,c:70,l:92}},
+{id:'playht',name:'PlayHT 2.0 Turbo',prov:'Play.ht',icon:'▶️',clr:'#eab308',tasks:['TTS'],type:'third-party',desc:'<100ms latency TTS. 900+ voices, 142 languages, instant voice cloning.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish','Turkish','Russian','Indonesian'],pricing:'$0.99/100K chars · $39/mo unlimited',pIn:0,pOut:0,tier:'mid',pPerChar:0.0000099,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'<100ms',uses:['Real-time voice agents','Podcasts','Voice cloning'],pros:['Ultra-low latency','900+ voices','142 languages'],cons:['Rate limits on free'],link:'https://play.ht',scores:{q:91,s:98,c:72,l:95}},
+{id:'deepgram',name:'Deepgram Nova-2',prov:'Deepgram',icon:'🎤',clr:'#06b6d4',tasks:['STT'],type:'third-party',featured:true,desc:'30% lower WER than Whisper. Real-time streaming + speaker diarization.',langs:['English','Spanish','French','German','Italian','Portuguese','Dutch','Japanese','Korean','Chinese','Hindi','Russian','Turkish','Swedish'],pricing:'$0.0043/min · Free: 12,000 min/yr',pIn:0,pOut:0,tier:'low',pPerMin:0.0043,ctx:'Streaming',ctxN:0,params:'Proprietary',lat:'~200ms',uses:['Real-time captioning','Call centers','Voice agents'],pros:['Real-time streaming','Lowest WER','Speaker diarization'],cons:['Limited language count'],link:'https://deepgram.com',scores:{q:93,s:97,c:88,l:72}},
+{id:'assemblyai',name:'AssemblyAI Universal-1',prov:'AssemblyAI',icon:'🔊',clr:'#a78bfa',tasks:['STT'],type:'third-party',desc:'AI-powered transcription with LeMUR (LLM over audio). Speaker labels, auto-chapters.',langs:['English','Spanish','French','German','Italian','Portuguese','Dutch','Japanese','Korean','Chinese','Hindi','Finnish','Polish','Ukrainian','Turkish'],pricing:'$0.65/hr · $0.37/hr Nano · Free 5hrs/mo',pIn:0,pOut:0,tier:'mid',pPerMin:0.0108,ctx:'10hr files',ctxN:0,params:'Proprietary',lat:'~2s',uses:['Meeting analytics','Podcast processing','Audio intelligence'],pros:['LLM-over-audio','Speaker labels','Auto-chapters'],cons:['Higher latency'],link:'https://assemblyai.com',scores:{q:88,s:75,c:72,l:70}},
+{id:'perplexity',name:'Sonar Large (Online)',prov:'Perplexity',icon:'🔍',clr:'#eab308',tasks:['LLM'],type:'commercial',desc:'Real-time web search LLM. Answers with citations from live web data.',langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic','Dutch'],pricing:'$1/1M in · $5/1M Sonar-Pro',pIn:1,pOut:1,tier:'low',ctx:'128K tokens',ctxN:128000,params:'~70B base',lat:'~1.5s',uses:['Research assistants','News Q&A','Fact-checking'],pros:['Live web search','Citations','Current events'],cons:['Not for offline data'],link:'https://perplexity.ai',scores:{q:82,s:74,c:87,l:72}},
+{id:'deepl',name:'DeepL Pro API',prov:'DeepL',icon:'🌐',clr:'#06b6d4',tasks:['Translation'],type:'third-party',featured:true,desc:'Best-quality neural translation for European languages. Consistently outperforms Google.',langs:['English','German','French','Spanish','Italian','Portuguese','Dutch','Polish','Russian','Japanese','Chinese','Korean','Turkish','Swedish','Danish','Finnish','Norwegian','Czech','Romanian','Hungarian'],pricing:'$5.49/1M chars · $25/mo Pro',pIn:0,pOut:0,tier:'low',pPerChar:0.0000055,ctx:'128KB doc',ctxN:0,params:'Proprietary',lat:'~300ms',uses:['Legal/medical translation','EU content','Marketing localization'],pros:['Best European translation','GDPR compliant','Glossary support'],cons:['33 language limit'],link:'https://deepl.com',scores:{q:94,s:90,c:82,l:72}},
+{id:'azure-trans',name:'Azure Translator',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['Translation'],type:'commercial',desc:'100+ language neural translation. Document translation and real-time.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish','Danish','Finnish','Norwegian','Ukrainian','Thai','Vietnamese'],pricing:'$10/1M chars · Free: 2M chars/mo',pIn:0,pOut:0,tier:'low',pPerChar:0.00001,ctx:'50K chars',ctxN:0,params:'Proprietary',lat:'<100ms',uses:['Document translation','Real-time','Multilingual apps'],pros:['100+ languages','Low cost','Document formats'],cons:['Not LLM quality for nuanced text'],link:'https://azure.microsoft.com',scores:{q:82,s:97,c:92,l:99}},
+{id:'coqui',name:'Coqui TTS (XTTS v2)',prov:'Coqui AI',icon:'🐸',clr:'#84cc16',tasks:['TTS'],type:'open-source',desc:'Open-source TTS with voice cloning from 6-second audio. 17 languages.',langs:['English','Spanish','French','German','Italian','Portuguese','Polish','Turkish','Russian','Dutch','Czech','Arabic','Chinese','Hungarian','Korean','Japanese','Hindi'],pricing:'Free (self-hosted)',pIn:0,pOut:0,tier:'free',pPerChar:0,ctx:'N/A',ctxN:0,params:'~1B',lat:'~500ms (GPU)',uses:['Self-hosted TTS','Voice cloning','Research'],pros:['Free & open source','Voice cloning','17 languages'],cons:['Requires GPU','Setup complexity'],link:'https://github.com/coqui-ai/TTS',scores:{q:79,s:70,c:99,l:80}},
+{id:'grok3',name:'Grok-3',prov:'xAI',icon:'⚡',clr:'#eab308',tasks:['LLM','Code'],type:'commercial',desc:"xAI's latest model with real-time X/Twitter data. Strong reasoning and coding.",langs:['English','Chinese','Spanish','French','German','Japanese','Korean','Portuguese','Arabic'],pricing:'Via X Premium+ / API (beta)',pIn:3,pOut:15,tier:'mid',ctx:'131K tokens',ctxN:131000,params:'~300B',lat:'~600ms',uses:['Real-time social analysis','Coding','Reasoning'],pros:['Real-time X data','Strong reasoning'],cons:['Limited API access'],link:'https://x.ai',scores:{q:91,s:80,c:60,l:70}},
+{id:'mixtral',name:'Mixtral 8x22B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['LLM','Code'],type:'open-source',desc:'MoE open model. 141B parameters (39B active). Excellent cost-quality for self-hosting.',langs:['English','French','Spanish','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic'],pricing:'Free (self-host) · $1.2/1M via APIs',pIn:1.2,pOut:1.2,tier:'low',ctx:'65K tokens',ctxN:65000,params:'141B (MoE, 39B active)',lat:'~400ms',uses:['Self-hosted production','Code generation','European AI'],pros:['Efficient MoE','Strong coding','Open source'],cons:['Requires 4x A100'],link:'https://mistral.ai',scores:{q:85,s:84,c:88,l:72}},
+{id:'pixtral',name:'Pixtral Large 124B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['Vision','LLM'],type:'open-source',desc:'Open-weight multimodal. Multiple images per request. Strong document understanding.',langs:['English','French','German','Spanish','Italian','Portuguese','Chinese','Japanese'],pricing:'Free (self-host) · $2/1M in via API',pIn:2,pOut:6,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'124B',lat:'~1s',uses:['Document parsing','Multi-image analysis','Open vision models'],pros:['Open source vision','Multi-image','European compliant'],cons:['Requires significant hardware'],link:'https://mistral.ai',scores:{q:86,s:72,c:85,l:65}},
+{id:'sarvam',name:'Sarvam-2B',prov:'Sarvam AI',icon:'🇮🇳',clr:'#f97316',tasks:['LLM','TTS','STT'],type:'open-source',desc:'Specialized model for Indian languages. 10 Indic languages for speech and text.',langs:['Hindi','Bengali','Tamil','Telugu','Kannada','Malayalam','Marathi','Gujarati','Punjabi','Odia','English'],pricing:'Free (open source)',pIn:0,pOut:0,tier:'free',ctx:'4K tokens',ctxN:4000,params:'2B',lat:'~400ms',uses:['Indian language apps','Regional STT/TTS','Indic NLP'],pros:['Best Indic language support','Free','STT+TTS+LLM'],cons:['Limited to Indian languages'],link:'https://sarvam.ai',scores:{q:78,s:84,c:99,l:60}},
+{id:'text-emb3',name:'text-embedding-3-large',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['Embedding'],type:'commercial',desc:"OpenAI's best embedding model. Supports dimensionality reduction.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Russian','Dutch','Polish'],pricing:'$0.13/1M tokens',pIn:0.13,pOut:0,tier:'low',ctx:'8191 tokens',ctxN:8191,params:'~600M',lat:'~50ms',uses:['Semantic search','RAG','Clustering','Classification'],pros:['High quality','Low cost','Multilingual'],cons:['8K context limit'],link:'https://platform.openai.com',scores:{q:92,s:97,c:92,l:85}},
+{id:'e5-multi',name:'Multilingual-E5-Large',prov:'Microsoft (Open)',icon:'🔷',clr:'#38bdf8',tasks:['Embedding'],type:'open-source',desc:'Open-source multilingual embedding. 100+ languages. Best free option.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish','Danish','Finnish','Norwegian'],pricing:'Free (HuggingFace self-hosted)',pIn:0,pOut:0,tier:'free',ctx:'512 tokens',ctxN:512,params:'560M',lat:'~30ms',uses:['Cross-lingual search','Multilingual RAG'],pros:['100+ languages','Free','Fast'],cons:['512 token context'],link:'https://huggingface.co/intfloat/multilingual-e5-large',scores:{q:87,s:98,c:99,l:99}},
+{id:'amazon-polly',name:'Amazon Polly Neural',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['TTS'],type:'commercial',desc:'Neural TTS with 60+ voices in 30+ languages. Real-time streaming.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Romanian','Turkish'],pricing:'$4/1M chars Neural · $16/1M Long-form',pIn:0,pOut:0,tier:'low',pPerChar:0.000004,ctx:'3000 chars',ctxN:0,params:'Proprietary',lat:'~300ms',uses:['AWS workloads','Podcasts','IVR','Alexa'],pros:['AWS integration','SSML','Long-form'],cons:['Less natural voices'],link:'https://aws.amazon.com/polly',scores:{q:78,s:89,c:90,l:82}},
+];
+
+// ══════════════════════════════════════════════════════════════════
+// APP STATE
+// ══════════════════════════════════════════════════════════════════
+let currentUser=null;
+let state={task:'all',prov:'All',lang:'All',type:'All'};
+let catTaskFilter='all';
+let estimSel=[];
+let compareSelected=[];
+let chatHistory=[];
+let USERS=JSON.parse(localStorage.getItem('mm_users')||'[]');
+
+const TASKS=[
+  {id:'all',icon:'✨',name:'All Models',desc:'Show everything'},
+  {id:'TTS',icon:'🔊',name:'Text-to-Speech',desc:'Voice synthesis'},
+  {id:'STT',icon:'🎤',name:'Speech-to-Text',desc:'Transcription'},
+  {id:'LLM',icon:'💬',name:'LLM / Chat',desc:'Text generation'},
+  {id:'Vision',icon:'👁️',name:'Vision / VLM',desc:'Image understanding'},
+  {id:'Code',icon:'💻',name:'Code Gen',desc:'Programming AI'},
+  {id:'Embedding',icon:'🔢',name:'Embeddings',desc:'Vector search'},
+  {id:'Translation',icon:'🌐',name:'Translation',desc:'Language translation'},
+];
+const PROVS=['All',...[...new Set(M.map(m=>m.prov))].sort()];
+const LANGS=['All','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish'];
+const TYPES=['All','commercial','open-source','third-party'];
+const UC_DEF={
+  chat:{req:1000,inp:500,out:300,type:'tok'},
+  rag:{req:500,inp:4000,out:500,type:'tok'},
+  summarization:{req:200,inp:8000,out:300,type:'tok'},
+  tts:{type:'char',chars:50000},
+  stt:{type:'audio',mins:60},
+  translation:{type:'char',chars:100000},
+  embedding:{req:10000,inp:500,out:0,type:'tok'},
+  code:{req:500,inp:2000,out:1000,type:'tok'},
+};
+
+// ══════════════════════════════════════════════════════════════════
+// AUTH
+// ══════════════════════════════════════════════════════════════════
+function swTab(t){
+  ['si','su','fp'].forEach(x=>{
+    document.getElementById(x+'Form').style.display=t===x?'block':'none';
+  });
+  document.getElementById('siTab').classList.toggle('active',t==='si');
+  document.getElementById('suTab').classList.toggle('active',t==='su');
+}
+
+function togglePwd(id,btn){
+  const inp=document.getElementById(id);
+  inp.type=inp.type==='password'?'text':'password';
+  btn.textContent=inp.type==='password'?'👁':'🙈';
+}
+
+function doLogin(){
+  const email=document.getElementById('siEmail').value.trim().toLowerCase();
+  const pass=document.getElementById('siPass').value;
+  const err=document.getElementById('siErr');
+  err.textContent='';
+  if(!email||!pass){err.textContent='⚠ Please fill in all fields';return;}
+  const u=USERS.find(x=>x.email===email&&x.password===pass);
+  if(!u){err.textContent='⚠ Invalid email or password';return;}
+  loginSuccess(u);
+}
+
+function doSignup(){
+  const first=document.getElementById('suFirst').value.trim();
+  const last=document.getElementById('suLast').value.trim();
+  const email=document.getElementById('suEmail').value.trim().toLowerCase();
+  const company=document.getElementById('suCompany').value.trim();
+  const pass=document.getElementById('suPass').value;
+  const err=document.getElementById('suErr');
+  err.textContent='';
+  if(!first||!email||!pass){err.textContent='⚠ First name, email, and password are required';return;}
+  if(pass.length<8){err.textContent='⚠ Password must be at least 8 characters';return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='⚠ Please enter a valid email address';return;}
+  if(USERS.find(x=>x.email===email)){err.textContent='⚠ An account with this email already exists';return;}
+  const u={id:Date.now().toString(),first,last,email,company,password:pass,role:'Free',joined:new Date().toISOString()};
+  USERS.push(u);localStorage.setItem('mm_users',JSON.stringify(USERS));
+  loginSuccess(u);
+}
+
+function demoLogin(){
+  loginSuccess({id:'demo',first:'Demo',last:'User',email:'demo@modelmatch.ai',role:'Pro',company:'ModelMatch AI'});
+}
+function guestLogin(){
+  loginSuccess({id:'guest',first:'Guest',last:'',email:'',role:'Guest',company:''});
+}
+
+function sendReset(){
+  const email=document.getElementById('fpEmail').value.trim();
+  if(!email){return;}
+  document.getElementById('fpOk').style.display='block';
+}
+
+function forgotPwd(){swTab('fp');}
+
+function loginSuccess(u){
+  currentUser=u;
+  localStorage.setItem('mm_session',JSON.stringify(u));
+  document.getElementById('loginPage').classList.remove('active');
+  document.getElementById('appPage').classList.add('active');
+  const name=u.first+(u.last?' '+u.last:'');
+  document.getElementById('uAvatar').textContent=u.first[0].toUpperCase();
+  document.getElementById('uName').textContent=name;
+  document.getElementById('uRole').textContent=u.role||'Free';
+  document.getElementById('sbName').textContent=name;
+  document.getElementById('sbRole').textContent=(u.role||'Free')+' Account';
+  document.getElementById('sbMeta').textContent=`${M.length} models · ${new Set(M.map(m=>m.prov)).size} providers`;
+  initApp();
+}
+
+function logout(){
+  localStorage.removeItem('mm_session');
+  currentUser=null;
+  document.getElementById('appPage').classList.remove('active');
+  document.getElementById('loginPage').classList.add('active');
+}
+
+// ══════════════════════════════════════════════════════════════════
+// APP INIT
+// ══════════════════════════════════════════════════════════════════
+function initApp(){
+  initExplorer();
+  initEstimator();
+  initCompare();
+  initQuickAsks();
+  animateStats();
+}
+
+function goPage(p){
+  document.querySelectorAll('.inner-page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(el=>{
+    if(el.getAttribute('onclick')==='goPage(\''+p+'\')') el.classList.add('active');
+  });
+  if(p==='catalog')renderCatalog();
+}
+
+function quickTask(t){
+  state.task=t;
+  goPage('explorer');
+  initExplorer();
+}
+
+function onGlobalSearch(){
+  const q=document.getElementById('globalSearch').value;
+  if(q){goPage('explorer');state.task='all';initExplorer();}
+}
+
+// Animate login stats
+function animateStats(){
+  const targets=[[60,'+'],[20,'+'],[30,'+']];
+  targets.forEach(([n,suffix],i)=>{
+    const el=document.getElementById('sc'+(i+1));
+    if(!el)return;
+    let c=0;const step=Math.ceil(n/20);
+    const t=setInterval(()=>{c=Math.min(c+step,n);el.textContent=c+suffix;if(c>=n)clearInterval(t);},40);
+  });
+}
+
+// Canvas animation on login
+(function(){
+  const canvas=document.getElementById('loginCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let pts=[],W,H;
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;pts=Array.from({length:50},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*2+1}));}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(201,168,76,.35)';ctx.fill();
+    });
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<120){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(201,168,76,${.12*(1-d/120)})`;ctx.lineWidth=.5;ctx.stroke();}
+    }
+    requestAnimationFrame(draw);
+  }
+  resize();window.addEventListener('resize',resize);draw();
+})();
+
+// ══════════════════════════════════════════════════════════════════
+// EXPLORER
+// ══════════════════════════════════════════════════════════════════
+function initExplorer(){
+  // Tasks
+  document.getElementById('task-grid').innerHTML=TASKS.map(t=>
+    `<div class="task-card ${state.task===t.id?'active':''}" onclick="setTask('${t.id}')">
+      <span class="task-icon">${t.icon}</span>
+      <div class="task-name">${t.name}</div>
+      <div class="task-desc">${t.desc}</div>
+    </div>`).join('');
+  // Provider chips
+  document.getElementById('f-prov').innerHTML=PROVS.slice(0,12).map(p=>
+    `<div class="chip ${state.prov===p?'active':''}" onclick="setF('prov','${p}')">${p==='All'?'All Providers':p}</div>`).join('');
+  // Lang chips
+  document.getElementById('f-lang').innerHTML=LANGS.map(l=>
+    `<div class="chip ${state.lang===l?'active':''}" onclick="setF('lang','${l}')">${l==='All'?'All Languages':l}</div>`).join('');
+  // Type chips
+  document.getElementById('f-type').innerHTML=TYPES.map(t=>
+    `<div class="chip ${state.type===t?'active':''}" onclick="setF('type','${t}')">${t==='All'?'All Types':t==='open-source'?'🔓 Open Source':t==='third-party'?'🔗 3rd Party':'☁️ Commercial'}</div>`).join('');
+  renderGrid();
+}
+function setTask(t){state.task=t;initExplorer();}
+function setF(k,v){state[k]=v;initExplorer();}
+
+function getFiltered(){
+  const q=(document.getElementById('globalSearch')?.value||'').toLowerCase();
+  return M.filter(m=>{
+    if(state.task!=='all'&&!m.tasks.includes(state.task))return false;
+    if(state.prov!=='All'&&m.prov!==state.prov)return false;
+    if(state.type!=='All'&&m.type!==state.type)return false;
+    if(state.lang!=='All'&&!m.langs.includes(state.lang))return false;
+    if(q&&!m.name.toLowerCase().includes(q)&&!m.prov.toLowerCase().includes(q)&&!m.desc.toLowerCase().includes(q))return false;
+    return true;
+  }).sort((a,b)=>(b.featured?1:0)-(a.featured?1:0)||b.scores.q-a.scores.q);
+}
+
+function renderGrid(){
+  const list=getFiltered();
+  document.getElementById('cnt').textContent=list.length;
+  const g=document.getElementById('models-grid');
+  if(!list.length){g.innerHTML=`<div class="empty"><div class="empty-icon">🔍</div><div class="empty-title">No models found</div><div class="empty-sub">Try adjusting your filters</div></div>`;return;}
+  g.innerHTML=list.map((m,i)=>{
+    const pc=m.tier==='free'?'var(--teal)':m.tier==='low'?'var(--lime)':m.tier==='mid'?'var(--amber)':'var(--rose)';
+    const dl=m.langs.slice(0,5);const more=m.langs.length-5;
+    return `<div class="model-card ${m.featured?'featured':''}" style="animation-delay:${i*.03}s" onclick="openModal('${m.id}')">
+      <div class="card-top">
+        <div class="card-badge" style="background:${m.clr}15">${m.icon}</div>
+        <div class="card-info"><div class="card-name">${m.name}</div><div class="card-prov">${m.prov}</div></div>
+      </div>
+      <div class="card-tags">
+        ${m.tasks.map(t=>`<span class="tag tag-t">${t}</span>`).join('')}
+        ${m.type==='open-source'?'<span class="tag tag-o">Open Source</span>':''}
+        ${m.type==='third-party'?'<span class="tag tag-3">3rd Party</span>':''}
+      </div>
+      <div class="card-desc">${m.desc}</div>
+      <div class="score-grid">
+        <div class="score-box"><div class="score-lbl">Quality</div><div class="score-bar"><div class="bar-track"><div class="bar-fill" style="width:${m.scores.q}%;background:linear-gradient(90deg,var(--teal),#6366f1)"></div></div><span class="bar-num">${m.scores.q}</span></div></div>
+        <div class="score-box"><div class="score-lbl">Speed</div><div class="score-bar"><div class="bar-track"><div class="bar-fill" style="width:${m.scores.s}%;background:linear-gradient(90deg,var(--sky),var(--teal))"></div></div><span class="bar-num">${m.scores.s}</span></div></div>
+      </div>
+      <div class="card-langs">${dl.join(' · ')}${more>0?` <span style="color:var(--text3)">+${more} more</span>`:''}</div>
+      <div class="card-footer">
+        <div class="card-price" style="color:${pc}">${m.tier==='free'?'🟢 Free':m.pricing.split('·')[0].trim()}</div>
+        <div class="card-btns">
+          <button class="btn-xs" onclick="event.stopPropagation();addToEst('${m.id}')">💰 Estimate</button>
+          <button class="btn-xs accent" onclick="event.stopPropagation();openModal('${m.id}')">Details →</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function addToEst(id){
+  if(!estimSel.includes(id))estimSel.push(id);
+  showToast(`Added to estimator`);
+  goPage('estimator');
+  initEstimator();
+  setTimeout(runCalc,200);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// MODAL
+// ══════════════════════════════════════════════════════════════════
+function openModal(id){
+  const m=M.find(x=>x.id===id);if(!m)return;
+  const pc=m.tier==='free'?'var(--teal)':m.tier==='low'?'var(--lime)':m.tier==='mid'?'var(--amber)':'var(--rose)';
+  document.getElementById('modalBox').innerHTML=`
+    <div class="modal-head">
+      <div class="modal-icon" style="background:${m.clr}15">${m.icon}</div>
+      <div style="flex:1;min-width:0"><div class="modal-title">${m.name}</div><div class="modal-sub">${m.prov} · ${m.tasks.join(', ')} · ${m.type}</div></div>
+      <button class="modal-x" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:20px">${m.desc}</p>
+      <div class="modal-kpi-grid">
+        <div class="mkpi"><div class="mkpi-label">Quality</div><div class="mkpi-val" style="color:var(--teal)">${m.scores.q}/100</div></div>
+        <div class="mkpi"><div class="mkpi-label">Speed</div><div class="mkpi-val" style="color:var(--sky)">${m.scores.s}/100</div></div>
+        <div class="mkpi"><div class="mkpi-label">Cost Eff.</div><div class="mkpi-val" style="color:var(--lime)">${m.scores.c}/100</div></div>
+        <div class="mkpi"><div class="mkpi-label">Context</div><div class="mkpi-val" style="font-size:14px">${m.ctx}</div></div>
+        <div class="mkpi"><div class="mkpi-label">Latency</div><div class="mkpi-val" style="font-size:14px">${m.lat}</div></div>
+        <div class="mkpi"><div class="mkpi-label">Parameters</div><div class="mkpi-val" style="font-size:14px">${m.params}</div></div>
+      </div>
+      <div class="msec"><h3>Pricing</h3><div style="background:var(--surface);border:1px solid var(--rim);border-radius:8px;padding:12px;font-family:'Geist Mono',monospace;font-size:12px;color:${pc}">${m.pricing}</div></div>
+      <div class="msec"><h3>Languages (${m.langs.length} supported)</h3><div class="mlang-grid">${m.langs.map(l=>`<span class="ml">${l}</span>`).join('')}</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div class="msec"><h3>Use Cases</h3><ul class="mul">${m.uses.map(u=>`<li>${u}</li>`).join('')}</ul></div>
+        <div class="msec"><h3>Strengths</h3><ul class="mul">${m.pros.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+      </div>
+      <div class="msec"><h3>Limitations</h3><ul class="mul">${m.cons.map(c=>`<li style="color:var(--rose)">${c}</li>`).join('')}</ul></div>
+      <div class="modal-actions">
+        <a href="${m.link}" target="_blank" class="mbtn primary">Open ${m.prov} →</a>
+        <button onclick="addToEst('${m.id}');closeModal()" class="mbtn secondary">💰 Estimate Cost</button>
+        <button onclick="chatAbout('${m.name}');closeModal()" class="mbtn secondary">🤖 Ask AI</button>
+      </div>
+    </div>`;
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+
+// ══════════════════════════════════════════════════════════════════
+// CATALOG
+// ══════════════════════════════════════════════════════════════════
+function initCatalog(){
+  const tasks=['all','TTS','STT','LLM','Vision','Code','Embedding','Translation'];
+  document.getElementById('cat-task-chips').innerHTML=tasks.map(t=>
+    `<div class="chip ${catTaskFilter===t?'active':''}" onclick="setCatTask('${t}')">${t==='all'?'All':t}</div>`).join('');
+}
+function setCatTask(t){catTaskFilter=t;initCatalog();renderCatalog();}
+function catSort(col){renderCatalog();}
+function renderCatalog(){
+  initCatalog();
+  const q=(document.getElementById('catSearch')?.value||'').toLowerCase();
+  const sort=document.getElementById('catSort')?.value||'quality';
+  let list=[...M];
+  if(q)list=list.filter(m=>m.name.toLowerCase().includes(q)||m.prov.toLowerCase().includes(q)||m.tasks.some(t=>t.toLowerCase().includes(q)));
+  if(catTaskFilter!=='all')list=list.filter(m=>m.tasks.includes(catTaskFilter));
+  list.sort((a,b)=>sort==='quality'?b.scores.q-a.scores.q:sort==='speed'?b.scores.s-a.scores.s:sort==='price_asc'?(a.pIn+a.pOut/2)-(b.pIn+b.pOut/2):sort==='name'?a.name.localeCompare(b.name):b.ctxN-a.ctxN);
+  document.getElementById('catCount').textContent=`${list.length} of ${M.length} models`;
+  const pc=t=>t==='free'?'free':t==='low'?'low':t==='mid'?'mid':'high';
+  document.getElementById('catBody').innerHTML=list.map(m=>`
+    <tr onclick="openModal('${m.id}')">
+      <td><div style="display:flex;align-items:center;gap:8px"><span style="font-size:16px">${m.icon}</span><div><div class="tbl-name">${m.name}${m.featured?' ⭐':''}</div><div class="tbl-prov">${m.prov}</div></div></div></td>
+      <td>${m.tasks.map(t=>`<span class="tag tag-t" style="margin:1px">${t}</span>`).join('')}</td>
+      <td><span class="tbl-ctx">${m.ctx}</span></td>
+      <td><div class="tbl-qbar"><div class="tbl-qtrack"><div class="tbl-qfill" style="width:${m.scores.q}%;background:linear-gradient(90deg,var(--teal),#6366f1)"></div></div><span class="tbl-qnum">${m.scores.q}</span></div></td>
+      <td><div class="tbl-qbar"><div class="tbl-qtrack"><div class="tbl-qfill" style="width:${m.scores.s}%;background:linear-gradient(90deg,var(--sky),var(--teal))"></div></div><span class="tbl-qnum">${m.scores.s}</span></div></td>
+      <td><span class="tbl-price-val ${pc(m.tier)}">${m.pIn>0?'$'+m.pIn:m.pPerMin?'$'+m.pPerMin+'/m':m.pPerChar?'$'+(m.pPerChar*1000000).toFixed(2)+'/1Mc':'Free'}</span></td>
+      <td><span class="tbl-price-val ${pc(m.tier)}">${m.pOut>0?'$'+m.pOut:'—'}</span></td>
+      <td style="font-size:11px;color:var(--text3)">${m.langs.slice(0,4).join(', ')}${m.langs.length>4?` +${m.langs.length-4}`:''}</td>
+      <td><button class="add-est-btn ${estimSel.includes(m.id)?'added':''}" onclick="event.stopPropagation();addToEst('${m.id}')">${estimSel.includes(m.id)?'✅ Added':'+ Estimate'}</button></td>
+    </tr>`).join('');
+}
+
+// ══════════════════════════════════════════════════════════════════
+// COST ESTIMATOR
+// ══════════════════════════════════════════════════════════════════
+function initEstimator(){
+  document.getElementById('modelPicker').innerHTML=M.map(m=>`
+    <div class="mpick-item">
+      <input type="checkbox" id="ep_${m.id}" value="${m.id}" ${estimSel.includes(m.id)?'checked':''} onchange="toggleEst('${m.id}',this.checked)">
+      <label for="ep_${m.id}">${m.icon} ${m.name}</label>
+      <span class="mpick-price">${m.tier==='free'?'Free':m.pricing.split('·')[0].trim()}</span>
+    </div>`).join('');
+}
+function toggleEst(id,checked){
+  if(checked&&!estimSel.includes(id))estimSel.push(id);
+  else if(!checked)estimSel=estimSel.filter(x=>x!==id);
+}
+function onUCChange(){
+  const uc=document.getElementById('ucSel').value;
+  const def=UC_DEF[uc];
+  const tok=def.type==='tok',aud=def.type==='audio',chr=def.type==='char';
+  document.getElementById('tok-cfg').style.display=tok?'block':'none';
+  document.getElementById('out-cfg').style.display=tok&&uc!=='embedding'?'block':'none';
+  document.getElementById('audio-cfg').style.display=aud?'block':'none';
+  document.getElementById('char-cfg').style.display=chr?'block':'none';
+  if(tok){document.getElementById('reqR').value=def.req;document.getElementById('inR').value=def.inp;document.getElementById('outR').value=def.out||0;}
+  if(aud)document.getElementById('minR').value=def.mins;
+  if(chr)document.getElementById('charR').value=def.chars;
+  runCalc();
+}
+
+function fmt(n){return n>=1000000?(n/1000000).toFixed(1)+'M':n>=1000?(n/1000).toFixed(0)+'K':String(n);}
+function fmtD(n){return n===0?'$0.00':n<0.01?'$'+n.toFixed(4):n<1?'$'+n.toFixed(3):n<10?'$'+n.toFixed(2):'$'+Math.round(n).toLocaleString();}
+
+function runCalc(){
+  const uc=document.getElementById('ucSel').value;
+  const def=UC_DEF[uc];
+  const req=parseInt(document.getElementById('reqR').value)||1000;
+  const inp=parseInt(document.getElementById('inR').value)||500;
+  const out=parseInt(document.getElementById('outR').value)||300;
+  const mins=parseInt(document.getElementById('minR').value)||60;
+  const chars=parseInt(document.getElementById('charR').value)||50000;
+
+  // Update labels
+  document.getElementById('req-lbl').textContent=fmt(req);
+  document.getElementById('req-mo').textContent=fmt(req*30);
+  document.getElementById('in-lbl').textContent=fmt(inp);
+  document.getElementById('out-lbl').textContent=fmt(out);
+  document.getElementById('min-lbl').textContent=fmt(mins);
+  document.getElementById('min-mo').textContent=fmt(mins*30);
+  document.getElementById('char-lbl').textContent=fmt(chars);
+  document.getElementById('char-mo').textContent=fmt(chars*30);
+
+  if(!estimSel.length){
+    document.getElementById('estResults').innerHTML=`<div style="text-align:center;padding:50px;color:var(--text3)"><div style="font-size:40px;margin-bottom:12px;opacity:.4">☝️</div><div style="font-family:'Instrument Serif',serif;font-size:20px;color:var(--text2);margin-bottom:6px">Select models to compare</div><div style="font-size:13px">Check models in the picker on the left</div></div>`;
+    return;
+  }
+
+  const costs=M.filter(m=>estimSel.includes(m.id)).map(m=>{
+    let monthly=0,inCost=0,outCost=0,other=0;
+    if(def.type==='tok'){
+      inCost=(req*30)*(inp/1000000)*(m.pIn||0);
+      outCost=(req*30)*(out/1000000)*(m.pOut||0);
+      monthly=inCost+outCost;
+    }else if(def.type==='audio'){other=(mins*30)*(m.pPerMin||0);monthly=other;}
+    else if(def.type==='char'){other=(chars*30)*(m.pPerChar||0);monthly=other;}
+    return{m,monthly,inCost,outCost,other};
+  }).sort((a,b)=>a.monthly-b.monthly);
+
+  const maxC=Math.max(...costs.map(c=>c.monthly),0.001);
+  const cheapest=costs[0];
+
+  document.getElementById('estResults').innerHTML=`
+    <div class="result-hero">
+      <div style="font-family:'Instrument Serif',serif;font-size:19px;margin-bottom:14px">Monthly Cost Breakdown</div>
+      <div class="result-kpi-row">
+        <div class="rkpi"><div class="rkpi-label">Best Option</div><div class="rkpi-val" style="font-size:16px;color:var(--teal)">${cheapest.m.name}</div></div>
+        <div class="rkpi"><div class="rkpi-label">Cheapest/Month</div><div class="rkpi-val" style="color:var(--teal)">${fmtD(cheapest.monthly)}</div><div class="rkpi-sub">per month</div></div>
+        <div class="rkpi"><div class="rkpi-label">Models Compared</div><div class="rkpi-val">${costs.length}</div></div>
+        <div class="rkpi"><div class="rkpi-label">Max Savings</div><div class="rkpi-val" style="color:var(--lime)">${fmtD(Math.max(...costs.map(c=>c.monthly))-cheapest.monthly)}</div></div>
+      </div>
+    </div>
+    <div class="cost-cards">
+      ${costs.map((c,i)=>{
+        const pct=maxC>0?c.monthly/maxC*100:0;
+        const tier=c.monthly===0?'free-tier':c.monthly<10?'cheap-tier':c.monthly<100?'mid-tier':'high-tier';
+        const savPct=i>0&&cheapest.monthly>0?((c.monthly-cheapest.monthly)/cheapest.monthly*100):0;
+        return `<div class="cost-card ${i===0?'winner':''}">
+          ${i===0?'<div class="winner-tag">BEST VALUE</div>':''}
+          <div class="cc-top">
+            <div class="cc-icon">${c.m.icon}</div>
+            <div class="cc-info"><div class="cc-name">${c.m.name}</div><div class="cc-prov">${c.m.prov} · ${c.m.tasks.join(', ')}</div></div>
+            <div class="cc-total"><div class="cc-amount ${tier}">${fmtD(c.monthly)}</div><div class="cc-period">per month</div>${i>0&&isFinite(savPct)?`<div class="cc-vs">+${savPct.toFixed(0)}% vs best</div>`:''}</div>
+          </div>
+          ${def.type==='tok'?`
+          <div class="cc-breakdown">
+            <div class="bk-item"><div class="bk-label">Input Cost</div><div class="bk-val" style="color:var(--sky)">${fmtD(c.inCost)}</div></div>
+            <div class="bk-item"><div class="bk-label">Output Cost</div><div class="bk-val" style="color:var(--violet)">${fmtD(c.outCost)}</div></div>
+            <div class="bk-item"><div class="bk-label">Per 1K Req</div><div class="bk-val" style="color:var(--amber)">${req*30>0?fmtD(c.monthly/(req*30/1000)):'—'}</div></div>
+          </div>`:def.type==='audio'?`
+          <div class="cc-breakdown">
+            <div class="bk-item"><div class="bk-label">Rate</div><div class="bk-val" style="color:var(--sky)">$${(c.m.pPerMin||0).toFixed(4)}/min</div></div>
+            <div class="bk-item"><div class="bk-label">Monthly Mins</div><div class="bk-val" style="color:var(--violet)">${fmt(mins*30)}</div></div>
+            <div class="bk-item"><div class="bk-label">Daily Cost</div><div class="bk-val" style="color:var(--amber)">${fmtD(c.monthly/30)}</div></div>
+          </div>`:`
+          <div class="cc-breakdown">
+            <div class="bk-item"><div class="bk-label">Rate</div><div class="bk-val" style="color:var(--sky)">$${((c.m.pPerChar||0)*1000000).toFixed(2)}/1Mc</div></div>
+            <div class="bk-item"><div class="bk-label">Monthly Chars</div><div class="bk-val" style="color:var(--violet)">${fmt(chars*30)}</div></div>
+            <div class="bk-item"><div class="bk-label">Daily Cost</div><div class="bk-val" style="color:var(--amber)">${fmtD(c.monthly/30)}</div></div>
+          </div>`}
+          <div class="cc-bar-row"><div class="cc-bar-track"><div class="cc-bar-fill" style="width:${pct.toFixed(0)}%"></div></div><span class="cc-pct">${pct.toFixed(0)}%</span></div>
+        </div>`;
+      }).join('')}
+    </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// COMPARE
+// ══════════════════════════════════════════════════════════════════
+function initCompare(){
+  document.getElementById('compare-chips').innerHTML=M.map(m=>
+    `<div class="chip ${compareSelected.includes(m.id)?'active':''}" onclick="toggleCompare('${m.id}')" title="${m.name}">${m.icon} ${m.name}</div>`).join('');
+  renderCompare();
+}
+function toggleCompare(id){
+  if(compareSelected.includes(id)){compareSelected=compareSelected.filter(x=>x!==id);}
+  else if(compareSelected.length<4){compareSelected.push(id);}
+  else{showToast('Max 4 models for comparison');return;}
+  initCompare();
+}
+function renderCompare(){
+  const sel=M.filter(m=>compareSelected.includes(m.id));
+  if(!sel.length){document.getElementById('compare-table').innerHTML=`<div class="empty"><div class="empty-icon">⚖️</div><div class="empty-title">Select models above to compare</div><div class="empty-sub">Choose up to 4 models for a side-by-side comparison</div></div>`;return;}
+  const rows=[
+    ['Provider',m=>m.prov],['Tasks',m=>m.tasks.join(', ')],['Context',m=>m.ctx],
+    ['Parameters',m=>m.params],['Latency',m=>m.lat],
+    ['Quality Score',m=>`<div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:4px;background:var(--rim2);border-radius:2px;overflow:hidden"><div style="width:${m.scores.q}%;height:100%;background:var(--teal);border-radius:2px"></div></div>${m.scores.q}/100</div>`],
+    ['Speed Score',m=>`<div style="display:flex;align-items:center;gap:6px"><div style="width:60px;height:4px;background:var(--rim2);border-radius:2px;overflow:hidden"><div style="width:${m.scores.s}%;height:100%;background:var(--sky);border-radius:2px"></div></div>${m.scores.s}/100</div>`],
+    ['Cost Efficiency',m=>`${m.scores.c}/100`],
+    ['Pricing',m=>`<span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--amber)">${m.pricing}</span>`],
+    ['Languages',m=>`${m.langs.length} languages`],
+    ['Type',m=>m.type],
+    ['Open Source',m=>m.type==='open-source'?'✅ Yes':'❌ No'],
+  ];
+  document.getElementById('compare-table').innerHTML=`
+    <div class="tbl-wrap">
+      <table class="ctbl">
+        <thead><tr><th style="width:150px">Attribute</th>${sel.map(m=>`<th>${m.icon} ${m.name}<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text3)">${m.prov}</span></th>`).join('')}</tr></thead>
+        <tbody>${rows.map(([label,fn])=>`<tr><td style="color:var(--text3);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.06em">${label}</td>${sel.map(m=>`<td style="font-size:13px">${fn(m)}</td>`).join('')}</tr>`).join('')}</tbody>
+      </table>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// AI ADVISOR
+// ══════════════════════════════════════════════════════════════════
+function initQuickAsks(){
+  const asks=[
+    {title:'🔊 Best TTS for Arabic?',sub:'Compare ElevenLabs vs Azure vs open source'},
+    {title:'💬 GPT-4.1 vs Claude 3.7?',sub:'Detailed comparison for coding and reasoning'},
+    {title:'🌐 Best for Chinese NLP?',sub:'Qwen vs GPT-4o vs open source options'},
+    {title:'💰 Cheapest frontier LLM?',sub:'Cost per 1M tokens across all providers'},
+    {title:'🎤 Whisper vs Deepgram?',sub:'STT accuracy, latency, and pricing'},
+    {title:'🔓 Best open source models?',sub:'Llama vs Qwen vs Mistral for self-hosting'},
+    {title:'🏢 Best for enterprise RAG?',sub:'Cohere vs Azure vs OpenAI for retrieval'},
+    {title:'🇮🇳 Indian language support?',sub:'Which models support Hindi, Tamil, Bengali?'},
+  ];
+  document.getElementById('quickAsks').innerHTML=asks.map(a=>`<div class="quick-ask" onclick="askQ(this)"><div class="qa-title">${a.title}</div><div class="qa-sub">${a.sub}</div></div>`).join('');
+}
+function askQ(el){document.getElementById('chatIn').value=el.querySelector('.qa-title').textContent;sendChat();}
+function askSug(el){document.getElementById('chatIn').value=el.textContent;sendChat();}
+function chatAbout(name){
+  goPage('chat');
+  document.getElementById('chatIn').value=`Tell me about ${name} — when should I use it, what are the real costs at scale, and what are the best alternatives?`;
+  sendChat();
+}
+function autoR(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,72)+'px';}
+
+async function sendChat(){
+  const inp=document.getElementById('chatIn');
+  const msg=inp.value.trim();if(!msg)return;
+  const key=document.getElementById('apiKey').value.trim();
+  inp.value='';autoR(inp);
+  document.getElementById('chatSugs').style.display='none';
+  document.getElementById('sendBtn').disabled=true;
+  chatHistory.push({role:'user',content:msg});
+  addMsg('user',msg);
+  const tid='t'+Date.now();addTyping(tid);
+
+  const sys=`You are a world-class AI model selection advisor with deep expertise in all LLMs, TTS, STT, embedding, and translation models.
+
+Complete model database (${M.length} models):
+${M.map(m=>`${m.name} (${m.prov}): tasks=[${m.tasks}], ${m.langs.length} languages, pricing=${m.pricing}, quality=${m.scores.q}/100, speed=${m.scores.s}/100`).join('\n')}
+
+Guidelines:
+- Use **bold** for model names
+- Give specific pricing and performance comparisons
+- Mention Qwen for Chinese/Arabic, ElevenLabs/PlayHT for TTS, Deepgram for real-time STT
+- Recommend both commercial and open-source options
+- Include rough cost examples for common scales
+- Be concise but comprehensive`;
+
+  if(!key){
+    removeTyping(tid);
+    addMsg('ai','⚠️ Please enter your Anthropic API key in the top header to enable AI advisor. You can still explore models, filter, and use the cost estimator without a key!');
+    document.getElementById('sendBtn').disabled=false;return;
+  }
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1024,system:sys,messages:chatHistory.slice(-12)})
+    });
+    const d=await r.json();
+    removeTyping(tid);
+    if(d.error)throw new Error(d.error.message);
+    const reply=d.content?.[0]?.text||'No response';
+    chatHistory.push({role:'assistant',content:reply});
+    addMsg('ai',reply);
+  }catch(e){
+    removeTyping(tid);
+    addMsg('ai','❌ '+(e.message?.includes('401')?'Invalid API key — check the key in the top header':e.message));
+    chatHistory.pop();
+  }
+  document.getElementById('sendBtn').disabled=false;inp.focus();
+}
+
+function addMsg(role,text){
+  const el=document.getElementById('chatMsgs');
+  const d=document.createElement('div');d.className='cmsg '+role;
+  const av=role==='user'?(currentUser?.first?.[0]?.toUpperCase()||'U'):'◆';
+  d.innerHTML=`<div class="cmsg-av">${av}</div><div class="cmsg-bubble">${renderMd(text)}</div>`;
+  el.appendChild(d);el.scrollTop=el.scrollHeight;
+}
+function addTyping(id){
+  const el=document.getElementById('chatMsgs');
+  const d=document.createElement('div');d.className='cmsg ai';d.id=id;
+  d.innerHTML=`<div class="cmsg-av">◆</div><div class="cmsg-bubble"><div class="typing-row"><span></span><span></span><span></span></div></div>`;
+  el.appendChild(d);el.scrollTop=el.scrollHeight;
+}
+function removeTyping(id){const e=document.getElementById(id);if(e)e.remove();}
+function renderMd(t){
+  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*([^*]+)\*\*/g,'<strong style="color:var(--gold2)">$1</strong>')
+    .replace(/`([^`]+)`/g,'<code style="background:rgba(0,0,0,.3);padding:1px 5px;border-radius:3px;font-family:Geist Mono,monospace;font-size:11px">$1</code>')
+    .replace(/^#{1,3} (.+)$/gm,'<strong style="color:var(--gold)">$1</strong>')
+    .replace(/^\- (.+)$/gm,'<div style="padding:2px 0 2px 14px;position:relative"><span style="position:absolute;left:0;color:var(--gold)">›</span>$1</div>')
+    .replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');
+}
+
+// ══════════════════════════════════════════════════════════════════
+// UTILS
+// ══════════════════════════════════════════════════════════════════
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// Auto-restore session
+const saved=localStorage.getItem('mm_session');
+if(saved){try{loginSuccess(JSON.parse(saved));}catch{localStorage.removeItem('mm_session');}}
+</script>
+</body>
+</html>
