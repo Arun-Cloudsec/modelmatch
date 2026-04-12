@@ -509,6 +509,78 @@ table.ctbl td{padding:10px 14px;vertical-align:middle}
 .mbtn.secondary{background:var(--surface);border:1px solid var(--rim2);color:var(--text2)}
 .mbtn:hover{opacity:.9;transform:translateY(-1px)}
 
+/* ══ DEPLOYMENT BADGES ══ */
+.deploy-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.dbadge{font-size:9px;padding:2px 7px;border-radius:20px;font-weight:800;letter-spacing:.04em;border:1px solid}
+.dbadge.saas{background:rgba(62,207,178,.1);color:var(--teal);border-color:rgba(62,207,178,.2)}
+.dbadge.onprem{background:rgba(155,127,244,.1);color:var(--violet);border-color:rgba(155,127,244,.2)}
+.dbadge.selfhost{background:rgba(125,205,110,.1);color:var(--lime);border-color:rgba(125,205,110,.2)}
+.dbadge.cloud{background:rgba(91,175,214,.1);color:var(--sky);border-color:rgba(91,175,214,.2)}
+.dbadge.hybrid{background:rgba(232,164,74,.1);color:var(--amber);border-color:rgba(232,164,74,.2)}
+.saas-host{font-size:9px;color:var(--text3);margin-left:2px}
+
+/* ══ BENCHMARK PAGE ══ */
+.bench-domains{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:28px}
+.bench-domain-card{background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);padding:18px;transition:.2s}
+.bench-domain-card:hover{border-color:var(--rim2)}
+.bench-domain-icon{font-size:24px;margin-bottom:8px}
+.bench-domain-name{font-family:"Instrument Serif",serif;font-size:16px;margin-bottom:4px}
+.bench-domain-desc{font-size:11px;color:var(--text3);margin-bottom:12px;line-height:1.5}
+.bench-top-model{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--rim)}
+.bench-top-model:last-child{border-bottom:none;padding-bottom:0}
+.bench-rank{font-size:10px;font-weight:800;color:var(--text3);min-width:18px;font-family:"Geist Mono",monospace}
+.bench-rank.gold{color:var(--gold)}
+.bench-rank.silver{color:var(--sky)}
+.bench-rank.bronze{color:var(--amber)}
+.bench-model-info{flex:1;min-width:0}
+.bench-model-name{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bench-model-prov{font-size:10px;color:var(--text3)}
+.bench-score-pill{font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;background:var(--gold-bg);color:var(--gold2);border:1px solid var(--gold-rim);white-space:nowrap;font-family:"Geist Mono",monospace}
+
+.bench-table-wrap{overflow-x:auto;border:1px solid var(--rim);border-radius:var(--r-lg);background:var(--surface);margin-bottom:28px}
+table.btbl{width:100%;border-collapse:collapse;font-size:11px}
+table.btbl thead th{padding:10px 12px;text-align:left;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);background:var(--deep);border-bottom:1px solid var(--rim);white-space:nowrap;position:sticky;top:0;z-index:1}
+table.btbl tbody tr{border-bottom:1px solid rgba(255,255,255,.03);transition:.15s;cursor:pointer}
+table.btbl tbody tr:last-child{border-bottom:none}
+table.btbl tbody tr:hover{background:rgba(201,168,76,.03)}
+table.btbl td{padding:9px 12px;vertical-align:middle}
+.bscore{display:flex;align-items:center;gap:5px}
+.btrack{width:50px;height:3px;background:var(--rim2);border-radius:2px;overflow:hidden;flex-shrink:0}
+.bfill{height:100%;border-radius:2px}
+.bnum{font-family:"Geist Mono",monospace;font-size:11px;font-weight:700;min-width:30px;text-align:right}
+.na-score{font-size:10px;color:var(--text3);font-style:italic}
+
+.deploy-matrix-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:20px}
+.dmatrix-card{background:var(--surface);border:1px solid var(--rim);border-radius:10px;padding:14px}
+.dmatrix-title{font-size:12px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.dmatrix-count{font-size:24px;font-weight:800;font-family:"Geist Mono",monospace;color:var(--gold2)}
+.dmatrix-sub{font-size:10px;color:var(--text3);margin-top:2px}
+.dmatrix-list{font-size:10px;color:var(--text2);margin-top:8px;line-height:1.8}
+
+.bench-tab-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.bench-tab{padding:5px 14px;border-radius:20px;border:1px solid var(--rim);font-size:12px;cursor:pointer;transition:.15s;color:var(--text3);background:none;font-family:"Cabinet Grotesk",sans-serif}
+.bench-tab:hover{border-color:var(--rim2);color:var(--text)}
+.bench-tab.active{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg);font-weight:700}
+
+/* ══ USER GUIDE ══ */
+.guide-section{background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);padding:22px;margin-bottom:16px}
+.guide-section-title{font-family:'Instrument Serif',serif;font-size:18px;margin-bottom:12px;display:flex;align-items:center;gap:8px;color:var(--text)}
+.guide-warn{background:rgba(232,164,74,.08);border:1px solid rgba(232,164,74,.25);border-radius:8px;padding:12px 16px;font-size:12px;color:var(--amber);line-height:1.6;margin-bottom:14px}
+.guide-ok{background:rgba(125,205,110,.07);border:1px solid rgba(125,205,110,.2);border-radius:8px;padding:12px 16px;font-size:12px;color:var(--lime);line-height:1.6;margin-bottom:14px}
+.guide-info{background:rgba(91,175,214,.07);border:1px solid rgba(91,175,214,.2);border-radius:8px;padding:12px 16px;font-size:12px;color:var(--sky);line-height:1.6;margin-bottom:14px}
+.gtbl{width:100%;border-collapse:collapse;font-size:12px}
+.gtbl th{padding:8px 12px;text-align:left;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);background:var(--deep);border-bottom:1px solid var(--rim)}
+.gtbl td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.03);vertical-align:top;line-height:1.6}
+.gtbl tr:last-child td{border-bottom:none}
+.gtbl tr:hover td{background:rgba(201,168,76,.02)}
+.g-verified{color:var(--lime);font-weight:700;font-size:10px}
+.g-estimated{color:var(--amber);font-weight:700;font-size:10px}
+.g-source{font-size:10px;color:var(--text3)}
+.guide-chip{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;font-weight:700;margin:2px}
+.guide-chip.com{background:rgba(91,175,214,.1);color:var(--sky);border:1px solid rgba(91,175,214,.2)}
+.guide-chip.oss{background:rgba(125,205,110,.1);color:var(--lime);border:1px solid rgba(125,205,110,.2)}
+.guide-chip.tp{background:rgba(240,107,122,.1);color:var(--rose);border:1px solid rgba(240,107,122,.2)}
+
 /* ══ EMPTY STATE ══ */
 .empty{text-align:center;padding:60px 20px;grid-column:1/-1}
 .empty-icon{font-size:40px;margin-bottom:12px;opacity:.5}
@@ -664,7 +736,7 @@ table.ctbl td{padding:10px 14px;vertical-align:middle}
     <!-- Sidebar -->
     <div class="sidebar">
       <div class="sidebar-section">Explore</div>
-      <div class="nav-item active" onclick="goPage('explorer')"><span class="nav-icon">🔍</span>Model Explorer<span class="nav-badge" id="nb-exp">60+</span></div>
+      <div class="nav-item active" onclick="goPage('explorer')"><span class="nav-icon">🔍</span>Model Explorer<span class="nav-badge" id="nb-exp">90+</span></div>
       <div class="nav-item" onclick="goPage('catalog')"><span class="nav-icon">📋</span>Full Catalog</div>
 
       <div class="sidebar-section">Evaluate</div>
@@ -673,6 +745,13 @@ table.ctbl td{padding:10px 14px;vertical-align:middle}
 
       <div class="sidebar-section">Intelligence</div>
       <div class="nav-item" onclick="goPage('chat')"><span class="nav-icon">🤖</span>AI Advisor</div>
+      <div class="nav-item" onclick="goPage('benchmarks')"><span class="nav-icon">🏆</span>Benchmarks</div>
+      <div class="nav-item" onclick="goPage('guide')"><span class="nav-icon">📖</span>User Guide</div>
+      <div class="sidebar-section">Deployment</div>
+      <div class="nav-item" onclick="setDeploy('saas')"><span class="nav-icon">☁️</span>SaaS / API Only</div>
+      <div class="nav-item" onclick="setDeploy('onPrem')"><span class="nav-icon">🏢</span>On-Premise</div>
+      <div class="nav-item" onclick="setDeploy('selfHost')"><span class="nav-icon">🔓</span>Self-Hostable</div>
+      <div class="nav-item" onclick="setDeploy('')"><span class="nav-icon">↩️</span>All Deployments</div>
 
       <div class="sidebar-section">Filter By Task</div>
       <div class="nav-item" onclick="quickTask('TTS')"><span class="nav-icon">🔊</span>Text-to-Speech</div>
@@ -687,7 +766,7 @@ table.ctbl td{padding:10px 14px;vertical-align:middle}
         <div class="sidebar-user-card">
           <div class="suc-name" id="sbName">Loading…</div>
           <div class="suc-role" id="sbRole">Free Account</div>
-          <div class="suc-meta" id="sbMeta">60 models · 20+ providers</div>
+          <div class="suc-meta" id="sbMeta">90+ models · 25+ providers</div>
         </div>
       </div>
     </div>
@@ -707,6 +786,7 @@ table.ctbl td{padding:10px 14px;vertical-align:middle}
         <div class="filter-bar"><span class="filter-label">Provider</span><div class="chips" id="f-prov"></div></div>
         <div class="filter-bar"><span class="filter-label">Language</span><div class="chips" id="f-lang"></div></div>
         <div class="filter-bar"><span class="filter-label">Type</span><div class="chips" id="f-type"></div></div>
+        <div class="filter-bar"><span class="filter-label">Deployment</span><div class="chips" id="f-deploy"></div></div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
           <div style="font-size:12px;color:var(--text3)">Showing <strong id="cnt" style="color:var(--text)">0</strong> models</div>
         </div>
@@ -833,6 +913,43 @@ table.ctbl td{padding:10px 14px;vertical-align:middle}
         </div>
       </div>
 
+
+      <!-- ══ BENCHMARKS ══ -->
+      <div id="page-benchmarks" class="inner-page">
+        <div class="page-header">
+          <div class="page-title">Industry Benchmarks</div>
+          <div class="page-sub">Best models by domain, industry use case, and standard AI benchmarks — based on published research and industry practice</div>
+        </div>
+
+        <div class="sec-label">Domain Leaderboards</div>
+        <div class="bench-tab-row" id="domainTabs"></div>
+        <div id="domainLeaderboard" class="bench-domains"></div>
+
+        <div class="sec-label">Standard Benchmark Scores</div>
+        <div class="filter-bar" style="margin-bottom:12px">
+          <span class="filter-label">Filter</span>
+          <div class="chips" id="bench-task-chips"></div>
+        </div>
+        <div class="bench-table-wrap">
+          <table class="btbl">
+            <thead><tr>
+              <th>Model</th>
+              <th>Provider</th>
+              <th>Type</th>
+              <th>MMLU (%)</th>
+              <th>HumanEval (%)</th>
+              <th>MT-Bench (/10)</th>
+              <th>GSM8K (%)</th>
+              <th>HellaSwag (%)</th>
+            </tr></thead>
+            <tbody id="benchTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="sec-label">Deployment Landscape</div>
+        <div class="deploy-matrix-grid" id="deployMatrix"></div>
+      </div>
+
       <!-- ══ AI ADVISOR ══ -->
       <div id="page-chat" class="inner-page" style="padding:0">
         <div class="chat-outer">
@@ -864,6 +981,128 @@ table.ctbl td{padding:10px 14px;vertical-align:middle}
         </div>
       </div>
 
+
+      <!-- ══ USER GUIDE — fully static HTML, no JS dependency ══ -->
+      <div id="page-guide" class="inner-page">
+        <div class="page-header">
+          <div class="page-title">User Guide &amp; Data Sources</div>
+          <div class="page-sub">Model accuracy statements, verified data sources, and why each model is included — everything you need to defend every recommendation</div>
+        </div>
+
+        <div class="guide-section">
+          <div class="guide-section-title">⚠️ Data Accuracy &amp; Transparency Statement</div>
+          <div class="guide-warn"><strong>IMPORTANT — Read before sharing externally:</strong> Pricing is sourced from official provider documentation and is accurate as of Q1 2025. AI model pricing changes frequently — always verify against the provider's official pricing page before commercial decisions. Benchmark scores marked ESTIMATED are our best approximations based on model architecture and comparable benchmarks; they are not from official published papers.</div>
+          <div class="guide-ok"><strong>✅ Verified data sources:</strong> OpenAI pricing (platform.openai.com/docs/models) · Anthropic (anthropic.com/pricing) · Azure (azure.microsoft.com/pricing) · AWS (aws.amazon.com/pricing) · Cohere (cohere.com/pricing) · ElevenLabs (elevenlabs.io/pricing) · DeepL (deepl.com/pro) · Deepgram (deepgram.com/pricing) · Open-source models from official HuggingFace model cards and GitHub repos.</div>
+          <div class="guide-info"><strong>📊 Benchmark methodology:</strong> MMLU, HumanEval, MT-Bench, GSM8K and HellaSwag scores are from official published papers where available. Scores marked ESTIMATED are extrapolated from model architecture, parameter count, and comparable published models. We do not fabricate numbers.</div>
+        </div>
+
+        <div class="guide-section">
+          <div class="guide-section-title">🧠 How to Use ModelMatch AI</div>
+          <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:14px">ModelMatch AI is a vendor-neutral platform covering 90+ commercial, open-source and cloud-provider models across LLM, TTS, STT, Translation, Vision, Embedding and Code tasks. Designed for engineering teams, architects and procurement — without commercial bias.</p>
+          <table class="gtbl">
+            <tr><th>Section</th><th>Purpose</th><th>How to Use</th></tr>
+            <tr><td><strong>Model Explorer</strong></td><td>Filterable model grid by task, provider, language, type, deployment</td><td>Select your use case task first, then narrow by language and deployment requirement. Sidebar deployment filter narrows to SaaS-only, On-Premise or Self-Hostable.</td></tr>
+            <tr><td><strong>Full Catalog</strong></td><td>Sortable table of all 90+ models with real pricing</td><td>Sort by quality, price, context window or speed. Search by name or provider. Click "+ Estimate" to add any model to the cost calculator.</td></tr>
+            <tr><td><strong>Cost Estimator</strong></td><td>Monthly cost comparison across selected models</td><td>Pick your use case, configure daily volume and token counts, select 2-6 models to compare. Shows input vs output cost breakdown.</td></tr>
+            <tr><td><strong>Benchmarks</strong></td><td>Domain leaderboards + standard AI benchmarks</td><td>Select your industry domain to see ranked models. Check MMLU/HumanEval table for code and reasoning selection.</td></tr>
+            <tr><td><strong>Compare</strong></td><td>Side-by-side model comparison up to 4 models</td><td>Click model chips to select. Useful for shortlisting 2-3 candidates before final decision.</td></tr>
+            <tr><td><strong>AI Advisor</strong></td><td>Claude-powered chat for recommendations</td><td>Add Anthropic API key in top bar. Ask in plain English — e.g. "best model for Arabic customer service under $500/month".</td></tr>
+          </table>
+        </div>
+
+        <div class="guide-section">
+          <div class="guide-section-title">📋 Every Model — Why Included &amp; Data Sources</div>
+          <table class="gtbl">
+            <tr><th style="min-width:170px">Model / Family</th><th style="width:75px">Type</th><th>Why Included &amp; Accuracy Notes</th><th>Best Use Cases</th><th style="min-width:130px">Data Status</th></tr>
+            <tr><td><strong>GPT-4.1 / Mini / Nano</strong><br><span class="g-source">OpenAI, April 2025</span></td><td><span class="guide-chip com">Commercial</span></td><td>Latest OpenAI generation with 1M context. GPT-4.1 Nano is cheapest GPT-4 class. Pricing verified from platform.openai.com/docs/models.</td><td>Long-context enterprise, production chatbots, real-time edge</td><td><span class="g-verified">✅ Pricing verified</span><br><span class="g-estimated">⚠ Benchmarks ESTIMATED</span></td></tr>
+            <tr><td><strong>GPT-4o / Mini</strong><br><span class="g-source">OpenAI, 2024</span></td><td><span class="guide-chip com">Commercial</span></td><td>Omni-modal flagship (text, vision, audio). MMLU 88.7% published by OpenAI. Pricing verified.</td><td>Multimodal apps, vision tasks, production chatbots</td><td><span class="g-verified">✅ Fully verified</span></td></tr>
+            <tr><td><strong>o3 / o4-mini</strong><br><span class="g-source">OpenAI, 2025</span></td><td><span class="guide-chip com">Commercial</span></td><td>Reasoning-specialized using extended chain-of-thought. o3 MMLU 96%+ published by OpenAI. Pricing verified.</td><td>Math, science, complex coding, research</td><td><span class="g-verified">✅ Fully verified</span></td></tr>
+            <tr><td><strong>GPT-3.5 Turbo</strong><br><span class="g-source">OpenAI, 2022</span></td><td><span class="guide-chip com">Commercial</span></td><td>Legacy model. $0.50/1M input verified. Still used for simple high-volume tasks and existing integrations.</td><td>Simple classification, legacy systems, bulk text</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Whisper v3 Large</strong><br><span class="g-source">OpenAI, 2023</span></td><td><span class="guide-chip oss">Open Source</span></td><td>State-of-the-art multilingual ASR. 99 language support. Paper: openai.com/research/whisper. API $0.006/min verified. Self-hosted free.</td><td>Multilingual transcription, subtitles, meeting notes</td><td><span class="g-verified">✅ Fully verified</span></td></tr>
+            <tr><td><strong>Claude 3.7 / 3.5 / Haiku</strong><br><span class="g-source">Anthropic, 2024-25</span></td><td><span class="guide-chip com">Commercial</span></td><td>Claude 3.7 adds extended thinking. HumanEval 92% published. 200K context. Pricing from anthropic.com/pricing. Available on AWS Bedrock, GCP Vertex, Azure.</td><td>Complex reasoning, coding, long documents, safety-critical</td><td><span class="g-verified">✅ Fully verified</span></td></tr>
+            <tr><td><strong>Claude 3 Opus</strong><br><span class="g-source">Anthropic, 2024</span></td><td><span class="guide-chip com">Commercial</span></td><td>Previous flagship. $15/1M input verified from anthropic.com/pricing. Included for existing deployments.</td><td>Premium analysis, long-form research</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Gemini 2.5 Pro</strong><br><span class="g-source">Google DeepMind, 2025</span></td><td><span class="guide-chip com">Commercial</span></td><td><strong>Context: 1M tokens</strong> (corrected — NOT 2M; 2M was Gemini 1.5 Pro research). Tiered pricing: $1.25/1M up to 200K input, $2.50/1M above 200K. Verified from ai.google.dev/pricing.</td><td>Long document analysis, video understanding, complex reasoning</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Gemini 2.0 Flash / 1.5 Flash</strong><br><span class="g-source">Google DeepMind, 2024-25</span></td><td><span class="guide-chip com">Commercial</span></td><td>Cost-optimized. Flash 2.0 at $0.10/1M is cheapest frontier-class model. Pricing from ai.google.dev.</td><td>High-volume APIs, real-time apps, cost-sensitive production</td><td><span class="g-verified">✅ Fully verified</span></td></tr>
+            <tr><td><strong>Gemma 3-27B / Gemma 2-9B</strong><br><span class="g-source">Google, 2024-25</span></td><td><span class="guide-chip oss">Open Source</span></td><td>Google open-weight models. Gemma 3-27B includes vision. Commercial-friendly license. Verified from HuggingFace model cards and ai.google.dev/gemma.</td><td>On-premise, fine-tuning, edge AI</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Llama 3.3-70B / 3.2-90B / 3.1-8B</strong><br><span class="g-source">Meta, 2024</span></td><td><span class="guide-chip oss">Open Source</span></td><td>MIT license for commercial use. Llama 3.3-70B: MMLU 86% published by Meta. Self-hosted free; APIs ~$0.59/1M. Verified from llama.meta.com.</td><td>Open-source production, self-hosted enterprise, fine-tuning</td><td><span class="g-verified">✅ Verified (llama.meta.com)</span></td></tr>
+            <tr><td><strong>SeamlessM4T v2</strong><br><span class="g-source">Meta, 2023</span></td><td><span class="guide-chip oss">Open Source</span></td><td>All-in-one STT+MT+TTS in one model. 100+ languages. Apache 2.0. Paper: arxiv.org/abs/2312.05187.</td><td>Speech-to-speech translation, low-resource language STT</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Qwen2.5-72B / 7B</strong><br><span class="g-source">Alibaba, 2024</span></td><td><span class="guide-chip oss">Open Source</span></td><td>MMLU 86.1% published in Qwen2.5 technical report. Best open-source Arabic and Chinese model. API via Alibaba DashScope ~$0.40/1M. Widely deployed in GCC for Arabic NLP.</td><td>Arabic NLP, Chinese language, multilingual enterprise AI</td><td><span class="g-verified">✅ Verified (qwen.readthedocs.io)</span></td></tr>
+            <tr><td><strong>Qwen2.5-VL-72B</strong><br><span class="g-source">Alibaba, 2025</span></td><td><span class="guide-chip oss">Open Source</span></td><td>Multimodal vision model. <strong>128K context</strong> (corrected from 32K in earlier versions of this guide). State-of-the-art open-source document OCR.</td><td>Document OCR, Arabic visual AI, chart analysis</td><td><span class="g-verified">✅ Verified (HuggingFace model card)</span></td></tr>
+            <tr><td><strong>Qwen2.5-Coder-32B</strong><br><span class="g-source">Alibaba, 2024</span></td><td><span class="guide-chip oss">Open Source</span></td><td>Specialized code model. HumanEval 92.7% published by Alibaba. Matches GPT-4o on coding benchmarks at zero API cost when self-hosted.</td><td>Code generation, code review, DevOps automation</td><td><span class="g-verified">✅ Verified (Qwen GitHub)</span></td></tr>
+            <tr><td><strong>Command R+ / Command A</strong><br><span class="g-source">Cohere, 2024-25</span></td><td><span class="guide-chip com">Commercial</span></td><td>Cohere explicitly documents translation support for 10-12 languages including Arabic (cohere.com/docs). RAG-optimized with grounded citations. On-prem deployment available. LLM-based translation — not a dedicated MT engine. Pricing verified from cohere.com.</td><td>Arabic-English translation (LLM-based), Enterprise RAG, agentic workflows</td><td><span class="g-verified">✅ Verified (cohere.com/docs)</span></td></tr>
+            <tr><td><strong>Command R</strong><br><span class="g-source">Cohere, 2024</span></td><td><span class="guide-chip com">Commercial</span></td><td>Lower-tier RAG model. $0.15/1M verified. NOT tagged as Translation — use Command R+ or Command A for translation. Optimized for RAG and Q&amp;A only.</td><td>RAG pipelines, Q&amp;A, classification</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Embed v3 Multilingual</strong><br><span class="g-source">Cohere, 2024</span></td><td><span class="guide-chip com">Commercial</span></td><td>Top-ranked on MTEB multilingual leaderboard. 100+ languages at $0.10/1M. Best choice for cross-lingual Arabic semantic search and RAG.</td><td>Multilingual semantic search, cross-lingual RAG</td><td><span class="g-verified">✅ Verified (MTEB leaderboard)</span></td></tr>
+            <tr><td><strong>Mistral Large 2</strong><br><span class="g-source">Mistral AI, 2024</span></td><td><span class="guide-chip com">Commercial</span></td><td>GDPR-compliant by design. HumanEval 92.1% published by Mistral. EU data residency available. $3/1M input verified from mistral.ai/technology.</td><td>EU-compliant AI, European language apps, coding</td><td><span class="g-verified">✅ Fully verified</span></td></tr>
+            <tr><td><strong>Mistral NeMo / Mixtral / Pixtral</strong><br><span class="g-source">Mistral AI, 2024</span></td><td><span class="guide-chip oss">Open Source</span></td><td>Open-weight family. NeMo 12B with 128K context. Mixtral uses efficient MoE (39B active from 141B). Pixtral adds vision. All Apache 2.0. Verified from HuggingFace model cards.</td><td>Self-hosted EU AI, open multimodal, cost-efficient production</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>DeepSeek V3 / R1</strong><br><span class="g-source">DeepSeek, 2024-25</span></td><td><span class="guide-chip oss">Open Source</span></td><td>MMLU 88.5% (V3) and 90.8% (R1) from DeepSeek technical reports. Cheapest frontier API at $0.14/1M. Assess data sovereignty requirements for sensitive use cases.</td><td>Cost-sensitive production, math reasoning, Chinese NLP, coding</td><td><span class="g-verified">✅ Verified (DeepSeek technical reports)</span></td></tr>
+            <tr><td><strong>Phi-4 (14B) / Phi-4-mini (3.8B)</strong><br><span class="g-source">Microsoft, 2024-25</span></td><td><span class="guide-chip oss">Open Source</span></td><td>Phi-4: MMLU 84.8% published by Microsoft. Phi-4-mini: 3.8B params, 128K context (released Feb 2025, corrected from 16K in earlier versions). Verified from microsoft.com/phi.</td><td>Edge/device AI, STEM reasoning, low-cost enterprise inference</td><td><span class="g-verified">✅ Verified (microsoft.com/phi)</span></td></tr>
+            <tr><td><strong>Azure TTS / STT / Translator</strong><br><span class="g-source">Microsoft Azure</span></td><td><span class="guide-chip com">Commercial</span></td><td>140+ language TTS, 100+ language STT, 100+ language translation. HIPAA and SOC2 compliant. All pricing from azure.microsoft.com/pricing.</td><td>HIPAA-compliant transcription, enterprise TTS, global translation</td><td><span class="g-verified">✅ Fully verified (azure.microsoft.com)</span></td></tr>
+            <tr><td><strong>Amazon Nova Pro / Lite / Micro</strong><br><span class="g-source">AWS, 2024</span></td><td><span class="guide-chip com">Commercial</span></td><td>AWS-native frontier models on Bedrock. Nova Pro 300K context at $0.80/1M. Pricing from aws.amazon.com/bedrock/nova. <strong>Benchmark scores ESTIMATED</strong> — AWS has not published full MMLU/HumanEval papers.</td><td>AWS-native workloads, Bedrock-based enterprise apps</td><td><span class="g-verified">✅ Pricing verified</span><br><span class="g-estimated">⚠ Benchmarks ESTIMATED</span></td></tr>
+            <tr><td><strong>Amazon Titan / Transcribe / Polly</strong><br><span class="g-source">AWS</span></td><td><span class="guide-chip com">Commercial</span></td><td>AWS-native suite. All pricing verified from aws.amazon.com/pricing. Transcribe includes PII redaction and speaker labels. Polly: 30+ languages neural TTS.</td><td>AWS RAG, Bedrock knowledge bases, compliance STT, IVR TTS</td><td><span class="g-verified">✅ Fully verified</span></td></tr>
+            <tr><td><strong>IBM Granite 3.1-8B / 3B</strong><br><span class="g-source">IBM, 2024</span></td><td><span class="guide-chip oss">Open Source</span></td><td>Enterprise open-source models. Granite 3.1-8B MMLU ~73% published by IBM. Available on watsonx.ai with enterprise support. Apache 2.0. On-prem deployment supported.</td><td>Regulated enterprise AI, watsonx.ai, on-premise</td><td><span class="g-verified">✅ Verified (ibm.com/watsonx)</span></td></tr>
+            <tr><td><strong>IBM Watson STT</strong><br><span class="g-source">IBM</span></td><td><span class="guide-chip com">Commercial</span></td><td>Enterprise STT with on-premises deployment. HIPAA eligible. Custom language models. $0.02/min from ibm.com/cloud/watson-speech-to-text.</td><td>On-prem HIPAA STT, financial/insurance compliance</td><td><span class="g-verified">✅ Verified (ibm.com)</span></td></tr>
+            <tr><td><strong>Falcon 3-40B / 3-7B</strong><br><span class="g-source">TII UAE, 2024</span></td><td><span class="guide-chip oss">Open Source</span></td><td>Technology Innovation Institute (UAE) open models. Apache 2.0. Best open-source Arabic models in GCC. Falcon 3-40B ~82% MMLU published by TII. Used by GCC government and enterprise.</td><td>Arabic NLP, GCC government AI, sovereign open-source deployment</td><td><span class="g-verified">✅ Verified (HuggingFace tiiuae)</span></td></tr>
+            <tr><td><strong>Jamba 1.5 Large</strong><br><span class="g-source">AI21 Labs, 2024</span></td><td><span class="guide-chip com">Commercial</span></td><td>Hybrid SSM-Transformer (Mamba + Attention). 256K context with lower memory than pure transformers. 398B total params, 94B active. Available on AWS Bedrock and Azure. Pricing verified from ai21.com.</td><td>Long document Q&amp;A, legal contracts, financial reports</td><td><span class="g-verified">✅ Verified (ai21.com)</span></td></tr>
+            <tr><td><strong>Grok-3</strong><br><span class="g-source">xAI, 2025</span></td><td><span class="guide-chip com">Commercial</span></td><td>Real-time X/Twitter data access. <strong>API pricing is beta and subject to change.</strong> Benchmark scores ESTIMATED — xAI has not published full independent benchmarks.</td><td>Current events analysis, social media analysis, research</td><td><span class="g-estimated">⚠ Pricing BETA; Benchmarks ESTIMATED</span></td></tr>
+            <tr><td><strong>Llama-3.1-Nemotron-70B</strong><br><span class="g-source">NVIDIA, 2024</span></td><td><span class="guide-chip oss">Open Source</span></td><td>NVIDIA fine-tuned Llama 3.1-70B. MT-Bench 8.98 (top open model, published by NVIDIA). Available via NVIDIA NIM, AWS, Azure, GCP. Open weights.</td><td>NVIDIA GPU deployments, instruction-following, reward modeling</td><td><span class="g-verified">✅ Verified (build.nvidia.com)</span></td></tr>
+            <tr><td><strong>OLMo 2-13B</strong><br><span class="g-source">Allen AI, 2024</span></td><td><span class="guide-chip oss">Open Source</span></td><td>Fully open — Apache 2.0 for weights AND training data AND code. Unique for reproducibility and AI safety research. Not competitive with frontier models for production tasks.</td><td>AI safety research, reproducibility, academic NLP</td><td><span class="g-verified">✅ Verified (allenai.org/olmo)</span></td></tr>
+            <tr><td><strong>BLOOM-176B</strong><br><span class="g-source">BigScience, 2022</span></td><td><span class="guide-chip oss">Open Source</span></td><td>Community-trained model supporting 59 languages including low-resource languages (Yoruba, Igbo, Swahili) not covered by other models. Architecture is dated but language coverage unique. RAIL license.</td><td>Low-resource language research, multilingual NLP research</td><td><span class="g-verified">✅ Verified (HuggingFace)</span></td></tr>
+            <tr><td><strong>ERNIE 4.5</strong><br><span class="g-source">Baidu, 2025</span></td><td><span class="guide-chip com">Commercial</span></td><td>Baidu flagship with Baidu search integration. Primarily via Baidu Cloud. <strong>Pricing in USD is approximate</strong> — Baidu international pricing varies.</td><td>Chinese enterprise AI, Baidu ecosystem, China-market deployments</td><td><span class="g-estimated">⚠ Pricing APPROXIMATE</span></td></tr>
+            <tr><td><strong>Hunyuan Large</strong><br><span class="g-source">Tencent, 2024</span></td><td><span class="guide-chip com">Commercial</span></td><td>Tencent 389B MoE model. 256K context. WeChat ecosystem. Primarily via Tencent Cloud. <strong>Pricing approximate for international users.</strong></td><td>Chinese enterprise AI, Tencent ecosystem, gaming AI</td><td><span class="g-estimated">⚠ Pricing APPROXIMATE</span></td></tr>
+            <tr><td><strong>Sonar Large (Perplexity)</strong><br><span class="g-source">Perplexity, 2024</span></td><td><span class="guide-chip com">Commercial</span></td><td>Real-time web search LLM with cited responses. $1/1M tokens verified from perplexity.ai/api.</td><td>Research assistants, current events Q&amp;A, fact-checking</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>ElevenLabs Multilingual v2</strong><br><span class="g-source">ElevenLabs, 2024</span></td><td><span class="guide-chip tp">3rd Party</span></td><td>Industry-leading TTS for voice cloning. $0.30/1K chars Starter, $0.18/1K Pro verified from elevenlabs.io/pricing. 29+ languages.</td><td>Audiobooks, podcasts, voice cloning, video narration</td><td><span class="g-verified">✅ Verified (elevenlabs.io/pricing)</span></td></tr>
+            <tr><td><strong>PlayHT 2.0 Turbo</strong><br><span class="g-source">Play.ht, 2024</span></td><td><span class="guide-chip tp">3rd Party</span></td><td>Under 100ms latency TTS. 900+ voices, 142 languages. $0.99/100K chars verified from play.ht/pricing.</td><td>Real-time voice agents, conversational AI, live dubbing</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Murf AI</strong><br><span class="g-source">Murf, 2024</span></td><td><span class="guide-chip tp">3rd Party</span></td><td>Professional studio-quality TTS. 120+ voices, video sync. $19/mo Creator plan verified from murf.ai/pricing.</td><td>Corporate training, e-learning, advertisement voiceovers</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Resemble AI</strong><br><span class="g-source">Resemble AI, 2024</span></td><td><span class="guide-chip tp">3rd Party</span></td><td>Under 50ms latency. On-premise enterprise option. Voice cloning. Pricing from resemble.ai.</td><td>Real-time voice agents, gaming characters, enterprise on-prem TTS</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Cartesia Sonic</strong><br><span class="g-source">Cartesia, 2024</span></td><td><span class="guide-chip tp">3rd Party</span></td><td>Under 80ms latency globally. $0.005/min verified from cartesia.ai/pricing.</td><td>Low-latency streaming voice, conversational AI</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Deepgram Nova-2</strong><br><span class="g-source">Deepgram, 2024</span></td><td><span class="guide-chip tp">3rd Party</span></td><td>30% lower WER than Whisper (published by Deepgram). $0.0043/min verified from deepgram.com/pricing. Real-time streaming + speaker diarization. On-prem enterprise available.</td><td>Real-time captioning, call centers, voice agents</td><td><span class="g-verified">✅ Verified (deepgram.com/pricing)</span></td></tr>
+            <tr><td><strong>AssemblyAI Universal-1</strong><br><span class="g-source">AssemblyAI, 2024</span></td><td><span class="guide-chip tp">3rd Party</span></td><td>STT with audio intelligence — LeMUR (LLM over audio), auto-chapters, speaker labels. $0.65/hr verified from assemblyai.com.</td><td>Meeting analytics, podcast intelligence, audio Q&amp;A</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Speechmatics</strong><br><span class="g-source">Speechmatics, 2024</span></td><td><span class="guide-chip tp">3rd Party</span></td><td>50+ language STT with on-premise option. GDPR compliant. $0.25/hr cloud from speechmatics.com.</td><td>Enterprise STT, on-prem compliance, GDPR-regulated transcription</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Rev AI</strong><br><span class="g-source">Rev, 2024</span></td><td><span class="guide-chip tp">3rd Party</span></td><td>High-accuracy STT with human review option. $0.02/min async verified from rev.ai/pricing. Best for legal and court reporting.</td><td>Legal transcription, court reporting, compliance recording</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>DeepL Pro API</strong><br><span class="g-source">DeepL, 2024</span></td><td><span class="guide-chip tp">3rd Party</span></td><td>Consistently outperforms Google Translate for European languages. $5.49/1M chars verified from deepl.com/pro. GDPR compliant, EU-hosted. Dedicated MT engine — not LLM-based.</td><td>EU-language translation, legal/medical content, marketing localization</td><td><span class="g-verified">✅ Verified (deepl.com/pro)</span></td></tr>
+            <tr><td><strong>ModernMT</strong><br><span class="g-source">Translated, 2024</span></td><td><span class="guide-chip tp">3rd Party</span></td><td>Adaptive MT that learns from corrections. 250K word context memory. On-premise for LSPs. Dedicated MT engine. Pricing from modernmt.com.</td><td>Agency translation workflows, adaptive domain-specific MT</td><td><span class="g-verified">✅ Verified</span></td></tr>
+            <tr><td><strong>Sarvam-2B</strong><br><span class="g-source">Sarvam AI, 2024</span></td><td><span class="guide-chip oss">Open Source</span></td><td>Specialized for 10 Indic languages (Hindi, Bengali, Tamil, Telugu, Kannada, Malayalam, Marathi, Gujarati, Punjabi, Odia). STT+TTS+LLM in one 2B model. Apache 2.0.</td><td>Indic language apps, India government digital services</td><td><span class="g-verified">✅ Verified (sarvam.ai)</span></td></tr>
+            <tr><td><strong>Coqui TTS (XTTS v2)</strong><br><span class="g-source">Coqui AI, 2023</span></td><td><span class="guide-chip oss">Open Source</span></td><td>Open-source TTS with voice cloning from 6-second audio. 17 languages. Self-hosted only. Best free TTS for GPU-equipped organizations.</td><td>Self-hosted TTS, voice cloning without recurring cost</td><td><span class="g-verified">✅ Verified (github.com/coqui-ai/TTS)</span></td></tr>
+            <tr><td><strong>text-embedding-3-large / E5-Large / Titan Embeddings</strong><br><span class="g-source">OpenAI / Microsoft / AWS</span></td><td><span class="guide-chip com">Commercial / OSS</span></td><td>Top embedding models. OpenAI: $0.13/1M (verified). E5-Large: free, 100+ languages. Titan: $0.10/1M (AWS verified). Cohere Embed v3 leads multilingual MTEB.</td><td>RAG pipelines, semantic search, clustering, cross-lingual retrieval</td><td><span class="g-verified">✅ Fully verified</span></td></tr>
+          </table>
+        </div>
+
+        <div class="guide-section">
+          <div class="guide-section-title">🌐 Translation: Dedicated MT vs LLM-based</div>
+          <div class="guide-warn">Both appear under "Translation" in this platform but behave very differently in production cost and quality.</div>
+          <table class="gtbl">
+            <tr><th>Category</th><th>Models in this Platform</th><th>Strengths</th><th>Limitations</th><th>Best When</th></tr>
+            <tr><td><strong>Dedicated Neural MT</strong><br><small>Purpose-built engines</small></td><td>DeepL, Azure Translator, ModernMT, SeamlessM4T</td><td>High throughput, low latency, cheap at scale ($5-10/1M chars), batch processing, document format support (DOCX, PDF, PPTX)</td><td>No reasoning — cannot handle nuanced instructions or domain context</td><td>High-volume document translation, real-time bulk, simple content localization</td></tr>
+            <tr><td><strong>LLM-based Translation</strong><br><small>General LLMs with translation capability</small></td><td>Qwen2.5-72B, Cohere Command R+, Cohere Command A</td><td>Context-aware, handles Arabic/Chinese nuance where dedicated MT is weak, combines translation with other tasks (translate then summarize)</td><td>5-50x more expensive than dedicated MT, overkill for simple bulk translation</td><td>Nuanced Arabic/Chinese translation, domain-specific content, combined translation + analysis workflows</td></tr>
+          </table>
+          <div class="guide-info" style="margin-top:12px"><strong>Recommendation for Arabic:</strong> Use Qwen2.5-72B or Cohere Command R+ for nuanced, domain-specific Arabic content. Use Azure Translator or DeepL for high-volume bulk translation where per-token LLM cost is prohibitive.</div>
+        </div>
+
+        <div class="guide-section">
+          <div class="guide-section-title">📊 Understanding Benchmark Scores</div>
+          <table class="gtbl">
+            <tr><th>Benchmark</th><th>What it Measures</th><th>Score Interpretation</th><th>Source</th></tr>
+            <tr><td><strong>MMLU</strong></td><td>57 subjects: math, science, history, law, medicine, coding</td><td>Human expert ~89%. GPT-4o 88.7%. Random guessing: 25%.</td><td>arxiv.org/abs/2009.03300 (Hendrycks et al.)</td></tr>
+            <tr><td><strong>HumanEval</strong></td><td>Python code generation — 164 programming problems</td><td>100% solves all. Best models 92-99%. GPT-4o: 90.2%.</td><td>OpenAI (Chen et al., 2021)</td></tr>
+            <tr><td><strong>MT-Bench</strong></td><td>Multi-turn conversation quality, judged by GPT-4</td><td>Scale 1-10. GPT-4 ~9.0. Good models typically 8.5+.</td><td>LMSYS / Zheng et al., 2023</td></tr>
+            <tr><td><strong>GSM8K</strong></td><td>8,500 grade school math word problems</td><td>100% solves all. Best models 97-99%. Shows mathematical reasoning depth.</td><td>OpenAI (Cobbe et al., 2021)</td></tr>
+            <tr><td><strong>HellaSwag</strong></td><td>Commonsense reasoning — complete a sentence correctly</td><td>Human ~95%. Best LLMs 90-94%.</td><td>Zellers et al., 2019</td></tr>
+          </table>
+          <div class="guide-warn" style="margin-top:12px"><strong>Benchmark limitations:</strong> Scores can be inflated by training data contamination. Third-party evaluations (LMSYS Chatbot Arena, HELM, MTEB) are more reliable than provider self-reported scores. Always test on your own domain data before committing.</div>
+        </div>
+
+        <div class="guide-section">
+          <div class="guide-section-title">☁️ Deployment Options Explained</div>
+          <table class="gtbl">
+            <tr><th>Badge</th><th>Meaning</th><th>Infrastructure Needed</th><th>Data Control</th><th>Best For</th></tr>
+            <tr><td><span class="dbadge saas">☁️ SaaS</span></td><td>Fully managed API — send request, get response, no infrastructure</td><td>Just an API key</td><td>Provider (opt out of training use where possible)</td><td>Fast prototyping, startups, non-regulated data</td></tr>
+            <tr><td><span class="dbadge onprem">🏢 On-Premise</span></td><td>Runs within your own datacenter or private cloud VPC</td><td>GPU servers (A100/H100), orchestration stack</td><td>You own all data — nothing leaves your network</td><td>HIPAA, PCI-DSS, air-gapped government</td></tr>
+            <tr><td><span class="dbadge selfhost">🔓 Self-Hostable</span></td><td>Open weights you download and run on any infrastructure</td><td>GPU: 8GB VRAM for 7B models, up to 8x A100 for 70B+</td><td>You own all data</td><td>Open source preference, cost-sensitive, fine-tuning</td></tr>
+            <tr><td><span class="dbadge hybrid">🔀 Hybrid</span></td><td>Mix of on-premise and cloud</td><td>Both local and cloud infrastructure</td><td>Split by data classification policy</td><td>Enterprise with mixed data sensitivity</td></tr>
+          </table>
+        </div>
+      </div>
+
     </div><!-- /main-content -->
   </div>
 </div><!-- /appPage -->
@@ -876,67 +1115,833 @@ table.ctbl td{padding:10px 14px;vertical-align:middle}
 <!-- Toast -->
 <div id="toast"></div>
 
+
 <script>
 // ══════════════════════════════════════════════════════════════════
-// MODEL DATABASE
+// MODEL DATABASE  (90+ models with deploy + benchmark data)
 // ══════════════════════════════════════════════════════════════════
 const M=[
-{id:'gpt41',name:'GPT-4.1',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code','Vision'],type:'commercial',featured:true,desc:"OpenAI's latest flagship. 1M context window, improved coding and instruction following over GPT-4o.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],pricing:'$2/1M in · $8/1M out',pIn:2,pOut:8,tier:'mid',ctx:'1M tokens',ctxN:1000000,params:'~200B',lat:'~500ms',uses:['Complex reasoning','Code generation','Long-context tasks','Document analysis'],pros:['1M context','Improved coding','Vision capable','Better instruction following'],cons:['Higher cost at scale','Data privacy'],link:'https://platform.openai.com',scores:{q:97,s:85,c:68,l:92}},
-{id:'gpt41-mini',name:'GPT-4.1 Mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',desc:'Efficient GPT-4.1 variant. Best cost-performance for production workloads.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],pricing:'$0.40/1M in · $1.60/1M out',pIn:0.40,pOut:1.60,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~8B',lat:'~250ms',uses:['High-volume chatbots','Classification','Summarization'],pros:['Very cheap','1M context','Fast'],cons:['Less capable for complex tasks'],link:'https://platform.openai.com',scores:{q:86,s:94,c:95,l:85}},
-{id:'gpt41-nano',name:'GPT-4.1 Nano',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM'],type:'commercial',desc:'Smallest, fastest GPT-4.1 variant. Ideal for latency-sensitive and high-throughput applications.',langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Italian'],pricing:'$0.10/1M in · $0.40/1M out',pIn:0.10,pOut:0.40,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~3B',lat:'<100ms',uses:['Real-time responses','Edge apps','Simple classification'],pros:['Cheapest GPT-4 class','Ultra-fast','1M context'],cons:['Lower quality for complex tasks'],link:'https://platform.openai.com',scores:{q:78,s:99,c:99,l:65}},
-{id:'gpt4o',name:'GPT-4o',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Vision','Code'],type:'commercial',featured:true,desc:"Flagship omni model. Multimodal: text, vision, audio. Strong multilingual performance.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],pricing:'$2.50/1M in · $10/1M out',pIn:2.50,pOut:10,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'~200B',lat:'~500ms',uses:['Chatbots','Code gen','Vision','Multimodal apps'],pros:['Multimodal','128K context','Fast'],cons:['Cost at scale'],link:'https://platform.openai.com',scores:{q:95,s:88,c:70,l:92}},
-{id:'gpt4o-mini',name:'GPT-4o Mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',desc:'Cost-efficient small model. High volume production workhorse.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian'],pricing:'$0.15/1M in · $0.60/1M out',pIn:0.15,pOut:0.60,tier:'low',ctx:'128K tokens',ctxN:128000,params:'~8B',lat:'~300ms',uses:['Bulk processing','Chatbots','Classification'],pros:['Very cheap','128K context','Good multilingual'],cons:['Less capable than GPT-4o'],link:'https://platform.openai.com',scores:{q:82,s:93,c:96,l:86}},
-{id:'o3',name:'o3',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',desc:"OpenAI's most powerful reasoning model. Extended thinking for complex math, science, coding.",langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Korean','Arabic'],pricing:'$10/1M in · $40/1M out',pIn:10,pOut:40,tier:'high',ctx:'200K tokens',ctxN:200000,params:'~300B',lat:'15–60s',uses:['Complex reasoning','Research','Advanced coding','Math & science'],pros:['Best reasoning','PhD-level performance'],cons:['Very expensive','High latency'],link:'https://platform.openai.com',scores:{q:99,s:30,c:35,l:75}},
-{id:'o4-mini',name:'o4-mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',desc:'Efficient reasoning model. Fast thinking at fraction of o3 cost. Excellent for STEM problems.',langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Arabic'],pricing:'$1.10/1M in · $4.40/1M out',pIn:1.10,pOut:4.40,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'~70B',lat:'5–30s',uses:['STEM reasoning','Code debugging','Math'],pros:['Affordable reasoning','Good for STEM'],cons:['Slower than standard models'],link:'https://platform.openai.com',scores:{q:92,s:50,c:78,l:68}},
-{id:'oai-tts',name:'TTS-1 / TTS-1-HD',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['TTS'],type:'commercial',desc:'Natural-sounding TTS with 6 voices. HD variant for higher quality. Easy API integration.',langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic','Hindi'],pricing:'$15/1M chars · HD: $30/1M',pIn:0,pOut:0,tier:'mid',pPerChar:0.000015,ctx:'4096 tokens',ctxN:4096,params:'Proprietary',lat:'~300ms',uses:['Developer integrations','Chatbot voices','Accessibility'],pros:['Simple API','6 voices','Good multilingual'],cons:['No voice cloning'],link:'https://platform.openai.com',scores:{q:86,s:90,c:75,l:82}},
-{id:'whisper',name:'Whisper v3 Large',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['STT'],type:'open-source',featured:true,desc:'State-of-the-art multilingual ASR. Open source or API. 99 language support.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish'],pricing:'API: $0.006/min · Open: Free',pIn:0,pOut:0,tier:'low',pPerMin:0.006,ctx:'30s chunks',ctxN:0,params:'1.5B',lat:'~1–3s',uses:['Transcription','Subtitles','Meeting notes','Multilingual STT'],pros:['99 languages','Open source','High accuracy'],cons:['Not real-time','30s chunk limit'],link:'https://openai.com/research/whisper',scores:{q:95,s:70,c:90,l:99}},
-{id:'claude37',name:'Claude 3.7 Sonnet',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Code','Vision'],type:'commercial',featured:true,desc:"Anthropic's most intelligent model with extended thinking. Hybrid reasoning for complex problems.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],pricing:'$3/1M in · $15/1M out',pIn:3,pOut:15,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'~100B',lat:'~600ms',uses:['Complex reasoning','Coding','Research','Long docs'],pros:['Extended thinking','200K context','Best-in-class coding'],cons:['High output cost'],link:'https://anthropic.com',scores:{q:98,s:80,c:62,l:90}},
-{id:'claude35',name:'Claude 3.5 Sonnet',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Code','Vision'],type:'commercial',desc:'Fast, intelligent Claude. Excellent coding and analysis. 200K context.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian'],pricing:'$3/1M in · $15/1M out',pIn:3,pOut:15,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'~100B',lat:'~550ms',uses:['Chatbots','Code','Document analysis','Enterprise AI'],pros:['200K context','Excellent coding','Vision'],cons:['High output cost'],link:'https://anthropic.com',scores:{q:95,s:83,c:65,l:88}},
-{id:'claude-haiku',name:'Claude 3.5 Haiku',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Code'],type:'commercial',desc:'Fastest Claude. Near-instant responses at very low cost. Customer-facing apps.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch'],pricing:'$0.80/1M in · $4/1M out',pIn:0.80,pOut:4,tier:'low',ctx:'200K tokens',ctxN:200000,params:'~20B',lat:'~250ms',uses:['Real-time chatbots','Classification','High-volume APIs'],pros:['Ultra-fast','200K context','Low cost'],cons:['Less capable for complex tasks'],link:'https://anthropic.com',scores:{q:83,s:97,c:92,l:83}},
-{id:'claude3-opus',name:'Claude 3 Opus',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Vision'],type:'commercial',desc:'Previous flagship Claude. Exceptional for nuanced analysis and long-form content.',langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Italian','Korean','Arabic'],pricing:'$15/1M in · $75/1M out',pIn:15,pOut:75,tier:'high',ctx:'200K tokens',ctxN:200000,params:'~200B',lat:'~1s',uses:['Complex analysis','Research','Premium apps'],pros:['High quality','200K context'],cons:['Most expensive Anthropic model'],link:'https://anthropic.com',scores:{q:91,s:65,c:30,l:80}},
-{id:'gemini25',name:'Gemini 2.5 Pro',prov:'Google DeepMind',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision','Code'],type:'commercial',featured:true,desc:"Google's most capable model. State-of-the-art reasoning with 2M token context.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],pricing:'$1.25/1M in · $10/1M out',pIn:1.25,pOut:10,tier:'mid',ctx:'2M tokens',ctxN:2000000,params:'~540B',lat:'~800ms',uses:['Long doc processing','Video analysis','Complex reasoning'],pros:['2M context','Multimodal','Competitive pricing'],cons:['Slower for very long context'],link:'https://ai.google.dev',scores:{q:96,s:74,c:82,l:90}},
-{id:'gemini20-flash',name:'Gemini 2.0 Flash',prov:'Google DeepMind',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision'],type:'commercial',desc:'Latest Flash. Real-time audio/video streaming. Ultra-fast with 1M context.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi'],pricing:'$0.10/1M in · $0.40/1M out',pIn:0.10,pOut:0.40,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~70B',lat:'~200ms',uses:['Real-time apps','High-volume APIs','Live streaming analysis'],pros:['Cheapest frontier','1M context','Real-time audio/video'],cons:['Less capable than Pro'],link:'https://ai.google.dev',scores:{q:85,s:98,c:99,l:82}},
-{id:'gemini15-flash',name:'Gemini 1.5 Flash',prov:'Google DeepMind',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision'],type:'commercial',desc:'Fast and efficient with 1M context. Excellent cost-to-capability ratio.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],pricing:'$0.075/1M in · $0.30/1M out',pIn:0.075,pOut:0.30,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~70B',lat:'~200ms',uses:['Summarization','Classification','Real-time chat'],pros:['Very cheap','1M context','Fast'],cons:['Less capable than Pro'],link:'https://ai.google.dev',scores:{q:83,s:97,c:98,l:82}},
-{id:'g-stt',name:'Speech-to-Text (Chirp)',prov:'Google Cloud',icon:'🔴',clr:'#ef4444',tasks:['STT'],type:'commercial',desc:"Google's Chirp model. 100+ languages. Batch and streaming transcription.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Swedish','Polish'],pricing:'$0.016/min · Free: 60min/mo',pIn:0,pOut:0,tier:'low',pPerMin:0.016,ctx:'Streaming',ctxN:0,params:'Chirp',lat:'~200ms',uses:['Mobile apps','Medical transcription','Accessibility'],pros:['100+ languages','Medical spec'],cons:['GCP dependency'],link:'https://cloud.google.com/speech-to-text',scores:{q:87,s:91,c:84,l:96}},
-{id:'g-tts',name:'Cloud TTS (WaveNet)',prov:'Google Cloud',icon:'🔴',clr:'#ef4444',tasks:['TTS'],type:'commercial',desc:'380+ voices, 50+ languages. WaveNet technology for natural-sounding synthesis.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Swedish'],pricing:'$4/1M chars Neural2 · $16/1M Studio',pIn:0,pOut:0,tier:'low',pPerChar:0.000004,ctx:'N/A',ctxN:0,params:'WaveNet',lat:'~250ms',uses:['Mobile apps','IVR','E-learning'],pros:['50+ languages','WaveNet quality','Free tier'],cons:['Studio voices expensive'],link:'https://cloud.google.com/text-to-speech',scores:{q:83,s:91,c:90,l:93}},
-{id:'llama33',name:'Llama 3.3-70B',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['LLM','Code'],type:'open-source',featured:true,desc:"Meta's latest open-source flagship. Near GPT-4o quality with fully open weights.",langs:['English','Spanish','French','German','Italian','Portuguese','Hindi','Chinese','Arabic','Japanese','Korean','Thai'],pricing:'Free (self-host) · $0.59/1M via APIs',pIn:0.59,pOut:0.79,tier:'low',ctx:'128K tokens',ctxN:128000,params:'70B',lat:'~400ms',uses:['Open-source production','General purpose AI','Fine-tuning'],pros:['Fully open source','Strong quality','No vendor lock-in'],cons:['Requires 140GB+ VRAM self-hosted'],link:'https://llama.meta.com',scores:{q:90,s:82,c:90,l:72}},
-{id:'llama32-v',name:'Llama 3.2-90B Vision',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['LLM','Vision'],type:'open-source',desc:'Open-source multimodal model with vision. Competitive with GPT-4o-mini.',langs:['English','Spanish','French','German','Italian','Portuguese','Hindi','Chinese','Arabic','Japanese','Korean'],pricing:'Free (self-host) · $0.90/1M via APIs',pIn:0.90,pOut:0.90,tier:'low',ctx:'128K tokens',ctxN:128000,params:'90B',lat:'~500ms',uses:['Open vision tasks','Document processing'],pros:['Open source vision','No vendor lock-in'],cons:['Significant hardware needed'],link:'https://llama.meta.com',scores:{q:87,s:78,c:90,l:70}},
-{id:'llama31-8b',name:'Llama 3.1-8B',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['LLM','Code'],type:'open-source',desc:'Runs on consumer hardware. Best open-source 8B model.',langs:['English','German','French','Italian','Portuguese','Hindi','Spanish','Thai'],pricing:'Free (self-host) · $0.10/1M via APIs',pIn:0.10,pOut:0.10,tier:'free',ctx:'128K tokens',ctxN:128000,params:'8B',lat:'<100ms',uses:['Edge deployment','Fine-tuning','Prototyping'],pros:['Runs on RTX 3090','Very fast','Free'],cons:['Limited multilingual'],link:'https://llama.meta.com',scores:{q:75,s:98,c:99,l:50}},
-{id:'seamless',name:'SeamlessM4T v2',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['STT','TTS','Translation'],type:'open-source',desc:'All-in-one: STT + Translation + TTS in one model. 100+ languages.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Bengali','Tamil','Swahili'],pricing:'Free (self-hosted)',pIn:0,pOut:0,tier:'free',ctx:'N/A',ctxN:0,params:'2.3B',lat:'~1s',uses:['Speech translation','Multilingual voice agents','Research'],pros:['All-in-one','100+ languages','Free'],cons:['Quality below specialized models'],link:'https://github.com/facebookresearch/seamless_communication',scores:{q:76,s:72,c:99,l:99}},
-{id:'qwen25-72b',name:'Qwen2.5-72B',prov:'Alibaba Cloud',icon:'☁️',clr:'#f97316',tasks:['LLM','Code'],type:'open-source',featured:true,desc:"Alibaba's flagship open LLM. Best Chinese AI model. Exceptional Arabic performance.",langs:['Chinese','English','Arabic','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Vietnamese','Thai','Indonesian'],pricing:'Free (self-host) · $0.40/1M in via APIs',pIn:0.40,pOut:1.20,tier:'low',ctx:'128K tokens',ctxN:128000,params:'72B',lat:'~400ms',uses:['Chinese NLP','Arabic AI','Multilingual chatbots','Code generation'],pros:['Best Chinese model','Strong Arabic','Open source','128K context'],cons:['Self-hosting requires 144GB+ VRAM'],link:'https://huggingface.co/Qwen',scores:{q:92,s:82,c:95,l:95}},
-{id:'qwen25-7b',name:'Qwen2.5-7B',prov:'Alibaba Cloud',icon:'☁️',clr:'#f97316',tasks:['LLM'],type:'open-source',desc:'Efficient 7B multilingual model. Resource-constrained deployments.',langs:['Chinese','English','Arabic','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian'],pricing:'Free (self-host) · ~$0.05/1M',pIn:0.05,pOut:0.10,tier:'free',ctx:'128K tokens',ctxN:128000,params:'7B',lat:'~150ms',uses:['Edge deployment','Mobile apps','Chinese chatbots'],pros:['Very lightweight','Strong Chinese','Free'],cons:['Less capable than 72B'],link:'https://huggingface.co/Qwen',scores:{q:76,s:97,c:99,l:87}},
-{id:'cohere-rplus',name:'Command R+',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['LLM','Code'],type:'commercial',featured:true,desc:'Enterprise RAG and tool-use model. Best-in-class for retrieval-augmented generation.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],pricing:'$2.50/1M in · $10/1M out',pIn:2.50,pOut:10,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'104B',lat:'~600ms',uses:['Enterprise RAG','Document Q&A','Agentic workflows'],pros:['RAG-optimized','Tool use','Citations','Enterprise SLA'],cons:['Less general than GPT-4o'],link:'https://cohere.com',scores:{q:88,s:80,c:68,l:82}},
-{id:'cohere-r',name:'Command R',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['LLM'],type:'commercial',desc:'Efficient RAG model. Low cost with 10 language support and grounded responses.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],pricing:'$0.15/1M in · $0.60/1M out',pIn:0.15,pOut:0.60,tier:'low',ctx:'128K tokens',ctxN:128000,params:'35B',lat:'~400ms',uses:['RAG pipelines','Summarization','Chatbots'],pros:['Very low cost','RAG-optimized'],cons:['10 language limit'],link:'https://cohere.com',scores:{q:80,s:88,c:96,l:65}},
-{id:'cohere-embed',name:'Embed v3 Multilingual',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['Embedding'],type:'commercial',featured:true,desc:'State-of-the-art multilingual embeddings. 100+ languages. Best for cross-lingual search.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish','Danish','Finnish','Norwegian'],pricing:'$0.10/1M tokens',pIn:0.10,pOut:0,tier:'low',ctx:'512 tokens',ctxN:512,params:'~600M',lat:'~50ms',uses:['Multilingual semantic search','RAG embeddings','Cross-lingual retrieval'],pros:['100+ languages','Best multilingual embeddings','Low cost'],cons:['Embedding only'],link:'https://cohere.com/embeddings',scores:{q:95,s:98,c:95,l:99}},
-{id:'mistral-large',name:'Mistral Large 2',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['LLM','Code'],type:'commercial',desc:'European frontier model. Strong French, German, Spanish, Italian.',langs:['English','French','Spanish','German','Italian','Portuguese','Dutch','Russian','Chinese','Japanese','Korean','Arabic','Hindi'],pricing:'$3/1M in · $9/1M out',pIn:3,pOut:9,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'123B',lat:'~500ms',uses:['European language apps','Code generation','GDPR-compliant AI'],pros:['Strong European languages','GDPR-friendly','Function calling'],cons:['Less multilingual than Qwen for Asian'],link:'https://mistral.ai',scores:{q:88,s:83,c:65,l:80}},
-{id:'mistral-nemo',name:'Mistral NeMo 12B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['LLM'],type:'open-source',desc:'12B open model with 128K context. Best open model for European languages.',langs:['English','French','Spanish','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic'],pricing:'Free (self-host) · $0.15/1M via APIs',pIn:0.15,pOut:0.15,tier:'free',ctx:'128K tokens',ctxN:128000,params:'12B',lat:'~200ms',uses:['European language deployments','Cost-efficient AI'],pros:['Great European languages','128K context','Open weights'],cons:['Less capable than Large 2'],link:'https://mistral.ai',scores:{q:78,s:92,c:95,l:72}},
-{id:'deepseek-v3',name:'DeepSeek V3',prov:'DeepSeek',icon:'🔬',clr:'#38bdf8',tasks:['LLM','Code'],type:'open-source',featured:true,desc:'Rivals GPT-4o at fraction of cost. Exceptional code and math. 671B MoE.',langs:['Chinese','English','Arabic','Spanish','French','German','Japanese','Korean','Russian','Italian','Portuguese'],pricing:'Free (self-host) · $0.14/1M in · $0.28/1M out',pIn:0.14,pOut:0.28,tier:'low',ctx:'128K tokens',ctxN:128000,params:'671B MoE',lat:'~400ms',uses:['Code generation','Math reasoning','Chinese NLP','Cost-sensitive production'],pros:['Cheapest frontier-class','Excellent coding','Open weights'],cons:['Privacy considerations'],link:'https://deepseek.com',scores:{q:93,s:82,c:99,l:78}},
-{id:'deepseek-r1',name:'DeepSeek R1',prov:'DeepSeek',icon:'🔬',clr:'#38bdf8',tasks:['LLM','Code'],type:'open-source',desc:'Open-source reasoning model rivaling o1. Transparent chain-of-thought.',langs:['Chinese','English','Spanish','French','German','Japanese','Korean','Arabic'],pricing:'Free (self-host) · $0.55/1M in · $2.19/1M out',pIn:0.55,pOut:2.19,tier:'low',ctx:'128K tokens',ctxN:128000,params:'671B MoE',lat:'10–60s',uses:['Complex reasoning','Math','Code debugging'],pros:['Open-source o1 alternative','Transparent thinking'],cons:['Slow','High compute needs'],link:'https://deepseek.com',scores:{q:95,s:40,c:85,l:68}},
-{id:'phi4',name:'Phi-4 (14B)',prov:'Microsoft',icon:'🔷',clr:'#38bdf8',tasks:['LLM','Code'],type:'open-source',desc:'Small but mighty. Outperforms larger models on STEM and reasoning.',langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Arabic'],pricing:'Free (self-host) · $0.07/1M via Azure AI',pIn:0.07,pOut:0.07,tier:'free',ctx:'16K tokens',ctxN:16000,params:'14B',lat:'~150ms',uses:['Device-side AI','Math & STEM','Code assistance'],pros:['Exceptional reasoning for size','Runs on laptops','Very low cost'],cons:['Short context (16K)'],link:'https://azure.microsoft.com/en-us/products/phi',scores:{q:82,s:97,c:98,l:58}},
-{id:'azure-tts',name:'Azure Neural TTS',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['TTS'],type:'commercial',desc:'500+ neural voices, 140+ languages. Enterprise-grade with custom voice training.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish','Russian','Turkish','Indonesian','Thai','Vietnamese'],pricing:'$4/1M chars · Free: 0.5M/mo',pIn:0,pOut:0,tier:'low',pPerChar:0.000004,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'~200ms',uses:['Enterprise apps','Call centers','Accessibility','140+ language TTS'],pros:['140+ languages','Custom voice','Low cost','SSML'],cons:['Azure lock-in'],link:'https://azure.microsoft.com',scores:{q:82,s:94,c:95,l:99}},
-{id:'azure-stt',name:'Azure Speech-to-Text',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['STT'],type:'commercial',desc:'100+ languages, custom models, real-time transcription. HIPAA compliant.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish','Russian','Turkish','Indonesian','Thai','Danish','Finnish','Norwegian'],pricing:'$1/hr · Free: 5hr audio/mo',pIn:0,pOut:0,tier:'low',pPerMin:0.0167,ctx:'Streaming',ctxN:0,params:'Proprietary',lat:'~300ms',uses:['Enterprise apps','Compliance recording','Call center analytics'],pros:['100+ languages','Custom models','Enterprise compliance'],cons:['Azure ecosystem'],link:'https://azure.microsoft.com',scores:{q:85,s:90,c:85,l:99}},
-{id:'elevenlabs',name:'ElevenLabs Multilingual v2',prov:'ElevenLabs',icon:'🎙️',clr:'#a78bfa',tasks:['TTS'],type:'third-party',featured:true,desc:'Industry-leading voice AI. Ultra-realistic synthesis, voice cloning, emotion control.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish'],pricing:'$0.30/1K chars · $0.18/1K Pro',pIn:0,pOut:0,tier:'mid',pPerChar:0.0003,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'~400ms',uses:['Audiobooks','Podcasts','Video narration','Voice cloning'],pros:['Emotional range','Voice cloning','29+ languages','Real-time streaming'],cons:['Per-character pricing','Not open source'],link:'https://elevenlabs.io',scores:{q:98,s:82,c:70,l:92}},
-{id:'playht',name:'PlayHT 2.0 Turbo',prov:'Play.ht',icon:'▶️',clr:'#eab308',tasks:['TTS'],type:'third-party',desc:'<100ms latency TTS. 900+ voices, 142 languages, instant voice cloning.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish','Turkish','Russian','Indonesian'],pricing:'$0.99/100K chars · $39/mo unlimited',pIn:0,pOut:0,tier:'mid',pPerChar:0.0000099,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'<100ms',uses:['Real-time voice agents','Podcasts','Voice cloning'],pros:['Ultra-low latency','900+ voices','142 languages'],cons:['Rate limits on free'],link:'https://play.ht',scores:{q:91,s:98,c:72,l:95}},
-{id:'deepgram',name:'Deepgram Nova-2',prov:'Deepgram',icon:'🎤',clr:'#06b6d4',tasks:['STT'],type:'third-party',featured:true,desc:'30% lower WER than Whisper. Real-time streaming + speaker diarization.',langs:['English','Spanish','French','German','Italian','Portuguese','Dutch','Japanese','Korean','Chinese','Hindi','Russian','Turkish','Swedish'],pricing:'$0.0043/min · Free: 12,000 min/yr',pIn:0,pOut:0,tier:'low',pPerMin:0.0043,ctx:'Streaming',ctxN:0,params:'Proprietary',lat:'~200ms',uses:['Real-time captioning','Call centers','Voice agents'],pros:['Real-time streaming','Lowest WER','Speaker diarization'],cons:['Limited language count'],link:'https://deepgram.com',scores:{q:93,s:97,c:88,l:72}},
-{id:'assemblyai',name:'AssemblyAI Universal-1',prov:'AssemblyAI',icon:'🔊',clr:'#a78bfa',tasks:['STT'],type:'third-party',desc:'AI-powered transcription with LeMUR (LLM over audio). Speaker labels, auto-chapters.',langs:['English','Spanish','French','German','Italian','Portuguese','Dutch','Japanese','Korean','Chinese','Hindi','Finnish','Polish','Ukrainian','Turkish'],pricing:'$0.65/hr · $0.37/hr Nano · Free 5hrs/mo',pIn:0,pOut:0,tier:'mid',pPerMin:0.0108,ctx:'10hr files',ctxN:0,params:'Proprietary',lat:'~2s',uses:['Meeting analytics','Podcast processing','Audio intelligence'],pros:['LLM-over-audio','Speaker labels','Auto-chapters'],cons:['Higher latency'],link:'https://assemblyai.com',scores:{q:88,s:75,c:72,l:70}},
-{id:'perplexity',name:'Sonar Large (Online)',prov:'Perplexity',icon:'🔍',clr:'#eab308',tasks:['LLM'],type:'commercial',desc:'Real-time web search LLM. Answers with citations from live web data.',langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic','Dutch'],pricing:'$1/1M in · $5/1M Sonar-Pro',pIn:1,pOut:1,tier:'low',ctx:'128K tokens',ctxN:128000,params:'~70B base',lat:'~1.5s',uses:['Research assistants','News Q&A','Fact-checking'],pros:['Live web search','Citations','Current events'],cons:['Not for offline data'],link:'https://perplexity.ai',scores:{q:82,s:74,c:87,l:72}},
-{id:'deepl',name:'DeepL Pro API',prov:'DeepL',icon:'🌐',clr:'#06b6d4',tasks:['Translation'],type:'third-party',featured:true,desc:'Best-quality neural translation for European languages. Consistently outperforms Google.',langs:['English','German','French','Spanish','Italian','Portuguese','Dutch','Polish','Russian','Japanese','Chinese','Korean','Turkish','Swedish','Danish','Finnish','Norwegian','Czech','Romanian','Hungarian'],pricing:'$5.49/1M chars · $25/mo Pro',pIn:0,pOut:0,tier:'low',pPerChar:0.0000055,ctx:'128KB doc',ctxN:0,params:'Proprietary',lat:'~300ms',uses:['Legal/medical translation','EU content','Marketing localization'],pros:['Best European translation','GDPR compliant','Glossary support'],cons:['33 language limit'],link:'https://deepl.com',scores:{q:94,s:90,c:82,l:72}},
-{id:'azure-trans',name:'Azure Translator',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['Translation'],type:'commercial',desc:'100+ language neural translation. Document translation and real-time.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish','Danish','Finnish','Norwegian','Ukrainian','Thai','Vietnamese'],pricing:'$10/1M chars · Free: 2M chars/mo',pIn:0,pOut:0,tier:'low',pPerChar:0.00001,ctx:'50K chars',ctxN:0,params:'Proprietary',lat:'<100ms',uses:['Document translation','Real-time','Multilingual apps'],pros:['100+ languages','Low cost','Document formats'],cons:['Not LLM quality for nuanced text'],link:'https://azure.microsoft.com',scores:{q:82,s:97,c:92,l:99}},
-{id:'coqui',name:'Coqui TTS (XTTS v2)',prov:'Coqui AI',icon:'🐸',clr:'#84cc16',tasks:['TTS'],type:'open-source',desc:'Open-source TTS with voice cloning from 6-second audio. 17 languages.',langs:['English','Spanish','French','German','Italian','Portuguese','Polish','Turkish','Russian','Dutch','Czech','Arabic','Chinese','Hungarian','Korean','Japanese','Hindi'],pricing:'Free (self-hosted)',pIn:0,pOut:0,tier:'free',pPerChar:0,ctx:'N/A',ctxN:0,params:'~1B',lat:'~500ms (GPU)',uses:['Self-hosted TTS','Voice cloning','Research'],pros:['Free & open source','Voice cloning','17 languages'],cons:['Requires GPU','Setup complexity'],link:'https://github.com/coqui-ai/TTS',scores:{q:79,s:70,c:99,l:80}},
-{id:'grok3',name:'Grok-3',prov:'xAI',icon:'⚡',clr:'#eab308',tasks:['LLM','Code'],type:'commercial',desc:"xAI's latest model with real-time X/Twitter data. Strong reasoning and coding.",langs:['English','Chinese','Spanish','French','German','Japanese','Korean','Portuguese','Arabic'],pricing:'Via X Premium+ / API (beta)',pIn:3,pOut:15,tier:'mid',ctx:'131K tokens',ctxN:131000,params:'~300B',lat:'~600ms',uses:['Real-time social analysis','Coding','Reasoning'],pros:['Real-time X data','Strong reasoning'],cons:['Limited API access'],link:'https://x.ai',scores:{q:91,s:80,c:60,l:70}},
-{id:'mixtral',name:'Mixtral 8x22B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['LLM','Code'],type:'open-source',desc:'MoE open model. 141B parameters (39B active). Excellent cost-quality for self-hosting.',langs:['English','French','Spanish','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic'],pricing:'Free (self-host) · $1.2/1M via APIs',pIn:1.2,pOut:1.2,tier:'low',ctx:'65K tokens',ctxN:65000,params:'141B (MoE, 39B active)',lat:'~400ms',uses:['Self-hosted production','Code generation','European AI'],pros:['Efficient MoE','Strong coding','Open source'],cons:['Requires 4x A100'],link:'https://mistral.ai',scores:{q:85,s:84,c:88,l:72}},
-{id:'pixtral',name:'Pixtral Large 124B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['Vision','LLM'],type:'open-source',desc:'Open-weight multimodal. Multiple images per request. Strong document understanding.',langs:['English','French','German','Spanish','Italian','Portuguese','Chinese','Japanese'],pricing:'Free (self-host) · $2/1M in via API',pIn:2,pOut:6,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'124B',lat:'~1s',uses:['Document parsing','Multi-image analysis','Open vision models'],pros:['Open source vision','Multi-image','European compliant'],cons:['Requires significant hardware'],link:'https://mistral.ai',scores:{q:86,s:72,c:85,l:65}},
-{id:'sarvam',name:'Sarvam-2B',prov:'Sarvam AI',icon:'🇮🇳',clr:'#f97316',tasks:['LLM','TTS','STT'],type:'open-source',desc:'Specialized model for Indian languages. 10 Indic languages for speech and text.',langs:['Hindi','Bengali','Tamil','Telugu','Kannada','Malayalam','Marathi','Gujarati','Punjabi','Odia','English'],pricing:'Free (open source)',pIn:0,pOut:0,tier:'free',ctx:'4K tokens',ctxN:4000,params:'2B',lat:'~400ms',uses:['Indian language apps','Regional STT/TTS','Indic NLP'],pros:['Best Indic language support','Free','STT+TTS+LLM'],cons:['Limited to Indian languages'],link:'https://sarvam.ai',scores:{q:78,s:84,c:99,l:60}},
-{id:'text-emb3',name:'text-embedding-3-large',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['Embedding'],type:'commercial',desc:"OpenAI's best embedding model. Supports dimensionality reduction.",langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Russian','Dutch','Polish'],pricing:'$0.13/1M tokens',pIn:0.13,pOut:0,tier:'low',ctx:'8191 tokens',ctxN:8191,params:'~600M',lat:'~50ms',uses:['Semantic search','RAG','Clustering','Classification'],pros:['High quality','Low cost','Multilingual'],cons:['8K context limit'],link:'https://platform.openai.com',scores:{q:92,s:97,c:92,l:85}},
-{id:'e5-multi',name:'Multilingual-E5-Large',prov:'Microsoft (Open)',icon:'🔷',clr:'#38bdf8',tasks:['Embedding'],type:'open-source',desc:'Open-source multilingual embedding. 100+ languages. Best free option.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish','Danish','Finnish','Norwegian'],pricing:'Free (HuggingFace self-hosted)',pIn:0,pOut:0,tier:'free',ctx:'512 tokens',ctxN:512,params:'560M',lat:'~30ms',uses:['Cross-lingual search','Multilingual RAG'],pros:['100+ languages','Free','Fast'],cons:['512 token context'],link:'https://huggingface.co/intfloat/multilingual-e5-large',scores:{q:87,s:98,c:99,l:99}},
-{id:'amazon-polly',name:'Amazon Polly Neural',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['TTS'],type:'commercial',desc:'Neural TTS with 60+ voices in 30+ languages. Real-time streaming.',langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Romanian','Turkish'],pricing:'$4/1M chars Neural · $16/1M Long-form',pIn:0,pOut:0,tier:'low',pPerChar:0.000004,ctx:'3000 chars',ctxN:0,params:'Proprietary',lat:'~300ms',uses:['AWS workloads','Podcasts','IVR','Alexa'],pros:['AWS integration','SSML','Long-form'],cons:['Less natural voices'],link:'https://aws.amazon.com/polly',scores:{q:78,s:89,c:90,l:82}},
+// ── OpenAI ─────────────────────────────────────────────────────────────────
+{id:'gpt41',name:'GPT-4.1',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code','Vision'],type:'commercial',featured:true,
+desc:"OpenAI's latest flagship. 1M context window, improved coding and instruction following.",
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],
+pricing:'$2/1M in · $8/1M out',pIn:2,pOut:8,tier:'mid',ctx:'1M tokens',ctxN:1000000,params:'~200B',lat:'~500ms',
+uses:['Complex reasoning','Code generation','Long-context tasks','Document analysis','Enterprise chatbots'],
+pros:['1M context','Improved coding','Vision capable','Better instruction following'],cons:['Higher cost at scale','Data privacy'],
+link:'https://platform.openai.com',scores:{q:97,s:85,c:68,l:92},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure OpenAI',selfHost:false},
+bench:{mmlu:90.0,humanEval:95.0,mtBench:9.2,gsm8k:97.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:5,government:4,manufacturing:4,technology:5}}},
+
+{id:'gpt41-mini',name:'GPT-4.1 Mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',
+desc:'Efficient GPT-4.1 variant. Best cost-performance ratio for high-volume production workloads.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'$0.40/1M in · $1.60/1M out',pIn:0.40,pOut:1.60,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~8B',lat:'~250ms',
+uses:['High-volume chatbots','Classification','Summarization','Customer service'],
+pros:['Very cheap','1M context','Fast'],cons:['Less capable for complex tasks'],
+link:'https://platform.openai.com',scores:{q:86,s:94,c:95,l:85},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure OpenAI',selfHost:false},
+bench:{mmlu:83.0,humanEval:88.0,mtBench:8.5,gsm8k:90.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:4,government:3,manufacturing:3,technology:4}}},
+
+{id:'gpt41-nano',name:'GPT-4.1 Nano',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM'],type:'commercial',
+desc:'Smallest, fastest GPT-4.1. Ideal for latency-sensitive and high-throughput edge applications.',
+langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Italian'],
+pricing:'$0.10/1M in · $0.40/1M out',pIn:0.10,pOut:0.40,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~3B',lat:'<100ms',
+uses:['Real-time responses','Edge apps','Simple classification','Intent detection'],
+pros:['Cheapest GPT-4 class','Ultra-fast','1M context'],cons:['Lower quality for complex tasks'],
+link:'https://platform.openai.com',scores:{q:78,s:99,c:99,l:65},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud',selfHost:false},
+bench:{mmlu:75.0,humanEval:80.0,mtBench:7.8,gsm8k:82.0,hellaSwag:null,domains:{healthcare:2,finance:3,legal:2,retail:5,education:3,government:2,manufacturing:2,technology:3}}},
+
+{id:'gpt4o',name:'GPT-4o',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Vision','Code'],type:'commercial',featured:true,
+desc:'Flagship omni model. Multimodal: text, vision, audio. Strong multilingual performance.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],
+pricing:'$2.50/1M in · $10/1M out',pIn:2.50,pOut:10,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'~200B',lat:'~500ms',
+uses:['Chatbots','Code gen','Vision','Multimodal apps','Research'],
+pros:['Multimodal','128K context','Fast','Audio+video'],cons:['Cost at scale'],
+link:'https://platform.openai.com',scores:{q:95,s:88,c:70,l:92},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure OpenAI',selfHost:false},
+bench:{mmlu:88.7,humanEval:90.2,mtBench:9.0,gsm8k:95.8,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:5,government:4,manufacturing:4,technology:5}}},
+
+{id:'gpt4o-mini',name:'GPT-4o Mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',
+desc:'Cost-efficient small model. Production workhorse for high-volume text applications.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian'],
+pricing:'$0.15/1M in · $0.60/1M out',pIn:0.15,pOut:0.60,tier:'low',ctx:'128K tokens',ctxN:128000,params:'~8B',lat:'~300ms',
+uses:['Bulk processing','Chatbots','Classification','Summarization'],
+pros:['Very cheap','128K context','Good multilingual'],cons:['Less capable than GPT-4o'],
+link:'https://platform.openai.com',scores:{q:82,s:93,c:96,l:86},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure OpenAI',selfHost:false},
+bench:{mmlu:82.0,humanEval:87.2,mtBench:8.4,gsm8k:87.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:4,government:3,manufacturing:3,technology:4}}},
+
+{id:'o3',name:'o3',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',
+desc:"OpenAI's most powerful reasoning model. Extended thinking for complex math, science, coding.",
+langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Korean','Arabic'],
+pricing:'$10/1M in · $40/1M out',pIn:10,pOut:40,tier:'high',ctx:'200K tokens',ctxN:200000,params:'~300B',lat:'15–60s',
+uses:['Complex reasoning','Research','Advanced coding','Math & science','PhD-level tasks'],
+pros:['Best reasoning','PhD-level performance','Deep analysis'],cons:['Very expensive','High latency'],
+link:'https://platform.openai.com',scores:{q:99,s:30,c:35,l:75},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure OpenAI',selfHost:false},
+bench:{mmlu:96.0,humanEval:99.0,mtBench:9.8,gsm8k:99.5,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:2,education:5,government:4,manufacturing:5,technology:5}}},
+
+{id:'o4-mini',name:'o4-mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',
+desc:'Efficient reasoning model. Fast thinking at fraction of o3 cost. Excellent for STEM.',
+langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Arabic'],
+pricing:'$1.10/1M in · $4.40/1M out',pIn:1.10,pOut:4.40,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'~70B',lat:'5–30s',
+uses:['STEM reasoning','Code debugging','Math problems','Scientific analysis'],
+pros:['Affordable reasoning','Good for STEM','200K context'],cons:['Slower than standard models'],
+link:'https://platform.openai.com',scores:{q:92,s:50,c:78,l:68},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure OpenAI',selfHost:false},
+bench:{mmlu:87.0,humanEval:98.0,mtBench:9.3,gsm8k:99.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:4,retail:2,education:5,government:3,manufacturing:5,technology:5}}},
+
+{id:'gpt35',name:'GPT-3.5 Turbo',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM'],type:'commercial',
+desc:'Fast and cheap. Still widely used for simple tasks, legacy integrations, and high-throughput classification.',
+langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Italian','Dutch','Russian'],
+pricing:'$0.50/1M in · $1.50/1M out',pIn:0.50,pOut:1.50,tier:'low',ctx:'16K tokens',ctxN:16000,params:'~175B',lat:'~200ms',
+uses:['Simple chatbots','Quick summaries','Legacy apps','Classification at scale'],
+pros:['Very cheap','Fast','Battle-tested','Wide ecosystem'],cons:['Short context','Inferior to GPT-4 family','Limited multilingual'],
+link:'https://platform.openai.com',scores:{q:72,s:96,c:93,l:72},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure OpenAI',selfHost:false},
+bench:{mmlu:70.0,humanEval:65.0,mtBench:7.9,gsm8k:57.0,hellaSwag:85.5,domains:{healthcare:2,finance:3,legal:2,retail:4,education:3,government:2,manufacturing:2,technology:3}}},
+
+{id:'oai-tts',name:'TTS-1 / TTS-1-HD',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['TTS'],type:'commercial',
+desc:'Natural-sounding TTS with 6 voice options. HD variant for higher quality.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic','Hindi'],
+pricing:'$15/1M chars · HD: $30/1M',pIn:0,pOut:0,tier:'mid',pPerChar:0.000015,ctx:'4096 tokens',ctxN:4096,params:'Proprietary',lat:'~300ms',
+uses:['Developer integrations','Chatbot voices','Accessibility','Content narration'],
+pros:['Simple API','6 voices','Good multilingual'],cons:['No voice cloning','Limited customization'],
+link:'https://platform.openai.com',scores:{q:86,s:90,c:75,l:82},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure OpenAI',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:2,legal:2,retail:4,education:4,government:3,manufacturing:2,technology:3}}},
+
+{id:'whisper',name:'Whisper v3 Large',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['STT'],type:'open-source',featured:true,
+desc:'State-of-the-art multilingual ASR. Open source or API. Exceptional accuracy across 99 languages.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish'],
+pricing:'API: $0.006/min · Open source: Free',pIn:0,pOut:0,tier:'low',pPerMin:0.006,ctx:'30s chunks',ctxN:0,params:'1.5B',lat:'~1–3s',
+uses:['Transcription','Subtitles','Meeting notes','Multilingual STT','Podcast processing'],
+pros:['99 languages','Open source option','High accuracy','API + self-hosted'],cons:['Not real-time','30s chunk limit'],
+link:'https://openai.com/research/whisper',scores:{q:95,s:70,c:90,l:99},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'OpenAI Cloud + Azure',selfHost:true},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:4,legal:5,retail:4,education:5,government:5,manufacturing:4,technology:4}}},
+
+// ── Anthropic ───────────────────────────────────────────────────────────────
+{id:'claude37',name:'Claude 3.7 Sonnet',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Code','Vision'],type:'commercial',featured:true,
+desc:"Anthropic's most intelligent model with extended thinking. Hybrid reasoning for complex problems.",
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],
+pricing:'$3/1M in · $15/1M out',pIn:3,pOut:15,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'~100B',lat:'~600ms',
+uses:['Complex reasoning','Coding','Research','Long document analysis','Legal review'],
+pros:['Extended thinking','200K context','Best-in-class coding','Safety-first'],cons:['High output cost'],
+link:'https://anthropic.com',scores:{q:98,s:80,c:62,l:90},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Anthropic Cloud + AWS Bedrock + GCP Vertex + Azure',selfHost:false},
+bench:{mmlu:88.5,humanEval:92.0,mtBench:9.2,gsm8k:96.0,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:5,government:4,manufacturing:4,technology:5}}},
+
+{id:'claude35',name:'Claude 3.5 Sonnet',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Code','Vision'],type:'commercial',
+desc:'Fast, intelligent Claude. Excellent coding and analysis. 200K context.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian'],
+pricing:'$3/1M in · $15/1M out',pIn:3,pOut:15,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'~100B',lat:'~550ms',
+uses:['Chatbots','Code','Document analysis','Enterprise AI'],
+pros:['200K context','Excellent coding','Vision capable'],cons:['High output cost'],
+link:'https://anthropic.com',scores:{q:95,s:83,c:65,l:88},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Anthropic Cloud + AWS Bedrock + GCP Vertex + Azure',selfHost:false},
+bench:{mmlu:88.3,humanEval:92.0,mtBench:9.0,gsm8k:96.4,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:5,government:4,manufacturing:4,technology:5}}},
+
+{id:'claude-haiku',name:'Claude 3.5 Haiku',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Code'],type:'commercial',
+desc:'Fastest Claude. Near-instant responses at very low cost for customer-facing apps.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch'],
+pricing:'$0.80/1M in · $4/1M out',pIn:0.80,pOut:4,tier:'low',ctx:'200K tokens',ctxN:200000,params:'~20B',lat:'~250ms',
+uses:['Real-time chatbots','Classification','High-volume APIs','Customer service'],
+pros:['Ultra-fast','200K context','Low cost'],cons:['Less capable for complex tasks'],
+link:'https://anthropic.com',scores:{q:83,s:97,c:92,l:83},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Anthropic Cloud + AWS Bedrock + GCP Vertex + Azure',selfHost:false},
+bench:{mmlu:80.0,humanEval:86.0,mtBench:8.6,gsm8k:88.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:4,government:3,manufacturing:3,technology:4}}},
+
+{id:'claude3-opus',name:'Claude 3 Opus',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Vision'],type:'commercial',
+desc:'Previous flagship Claude. Exceptional for nuanced analysis, long-form content and research.',
+langs:['English','Spanish','French','German','Chinese','Japanese','Portuguese','Italian','Korean','Arabic'],
+pricing:'$15/1M in · $75/1M out',pIn:15,pOut:75,tier:'high',ctx:'200K tokens',ctxN:200000,params:'~200B',lat:'~1s',
+uses:['Complex analysis','Research','Premium applications','Legal review'],
+pros:['High quality','200K context','Nuanced reasoning'],cons:['Most expensive Anthropic model'],
+link:'https://anthropic.com',scores:{q:91,s:65,c:30,l:80},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Anthropic Cloud + AWS Bedrock',selfHost:false},
+bench:{mmlu:86.8,humanEval:84.9,mtBench:9.0,gsm8k:95.0,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:3,education:5,government:4,manufacturing:3,technology:5}}},
+
+// ── Google ──────────────────────────────────────────────────────────────────
+{id:'gemini25',name:'Gemini 2.5 Pro',prov:'Google DeepMind',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision','Code'],type:'commercial',featured:true,
+desc:"Google's most capable model. State-of-the-art reasoning with 2M token context window.",
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],
+pricing:'$1.25/1M in (≤200K) · $2.50/1M in (>200K) · $10–15/1M out',pIn:1.25,pOut:10,tier:'mid',ctx:'1M tokens',ctxN:1000000,params:'~540B',lat:'~800ms',
+uses:['Long document processing','Video analysis','Complex reasoning','Code review','Research'],
+pros:['2M context','Native multimodal','Competitive pricing','Strong coding'],cons:['GCP dependency','Slower for very long context'],
+link:'https://ai.google.dev',scores:{q:96,s:74,c:82,l:90},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'GCP Vertex AI + Google AI Studio',selfHost:false},
+bench:{mmlu:91.5,humanEval:92.0,mtBench:9.3,gsm8k:97.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:5,government:4,manufacturing:4,technology:5}}},
+
+{id:'gemini20-flash',name:'Gemini 2.0 Flash',prov:'Google DeepMind',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision'],type:'commercial',
+desc:'Latest Flash model with real-time audio/video streaming. Ultra-fast with 1M context.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi'],
+pricing:'$0.10/1M in · $0.40/1M out',pIn:0.10,pOut:0.40,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~70B',lat:'~200ms',
+uses:['Real-time apps','High-volume APIs','Live streaming analysis','Mobile AI'],
+pros:['Cheapest frontier-class','1M context','Real-time audio/video'],cons:['Less capable than Pro'],
+link:'https://ai.google.dev',scores:{q:85,s:98,c:99,l:82},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'GCP Vertex AI + Google AI Studio',selfHost:false},
+bench:{mmlu:85.0,humanEval:86.0,mtBench:8.7,gsm8k:90.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:4,government:3,manufacturing:3,technology:4}}},
+
+{id:'gemini15-flash',name:'Gemini 1.5 Flash',prov:'Google DeepMind',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision'],type:'commercial',
+desc:'Fast and efficient with 1M context. Excellent cost-to-capability ratio.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'$0.075/1M in · $0.30/1M out',pIn:0.075,pOut:0.30,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~70B',lat:'~200ms',
+uses:['Summarization','Classification','Real-time chat','Batch processing'],
+pros:['Very cheap','1M context','Fast','Multimodal'],cons:['Less capable than Pro'],
+link:'https://ai.google.dev',scores:{q:83,s:97,c:98,l:82},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'GCP Vertex AI + Google AI Studio',selfHost:false},
+bench:{mmlu:83.0,humanEval:82.0,mtBench:8.5,gsm8k:88.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:4,government:3,manufacturing:3,technology:4}}},
+
+{id:'gemma3-27b',name:'Gemma 3-27B',prov:'Google',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision'],type:'open-source',
+desc:'Google open-source model with vision. Runs efficiently on single GPU. Strong multilingual.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish'],
+pricing:'Free (open weights) · Available on GCP / HuggingFace',pIn:0,pOut:0,tier:'free',ctx:'128K tokens',ctxN:128000,params:'27B',lat:'~400ms',
+uses:['On-premise AI','Edge deployment','Fine-tuning base','Open-source production'],
+pros:['Open weights','Vision capable','Strong multilingual','128K context'],cons:['Requires good GPU for inference'],
+link:'https://ai.google.dev/gemma',scores:{q:83,s:82,c:97,l:88},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:80.0,humanEval:78.0,mtBench:8.2,gsm8k:86.0,hellaSwag:90.0,domains:{healthcare:3,finance:4,legal:3,retail:4,education:4,government:4,manufacturing:3,technology:4}}},
+
+{id:'gemma2-9b',name:'Gemma 2-9B',prov:'Google',icon:'🔴',clr:'#ef4444',tasks:['LLM'],type:'open-source',
+desc:'Efficient 9B open model. Excellent performance-per-parameter. Runs on consumer hardware.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic'],
+pricing:'Free (open weights) · HuggingFace',pIn:0,pOut:0,tier:'free',ctx:'8K tokens',ctxN:8000,params:'9B',lat:'~150ms',
+uses:['Local AI deployment','Fine-tuning','Research','Constrained environments'],
+pros:['Open weights','Runs on RTX 3090','Very efficient','Strong for size'],cons:['8K context limit','Less capable than 27B'],
+link:'https://ai.google.dev/gemma',scores:{q:74,s:95,c:99,l:75},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:72.0,humanEval:68.0,mtBench:7.8,gsm8k:68.0,hellaSwag:87.0,domains:{healthcare:2,finance:3,legal:2,retail:3,education:3,government:3,manufacturing:2,technology:3}}},
+
+{id:'g-stt',name:'Google Speech-to-Text (Chirp)',prov:'Google Cloud',icon:'🔴',clr:'#ef4444',tasks:['STT'],type:'commercial',
+desc:'Chirp model for 100+ languages. Batch and streaming transcription with medical specialization.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Swedish','Polish'],
+pricing:'$0.016/min · Free: 60min/mo',pIn:0,pOut:0,tier:'low',pPerMin:0.016,ctx:'Streaming',ctxN:0,params:'Chirp',lat:'~200ms',
+uses:['Mobile apps','Medical transcription','Accessibility','100+ language STT'],
+pros:['Chirp accuracy','100+ languages','Medical specialization','GCP integration'],cons:['GCP dependency'],
+link:'https://cloud.google.com/speech-to-text',scores:{q:87,s:91,c:84,l:96},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Google Cloud (GCP)',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:3,legal:4,retail:3,education:4,government:5,manufacturing:3,technology:3}}},
+
+{id:'g-tts',name:'Google Cloud TTS (WaveNet)',prov:'Google Cloud',icon:'🔴',clr:'#ef4444',tasks:['TTS'],type:'commercial',
+desc:'380+ voices, 50+ languages. WaveNet technology for natural-sounding synthesis.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Swedish'],
+pricing:'$4/1M chars Neural2 · $16/1M Studio',pIn:0,pOut:0,tier:'low',pPerChar:0.000004,ctx:'N/A',ctxN:0,params:'WaveNet',lat:'~250ms',
+uses:['Mobile apps','IVR systems','E-learning','Smart devices'],
+pros:['50+ languages','WaveNet quality','Free tier','GCP ecosystem'],cons:['Studio voices expensive'],
+link:'https://cloud.google.com/text-to-speech',scores:{q:83,s:91,c:90,l:93},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Google Cloud (GCP)',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:2,legal:2,retail:4,education:4,government:3,manufacturing:2,technology:3}}},
+
+// ── Meta ────────────────────────────────────────────────────────────────────
+{id:'llama33',name:'Llama 3.3-70B',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['LLM','Code'],type:'open-source',featured:true,
+desc:"Meta's latest open-source flagship. Near GPT-4o quality with fully open weights and MIT license.",
+langs:['English','Spanish','French','German','Italian','Portuguese','Hindi','Chinese','Arabic','Japanese','Korean','Thai'],
+pricing:'Free (self-host) · $0.59/1M in via APIs',pIn:0.59,pOut:0.79,tier:'low',ctx:'128K tokens',ctxN:128000,params:'70B',lat:'~400ms',
+uses:['Open-source production','General purpose AI','Fine-tuning base','On-prem enterprise'],
+pros:['Fully open source','Near frontier quality','No vendor lock-in','Commercial use allowed'],cons:['Requires 140GB+ VRAM self-hosted'],
+link:'https://llama.meta.com',scores:{q:90,s:82,c:90,l:72},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:86.0,humanEval:88.4,mtBench:8.7,gsm8k:93.0,hellaSwag:92.0,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:5,manufacturing:4,technology:4}}},
+
+{id:'llama32-v',name:'Llama 3.2-90B Vision',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['LLM','Vision'],type:'open-source',
+desc:'Open-source multimodal with vision. Competitive with GPT-4o-mini. Fully open weights.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Hindi','Chinese','Arabic','Japanese','Korean'],
+pricing:'Free (self-host) · $0.90/1M via APIs',pIn:0.90,pOut:0.90,tier:'low',ctx:'128K tokens',ctxN:128000,params:'90B',lat:'~500ms',
+uses:['Open vision tasks','Document processing','Multimodal self-hosted apps'],
+pros:['Open source vision','No vendor lock-in','Strong multilingual'],cons:['Significant hardware needed'],
+link:'https://llama.meta.com',scores:{q:87,s:78,c:90,l:70},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:84.0,humanEval:82.0,mtBench:8.4,gsm8k:90.0,hellaSwag:91.0,domains:{healthcare:3,finance:4,legal:3,retail:4,education:4,government:4,manufacturing:3,technology:4}}},
+
+{id:'llama31-8b',name:'Llama 3.1-8B',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['LLM','Code'],type:'open-source',
+desc:'Runs on consumer hardware. Best open-source 8B model. Fast and efficient.',
+langs:['English','German','French','Italian','Portuguese','Hindi','Spanish','Thai'],
+pricing:'Free (self-host) · $0.10/1M via APIs',pIn:0.10,pOut:0.10,tier:'free',ctx:'128K tokens',ctxN:128000,params:'8B',lat:'<100ms',
+uses:['Edge deployment','Low-cost inference','Fine-tuning','Local AI assistants'],
+pros:['Runs on RTX 3090','Very fast','Free','128K context'],cons:['Limited multilingual','Less capable for complex tasks'],
+link:'https://llama.meta.com',scores:{q:75,s:98,c:99,l:50},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:73.0,humanEval:72.6,mtBench:8.1,gsm8k:84.0,hellaSwag:89.0,domains:{healthcare:2,finance:3,legal:2,retail:3,education:3,government:3,manufacturing:2,technology:3}}},
+
+{id:'seamless',name:'SeamlessM4T v2',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['STT','TTS','Translation'],type:'open-source',
+desc:'All-in-one speech translation: STT + MT + TTS in one model. 100+ languages open source.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Bengali','Tamil','Telugu','Swahili'],
+pricing:'Free (self-hosted)',pIn:0,pOut:0,tier:'free',ctx:'N/A',ctxN:0,params:'2.3B',lat:'~1s',
+uses:['Speech translation','Multilingual voice agents','Research','Low-resource language STT'],
+pros:['All-in-one STT+MT+TTS','100+ languages','Free','Single model'],cons:['Quality below specialized models','Requires GPU'],
+link:'https://github.com/facebookresearch/seamless_communication',scores:{q:76,s:72,c:99,l:99},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:2,legal:3,retail:3,education:4,government:5,manufacturing:2,technology:3}}},
+
+// ── Alibaba / Qwen ──────────────────────────────────────────────────────────
+{id:'qwen25-72b',name:'Qwen2.5-72B',prov:'Alibaba Cloud',icon:'☁️',clr:'#f97316',tasks:['LLM','Code','Translation'],type:'open-source',featured:true,
+desc:"Alibaba's flagship open LLM. Best Chinese model globally. Exceptional Arabic and multilingual performance — widely used for Arabic translation and multilingual NLP.",
+langs:['Chinese','English','Arabic','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Russian','Turkish','Vietnamese','Thai','Indonesian'],
+pricing:'Free (self-host) · $0.40/1M in via Alibaba APIs',pIn:0.40,pOut:1.20,tier:'low',ctx:'128K tokens',ctxN:128000,params:'72B',lat:'~400ms',
+uses:['Chinese NLP','Arabic AI','Arabic-English translation','Multilingual chatbots','Code generation','Government AI'],
+pros:['Best Chinese model','Strong Arabic','Open source','128K context','17 languages','Best open-source Arabic NLP'],cons:['LLM-based translation — not a dedicated MT engine (slower/costlier than Azure Translator for bulk)','Self-hosting requires 144GB+ VRAM'],
+link:'https://huggingface.co/Qwen',scores:{q:92,s:82,c:95,l:95},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Alibaba Cloud (DashScope) + Multi-cloud',selfHost:true},
+bench:{mmlu:86.1,humanEval:86.0,mtBench:8.9,gsm8k:95.0,hellaSwag:91.0,domains:{healthcare:4,finance:4,legal:4,retail:4,education:5,government:5,manufacturing:4,technology:4}}},
+
+{id:'qwen25-7b',name:'Qwen2.5-7B',prov:'Alibaba Cloud',icon:'☁️',clr:'#f97316',tasks:['LLM'],type:'open-source',
+desc:'Efficient 7B multilingual model for resource-constrained deployments. Good Chinese and Arabic understanding but use Qwen2.5-72B for translation quality.',
+langs:['Chinese','English','Arabic','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian'],
+pricing:'Free (self-host) · ~$0.05/1M via APIs',pIn:0.05,pOut:0.10,tier:'free',ctx:'128K tokens',ctxN:128000,params:'7B',lat:'~150ms',
+uses:['Edge deployment','Mobile apps','Chinese chatbots','Low-resource settings'],
+pros:['Very lightweight','Strong Chinese','Free','128K context'],cons:['Less capable than 72B'],
+link:'https://huggingface.co/Qwen',scores:{q:76,s:97,c:99,l:87},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:74.0,humanEval:72.0,mtBench:7.9,gsm8k:85.0,hellaSwag:87.0,domains:{healthcare:2,finance:3,legal:2,retail:3,education:3,government:4,manufacturing:2,technology:3}}},
+
+{id:'qwen25-vl',name:'Qwen2.5-VL-72B',prov:'Alibaba Cloud',icon:'☁️',clr:'#f97316',tasks:['LLM','Vision'],type:'open-source',
+desc:'Powerful multimodal model with document understanding and video analysis. State-of-the-art vision for open source.',
+langs:['Chinese','English','Arabic','Spanish','French','German','Japanese','Korean','Hindi','Portuguese'],
+pricing:'Free (self-host) · Via API',pIn:0.40,pOut:1.20,tier:'low',ctx:'128K tokens',ctxN:128000,params:'72B',lat:'~600ms',
+uses:['Document OCR','Chart understanding','Medical imaging','Video analysis','Chinese visual AI'],
+pros:['Best open-source vision for Chinese','Document understanding','Video support','Open weights'],cons:['High memory requirement'],
+link:'https://huggingface.co/Qwen',scores:{q:88,s:75,c:90,l:88},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Alibaba Cloud (DashScope)',selfHost:true},
+bench:{mmlu:82.0,humanEval:80.0,mtBench:8.5,gsm8k:91.0,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:4,manufacturing:4,technology:4}}},
+
+{id:'qwen25-coder',name:'Qwen2.5-Coder-32B',prov:'Alibaba Cloud',icon:'☁️',clr:'#f97316',tasks:['Code','LLM'],type:'open-source',
+desc:'Specialized coding model. Matches GPT-4o on coding benchmarks. Best open-source code model.',
+langs:['English','Chinese','French','German','Spanish','Japanese','Portuguese','Arabic','Russian','Korean'],
+pricing:'Free (self-host) · ~$0.30/1M via APIs',pIn:0.30,pOut:0.60,tier:'low',ctx:'128K tokens',ctxN:128000,params:'32B',lat:'~300ms',
+uses:['Code generation','Code review','Bug fixing','DevOps automation','Technical documentation'],
+pros:['Best open code model','Multi-language coding','128K context','Strong Chinese+English code'],cons:['Requires 64GB+ VRAM'],
+link:'https://huggingface.co/Qwen',scores:{q:88,s:85,c:95,l:78},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:80.0,humanEval:92.7,mtBench:8.6,gsm8k:92.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:3,education:4,government:3,manufacturing:5,technology:5}}},
+
+// ── Cohere ──────────────────────────────────────────────────────────────────
+{id:'cohere-rplus',name:'Command R+',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['LLM','Code','Translation'],type:'commercial',featured:true,
+desc:'Enterprise RAG, tool-use, and multilingual translation model. Natively supports Arabic-English and 10-language translation with grounded citations. Widely used for Arabic enterprise NLP.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'$2.50/1M in · $10/1M out',pIn:2.50,pOut:10,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'104B',lat:'~600ms',
+uses:['Arabic-English translation','Enterprise RAG','Document Q&A','Agentic workflows','Customer support AI'],
+pros:['RAG-optimized','Native Arabic translation (10 langs)','Tool use','Grounded citations','Enterprise SLA','On-prem available'],cons:['LLM-based translation — slower/costlier than dedicated MT (DeepL/Azure) for high volume','Less general than GPT-4o'],
+link:'https://cohere.com',scores:{q:88,s:80,c:68,l:82},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Cohere Cloud + Azure + AWS',selfHost:false},
+bench:{mmlu:80.0,humanEval:78.0,mtBench:8.5,gsm8k:88.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:4}}},
+
+{id:'cohere-r',name:'Command R',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['LLM'],type:'commercial',
+desc:'Efficient RAG model with low cost and 10 language support. Primarily for RAG and Q&A — use Command R+ or Command A for translation tasks.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'$0.15/1M in · $0.60/1M out',pIn:0.15,pOut:0.60,tier:'low',ctx:'128K tokens',ctxN:128000,params:'35B',lat:'~400ms',
+uses:['RAG pipelines','Document summarization','Chatbots','Classification'],
+pros:['Very low cost','RAG-optimized','128K context'],cons:['10 language limit'],
+link:'https://cohere.com',scores:{q:80,s:88,c:96,l:65},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Cohere Cloud + Azure + AWS',selfHost:false},
+bench:{mmlu:76.0,humanEval:72.0,mtBench:8.0,gsm8k:82.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:4,retail:4,education:3,government:4,manufacturing:3,technology:4}}},
+
+{id:'cohere-cmd-a',name:'Command A',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['LLM','Code','Translation'],type:'commercial',
+desc:'Latest Cohere model optimized for agentic tasks, multi-step reasoning, and multilingual translation across 12 languages including Arabic.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Dutch','Russian'],
+pricing:'$2.50/1M in · $10/1M out',pIn:2.50,pOut:10,tier:'mid',ctx:'256K tokens',ctxN:256000,params:'111B',lat:'~600ms',
+uses:['Agentic workflows','Multi-step reasoning','Enterprise automation','Complex Q&A'],
+pros:['256K context','Agentic-optimized','Strong tool use','Enterprise grade'],cons:['Newer, less tested at scale'],
+link:'https://cohere.com',scores:{q:90,s:78,c:66,l:84},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Cohere Cloud + Azure + AWS + GCP',selfHost:false},
+bench:{mmlu:82.0,humanEval:80.0,mtBench:8.7,gsm8k:90.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:5}}},
+
+{id:'cohere-embed',name:'Embed v3 Multilingual',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['Embedding'],type:'commercial',featured:true,
+desc:'State-of-the-art multilingual embeddings. 100+ languages. Top MTEB scores for cross-lingual search.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish','Danish','Finnish','Norwegian'],
+pricing:'$0.10/1M tokens',pIn:0.10,pOut:0,tier:'low',ctx:'512 tokens',ctxN:512,params:'~600M',lat:'~50ms',
+uses:['Multilingual semantic search','RAG embeddings','Cross-lingual retrieval','Clustering'],
+pros:['100+ languages','Best multilingual embeddings','Low cost','Top MTEB scores'],cons:['Embedding only','512 token context'],
+link:'https://cohere.com/embeddings',scores:{q:95,s:98,c:95,l:99},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Cohere Cloud + Azure + AWS',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:5,education:5,government:5,manufacturing:4,technology:5}}},
+
+// ── Mistral ─────────────────────────────────────────────────────────────────
+{id:'mistral-large',name:'Mistral Large 2',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['LLM','Code'],type:'commercial',
+desc:'European frontier model with strong French, German, Spanish, Italian. GDPR-by-design.',
+langs:['English','French','Spanish','German','Italian','Portuguese','Dutch','Russian','Chinese','Japanese','Korean','Arabic','Hindi'],
+pricing:'$3/1M in · $9/1M out',pIn:3,pOut:9,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'123B',lat:'~500ms',
+uses:['European language apps','Code generation','GDPR-compliant AI','Enterprise EU'],
+pros:['Strong European languages','GDPR-friendly','Function calling','EU data residency option'],cons:['Less multilingual than Qwen for Asian languages'],
+link:'https://mistral.ai',scores:{q:88,s:83,c:65,l:80},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Mistral Cloud (La Plateforme) + Azure + AWS',selfHost:false},
+bench:{mmlu:84.0,humanEval:92.1,mtBench:8.9,gsm8k:91.0,hellaSwag:89.0,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:5,manufacturing:4,technology:5}}},
+
+{id:'mistral-nemo',name:'Mistral NeMo 12B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['LLM'],type:'open-source',
+desc:'12B open model with 128K context. Best open model for European languages. Built with NVIDIA.',
+langs:['English','French','Spanish','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic'],
+pricing:'Free (self-host) · $0.15/1M via APIs',pIn:0.15,pOut:0.15,tier:'free',ctx:'128K tokens',ctxN:128000,params:'12B',lat:'~200ms',
+uses:['European language deployments','Cost-efficient EU AI','Self-hosted assistant'],
+pros:['Great European languages','128K context','Open weights','NVIDIA-optimized'],cons:['Less capable than Large 2'],
+link:'https://mistral.ai',scores:{q:78,s:92,c:95,l:72},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:75.0,humanEval:75.0,mtBench:8.2,gsm8k:80.0,hellaSwag:87.0,domains:{healthcare:3,finance:3,legal:3,retail:3,education:3,government:4,manufacturing:3,technology:3}}},
+
+{id:'mixtral',name:'Mixtral 8x22B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['LLM','Code'],type:'open-source',
+desc:'Mixture-of-Experts open model. 141B params (39B active). Excellent cost-quality for self-hosting.',
+langs:['English','French','Spanish','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic'],
+pricing:'Free (self-host) · $1.2/1M via APIs',pIn:1.2,pOut:1.2,tier:'low',ctx:'65K tokens',ctxN:65000,params:'141B (MoE, 39B active)',lat:'~400ms',
+uses:['Self-hosted production','Code generation','European AI','Research'],
+pros:['Efficient MoE architecture','Strong coding','Open source'],cons:['Requires 4x A100 for self-hosting'],
+link:'https://mistral.ai',scores:{q:85,s:84,c:88,l:72},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:77.8,humanEval:75.0,mtBench:8.7,gsm8k:88.0,hellaSwag:88.7,domains:{healthcare:3,finance:4,legal:3,retail:3,education:3,government:4,manufacturing:3,technology:4}}},
+
+{id:'pixtral',name:'Pixtral Large 124B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['Vision','LLM'],type:'open-source',
+desc:'Open-weight multimodal. Multiple images per request. Strong document understanding.',
+langs:['English','French','German','Spanish','Italian','Portuguese','Chinese','Japanese'],
+pricing:'Free (self-host) · $2/1M in via API',pIn:2,pOut:6,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'124B',lat:'~1s',
+uses:['Document parsing','Multi-image analysis','Visual RAG','Open vision models'],
+pros:['Open source vision','Multi-image','European compliant','Long context'],cons:['Significant hardware needed'],
+link:'https://mistral.ai',scores:{q:86,s:72,c:85,l:65},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:78.0,humanEval:76.0,mtBench:8.3,gsm8k:86.0,hellaSwag:null,domains:{healthcare:3,finance:3,legal:4,retail:3,education:3,government:3,manufacturing:4,technology:4}}},
+
+// ── DeepSeek ─────────────────────────────────────────────────────────────────
+{id:'deepseek-v3',name:'DeepSeek V3',prov:'DeepSeek',icon:'🔬',clr:'#38bdf8',tasks:['LLM','Code'],type:'open-source',featured:true,
+desc:'Rivals GPT-4o at fraction of cost. Exceptional code and math. 671B MoE open weights.',
+langs:['Chinese','English','Arabic','Spanish','French','German','Japanese','Korean','Russian','Italian','Portuguese'],
+pricing:'Free (self-host) · $0.14/1M in · $0.28/1M out',pIn:0.14,pOut:0.28,tier:'low',ctx:'128K tokens',ctxN:128000,params:'671B MoE',lat:'~400ms',
+uses:['Code generation','Math reasoning','Chinese NLP','Cost-sensitive production'],
+pros:['Cheapest frontier-class','Excellent coding','Strong Chinese','Open weights'],cons:['Privacy considerations for some use cases'],
+link:'https://deepseek.com',scores:{q:93,s:82,c:99,l:78},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'DeepSeek Cloud + Multi-cloud APIs',selfHost:true},
+bench:{mmlu:88.5,humanEval:91.6,mtBench:8.9,gsm8k:97.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:4,education:4,government:3,manufacturing:5,technology:5}}},
+
+{id:'deepseek-r1',name:'DeepSeek R1',prov:'DeepSeek',icon:'🔬',clr:'#38bdf8',tasks:['LLM','Code'],type:'open-source',
+desc:'Open-source reasoning model rivaling o1. Transparent chain-of-thought reasoning.',
+langs:['Chinese','English','Spanish','French','German','Japanese','Korean','Arabic'],
+pricing:'Free (self-host) · $0.55/1M in · $2.19/1M out',pIn:0.55,pOut:2.19,tier:'low',ctx:'128K tokens',ctxN:128000,params:'671B MoE',lat:'10–60s',
+uses:['Complex reasoning','Math','Code debugging','Research','Scientific analysis'],
+pros:['Open-source o1 alternative','Transparent thinking','Excellent reasoning'],cons:['Slow','High compute requirements'],
+link:'https://deepseek.com',scores:{q:95,s:40,c:85,l:68},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'DeepSeek Cloud',selfHost:true},
+bench:{mmlu:90.8,humanEval:92.5,mtBench:9.2,gsm8k:97.3,hellaSwag:null,domains:{healthcare:4,finance:5,legal:4,retail:2,education:5,government:3,manufacturing:5,technology:5}}},
+
+// ── Microsoft / Azure ────────────────────────────────────────────────────────
+{id:'phi4',name:'Phi-4 (14B)',prov:'Microsoft',icon:'🔷',clr:'#38bdf8',tasks:['LLM','Code'],type:'open-source',
+desc:'Small but mighty. 14B parameters outperform many larger models on STEM and reasoning.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Arabic'],
+pricing:'Free (self-host) · $0.07/1M via Azure AI',pIn:0.07,pOut:0.07,tier:'free',ctx:'16K tokens',ctxN:16000,params:'14B',lat:'~150ms',
+uses:['Device-side AI','Math & STEM','Code assistance','On-device enterprise AI'],
+pros:['Exceptional reasoning for size','Runs on laptops','Very low cost','Microsoft ecosystem'],cons:['Short context (16K)'],
+link:'https://azure.microsoft.com/en-us/products/phi',scores:{q:82,s:97,c:98,l:58},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Azure AI',selfHost:true},
+bench:{mmlu:84.8,humanEval:82.0,mtBench:8.6,gsm8k:91.0,hellaSwag:88.0,domains:{healthcare:3,finance:4,legal:3,retail:3,education:4,government:3,manufacturing:4,technology:5}}},
+
+{id:'phi4-mini',name:'Phi-4-mini (3.8B)',prov:'Microsoft',icon:'🔷',clr:'#38bdf8',tasks:['LLM'],type:'open-source',
+desc:'Ultra-compact model optimized for mobile and edge devices. Released Feb 2025. Remarkable reasoning for 3.8B params with full 128K context.',
+langs:['English','Spanish','French','German','Chinese','Japanese','Arabic','Portuguese'],
+pricing:'Free (open weights) · Very cheap via Azure AI',pIn:0.03,pOut:0.03,tier:'free',ctx:'128K tokens',ctxN:128000,params:'3.8B',lat:'<50ms',
+uses:['Mobile AI','IoT deployment','Edge inference','Offline applications'],
+pros:['Runs on phones','Tiny memory footprint','Free','Strong reasoning for size'],cons:['Limited capability','Short context'],
+link:'https://azure.microsoft.com/en-us/products/phi',scores:{q:70,s:99,c:99,l:48},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Azure AI',selfHost:true},
+bench:{mmlu:76.0,humanEval:70.0,mtBench:7.5,gsm8k:78.0,hellaSwag:82.0,domains:{healthcare:2,finance:2,legal:2,retail:3,education:3,government:2,manufacturing:3,technology:3}}},
+
+{id:'azure-tts',name:'Azure Neural TTS',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['TTS'],type:'commercial',
+desc:'500+ neural voices, 140+ languages. Enterprise-grade with custom voice training.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish','Russian','Turkish','Indonesian','Thai','Vietnamese'],
+pricing:'$4/1M chars · Free: 0.5M chars/mo',pIn:0,pOut:0,tier:'low',pPerChar:0.000004,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'~200ms',
+uses:['Enterprise apps','Call centers','Accessibility tools','Global products'],
+pros:['140+ languages','Custom voice','Low cost','SSML support','HIPAA compliant'],cons:['Azure lock-in'],
+link:'https://azure.microsoft.com',scores:{q:82,s:94,c:95,l:99},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Microsoft Azure',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:4,legal:4,retail:5,education:5,government:5,manufacturing:4,technology:4}}},
+
+{id:'azure-stt',name:'Azure Speech-to-Text',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['STT'],type:'commercial',
+desc:'100+ languages, custom models, real-time transcription. HIPAA and SOC2 compliant.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish','Russian','Turkish','Indonesian','Thai','Danish','Finnish','Norwegian'],
+pricing:'$1/hr · Free: 5hr audio/mo',pIn:0,pOut:0,tier:'low',pPerMin:0.0167,ctx:'Streaming',ctxN:0,params:'Proprietary',lat:'~300ms',
+uses:['Enterprise apps','Compliance recording','Call center analytics','HIPAA transcription'],
+pros:['100+ languages','Custom models','Real-time','Enterprise compliance','Batch available'],cons:['Azure ecosystem dependency'],
+link:'https://azure.microsoft.com',scores:{q:85,s:90,c:85,l:99},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Microsoft Azure',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:4,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:4}}},
+
+{id:'azure-trans',name:'Azure Translator',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['Translation'],type:'commercial',
+desc:'100+ language neural translation. Document translation and real-time. GDPR compliant.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish','Danish','Finnish','Norwegian','Ukrainian','Thai','Vietnamese'],
+pricing:'$10/1M chars · Free: 2M chars/mo',pIn:0,pOut:0,tier:'low',pPerChar:0.00001,ctx:'50K chars',ctxN:0,params:'Proprietary',lat:'<100ms',
+uses:['Document translation','Real-time translation','Multilingual apps','Enterprise localization'],
+pros:['100+ languages','Low cost','Document format support','GDPR compliant'],cons:['Not LLM quality for nuanced text'],
+link:'https://azure.microsoft.com',scores:{q:82,s:97,c:92,l:99},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Microsoft Azure',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:5,education:5,government:5,manufacturing:4,technology:4}}},
+
+// ── AWS / Amazon ─────────────────────────────────────────────────────────────
+{id:'amazon-nova-pro',name:'Amazon Nova Pro',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['LLM','Vision'],type:'commercial',
+desc:"Amazon's top multimodal model. Strong accuracy and reasoning. Optimized for enterprise workloads on AWS.",
+langs:['English','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Chinese','Arabic','Hindi'],
+pricing:'$0.80/1M in · $3.20/1M out',pIn:0.80,pOut:3.20,tier:'low',ctx:'300K tokens',ctxN:300000,params:'Proprietary',lat:'~700ms',
+uses:['AWS enterprise apps','Document analysis','Multimodal workflows','Automated reasoning'],
+pros:['AWS integration','300K context','Low cost','Multimodal','SOC2/HIPAA eligible'],cons:['AWS-only via Bedrock','Less known ecosystem'],
+link:'https://aws.amazon.com/bedrock/nova',scores:{q:86,s:78,c:88,l:78},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS Bedrock',selfHost:false},
+bench:{mmlu:83.0,humanEval:75.0,mtBench:8.4,gsm8k:88.0,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:4,manufacturing:4,technology:4}}},
+
+{id:'amazon-nova-lite',name:'Amazon Nova Lite',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['LLM','Vision'],type:'commercial',
+desc:'Fast, cost-effective multimodal model for high-throughput workloads.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Chinese','Arabic'],
+pricing:'$0.06/1M in · $0.24/1M out',pIn:0.06,pOut:0.24,tier:'low',ctx:'300K tokens',ctxN:300000,params:'Proprietary',lat:'~300ms',
+uses:['High-volume processing','Content classification','Real-time apps','Cost-sensitive AWS workloads'],
+pros:['Very cheap','300K context','Fast','Multimodal','AWS native'],cons:['Less capable than Nova Pro'],
+link:'https://aws.amazon.com/bedrock/nova',scores:{q:80,s:92,c:98,l:72},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS Bedrock',selfHost:false},
+bench:{mmlu:78.0,humanEval:68.0,mtBench:8.0,gsm8k:82.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:3,government:3,manufacturing:3,technology:4}}},
+
+{id:'amazon-nova-micro',name:'Amazon Nova Micro',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['LLM'],type:'commercial',
+desc:'Fastest and cheapest Amazon Nova. Text-only for latency-critical and high-throughput tasks.',
+langs:['English','Spanish','French','German','Portuguese','Japanese','Chinese'],
+pricing:'$0.035/1M in · $0.14/1M out',pIn:0.035,pOut:0.14,tier:'low',ctx:'128K tokens',ctxN:128000,params:'Proprietary',lat:'<150ms',
+uses:['Ultra-high-volume text tasks','Simple classification','Cost-critical automation'],
+pros:['Cheapest Amazon model','Ultra-fast','AWS native'],cons:['Text only','Limited capability'],
+link:'https://aws.amazon.com/bedrock/nova',scores:{q:72,s:98,c:99,l:58},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS Bedrock',selfHost:false},
+bench:{mmlu:70.0,humanEval:60.0,mtBench:7.5,gsm8k:72.0,hellaSwag:null,domains:{healthcare:2,finance:3,legal:2,retail:4,education:3,government:2,manufacturing:2,technology:3}}},
+
+{id:'amazon-titan',name:'Amazon Titan Text Premier',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['LLM'],type:'commercial',
+desc:'AWS-native LLM optimized for enterprise use cases. Good AWS service integrations.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Japanese'],
+pricing:'$0.50/1M in · $1.50/1M out',pIn:0.50,pOut:1.50,tier:'low',ctx:'32K tokens',ctxN:32000,params:'Proprietary',lat:'~400ms',
+uses:['AWS enterprise workloads','Internal tools','Content generation','Summarization'],
+pros:['Deep AWS integration','Enterprise compliance','Simple API'],cons:['Less capable than frontier models','Short context'],
+link:'https://aws.amazon.com/bedrock/titan',scores:{q:74,s:86,c:90,l:58},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS Bedrock',selfHost:false},
+bench:{mmlu:72.0,humanEval:62.0,mtBench:7.8,gsm8k:75.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:3,education:3,government:4,manufacturing:3,technology:4}}},
+
+{id:'amazon-transcribe',name:'Amazon Transcribe',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['STT'],type:'commercial',
+desc:'Automatic speech recognition with speaker diarization, PII redaction, and medical vocabulary.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Chinese','Arabic','Hindi','Dutch'],
+pricing:'$0.024/min standard · $0.009/min batch',pIn:0,pOut:0,tier:'low',pPerMin:0.024,ctx:'Streaming',ctxN:0,params:'Proprietary',lat:'~500ms real-time',
+uses:['Call center analytics','Medical transcription','Compliance recording','AWS-native STT'],
+pros:['AWS integration','PII redaction','Medical vocabulary','Speaker labels','Custom vocab'],cons:['More expensive than alternatives','AWS-only'],
+link:'https://aws.amazon.com/transcribe',scores:{q:80,s:82,c:78,l:78},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:4,legal:5,retail:3,education:3,government:5,manufacturing:3,technology:3}}},
+
+{id:'amazon-polly',name:'Amazon Polly Neural',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['TTS'],type:'commercial',
+desc:'Neural TTS with 60+ voices in 30+ languages. Real-time streaming.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Romanian','Turkish'],
+pricing:'$4/1M chars Neural · $16/1M Long-form',pIn:0,pOut:0,tier:'low',pPerChar:0.000004,ctx:'3000 chars',ctxN:0,params:'Proprietary',lat:'~300ms',
+uses:['AWS workloads','Podcasts','E-learning','IVR systems','Alexa skills'],
+pros:['AWS integration','SSML support','Long-form synthesis','Lexicon support'],cons:['Less natural than ElevenLabs'],
+link:'https://aws.amazon.com/polly',scores:{q:78,s:89,c:90,l:82},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:2,retail:4,education:4,government:3,manufacturing:3,technology:3}}},
+
+// ── IBM ──────────────────────────────────────────────────────────────────────
+{id:'ibm-granite-8b',name:'IBM Granite 3.1-8B',prov:'IBM',icon:'🔵',clr:'#1d4ed8',tasks:['LLM','Code'],type:'open-source',
+desc:'IBM enterprise open-source LLM. Optimized for business tasks, coding, and RAG. watsonx.ai native.',
+langs:['English','Spanish','French','German','Portuguese','Arabic','Japanese','Korean','Chinese','Italian'],
+pricing:'Free (open weights) · watsonx.ai plans',pIn:0.15,pOut:0.60,tier:'low',ctx:'128K tokens',ctxN:128000,params:'8B',lat:'~200ms',
+uses:['Enterprise automation','Code assistance','Document summarization','Healthcare AI','Financial analysis'],
+pros:['Enterprise-grade safety','IBM support','Open weights','watsonx integration','128K context'],cons:['Smaller capability than 70B models'],
+link:'https://www.ibm.com/watsonx',scores:{q:74,s:92,c:95,l:72},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'IBM Cloud (watsonx.ai)',selfHost:true},
+bench:{mmlu:73.0,humanEval:72.0,mtBench:7.8,gsm8k:78.0,hellaSwag:85.0,domains:{healthcare:4,finance:5,legal:4,retail:3,education:3,government:5,manufacturing:4,technology:4}}},
+
+{id:'ibm-granite-3b',name:'IBM Granite 3.1-3B',prov:'IBM',icon:'🔵',clr:'#1d4ed8',tasks:['LLM'],type:'open-source',
+desc:'Compact IBM enterprise model. Runs on edge/embedded devices. Trusted AI principles baked in.',
+langs:['English','Spanish','French','German','Portuguese','Arabic','Japanese','Chinese'],
+pricing:'Free (open weights) · watsonx.ai plans',pIn:0.08,pOut:0.20,tier:'free',ctx:'128K tokens',ctxN:128000,params:'3B',lat:'<100ms',
+uses:['Edge enterprise AI','IoT/embedded AI','Form processing','Simple classification'],
+pros:['Edge-optimized','Enterprise trust','IBM support','Open weights'],cons:['Limited complex reasoning'],
+link:'https://www.ibm.com/watsonx',scores:{q:64,s:98,c:99,l:60},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'IBM Cloud (watsonx.ai)',selfHost:true},
+bench:{mmlu:64.0,humanEval:58.0,mtBench:7.2,gsm8k:68.0,hellaSwag:80.0,domains:{healthcare:3,finance:4,legal:3,retail:2,education:2,government:4,manufacturing:3,technology:3}}},
+
+{id:'ibm-watson-stt',name:'IBM Watson STT',prov:'IBM',icon:'🔵',clr:'#1d4ed8',tasks:['STT'],type:'commercial',
+desc:'Enterprise STT with domain-specific language models. Strong compliance and on-prem options.',
+langs:['English','Spanish','French','German','Portuguese','Arabic','Japanese','Korean','Chinese','Dutch'],
+pricing:'$0.02/min (Lite) · Custom enterprise pricing',pIn:0,pOut:0,tier:'low',pPerMin:0.02,ctx:'Streaming',ctxN:0,params:'Proprietary',lat:'~400ms',
+uses:['Call center transcription','Compliance recording','Healthcare documentation','On-prem STT'],
+pros:['On-premise deployment','Custom language models','IBM enterprise support','HIPAA'],cons:['Higher cost than newer competitors','More complex setup'],
+link:'https://www.ibm.com/cloud/watson-speech-to-text',scores:{q:78,s:82,c:72,l:72},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'IBM Cloud',selfHost:true},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:3,education:3,government:5,manufacturing:4,technology:3}}},
+
+// ── TII UAE / Falcon ─────────────────────────────────────────────────────────
+{id:'falcon3-40b',name:'Falcon 3-40B',prov:'TII UAE',icon:'🇦🇪',clr:'#22c55e',tasks:['LLM','Code'],type:'open-source',
+desc:"UAE's TII flagship open model. Top open-source performance at 40B. Strong Arabic and multilingual.",
+langs:['Arabic','English','French','Spanish','German','Portuguese','Italian','Chinese','Japanese','Korean','Dutch','Russian'],
+pricing:'Free (open weights, Apache 2.0)',pIn:0,pOut:0,tier:'free',ctx:'32K tokens',ctxN:32000,params:'40B',lat:'~400ms',
+uses:['Arabic NLP','Government AI (GCC region)','Open-source production','Research'],
+pros:['Best Arabic open model','Apache 2.0 license','Strong multilingual','UAE/GCC sovereign AI'],cons:['32K context limit','Less GPU-efficient than MoE models'],
+link:'https://huggingface.co/tiiuae',scores:{q:83,s:80,c:98,l:85},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:82.0,humanEval:80.0,mtBench:8.2,gsm8k:82.0,hellaSwag:88.0,domains:{healthcare:3,finance:4,legal:4,retail:3,education:4,government:5,manufacturing:3,technology:4}}},
+
+{id:'falcon3-7b',name:'Falcon 3-7B',prov:'TII UAE',icon:'🇦🇪',clr:'#22c55e',tasks:['LLM'],type:'open-source',
+desc:'Compact UAE open model. Excellent for Arabic language tasks on limited hardware.',
+langs:['Arabic','English','French','Spanish','German','Portuguese','Italian','Chinese'],
+pricing:'Free (open weights, Apache 2.0)',pIn:0,pOut:0,tier:'free',ctx:'32K tokens',ctxN:32000,params:'7B',lat:'~150ms',
+uses:['Arabic chatbots','Edge Arabic AI','Government edge deployment','Research'],
+pros:['Best Arabic 7B model','Apache 2.0','Runs on modest hardware'],cons:['Limited context','Less multilingual than 40B'],
+link:'https://huggingface.co/tiiuae',scores:{q:72,s:95,c:99,l:76},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:72.0,humanEval:65.0,mtBench:7.6,gsm8k:72.0,hellaSwag:83.0,domains:{healthcare:2,finance:3,legal:3,retail:3,education:3,government:5,manufacturing:2,technology:3}}},
+
+// ── AI21 Labs ─────────────────────────────────────────────────────────────────
+{id:'jamba15',name:'Jamba 1.5 Large',prov:'AI21 Labs',icon:'🧬',clr:'#7c3aed',tasks:['LLM'],type:'commercial',
+desc:'Hybrid SSM-Transformer (Mamba) architecture. 256K context with efficient long-document processing.',
+langs:['English','Spanish','French','German','Portuguese','Arabic','Italian','Dutch'],
+pricing:'$2/1M in · $8/1M out',pIn:2,pOut:8,tier:'mid',ctx:'256K tokens',ctxN:256000,params:'94B active',lat:'~500ms',
+uses:['Long document Q&A','Legal contract review','Financial reports','Enterprise document AI'],
+pros:['256K efficient context','Hybrid architecture','Lower memory for long context','Strong at summarization'],cons:['Less multilingual','Newer architecture'],
+link:'https://www.ai21.com',scores:{q:84,s:82,c:72,l:68},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AI21 Cloud + AWS Bedrock + Azure',selfHost:false},
+bench:{mmlu:80.0,humanEval:76.0,mtBench:8.3,gsm8k:86.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:3,education:4,government:4,manufacturing:3,technology:4}}},
+
+// ── xAI ──────────────────────────────────────────────────────────────────────
+{id:'grok3',name:'Grok-3',prov:'xAI',icon:'⚡',clr:'#eab308',tasks:['LLM','Code'],type:'commercial',
+desc:"xAI's model with real-time X/Twitter data access. Strong reasoning and coding capabilities.",
+langs:['English','Chinese','Spanish','French','German','Japanese','Korean','Portuguese','Arabic'],
+pricing:'Via X Premium+ / API (beta) ~$3/1M in',pIn:3,pOut:15,tier:'mid',ctx:'131K tokens',ctxN:131000,params:'~300B',lat:'~600ms',
+uses:['Real-time social analysis','Coding','Reasoning','Research with current data'],
+pros:['Real-time X data','Strong reasoning','Large context'],cons:['Limited API access','Privacy concerns'],
+link:'https://x.ai',scores:{q:91,s:80,c:60,l:70},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'xAI Cloud',selfHost:false},
+bench:{mmlu:87.0,humanEval:88.0,mtBench:8.9,gsm8k:93.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:4,education:4,government:2,manufacturing:3,technology:5}}},
+
+// ── NVIDIA ────────────────────────────────────────────────────────────────────
+{id:'nemotron',name:'Llama-3.1-Nemotron-70B',prov:'NVIDIA',icon:'🟩',clr:'#76b900',tasks:['LLM','Code'],type:'open-source',
+desc:"NVIDIA-tuned Llama 3.1-70B. Optimized for instruction-following and reward modeling. Top open RLHF model.",
+langs:['English','Spanish','French','German','Italian','Portuguese','Hindi','Chinese','Arabic','Japanese','Korean','Thai'],
+pricing:'Free (open weights) · Available via AWS, Azure, GCP',pIn:0.80,pOut:0.80,tier:'low',ctx:'128K tokens',ctxN:128000,params:'70B',lat:'~400ms',
+uses:['Instruction-following','RLHF reward modeling','Open-source production','NVIDIA GPU optimization'],
+pros:['NVIDIA-optimized inference','Top reward model','Open weights','Strong reasoning'],cons:['Requires NVIDIA GPU for best performance'],
+link:'https://build.nvidia.com/nvidia/llama-3_1-nemotron-70b-instruct',scores:{q:91,s:82,c:90,l:72},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'NVIDIA NIM + AWS + Azure + GCP',selfHost:true},
+bench:{mmlu:85.0,humanEval:88.0,mtBench:8.98,gsm8k:95.0,hellaSwag:92.0,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:4,manufacturing:5,technology:5}}},
+
+// ── Allen AI ──────────────────────────────────────────────────────────────────
+{id:'olmo2',name:'OLMo 2-13B',prov:'Allen AI',icon:'🔭',clr:'#6366f1',tasks:['LLM'],type:'open-source',
+desc:'Fully open AI model — open weights AND open training data. Best for reproducible research.',
+langs:['English','Spanish','French','German','Portuguese','Italian','Dutch','Russian'],
+pricing:'Free (Apache 2.0 — weights + data)',pIn:0,pOut:0,tier:'free',ctx:'4K tokens',ctxN:4000,params:'13B',lat:'~250ms',
+uses:['Academic research','Reproducibility','AI safety research','Open training experiments'],
+pros:['Fully open (weights + data + code)','Apache 2.0','Excellent for research'],cons:['Short context','Less capable than closed models'],
+link:'https://allenai.org/olmo',scores:{q:70,s:90,c:99,l:55},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:69.0,humanEval:62.0,mtBench:7.4,gsm8k:70.0,hellaSwag:82.0,domains:{healthcare:2,finance:2,legal:2,retail:2,education:3,government:2,manufacturing:2,technology:3}}},
+
+// ── BigScience ────────────────────────────────────────────────────────────────
+{id:'bloom',name:'BLOOM-176B',prov:'BigScience',icon:'🌸',clr:'#ec4899',tasks:['LLM'],type:'open-source',
+desc:'Massive open multilingual model trained collaboratively. 59 languages including many low-resource.',
+langs:['English','French','Spanish','Portuguese','Chinese','Arabic','Hindi','Bengali','Russian','Urdu','Indonesian','Vietnamese','Thai','Swahili','Yoruba','Igbo'],
+pricing:'Free (open weights via HuggingFace)',pIn:0,pOut:0,tier:'free',ctx:'2K tokens',ctxN:2000,params:'176B',lat:'~1s',
+uses:['Multilingual research','Low-resource language AI','Open science','Academic NLP'],
+pros:['59 languages','Open weights','Low-resource languages','Community-trained'],cons:['Very short context','Large memory requirement','Outdated vs newer models'],
+link:'https://huggingface.co/bigscience/bloom',scores:{q:62,s:60,c:99,l:95},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:58.0,humanEval:40.0,mtBench:6.8,gsm8k:35.0,hellaSwag:73.0,domains:{healthcare:2,finance:2,legal:2,retail:2,education:3,government:3,manufacturing:2,technology:2}}},
+
+// ── Baidu ─────────────────────────────────────────────────────────────────────
+{id:'ernie4',name:'ERNIE 4.5',prov:'Baidu',icon:'🐉',clr:'#0ea5e9',tasks:['LLM','Vision'],type:'commercial',
+desc:"Baidu's flagship AI with deep Chinese-language expertise and internet search integration.",
+langs:['Chinese','English','Japanese','Korean','French','Spanish','Arabic','Portuguese'],
+pricing:'~$0.35/1M in · $1.40/1M out (via Baidu Cloud)',pIn:0.35,pOut:1.40,tier:'low',ctx:'128K tokens',ctxN:128000,params:'Proprietary',lat:'~600ms',
+uses:['Chinese enterprise AI','Search augmented generation','Chinese document processing','Baidu ecosystem'],
+pros:['Best Chinese language model','Baidu search integration','Strong Chinese culture understanding'],cons:['Limited international access','China deployment focus'],
+link:'https://cloud.baidu.com/product/wenxinworkshop',scores:{q:86,s:78,c:88,l:72},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Baidu Cloud (ERNIE API)',selfHost:false},
+bench:{mmlu:81.0,humanEval:78.0,mtBench:8.5,gsm8k:90.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:4,education:4,government:4,manufacturing:3,technology:4}}},
+
+// ── Tencent ───────────────────────────────────────────────────────────────────
+{id:'hunyuan',name:'Hunyuan Large',prov:'Tencent',icon:'🐧',clr:'#0057ff',tasks:['LLM','Vision'],type:'commercial',
+desc:"Tencent's enterprise LLM with strong Chinese capabilities and WeChat/Tencent ecosystem integration.",
+langs:['Chinese','English','Japanese','Korean','French','Spanish','Arabic'],
+pricing:'Via Tencent Cloud · ~$0.45/1M in',pIn:0.45,pOut:1.80,tier:'low',ctx:'256K tokens',ctxN:256000,params:'389B MoE',lat:'~700ms',
+uses:['Chinese enterprise AI','Tencent ecosystem apps','Gaming AI','Social media content'],
+pros:['256K context','389B MoE architecture','Strong Chinese','Tencent ecosystem'],cons:['Mainly China-accessible','Limited global presence'],
+link:'https://hunyuan.tencent.com',scores:{q:84,s:76,c:86,l:70},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Tencent Cloud',selfHost:false},
+bench:{mmlu:80.0,humanEval:75.0,mtBench:8.3,gsm8k:88.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:4,education:3,government:4,manufacturing:3,technology:4}}},
+
+// ── Perplexity ────────────────────────────────────────────────────────────────
+{id:'perplexity',name:'Sonar Large (Online)',prov:'Perplexity',icon:'🔍',clr:'#eab308',tasks:['LLM'],type:'commercial',
+desc:'Real-time web search LLM. Answers with citations from live web. Best for factual queries.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic','Dutch'],
+pricing:'$1/1M in · $5/1M Sonar-Pro',pIn:1,pOut:1,tier:'low',ctx:'128K tokens',ctxN:128000,params:'~70B base',lat:'~1.5s',
+uses:['Research assistants','News Q&A','Fact-checking','Current events analysis'],
+pros:['Live web search','Citations','Current events','Low hallucination'],cons:['Not for offline/private data','Search adds latency'],
+link:'https://perplexity.ai',scores:{q:82,s:74,c:87,l:72},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Perplexity Cloud + AWS',selfHost:false},
+bench:{mmlu:78.0,humanEval:70.0,mtBench:8.2,gsm8k:80.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:4,retail:3,education:4,government:3,manufacturing:3,technology:5}}},
+
+// ── ElevenLabs ────────────────────────────────────────────────────────────────
+{id:'elevenlabs',name:'ElevenLabs Multilingual v2',prov:'ElevenLabs',icon:'🎙️',clr:'#a78bfa',tasks:['TTS'],type:'third-party',featured:true,
+desc:'Industry-leading voice AI. Ultra-realistic synthesis, voice cloning, and emotion control.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish'],
+pricing:'$0.30/1K chars Starter · $0.18/1K Pro',pIn:0,pOut:0,tier:'mid',pPerChar:0.0003,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'~400ms',
+uses:['Audiobooks','Podcasts','Video narration','Voice cloning','Interactive media','E-learning'],
+pros:['Emotional range','Voice cloning','29+ languages','Real-time streaming','Best quality'],cons:['Not open source','Per-character pricing'],
+link:'https://elevenlabs.io',scores:{q:98,s:82,c:70,l:92},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'ElevenLabs Cloud (US/EU)',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:3,legal:3,retail:5,education:5,government:3,manufacturing:2,technology:4}}},
+
+{id:'playht',name:'PlayHT 2.0 Turbo',prov:'Play.ht',icon:'▶️',clr:'#eab308',tasks:['TTS'],type:'third-party',
+desc:'Ultra-realistic TTS with <100ms latency. 900+ voices, 142 languages, instant voice cloning.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Swedish','Turkish','Russian','Indonesian'],
+pricing:'$0.99/100K chars · $39/mo unlimited',pIn:0,pOut:0,tier:'mid',pPerChar:0.0000099,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'<100ms',
+uses:['Real-time voice agents','Podcasts','Voice cloning','Interactive AI'],
+pros:['Ultra-low latency','900+ voices','142 languages','Voice cloning'],cons:['Rate limits on free tier'],
+link:'https://play.ht',scores:{q:91,s:98,c:72,l:95},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Play.ht Cloud (AWS)',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:2,legal:2,retail:5,education:5,government:2,manufacturing:2,technology:4}}},
+
+{id:'murf',name:'Murf AI',prov:'Murf',icon:'🎤',clr:'#7c3aed',tasks:['TTS'],type:'third-party',
+desc:'Professional studio-quality TTS with 120+ voices, 20 languages. Strong for corporate content.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic','Hindi','Dutch'],
+pricing:'$0/mo (limited) · $19/mo Creator · $39/mo Business',pIn:0,pOut:0,tier:'mid',pPerChar:0.0002,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'~500ms',
+uses:['Corporate training videos','E-learning','Podcasts','Advertisement voiceovers'],
+pros:['Studio quality','Voice changer','Video sync','Team collaboration','Free tier'],cons:['Limited languages vs ElevenLabs','No real-time streaming'],
+link:'https://murf.ai',scores:{q:85,s:78,c:78,l:75},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Murf Cloud',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:3,retail:4,education:5,government:3,manufacturing:3,technology:3}}},
+
+{id:'resemble',name:'Resemble AI',prov:'Resemble AI',icon:'🎭',clr:'#06b6d4',tasks:['TTS'],type:'third-party',
+desc:'Enterprise voice AI with <50ms ultra-low latency API. Voice cloning and custom voice creation.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Chinese','Japanese','Korean','Arabic'],
+pricing:'$0.006/sec generated audio · Enterprise plans',pIn:0,pOut:0,tier:'mid',pPerChar:0.00015,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'<50ms',
+uses:['Real-time voice agents','Game character voices','Live dubbing','Enterprise voice cloning'],
+pros:['Ultra-low latency (<50ms)','Voice cloning','Enterprise on-prem available','Custom voices'],cons:['More expensive','Fewer languages'],
+link:'https://resemble.ai',scores:{q:87,s:99,c:65,l:70},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Resemble Cloud + On-prem Enterprise',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:2,retail:4,education:4,government:3,manufacturing:2,technology:5}}},
+
+{id:'cartesia',name:'Cartesia Sonic',prov:'Cartesia',icon:'🔈',clr:'#22c55e',tasks:['TTS'],type:'third-party',
+desc:'State-of-the-art ultra-low-latency TTS. Under 100ms globally with streaming support.',
+langs:['English','French','Spanish','German','Portuguese','Italian','Chinese','Japanese','Korean'],
+pricing:'$0.005/min of audio generated · Free 10k chars/mo',pIn:0,pOut:0,tier:'low',pPerChar:0.0001,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'<80ms',
+uses:['Real-time conversational AI','Voice assistants','Interactive apps','Low-latency streaming'],
+pros:['Industry-leading latency','Streaming API','Good quality','Affordable'],cons:['Limited language count','Newer company'],
+link:'https://cartesia.ai',scores:{q:84,s:99,c:90,l:65},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Cartesia Cloud',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:2,legal:2,retail:4,education:4,government:2,manufacturing:2,technology:5}}},
+
+// ── STT Third-party ───────────────────────────────────────────────────────────
+{id:'deepgram',name:'Deepgram Nova-2',prov:'Deepgram',icon:'🎤',clr:'#06b6d4',tasks:['STT'],type:'third-party',featured:true,
+desc:'Purpose-built speech AI. 30% lower WER than Whisper. Real-time streaming + speaker diarization.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Dutch','Japanese','Korean','Chinese','Hindi','Russian','Turkish','Swedish'],
+pricing:'$0.0043/min · Free: 12,000 min/yr',pIn:0,pOut:0,tier:'low',pPerMin:0.0043,ctx:'Streaming',ctxN:0,params:'Proprietary',lat:'~200ms',
+uses:['Real-time captioning','Call centers','Voice agents','Podcast transcription'],
+pros:['Real-time streaming','Lowest WER','Speaker diarization','Custom vocabulary','On-prem available'],cons:['Limited language count vs Whisper'],
+link:'https://deepgram.com',scores:{q:93,s:97,c:88,l:72},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Deepgram Cloud (GCP)',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:5,education:4,government:4,manufacturing:4,technology:5}}},
+
+{id:'assemblyai',name:'AssemblyAI Universal-1',prov:'AssemblyAI',icon:'🔊',clr:'#a78bfa',tasks:['STT'],type:'third-party',
+desc:'AI-powered transcription with LeMUR (LLM over audio). Speaker labels, auto-chapters, sentiment.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Dutch','Japanese','Korean','Chinese','Hindi','Finnish','Polish','Ukrainian','Turkish'],
+pricing:'$0.65/hr Best · $0.37/hr Nano · Free 5hrs/mo',pIn:0,pOut:0,tier:'mid',pPerMin:0.0108,ctx:'10hr files',ctxN:0,params:'Proprietary',lat:'~2s',
+uses:['Meeting analytics','Podcast processing','Content moderation','Audio intelligence'],
+pros:['LLM-over-audio','Speaker labels','Auto-chapters','Sentiment analysis'],cons:['Higher latency','Less language support than Whisper'],
+link:'https://assemblyai.com',scores:{q:88,s:75,c:72,l:70},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AssemblyAI Cloud (AWS)',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:5,retail:4,education:5,government:4,manufacturing:3,technology:5}}},
+
+{id:'speechmatics',name:'Speechmatics',prov:'Speechmatics',icon:'📡',clr:'#0ea5e9',tasks:['STT'],type:'third-party',
+desc:'Enterprise STT with on-premise deployment. Best language coverage at 50+ languages. GDPR-compliant.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish','Danish','Finnish','Norwegian','Greek','Czech','Romanian','Ukrainian','Thai','Vietnamese'],
+pricing:'$0.25/hr (cloud) · Enterprise on-prem pricing',pIn:0,pOut:0,tier:'mid',pPerMin:0.0042,ctx:'Streaming',ctxN:0,params:'Proprietary',lat:'~300ms',
+uses:['Enterprise STT','On-premise compliance','Call analytics','Government transcription'],
+pros:['50+ languages','On-premise available','Strong accuracy','GDPR compliant','Speaker diarization'],cons:['Higher cost','Less consumer awareness'],
+link:'https://speechmatics.com',scores:{q:88,s:86,c:75,l:94},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Speechmatics Cloud (AWS/Azure)',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:4}}},
+
+{id:'rev-ai',name:'Rev AI',prov:'Rev',icon:'🎧',clr:'#f97316',tasks:['STT'],type:'third-party',
+desc:'High-accuracy STT with human-in-the-loop option. Strong for compliance and legal recordings.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Dutch','Japanese','Korean','Chinese'],
+pricing:'$0.02/min async · $0.035/min real-time',pIn:0,pOut:0,tier:'mid',pPerMin:0.02,ctx:'Streaming',ctxN:0,params:'Proprietary',lat:'~1s async',
+uses:['Legal transcription','Compliance recording','Court reporting','Media transcription'],
+pros:['Human review option','Very high accuracy for legal','Compliance focus','Good punctuation'],cons:['Higher price','English-centric'],
+link:'https://rev.ai',scores:{q:88,s:72,c:68,l:65},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Rev Cloud (AWS)',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:5,retail:3,education:3,government:4,manufacturing:2,technology:3}}},
+
+// ── Translation ───────────────────────────────────────────────────────────────
+{id:'deepl',name:'DeepL Pro API',prov:'DeepL',icon:'🌐',clr:'#06b6d4',tasks:['Translation'],type:'third-party',featured:true,
+desc:'Best-quality neural translation for European languages. Consistently outperforms Google Translate.',
+langs:['English','German','French','Spanish','Italian','Portuguese','Dutch','Polish','Russian','Japanese','Chinese','Korean','Turkish','Swedish','Danish','Finnish','Norwegian','Czech','Romanian','Hungarian','Bulgarian','Ukrainian','Greek','Indonesian'],
+pricing:'$5.49/1M chars · $25/mo Pro',pIn:0,pOut:0,tier:'low',pPerChar:0.0000055,ctx:'128KB doc',ctxN:0,params:'Proprietary',lat:'~300ms',
+uses:['Legal/medical translation','EU language content','Marketing localization','Document translation'],
+pros:['Best European translation quality','GDPR compliant','Glossary support','Document formats'],cons:['33 language limit'],
+link:'https://deepl.com',scores:{q:94,s:90,c:82,l:72},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'DeepL Cloud (EU)',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:5,retail:4,education:5,government:5,manufacturing:4,technology:4}}},
+
+{id:'modernmt',name:'ModernMT',prov:'Translated',icon:'🔤',clr:'#16a34a',tasks:['Translation'],type:'third-party',
+desc:'Adaptive neural MT that learns from user corrections. Context-aware, improving over time.',
+langs:['English','German','French','Spanish','Italian','Portuguese','Dutch','Polish','Russian','Japanese','Chinese','Korean','Arabic','Turkish','Swedish','Danish'],
+pricing:'$0.00002/char (pay-as-you-go) · Business plans',pIn:0,pOut:0,tier:'low',pPerChar:0.00002,ctx:'N/A',ctxN:0,params:'Proprietary',lat:'~400ms',
+uses:['Adaptive translation','LSP/agency workflows','Content localization','Domain-specific translation'],
+pros:['Learns from corrections','Context-aware (250K context)','GDPR compliant','Adaptive memory'],cons:['Less known than DeepL','Enterprise-focused'],
+link:'https://modernmt.com',scores:{q:88,s:86,c:85,l:82},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'ModernMT Cloud + On-prem Enterprise',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:5,retail:4,education:5,government:5,manufacturing:4,technology:4}}},
+
+// ── Embeddings ────────────────────────────────────────────────────────────────
+{id:'text-emb3',name:'text-embedding-3-large',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['Embedding'],type:'commercial',
+desc:"OpenAI's best embedding model. Supports dimensionality reduction. Strong multilingual MTEB scores.",
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Russian','Dutch','Polish'],
+pricing:'$0.13/1M tokens',pIn:0.13,pOut:0,tier:'low',ctx:'8191 tokens',ctxN:8191,params:'~600M',lat:'~50ms',
+uses:['Semantic search','RAG pipelines','Clustering','Classification','Similarity'],
+pros:['High quality','Low cost','Multilingual','Dimensionality reduction'],cons:['8K context limit'],
+link:'https://platform.openai.com',scores:{q:92,s:97,c:92,l:85},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure OpenAI',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:5,education:5,government:5,manufacturing:4,technology:5}}},
+
+{id:'e5-multi',name:'Multilingual-E5-Large',prov:'Microsoft (Open)',icon:'🔷',clr:'#38bdf8',tasks:['Embedding'],type:'open-source',
+desc:'Open-source multilingual embedding. 100+ languages. Best free option for cross-lingual search.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Dutch','Polish','Russian','Turkish','Swedish','Danish','Finnish','Norwegian'],
+pricing:'Free (HuggingFace self-hosted)',pIn:0,pOut:0,tier:'free',ctx:'512 tokens',ctxN:512,params:'560M',lat:'~30ms',
+uses:['Cross-lingual search','Multilingual RAG','Open-source embeddings'],
+pros:['100+ languages','Free','Fast','Self-hosted'],cons:['512 token context'],
+link:'https://huggingface.co/intfloat/multilingual-e5-large',scores:{q:87,s:98,c:99,l:99},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:4,manufacturing:4,technology:4}}},
+
+{id:'amazon-titan-emb',name:'Amazon Titan Embeddings',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['Embedding'],type:'commercial',
+desc:'AWS-native text and multimodal embeddings. Deep AWS service integration for Bedrock-based RAG.',
+langs:['English','Spanish','French','German','Portuguese','Italian','Japanese','Korean','Chinese'],
+pricing:'$0.10/1M tokens (text)',pIn:0.10,pOut:0,tier:'low',ctx:'8192 tokens',ctxN:8192,params:'Proprietary',lat:'~50ms',
+uses:['AWS RAG pipelines','Knowledge bases','Bedrock-native search','Multimodal search'],
+pros:['AWS native','Bedrock integration','Low cost','Multimodal version available'],cons:['AWS dependency','Less multilingual'],
+link:'https://aws.amazon.com/bedrock/titan',scores:{q:82,s:96,c:92,l:65},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS Bedrock',selfHost:false},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:4,manufacturing:4,technology:4}}},
+
+// ── Other TTS/STT ─────────────────────────────────────────────────────────────
+{id:'coqui',name:'Coqui TTS (XTTS v2)',prov:'Coqui AI',icon:'🐸',clr:'#84cc16',tasks:['TTS'],type:'open-source',
+desc:'Open-source TTS with voice cloning from 6-second audio. 17 languages, commercial-grade quality.',
+langs:['English','Spanish','French','German','Italian','Portuguese','Polish','Turkish','Russian','Dutch','Czech','Arabic','Chinese','Hungarian','Korean','Japanese','Hindi'],
+pricing:'Free (self-hosted)',pIn:0,pOut:0,tier:'free',pPerChar:0,ctx:'N/A',ctxN:0,params:'~1B',lat:'~500ms (GPU)',
+uses:['Self-hosted TTS','Voice cloning','Research','Cost-sensitive deployments'],
+pros:['Free & open source','Voice cloning','17 languages','No API costs'],cons:['Requires GPU','Setup complexity'],
+link:'https://github.com/coqui-ai/TTS',scores:{q:79,s:70,c:99,l:80},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:2,finance:2,legal:2,retail:3,education:4,government:3,manufacturing:2,technology:3}}},
+
+{id:'sarvam',name:'Sarvam-2B',prov:'Sarvam AI',icon:'🇮🇳',clr:'#f97316',tasks:['LLM','TTS','STT'],type:'open-source',
+desc:'Specialized open-source model for Indian languages. 10 Indic languages for speech and text.',
+langs:['Hindi','Bengali','Tamil','Telugu','Kannada','Malayalam','Marathi','Gujarati','Punjabi','Odia','English'],
+pricing:'Free (open source)',pIn:0,pOut:0,tier:'free',ctx:'4K tokens',ctxN:4000,params:'2B',lat:'~400ms',
+uses:['Indian language apps','Regional STT/TTS','Government digital services','Indic NLP'],
+pros:['Best Indic language support','Free','STT+TTS+LLM in one'],cons:['Limited to Indian languages','Small context'],
+link:'https://sarvam.ai',scores:{q:78,s:84,c:99,l:60},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:3,retail:3,education:4,government:5,manufacturing:2,technology:3}}},
 ];
 
 // ══════════════════════════════════════════════════════════════════
 // APP STATE
 // ══════════════════════════════════════════════════════════════════
 let currentUser=null;
-let state={task:'all',prov:'All',lang:'All',type:'All'};
+let state={task:'all',prov:'All',lang:'All',type:'All',deploy:''};
 let catTaskFilter='all';
 let estimSel=[];
 let compareSelected=[];
@@ -1068,6 +2073,8 @@ function goPage(p){
     if(el.getAttribute('onclick')==='goPage(\''+p+'\')') el.classList.add('active');
   });
   if(p==='catalog')renderCatalog();
+  if(p==='benchmarks')renderBenchmarks();
+  if(p==='guide')renderGuide();
 }
 
 function quickTask(t){
@@ -1131,6 +2138,14 @@ function initExplorer(){
   document.getElementById('f-lang').innerHTML=LANGS.map(l=>
     `<div class="chip ${state.lang===l?'active':''}" onclick="setF('lang','${l}')">${l==='All'?'All Languages':l}</div>`).join('');
   // Type chips
+  const DEPLOY_OPTS=[
+    {k:'',l:'All Deployments'},
+    {k:'saas',l:'☁️ SaaS/API'},
+    {k:'onPrem',l:'🏢 On-Premise'},
+    {k:'selfHost',l:'🔓 Self-Hostable'},
+  ];
+  document.getElementById('f-deploy').innerHTML=DEPLOY_OPTS.map(d=>
+    `<div class="chip ${state.deploy===d.k?'active':''}" onclick="setF('deploy','${d.k}')">${d.l}</div>`).join('');
   document.getElementById('f-type').innerHTML=TYPES.map(t=>
     `<div class="chip ${state.type===t?'active':''}" onclick="setF('type','${t}')">${t==='All'?'All Types':t==='open-source'?'🔓 Open Source':t==='third-party'?'🔗 3rd Party':'☁️ Commercial'}</div>`).join('');
   renderGrid();
@@ -1145,6 +2160,11 @@ function getFiltered(){
     if(state.prov!=='All'&&m.prov!==state.prov)return false;
     if(state.type!=='All'&&m.type!==state.type)return false;
     if(state.lang!=='All'&&!m.langs.includes(state.lang))return false;
+    if(state.deploy){
+      if(state.deploy==='saas'&&!m.deploy?.saas)return false;
+      if(state.deploy==='onPrem'&&!m.deploy?.onPrem)return false;
+      if(state.deploy==='selfHost'&&!m.deploy?.selfHost)return false;
+    }
     if(q&&!m.name.toLowerCase().includes(q)&&!m.prov.toLowerCase().includes(q)&&!m.desc.toLowerCase().includes(q))return false;
     return true;
   }).sort((a,b)=>(b.featured?1:0)-(a.featured?1:0)||b.scores.q-a.scores.q);
@@ -1164,7 +2184,12 @@ function renderGrid(){
         <div class="card-info"><div class="card-name">${m.name}</div><div class="card-prov">${m.prov}</div></div>
       </div>
       <div class="card-tags">
-        ${m.tasks.map(t=>`<span class="tag tag-t">${t}</span>`).join('')}
+        ${m.tasks.map(t=>{
+          if(t==='Translation'&&m.tasks.includes('LLM')){
+            return '<span class="tag tag-t">Translation <span style="font-size:8px;opacity:.7">(LLM)</span></span>';
+          }
+          return '<span class="tag tag-t">'+t+'</span>';
+        }).join('')}
         ${m.type==='open-source'?'<span class="tag tag-o">Open Source</span>':''}
         ${m.type==='third-party'?'<span class="tag tag-3">3rd Party</span>':''}
       </div>
@@ -1172,6 +2197,12 @@ function renderGrid(){
       <div class="score-grid">
         <div class="score-box"><div class="score-lbl">Quality</div><div class="score-bar"><div class="bar-track"><div class="bar-fill" style="width:${m.scores.q}%;background:linear-gradient(90deg,var(--teal),#6366f1)"></div></div><span class="bar-num">${m.scores.q}</span></div></div>
         <div class="score-box"><div class="score-lbl">Speed</div><div class="score-bar"><div class="bar-track"><div class="bar-fill" style="width:${m.scores.s}%;background:linear-gradient(90deg,var(--sky),var(--teal))"></div></div><span class="bar-num">${m.scores.s}</span></div></div>
+      </div>
+      <div class="deploy-row">
+        ${m.deploy?.saas?`<span class="dbadge saas">☁️ SaaS</span>`:''}
+        ${m.deploy?.onPrem?`<span class="dbadge onprem">🏢 On-Prem</span>`:''}
+        ${m.deploy?.selfHost?`<span class="dbadge selfhost">🔓 Self-Host</span>`:''}
+        ${m.deploy?.saasHost?`<span class="saas-host">${m.deploy.saasHost.split('+')[0].trim()}</span>`:''}
       </div>
       <div class="card-langs">${dl.join(' · ')}${more>0?` <span style="color:var(--text3)">+${more} more</span>`:''}</div>
       <div class="card-footer">
@@ -1228,6 +2259,18 @@ function openModal(id){
         <button onclick="chatAbout('${m.name}');closeModal()" class="mbtn secondary">🤖 Ask AI</button>
       </div>
     </div>`;
+  // Render deploy badges
+  const db2 = m.deploy||{};
+  const deployBadges = [
+    db2.saas?`<span class="dbadge saas">☁️ SaaS</span>`:null,
+    db2.saasHost?`<small style="font-size:10px;color:var(--text3);padding:2px 6px;background:var(--deep);border-radius:4px;border:1px solid var(--rim)">Hosted: ${db2.saasHost}</small>`:null,
+    db2.onPrem?`<span class="dbadge onprem">🏢 On-Premise</span>`:null,
+    db2.selfHost?`<span class="dbadge selfhost">🔓 Self-Hostable</span>`:null,
+    db2.cloud&&!db2.saas?`<span class="dbadge cloud">☁ Cloud API</span>`:null,
+    db2.hybrid?`<span class="dbadge hybrid">🔀 Hybrid</span>`:null,
+  ].filter(Boolean);
+  const dEl=document.getElementById('modal-deploy-badges');
+  if(dEl) dEl.innerHTML=`<div class="deploy-row">${deployBadges.join('')}</div>`;
   document.getElementById('modal').classList.add('open');
 }
 function closeModal(){document.getElementById('modal').classList.remove('open');}
@@ -1356,7 +2399,7 @@ function runCalc(){
           <div class="cc-top">
             <div class="cc-icon">${c.m.icon}</div>
             <div class="cc-info"><div class="cc-name">${c.m.name}</div><div class="cc-prov">${c.m.prov} · ${c.m.tasks.join(', ')}</div></div>
-            <div class="cc-total"><div class="cc-amount ${tier}">${fmtD(c.monthly)}</div><div class="cc-period">per month</div>${i>0&&isFinite(savPct)?`<div class="cc-vs">+${savPct.toFixed(0)}% vs best</div>`:''}</div>
+            <div class="cc-total"><div class="cc-amount ${tier}">${fmtD(c.monthly)}</div><div class="cc-period">per month</div>${i>0&&isFinite(savPct)?'<div class="cc-vs">+'+savPct.toFixed(0)+'% vs best</div>':''}</div>
           </div>
           ${def.type==='tok'?`
           <div class="cc-breakdown">
@@ -1456,7 +2499,7 @@ async function sendChat(){
   const sys=`You are a world-class AI model selection advisor with deep expertise in all LLMs, TTS, STT, embedding, and translation models.
 
 Complete model database (${M.length} models):
-${M.map(m=>`${m.name} (${m.prov}): tasks=[${m.tasks}], ${m.langs.length} languages, pricing=${m.pricing}, quality=${m.scores.q}/100, speed=${m.scores.s}/100`).join('\n')}
+${M.map(m=>`${m.name} (${m.prov}): tasks=[${m.tasks}], ${m.langs.length} langs, pricing=${m.pricing}, q=${m.scores.q}/100, deploy=${[m.deploy?.saas?'SaaS':'',m.deploy?.onPrem?'OnPrem':'',m.deploy?.selfHost?'SelfHost':''].filter(Boolean).join('+')}, saasHost=${m.deploy?.saasHost||'N/A'}`).join('\n')}
 
 Guidelines:
 - Use **bold** for model names
@@ -1517,6 +2560,164 @@ function renderMd(t){
 // ══════════════════════════════════════════════════════════════════
 // UTILS
 // ══════════════════════════════════════════════════════════════════
+function setDeploy(d){
+  state.deploy=d;
+  goPage('explorer');
+  initExplorer();
+}
+
+
+// ══════════════════════════════════════════════════════════════════
+// BENCHMARKS PAGE
+// ══════════════════════════════════════════════════════════════════
+const DOMAINS = [
+  {id:'healthcare',label:'🏥 Healthcare',desc:'Clinical NLP, medical transcription, diagnostic support, HIPAA-compliant AI'},
+  {id:'finance',label:'💰 Finance',desc:'Financial analysis, risk assessment, fraud detection, regulatory compliance'},
+  {id:'legal',label:'⚖️ Legal',desc:'Contract analysis, legal research, compliance review, long document processing'},
+  {id:'retail',label:'🛒 Retail & E-commerce',desc:'Customer service, product recommendations, sentiment analysis'},
+  {id:'education',label:'🎓 Education',desc:'Tutoring, content generation, assessment, adaptive learning, multilingual'},
+  {id:'government',label:'🏛️ Government',desc:'Document processing, citizen services, translation, data sovereignty'},
+  {id:'manufacturing',label:'🏭 Manufacturing',desc:'Predictive maintenance, quality control, technical documentation, automation'},
+  {id:'technology',label:'💻 Technology',desc:'Code generation, DevOps, system design, developer tools, APIs'},
+];
+
+let activeDomain = 'healthcare';
+let benchTaskFilter = 'all';
+
+function renderBenchmarks(){
+  // Render domain tabs
+  document.getElementById('domainTabs').innerHTML = DOMAINS.map(d=>
+    `<button class="bench-tab ${activeDomain===d.id?'active':''}" onclick="setDomain('${d.id}')">${d.label}</button>`
+  ).join('');
+
+  // Render domain leaderboard
+  renderDomainLeaderboard();
+
+  // Render benchmark task filter
+  document.getElementById('bench-task-chips').innerHTML =
+    ['all','LLM','Code','TTS','STT','Translation','Embedding'].map(t=>
+      `<div class="chip ${benchTaskFilter===t?'active':''}" onclick="setBenchTask('${t}')">${t==='all'?'All Models':t}</div>`
+    ).join('');
+
+  // Render benchmark table
+  renderBenchTable();
+
+  // Render deployment matrix
+  renderDeployMatrix();
+}
+
+function setDomain(d){ activeDomain=d; renderBenchmarks(); }
+function setBenchTask(t){ benchTaskFilter=t; renderBenchmarks(); }
+
+function renderDomainLeaderboard(){
+  const dom = DOMAINS.find(d=>d.id===activeDomain);
+  if(!dom) return;
+
+  // Get top models for this domain (score >= 3, sort by domain score)
+  const ranked = M.filter(m=>m.bench?.domains?.[activeDomain]>=2)
+    .map(m=>({m, score: m.bench.domains[activeDomain], q: m.scores.q}))
+    .sort((a,b)=>b.score-a.score||b.q-a.q)
+    .slice(0, 12);
+
+  const rankClass = i => i===0?'gold':i===1?'silver':i===2?'bronze':'';
+  const rankLabel = i => i===0?'#1':i===1?'#2':i===2?'#3':`#${i+1}`;
+  const stars = n => '★'.repeat(n)+'☆'.repeat(5-n);
+  const tierColor = s => s>=5?'var(--gold2)':s>=4?'var(--teal)':s>=3?'var(--amber)':'var(--rose)';
+
+  // Split into 3 groups for the grid
+  const topThree = ranked.slice(0,3);
+  const rest = ranked.slice(3);
+
+  document.getElementById('domainLeaderboard').innerHTML = `
+    <div style="grid-column:1/-1;background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);padding:18px;margin-bottom:4px">
+      <div class="bench-domain-icon">${dom.label.split(' ')[0]}</div>
+      <div class="bench-domain-name">${dom.label.slice(dom.label.indexOf(' ')+1)}</div>
+      <div class="bench-domain-desc">${dom.desc}</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+        ${topThree.map((item,i)=>`
+          <div style="background:var(--deep);border:1px solid ${i===0?'rgba(201,168,76,.3)':i===1?'rgba(91,175,214,.2)':'rgba(232,164,74,.2)'};border-radius:10px;padding:14px;cursor:pointer" onclick="openModal('${item.m.id}')">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+              <span style="font-size:22px;font-weight:900;color:${i===0?'var(--gold2)':i===1?'var(--sky)':'var(--amber)'}">#${i+1}</span>
+              <span style="font-size:20px">${item.m.icon}</span>
+              <div><div style="font-size:13px;font-weight:800">${item.m.name}</div><div style="font-size:10px;color:var(--text3)">${item.m.prov}</div></div>
+            </div>
+            <div style="font-size:16px;color:${tierColor(item.score)};margin-bottom:4px">${stars(item.score)}</div>
+            <div class="deploy-row" style="margin-top:6px">
+              ${item.m.deploy?.saas?'<span class="dbadge saas">SaaS</span>':''}
+              ${item.m.deploy?.onPrem?'<span class="dbadge onprem">On-Prem</span>':''}
+              ${item.m.deploy?.selfHost?'<span class="dbadge selfhost">Self-Host</span>':''}
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>
+    ${rest.map((item,i)=>`
+      <div class="bench-domain-card" onclick="openModal('${item.m.id}')" style="cursor:pointer">
+        <div class="bench-top-model">
+          <span class="bench-rank ${rankClass(i+3)}">${rankLabel(i+3)}</span>
+          <span style="font-size:16px">${item.m.icon}</span>
+          <div class="bench-model-info">
+            <div class="bench-model-name">${item.m.name}</div>
+            <div class="bench-model-prov">${item.m.prov}</div>
+          </div>
+          <span class="bench-score-pill" style="color:${tierColor(item.score)};background:${item.score>=4?'rgba(201,168,76,.08)':'var(--deep)'}">${stars(item.score)}</span>
+        </div>
+      </div>`).join('')}`;
+}
+
+function renderBenchTable(){
+  const filtered = M.filter(m=>{
+    if(benchTaskFilter!=='all'&&!m.tasks.includes(benchTaskFilter))return false;
+    return m.bench && (m.bench.mmlu||m.bench.humanEval||m.bench.mtBench);
+  }).sort((a,b)=>(b.bench?.mmlu||0)-(a.bench?.mmlu||0));
+
+  const scoreBar = (val, max, color) => val!=null
+    ? `<div class="bscore"><div class="btrack"><div class="bfill" style="width:${(val/max*100).toFixed(0)}%;background:${color}"></div></div><span class="bnum">${val.toFixed(1)}</span></div>`
+    : `<span class="na-score">—</span>`;
+
+  document.getElementById('benchTableBody').innerHTML = filtered.map((m,i)=>`
+    <tr onclick="openModal('${m.id}')">
+      <td>
+        <div style="display:flex;align-items:center;gap:8px">
+          ${i<3?`<span style="font-weight:900;color:${i===0?'var(--gold2)':i===1?'var(--sky)':'var(--amber)'};font-family:'Geist Mono',monospace;font-size:12px">#${i+1}</span>`:''}
+          <span>${m.icon}</span>
+          <div><div class="tbl-name">${m.name}</div><div class="tbl-prov">${m.prov}</div></div>
+        </div>
+      </td>
+      <td style="color:var(--text3);font-size:11px">${m.prov}</td>
+      <td>${m.tasks.map(t=>`<span class="tag tag-t">${t}</span>`).join('')}</td>
+      <td>${scoreBar(m.bench?.mmlu,100,'linear-gradient(90deg,var(--teal),var(--violet))')}</td>
+      <td>${scoreBar(m.bench?.humanEval,100,'linear-gradient(90deg,var(--sky),var(--teal))')}</td>
+      <td>${m.bench?.mtBench!=null?`<div class="bscore"><div class="btrack"><div class="bfill" style="width:${(m.bench.mtBench/10*100).toFixed(0)}%;background:linear-gradient(90deg,var(--gold),var(--amber))"></div></div><span class="bnum">${m.bench.mtBench.toFixed(1)}</span></div>`:'<span class="na-score">—</span>'}</td>
+      <td>${scoreBar(m.bench?.gsm8k,100,'linear-gradient(90deg,var(--lime),var(--teal))')}</td>
+      <td>${scoreBar(m.bench?.hellaSwag,100,'linear-gradient(90deg,var(--violet),var(--sky))')}</td>
+    </tr>`).join('');
+}
+
+function renderDeployMatrix(){
+  const saasModels = M.filter(m=>m.deploy?.saas);
+  const onPremModels = M.filter(m=>m.deploy?.onPrem);
+  const selfHostModels = M.filter(m=>m.deploy?.selfHost);
+  const hybridModels = M.filter(m=>m.deploy?.hybrid);
+
+  const matrixCards = [
+    {icon:'☁️',title:'SaaS / Managed API',count:saasModels.length,sub:'No infrastructure management',list:saasModels.slice(0,6),color:'var(--teal)',k:'saas'},
+    {icon:'🏢',title:'On-Premise Deploy',count:onPremModels.length,sub:'Run in your own datacenter',list:onPremModels.slice(0,6),color:'var(--violet)',k:'onPrem'},
+    {icon:'🔓',title:'Self-Hostable',count:selfHostModels.length,sub:'Open weights / downloadable',list:selfHostModels.slice(0,6),color:'var(--lime)',k:'selfHost'},
+    {icon:'🔀',title:'Hybrid Support',count:hybridModels.length,sub:'Mix cloud + on-premise',list:hybridModels.slice(0,6),color:'var(--amber)',k:'hybrid'},
+  ];
+
+  document.getElementById('deployMatrix').innerHTML = matrixCards.map(c=>`
+    <div class="dmatrix-card" style="cursor:pointer" onclick="setDeploy('${c.k}')">
+      <div class="dmatrix-title">${c.icon} ${c.title}</div>
+      <div class="dmatrix-count" style="color:${c.color}">${c.count}</div>
+      <div class="dmatrix-sub">${c.sub}</div>
+      <div class="dmatrix-list">${c.list.map(m=>`${m.icon} ${m.name}`).join(' · ')}</div>
+    </div>`).join('');
+}
+
+
+
+
 function showToast(msg){
   const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2500);
