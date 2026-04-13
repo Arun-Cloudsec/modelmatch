@@ -627,6 +627,111 @@ table.btbl td{padding:9px 12px;vertical-align:middle}
 /* ══ TOAST ══ */
 #toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--elevated);border:1px solid var(--gold-rim);color:var(--text);padding:10px 20px;border-radius:8px;font-size:13px;z-index:999;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap}
 #toast.show{opacity:1}
+
+/* ══ SOVEREIGNTY PAGE ══ */
+.sov-hero{background:linear-gradient(135deg,rgba(201,168,76,.06) 0%,rgba(62,207,178,.04) 100%);border:1px solid var(--gold-rim);border-radius:var(--r-lg);padding:28px 32px;margin-bottom:24px;display:flex;align-items:flex-start;gap:24px}
+.sov-hero-icon{font-size:40px;flex-shrink:0;line-height:1}
+.sov-hero-title{font-family:'Instrument Serif',serif;font-size:22px;color:var(--text);margin-bottom:6px}
+.sov-hero-sub{font-size:13px;color:var(--text2);line-height:1.7;max-width:680px}
+.sov-region-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;align-items:center}
+.sov-region-filter label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-right:4px}
+.sov-pill{padding:5px 14px;border-radius:20px;border:1px solid var(--rim);background:none;color:var(--text3);font-size:12px;cursor:pointer;font-family:'Cabinet Grotesk',sans-serif;transition:.15s}
+.sov-pill:hover{border-color:var(--rim2);color:var(--text)}
+.sov-pill.active{border-color:var(--gold-rim);background:var(--gold-bg);color:var(--gold2);font-weight:700}
+
+.sov-status-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.sov-leg-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)}
+.sov-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.sov-badge.available{background:rgba(125,205,110,.12);color:#7dcd6e;border:1px solid rgba(125,205,110,.3)}
+.sov-badge.partial{background:rgba(232,164,74,.12);color:#e8a44a;border:1px solid rgba(232,164,74,.3)}
+.sov-badge.unavailable{background:rgba(240,107,122,.1);color:#f06b7a;border:1px solid rgba(240,107,122,.25)}
+.sov-badge.selfhost{background:rgba(155,127,244,.1);color:#9b7ff4;border:1px solid rgba(155,127,244,.25)}
+
+.sov-section-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);margin:20px 0 10px;display:flex;align-items:center;gap:8px}
+.sov-section-label::after{content:'';flex:1;height:1px;background:var(--rim)}
+
+.sov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;margin-bottom:16px}
+.sov-card{background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);padding:16px 18px;transition:.15s;cursor:pointer}
+.sov-card:hover{border-color:var(--rim2);background:var(--elevated)}
+.sov-card.border-available{border-left:3px solid #7dcd6e}
+.sov-card.border-partial{border-left:3px solid #e8a44a}
+.sov-card.border-unavailable{border-left:3px solid #f06b7a}
+.sov-card.border-selfhost{border-left:3px solid #9b7ff4}
+.sov-card-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sov-card-icon{font-size:20px;flex-shrink:0}
+.sov-card-name{font-size:13px;font-weight:800;color:var(--text)}
+.sov-card-prov{font-size:10px;color:var(--text3)}
+.sov-card-regions{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.sov-region-tag{font-size:10px;padding:2px 8px;border-radius:4px;background:var(--deep);color:var(--text2);border:1px solid var(--rim)}
+.sov-card-note{font-size:11px;color:var(--text2);line-height:1.55;margin-top:6px}
+.sov-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid var(--rim)}
+.sov-deploy-tags{display:flex;gap:4px;flex-wrap:wrap}
+
+.sov-summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.sov-sum-card{background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);padding:18px;text-align:center}
+.sov-sum-n{font-family:'Geist Mono',monospace;font-size:32px;font-weight:800;line-height:1;margin-bottom:4px}
+.sov-sum-l{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
+.sov-sum-sub{font-size:10px;color:var(--text3);margin-top:6px;line-height:1.4}
+
+.sov-alert{background:rgba(240,107,122,.07);border:1px solid rgba(240,107,122,.2);border-radius:var(--r);padding:14px 18px;font-size:12px;color:var(--rose);line-height:1.65;margin-bottom:18px;display:flex;gap:12px;align-items:flex-start}
+.sov-alert-icon{font-size:20px;flex-shrink:0}
+.sov-tip{background:rgba(62,207,178,.06);border:1px solid rgba(62,207,178,.2);border-radius:var(--r);padding:14px 18px;font-size:12px;color:var(--teal);line-height:1.65;margin-bottom:18px;display:flex;gap:12px;align-items:flex-start}
+.sov-tip-icon{font-size:20px;flex-shrink:0}
+.sov-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:20px}
+.sov-table th{padding:9px 12px;text-align:left;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);background:var(--deep);border-bottom:1px solid var(--rim)}
+.sov-table td{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.03);vertical-align:middle}
+.sov-table tr:hover td{background:rgba(201,168,76,.02);cursor:pointer}
+/* ══ SOVEREIGNTY COUNTRY SELECTOR ══ */
+.sov-country-selector{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);padding:22px 24px;margin-bottom:22px}
+.sov-cs-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:10px}
+.sov-cs-input-wrap{position:relative;margin-bottom:10px}
+.sov-cs-input{width:100%;background:var(--deep);border:1px solid var(--rim2);color:var(--text);padding:11px 16px;border-radius:10px;font-size:14px;font-family:'Cabinet Grotesk',sans-serif;outline:none;transition:.2s}
+.sov-cs-input:focus{border-color:var(--gold-rim);background:var(--obsidian);box-shadow:0 0 0 3px rgba(201,168,76,.08)}
+.sov-cs-input::placeholder{color:var(--text3)}
+.sov-cs-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--elevated);border:1px solid var(--rim2);border-radius:10px;z-index:200;max-height:220px;overflow-y:auto;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.sov-cs-option{padding:10px 16px;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:10px;transition:.12s}
+.sov-cs-option:hover{background:var(--gold-bg);color:var(--gold2)}
+.sov-cs-option-flag{font-size:18px;flex-shrink:0}
+.sov-cs-option-name{font-weight:600}
+.sov-cs-option-region{font-size:10px;color:var(--text3);margin-left:auto}
+.sov-cs-chips{display:flex;flex-wrap:wrap;gap:6px}
+.sov-cs-chip{display:flex;align-items:center;gap:6px;padding:4px 12px;background:var(--gold-bg);border:1px solid var(--gold-rim);border-radius:20px;font-size:12px;color:var(--gold2);font-weight:700;cursor:pointer}
+.sov-cs-chip:hover{background:rgba(201,168,76,.15)}
+.sov-cs-quick{display:flex;flex-wrap:wrap;gap:6px}
+.sov-qs-btn{padding:6px 12px;border-radius:20px;border:1px solid var(--rim);background:none;color:var(--text2);font-size:12px;cursor:pointer;font-family:'Cabinet Grotesk',sans-serif;transition:.15s;font-weight:600}
+.sov-qs-btn:hover{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg)}
+.sov-qs-btn.active-country{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg)}
+
+.sov-empty-state{text-align:center;padding:60px 20px;display:flex;flex-direction:column;align-items:center}
+
+.sov-country-header{background:linear-gradient(135deg,rgba(201,168,76,.06) 0%,rgba(62,207,178,.04) 100%);border:1px solid var(--gold-rim);border-radius:var(--r-lg);padding:22px 28px;margin-bottom:20px;display:flex;align-items:flex-start;gap:20px}
+.sov-ch-flag{font-size:48px;line-height:1;flex-shrink:0}
+.sov-ch-name{font-family:'Instrument Serif',serif;font-size:24px;color:var(--text);margin-bottom:4px}
+.sov-ch-region{font-size:12px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.sov-ch-law{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:8px}
+.sov-ch-infra{display:flex;flex-wrap:wrap;gap:6px}
+.sov-ch-cloud{font-size:11px;padding:3px 10px;background:var(--deep);border:1px solid var(--rim);border-radius:20px;color:var(--text2)}
+
+.sov-ai-panel{background:var(--surface);border:1px solid var(--gold-rim);border-radius:var(--r-lg);padding:18px 22px;margin-bottom:20px}
+.sov-ai-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sov-ai-btn{padding:8px 18px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;color:var(--void);font-size:12px;font-weight:800;cursor:pointer;font-family:'Cabinet Grotesk',sans-serif;transition:.2s;white-space:nowrap}
+.sov-ai-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(201,168,76,.4)}
+.sov-ai-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.sov-ai-loading{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3)}
+.sov-ai-loading::before{content:'';width:14px;height:14px;border:2px solid var(--gold-rim);border-top-color:var(--gold2);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+
+
+/* ══ SOVEREIGNTY DEFINITIONS ══ */
+.sov-definitions{margin-bottom:8px}
+.sov-def-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:20px}
+@media(max-width:900px){.sov-def-grid{grid-template-columns:1fr}}
+.sov-def-card{background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);padding:20px 22px}
+.sov-def-icon{font-size:26px;margin-bottom:10px;line-height:1}
+.sov-def-title{font-family:'Instrument Serif',serif;font-size:16px;color:var(--text);margin-bottom:8px}
+.sov-def-body{font-size:12px;color:var(--text2);line-height:1.75}
+.sov-def-body strong{color:var(--text);font-weight:700}
+.sov-def-body em{color:var(--amber);font-style:normal}
+.sov-def-cta{background:var(--gold-bg);border:1px solid var(--gold-rim);border-radius:var(--r-lg);padding:18px 24px;text-align:center}
 </style>
 </head>
 <body>
@@ -794,6 +899,9 @@ table.btbl td{padding:9px 12px;vertical-align:middle}
       <div class="nav-item" onclick="setDeploy('onPrem')"><span class="nav-icon">🏢</span>On-Premise</div>
       <div class="nav-item" onclick="setDeploy('selfHost')"><span class="nav-icon">🔓</span>Self-Hostable</div>
       <div class="nav-item" onclick="setDeploy('')"><span class="nav-icon">↩️</span>All Deployments</div>
+
+      <div class="sidebar-section">🛡️ Sovereignty</div>
+      <div class="nav-item" onclick="goPage('sovereignty')"><span class="nav-icon">🛡️</span>Sovereignty</div>
 
       <div class="sidebar-section">Filter By Task</div>
       <div class="nav-item" onclick="quickTask('TTS')"><span class="nav-icon">🔊</span>Text-to-Speech</div>
@@ -1153,6 +1261,129 @@ table.btbl td{padding:9px 12px;vertical-align:middle}
         </div>
       </div>
 
+      <!-- ══ SOVEREIGNTY PAGE ══ -->
+      <div id="page-sovereignty" class="inner-page">
+        <div class="page-header">
+          <div class="page-title">🛡️ Sovereignty</div>
+          <div class="page-sub">Select any country to analyse AI model data residency compliance, regulatory requirements, and sovereign deployment options</div>
+        </div>
+
+        <!-- Country Selector Hero -->
+        <div class="sov-country-selector">
+          <div class="sov-cs-left">
+            <div class="sov-cs-label">🌍 Select Country / Region</div>
+            <div class="sov-cs-input-wrap">
+              <input id="sovCountryInput" class="sov-cs-input" placeholder="Type a country… e.g. Saudi Arabia, Germany, Singapore" oninput="onSovCountryInput(this.value)" onkeydown="onSovCountryKey(event)" autocomplete="off">
+              <div id="sovCountryDropdown" class="sov-cs-dropdown" style="display:none"></div>
+            </div>
+            <div id="sovCountryChips" class="sov-cs-chips"></div>
+          </div>
+          <div class="sov-cs-right">
+            <div class="sov-cs-label">⚡ Quick Select</div>
+            <div class="sov-cs-quick">
+              <button class="sov-qs-btn" onclick="selectCountry('UAE')">🇦🇪 UAE</button>
+              <button class="sov-qs-btn" onclick="selectCountry('Saudi Arabia')">🇸🇦 Saudi Arabia</button>
+              <button class="sov-qs-btn" onclick="selectCountry('Germany')">🇩🇪 Germany</button>
+              <button class="sov-qs-btn" onclick="selectCountry('Singapore')">🇸🇬 Singapore</button>
+              <button class="sov-qs-btn" onclick="selectCountry('India')">🇮🇳 India</button>
+              <button class="sov-qs-btn" onclick="selectCountry('United States')">🇺🇸 United States</button>
+              <button class="sov-qs-btn" onclick="selectCountry('United Kingdom')">🇬🇧 United Kingdom</button>
+              <button class="sov-qs-btn" onclick="selectCountry('Australia')">🇦🇺 Australia</button>
+              <button class="sov-qs-btn" onclick="selectCountry('Japan')">🇯🇵 Japan</button>
+              <button class="sov-qs-btn" onclick="selectCountry('France')">🇫🇷 France</button>
+              <button class="sov-qs-btn" onclick="selectCountry('Canada')">🇨🇦 Canada</button>
+              <button class="sov-qs-btn" onclick="selectCountry('Brazil')">🇧🇷 Brazil</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Default state (no country selected) — shows definitions -->
+        <div id="sovDefaultState">
+          <div class="sov-definitions">
+            <div class="sov-def-grid">
+              <div class="sov-def-card">
+                <div class="sov-def-icon">🛡️</div>
+                <div class="sov-def-title">What is AI Sovereignty?</div>
+                <div class="sov-def-body">AI Sovereignty is the principle that a nation, organisation, or jurisdiction maintains <strong>full legal and operational control</strong> over its AI systems, data, and the infrastructure that processes them. A sovereign AI deployment ensures that prompts, responses, and training data never leave the country's borders — protecting against foreign intelligence access, regulatory exposure, and vendor lock-in. True sovereignty requires that <em>inference</em> (where the model actually runs) occurs within the jurisdiction, not just where data is stored at rest.</div>
+              </div>
+              <div class="sov-def-card">
+                <div class="sov-def-icon">📍</div>
+                <div class="sov-def-title">What is Data Residency?</div>
+                <div class="sov-def-body">Data Residency is the requirement that data — including AI inputs (prompts) and outputs (responses) — be <strong>physically stored and processed within a specified geographic boundary</strong>, such as a country or economic zone. For AI models, this means the cloud region where inference runs must be within the jurisdiction. Having a vendor's office or CDN node in a country is <em>not</em> sufficient — you must confirm the specific <strong>compute region</strong> where model inference executes. Regulations such as the UAE PDPL, GDPR (EU), Saudi PDPL, and India's DPDPA all impose data residency obligations on regulated sectors.</div>
+              </div>
+              <div class="sov-def-card">
+                <div class="sov-def-icon">⚠️</div>
+                <div class="sov-def-title">The Inference Region Problem</div>
+                <div class="sov-def-body">The most common compliance trap: a cloud provider offers a service "in" your country, but the <strong>AI inference (model execution) routes to a different region</strong> for capacity. For example, Azure OpenAI in UAE North may execute inference in West Europe or France Central during peak load. Always verify the <em>inference region</em> separately from the storage or API endpoint region — and demand written confirmation before deploying regulated data on any AI SaaS platform.</div>
+              </div>
+              <div class="sov-def-card">
+                <div class="sov-def-icon">🔓</div>
+                <div class="sov-def-title">Self-Hosting for Full Sovereignty</div>
+                <div class="sov-def-body">Self-hosting open-source AI models on your own infrastructure — whether on-premises servers or dedicated cloud VMs within your country — provides <strong>absolute data sovereignty</strong>. Models such as Llama 3, Falcon, Qwen, and Mistral are open-weight and can be deployed inside any geographic boundary with no data leaving your network. This is the recommended approach for government, defence, healthcare, and financial organisations with strict sovereign AI requirements.</div>
+              </div>
+            </div>
+            <div class="sov-def-cta">
+              <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">Select a country above to begin your sovereignty analysis</div>
+              <div style="font-size:12px;color:var(--text3)">Every AI model in this platform is classified by data residency status for your chosen jurisdiction</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Country Analysis Panel (shown after country selected) -->
+        <div id="sovAnalysisPanel" style="display:none">
+          <!-- Country header -->
+          <div id="sovCountryHeader"></div>
+
+          <!-- Summary stats — click any card to filter models instantly -->
+          <div class="sov-summary-grid" id="sovSummaryGrid"></div>
+
+          <!-- Filter pills (immediately under cards) -->
+          <div class="sov-region-filter" style="margin-bottom:8px">
+            <label>Show:</label>
+            <button class="sov-pill active" onclick="setSovFilter('all')">All Models</button>
+            <button class="sov-pill" onclick="setSovFilter('available')">🟢 Sovereign</button>
+            <button class="sov-pill" onclick="setSovFilter('partial')">🟡 Partial</button>
+            <button class="sov-pill" onclick="setSovFilter('unavailable')">🔴 Not Compliant</button>
+            <button class="sov-pill" onclick="setSovFilter('selfhost')">🟣 Self-Host</button>
+          </div>
+
+          <div class="sov-status-legend" style="margin-bottom:18px">
+            <span class="sov-leg-item"><span class="sov-badge available">🟢 Sovereign</span> In-country inference confirmed</span>
+            <span class="sov-leg-item"><span class="sov-badge partial">🟡 Partial</span> Region exists; verify routing</span>
+            <span class="sov-leg-item"><span class="sov-badge unavailable">🔴 Not Compliant</span> Data exits country</span>
+            <span class="sov-leg-item"><span class="sov-badge selfhost">🟣 Self-Host</span> Open weights — deploy in-country</span>
+          </div>
+
+          <!-- Model grid — always visible, updates when filter changes -->
+          <div id="sovModelGrid"></div>
+
+          <!-- Recommended models -->
+          <div class="sov-section-label" style="margin-top:24px">⭐ Recommended for <span id="sovRecCountry">this region</span></div>
+          <div id="sovRecommended" class="sov-grid" style="margin-bottom:24px"></div>
+
+          <!-- AI Advisor -->
+          <div class="sov-ai-panel" id="sovAiPanel">
+            <div class="sov-ai-header">
+              <div style="display:flex;align-items:center;gap:10px">
+                <div style="width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--void)">◆</div>
+                <div>
+                  <div style="font-weight:800;font-size:14px" id="sovAiTitle">AI Sovereign Advisor</div>
+                  <div style="font-size:11px;color:var(--text3)">Powered by Claude · Add API key in top bar to enable</div>
+                </div>
+              </div>
+              <button class="sov-ai-btn" id="sovAiBtn" onclick="runSovAI()">✨ Get AI Recommendation</button>
+            </div>
+            <div id="sovAiResult" style="display:none;font-size:13px;color:var(--text2);line-height:1.75;padding-top:14px;border-top:1px solid var(--rim);margin-top:14px"></div>
+          </div>
+
+          <!-- Cloud regions table -->
+          <div class="guide-section" style="margin-top:24px">
+            <div class="guide-section-title" id="sovCloudTableTitle">☁️ Available Cloud Regions</div>
+            <table class="sov-table" id="sovCloudTable"><tbody id="sovCloudTableBody"></tbody></table>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /main-content -->
   </div>
 </div><!-- /appPage -->
@@ -1180,6 +1411,7 @@ uses:['Complex reasoning','Code generation','Long-context tasks','Document analy
 pros:['1M context','Improved coding','Vision capable','Better instruction following'],cons:['Higher cost at scale','Data privacy'],
 link:'https://platform.openai.com',scores:{q:97,s:85,c:68,l:92},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (OpenAI HQ)','Azure UAE North (limited quota)','Azure global regions'],note:'Direct OpenAI API processes data in the US. Via Azure AI Foundry, UAE North region exists but GPT-4.1 quota and guaranteed in-region inference is limited — inference may route to West Europe or France Central. Verify with Microsoft account team before use on regulated UAE data.'},
 bench:{mmlu:90.0,humanEval:95.0,mtBench:9.2,gsm8k:97.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:5,government:4,manufacturing:4,technology:5}}},
 
 {id:'gpt41-mini',name:'GPT-4.1 Mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',
@@ -1190,6 +1422,7 @@ uses:['High-volume chatbots','Classification','Summarization','Customer service'
 pros:['Very cheap','1M context','Fast'],cons:['Less capable for complex tasks'],
 link:'https://platform.openai.com',scores:{q:86,s:94,c:95,l:85},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (OpenAI)', 'Azure UAE North (limited)'],note:'Same Azure UAE North caveats as GPT-4.1. Inference may route outside UAE under standard quota. Verify with Microsoft before processing regulated UAE data.'},
 bench:{mmlu:83.0,humanEval:88.0,mtBench:8.5,gsm8k:90.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:4,government:3,manufacturing:3,technology:4}}},
 
 {id:'gpt41-nano',name:'GPT-4.1 Nano',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM'],type:'commercial',
@@ -1200,6 +1433,7 @@ uses:['Real-time responses','Edge apps','Simple classification','Intent detectio
 pros:['Cheapest GPT-4 class','Ultra-fast','1M context'],cons:['Lower quality for complex tasks'],
 link:'https://platform.openai.com',scores:{q:78,s:99,c:99,l:65},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (OpenAI)', 'Azure UAE North (limited)'],note:'Same Azure UAE North caveats. Best for non-sensitive, high-volume workloads where latency matters more than strict residency.'},
 bench:{mmlu:75.0,humanEval:80.0,mtBench:7.8,gsm8k:82.0,hellaSwag:null,domains:{healthcare:2,finance:3,legal:2,retail:5,education:3,government:2,manufacturing:2,technology:3}}},
 
 {id:'gpt4o',name:'GPT-4o',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Vision','Code'],type:'commercial',featured:true,
@@ -1210,6 +1444,7 @@ uses:['Chatbots','Code gen','Vision','Multimodal apps','Research'],
 pros:['Multimodal','128K context','Fast','Audio+video'],cons:['Cost at scale'],
 link:'https://platform.openai.com',scores:{q:95,s:88,c:70,l:92},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (OpenAI)', 'Azure UAE North (limited)'],note:'Via Azure OpenAI, UAE North region exists but inference routing is not guaranteed. Microsoft has confirmed GPT-4o inference may execute in West Europe or France Central when UAE North is under capacity.'},
 bench:{mmlu:88.7,humanEval:90.2,mtBench:9.0,gsm8k:95.8,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:5,government:4,manufacturing:4,technology:5}}},
 
 {id:'gpt4o-mini',name:'GPT-4o Mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',
@@ -1220,6 +1455,7 @@ uses:['Bulk processing','Chatbots','Classification','Summarization'],
 pros:['Very cheap','128K context','Good multilingual'],cons:['Less capable than GPT-4o'],
 link:'https://platform.openai.com',scores:{q:82,s:93,c:96,l:86},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (OpenAI)', 'Azure UAE North (limited)'],note:'Same Azure UAE North routing caveats as GPT-4o. Check latest Azure model availability table before deployment on sensitive UAE data.'},
 bench:{mmlu:82.0,humanEval:87.2,mtBench:8.4,gsm8k:87.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:4,government:3,manufacturing:3,technology:4}}},
 
 {id:'o3',name:'o3',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',
@@ -1230,6 +1466,7 @@ uses:['Complex reasoning','Research','Advanced coding','Math & science','PhD-lev
 pros:['Best reasoning','PhD-level performance','Deep analysis'],cons:['Very expensive','High latency'],
 link:'https://platform.openai.com',scores:{q:99,s:30,c:35,l:75},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (OpenAI)', 'Azure UAE North (limited)'],note:'Reasoning model with high inference demand. UAE North availability is limited. For sovereign deployments this model is not recommended without PTU confirmation in UAE North.'},
 bench:{mmlu:96.0,humanEval:99.0,mtBench:9.8,gsm8k:99.5,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:2,education:5,government:4,manufacturing:5,technology:5}}},
 
 {id:'o4-mini',name:'o4-mini',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code'],type:'commercial',
@@ -1240,6 +1477,7 @@ uses:['STEM reasoning','Code debugging','Math problems','Scientific analysis'],
 pros:['Affordable reasoning','Good for STEM','200K context'],cons:['Slower than standard models'],
 link:'https://platform.openai.com',scores:{q:92,s:50,c:78,l:68},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (OpenAI)', 'Azure UAE North (limited)'],note:'Same Azure UAE North caveats. Reasoning models are infrastructure-intensive and UAE North capacity is limited. Confirm with Microsoft account team.'},
 bench:{mmlu:87.0,humanEval:98.0,mtBench:9.3,gsm8k:99.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:4,retail:2,education:5,government:3,manufacturing:5,technology:5}}},
 
 {id:'gpt35',name:'GPT-3.5 Turbo',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM'],type:'commercial',
@@ -1250,6 +1488,7 @@ uses:['Simple chatbots','Quick summaries','Legacy apps','Classification at scale
 pros:['Very cheap','Fast','Battle-tested','Wide ecosystem'],cons:['Short context','Inferior to GPT-4 family','Limited multilingual'],
 link:'https://platform.openai.com',scores:{q:72,s:96,c:93,l:72},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (OpenAI)', 'Azure UAE North (limited)'],note:'Legacy model. Azure UAE North may have better availability for older GPT-3.5 models vs GPT-4 family, but still not guaranteed. Confirm current availability.'},
 bench:{mmlu:70.0,humanEval:65.0,mtBench:7.9,gsm8k:57.0,hellaSwag:85.5,domains:{healthcare:2,finance:3,legal:2,retail:4,education:3,government:2,manufacturing:2,technology:3}}},
 
 {id:'codex',name:'OpenAI Codex (2025)',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['Code'],type:'commercial',featured:true,
@@ -1260,6 +1499,7 @@ uses:['Agentic code writing','Multi-file refactoring','Automated bug fixing','Te
 pros:['Agentic — autonomous multi-step coding','Based on o3 (best reasoning)','Can run and test code in sandbox','Multi-file edits','Deep code understanding'],cons:['High latency — not for real-time autocomplete','More expensive than GPT-4o for simple snippets','Pricing still maturing (beta)'],
 link:'https://platform.openai.com/docs/models',scores:{q:97,s:30,c:50,l:45},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (OpenAI)'],note:'Agentic coding model in API beta. No confirmed UAE region. Data processed in OpenAI US data centers. For sovereign code assistance, use Code Llama or Qwen2.5-Coder self-hosted on UAE-region VMs.'},
 bench:{mmlu:null,humanEval:99.0,mtBench:null,gsm8k:99.0,hellaSwag:null,domains:{healthcare:3,finance:3,legal:2,retail:2,education:4,government:2,manufacturing:5,technology:5}}},
 
 {id:'oai-tts',name:'TTS-1 / TTS-1-HD',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['TTS'],type:'commercial',
@@ -1270,6 +1510,7 @@ uses:['Developer integrations','Chatbot voices','Accessibility','Content narrati
 pros:['Simple API','6 voices','Good multilingual'],cons:['No voice cloning','Limited customization'],
 link:'https://platform.openai.com',scores:{q:86,s:90,c:75,l:82},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (OpenAI)', 'Azure UAE North (limited)'],note:'OpenAI TTS API processes audio in the US. Via Azure AI Foundry, Azure UAE North exists with routing caveats. For UAE-sovereign TTS, Azure Neural TTS (UAE North confirmed) or self-hosted Coqui TTS are recommended.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:2,legal:2,retail:4,education:4,government:3,manufacturing:2,technology:3}}},
 
 {id:'whisper',name:'Whisper v3 Large',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['STT'],type:'open-source',featured:true,
@@ -1280,6 +1521,7 @@ uses:['Transcription','Subtitles','Meeting notes','Multilingual STT','Podcast pr
 pros:['99 languages','Open source option','High accuracy','API + self-hosted'],cons:['Not real-time','30s chunk limit'],
 link:'https://openai.com/research/whisper',scores:{q:95,s:70,c:90,l:99},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:true},
+sovereignty:{uae:'partial',regions:['US (OpenAI API)', 'Self-host: any region'],note:'OpenAI Whisper API processes audio in the US. However, Whisper is fully open-source — self-hosting on UAE-region VMs (AWS me-central-1 or Azure UAE North) gives full data sovereignty at no inference cost.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:4,legal:5,retail:4,education:5,government:5,manufacturing:4,technology:4}}},
 
 // ── Anthropic ───────────────────────────────────────────────────────────────
@@ -1291,6 +1533,7 @@ uses:['Complex reasoning','Coding','Research','Long document analysis','Legal re
 pros:['Extended thinking','200K context','Best-in-class coding','Safety-first'],cons:['High output cost'],
 link:'https://anthropic.com',scores:{q:98,s:80,c:62,l:90},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Anthropic Cloud + Azure AI Foundry + AWS Bedrock + GCP Vertex',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)', 'AWS me-south-1 (Bahrain)', 'Global (cross-region)'],note:'Available via AWS Bedrock with regional endpoint in me-central-1 (UAE). When using the regional endpoint, inference is guaranteed to execute within UAE. Cross-region inference profile routes globally for throughput but data is not stored in destination regions. Recommended for UAE regulated workloads.'},
 bench:{mmlu:88.5,humanEval:92.0,mtBench:9.2,gsm8k:96.0,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:5,government:4,manufacturing:4,technology:5}}},
 
 {id:'claude35',name:'Claude 3.5 Sonnet',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Code','Vision'],type:'commercial',
@@ -1301,6 +1544,7 @@ uses:['Chatbots','Code','Document analysis','Enterprise AI'],
 pros:['200K context','Excellent coding','Vision capable'],cons:['High output cost'],
 link:'https://anthropic.com',scores:{q:95,s:83,c:65,l:88},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Anthropic Cloud + Azure AI Foundry + AWS Bedrock + GCP Vertex',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)', 'AWS me-south-1 (Bahrain)'],note:'Available via AWS Bedrock regional endpoint in UAE (me-central-1). Regional endpoint guarantees in-UAE inference. Also available via Anthropic direct API (US-hosted) and Azure/GCP which may not meet UAE residency. Use AWS Bedrock regional endpoint for compliance.'},
 bench:{mmlu:88.3,humanEval:92.0,mtBench:9.0,gsm8k:96.4,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:5,government:4,manufacturing:4,technology:5}}},
 
 {id:'claude-haiku',name:'Claude 3.5 Haiku',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Code'],type:'commercial',
@@ -1311,6 +1555,7 @@ uses:['Real-time chatbots','Classification','High-volume APIs','Customer service
 pros:['Ultra-fast','200K context','Low cost'],cons:['Less capable for complex tasks'],
 link:'https://anthropic.com',scores:{q:83,s:97,c:92,l:83},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Anthropic Cloud + Azure AI Foundry + AWS Bedrock + GCP Vertex',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)', 'AWS me-south-1 (Bahrain)'],note:'Fast Claude model available via AWS Bedrock me-central-1 regional endpoint. Guaranteed UAE inference when using regional (not global/cross-region) endpoint. Excellent choice for UAE-compliant high-volume workloads.'},
 bench:{mmlu:80.0,humanEval:86.0,mtBench:8.6,gsm8k:88.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:4,government:3,manufacturing:3,technology:4}}},
 
 {id:'claude3-opus',name:'Claude 3 Opus',prov:'Anthropic',icon:'🟣',clr:'#8b5cf6',tasks:['LLM','Vision'],type:'commercial',
@@ -1321,6 +1566,7 @@ uses:['Complex analysis','Research','Premium applications','Legal review'],
 pros:['High quality','200K context','Nuanced reasoning'],cons:['Most expensive Anthropic model'],
 link:'https://anthropic.com',scores:{q:91,s:65,c:30,l:80},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Anthropic Cloud + Azure AI Foundry + AWS Bedrock + GCP Vertex AI',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)'],note:'Available via AWS Bedrock in UAE region. Use regional endpoint to guarantee in-UAE inference. Note: Claude 3.7 Sonnet is recommended as the higher-capability model for most use cases.'},
 bench:{mmlu:86.8,humanEval:84.9,mtBench:9.0,gsm8k:95.0,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:3,education:5,government:4,manufacturing:3,technology:5}}},
 
 // ── Google ──────────────────────────────────────────────────────────────────
@@ -1332,6 +1578,7 @@ uses:['Long document processing','Video analysis','Complex reasoning','Code revi
 pros:['2M context','Native multimodal','Competitive pricing','Strong coding'],cons:['GCP dependency','Slower for very long context'],
 link:'https://ai.google.dev',scores:{q:96,s:74,c:82,l:90},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'GCP Vertex AI + Google AI Studio',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['GCP global (no UAE region)'],note:'Google Cloud Platform has no data center in UAE. Nearest GCP region is me-central1 in Doha, Qatar. All Gemini inference processes outside UAE. Not suitable for strict UAE data residency requirements. Self-host Gemma models in UAE as an alternative.'},
 bench:{mmlu:91.5,humanEval:92.0,mtBench:9.3,gsm8k:97.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:5,government:4,manufacturing:4,technology:5}}},
 
 {id:'gemini20-flash',name:'Gemini 2.0 Flash',prov:'Google',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision'],type:'commercial',
@@ -1342,6 +1589,7 @@ uses:['Real-time apps','High-volume APIs','Live streaming analysis','Mobile AI']
 pros:['Cheapest frontier-class','1M context','Real-time audio/video'],cons:['Less capable than Pro'],
 link:'https://ai.google.dev',scores:{q:85,s:98,c:99,l:82},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'GCP Vertex AI + Google AI Studio',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['GCP global (no UAE region)'],note:'No GCP UAE region. Data processed outside UAE, typically in US or European data centers. Consider self-hosting Gemma 3-27B on AWS me-central-1 VMs as an open-source alternative.'},
 bench:{mmlu:85.0,humanEval:86.0,mtBench:8.7,gsm8k:90.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:4,government:3,manufacturing:3,technology:4}}},
 
 {id:'gemini15-flash',name:'Gemini 1.5 Flash',prov:'Google',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision'],type:'commercial',
@@ -1352,6 +1600,7 @@ uses:['Summarization','Classification','Real-time chat','Batch processing'],
 pros:['Very cheap','1M context','Fast','Multimodal'],cons:['Less capable than Pro'],
 link:'https://ai.google.dev',scores:{q:83,s:97,c:98,l:82},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'GCP Vertex AI + Google AI Studio',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['GCP global (no UAE region)'],note:'Legacy Flash model. Same lack of UAE region as all Google AI services. Data exits UAE. Not compliant for regulated UAE data.'},
 bench:{mmlu:83.0,humanEval:82.0,mtBench:8.5,gsm8k:88.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:4,government:3,manufacturing:3,technology:4}}},
 
 {id:'gemma3-27b',name:'Gemma 3-27B',prov:'Google',icon:'🔴',clr:'#ef4444',tasks:['LLM','Vision'],type:'open-source',
@@ -1362,6 +1611,7 @@ uses:['On-premise AI','Edge deployment','Fine-tuning base','Open-source producti
 pros:['Open weights','Vision capable','Strong multilingual','128K context'],cons:['Requires good GPU for inference'],
 link:'https://ai.google.dev/gemma',scores:{q:83,s:82,c:97,l:88},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'GCP Vertex AI + Google AI Studio',selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Self-host: Azure UAE North', 'Self-host: On-premises'],note:'Open-source Google model with Apache-like license. Self-host on UAE-region GPU instances (AWS me-central-1 or Azure UAE North) for full data sovereignty. Vision-capable. Requires A100/H100 GPU for comfortable inference. Excellent sovereign option for regulated UAE deployments.'},
 bench:{mmlu:80.0,humanEval:78.0,mtBench:8.2,gsm8k:86.0,hellaSwag:90.0,domains:{healthcare:3,finance:4,legal:3,retail:4,education:4,government:4,manufacturing:3,technology:4}}},
 
 {id:'gemma2-9b',name:'Gemma 2-9B',prov:'Google',icon:'🔴',clr:'#ef4444',tasks:['LLM'],type:'open-source',
@@ -1372,6 +1622,7 @@ uses:['Local AI deployment','Fine-tuning','Research','Constrained environments']
 pros:['Open weights','Runs on RTX 3090','Very efficient','Strong for size'],cons:['8K context limit','Less capable than 27B'],
 link:'https://ai.google.dev/gemma',scores:{q:74,s:95,c:99,l:75},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'GCP Vertex AI + Google AI Studio',selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Self-host: Azure UAE North', 'Self-host: On-premises'],note:'Lightweight open-source model. Runs on a single A100 or RTX 4090 GPU. Ideal for cost-effective sovereign deployment on smaller UAE-region VM instances. Limited 8K context.'},
 bench:{mmlu:72.0,humanEval:68.0,mtBench:7.8,gsm8k:68.0,hellaSwag:87.0,domains:{healthcare:2,finance:3,legal:2,retail:3,education:3,government:3,manufacturing:2,technology:3}}},
 
 {id:'g-stt',name:'Google Speech-to-Text (Chirp)',prov:'Google',icon:'🔴',clr:'#ef4444',tasks:['STT'],type:'commercial',
@@ -1382,6 +1633,7 @@ uses:['Mobile apps','Medical transcription','Accessibility','100+ language STT']
 pros:['Chirp accuracy','100+ languages','Medical specialization','GCP integration'],cons:['GCP dependency'],
 link:'https://cloud.google.com/speech-to-text',scores:{q:87,s:91,c:84,l:96},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Google Cloud (GCP)',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['GCP global (no UAE region)'],note:'Google Cloud Speech-to-Text (Chirp) has no UAE region. Audio data sent to Google data centers outside UAE. For UAE-compliant STT, use Azure Speech (UAE North), AWS Transcribe (me-central-1), or self-hosted Whisper.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:3,legal:4,retail:3,education:4,government:5,manufacturing:3,technology:3}}},
 
 {id:'g-tts',name:'Google Cloud TTS (WaveNet)',prov:'Google',icon:'🔴',clr:'#ef4444',tasks:['TTS'],type:'commercial',
@@ -1392,6 +1644,7 @@ uses:['Mobile apps','IVR systems','E-learning','Smart devices'],
 pros:['50+ languages','WaveNet quality','Free tier','GCP ecosystem'],cons:['Studio voices expensive'],
 link:'https://cloud.google.com/text-to-speech',scores:{q:83,s:91,c:90,l:93},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Google Cloud (GCP)',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['GCP global (no UAE region)'],note:'Google Cloud TTS (WaveNet/Neural2) has no UAE region. Data processed outside UAE. Alternatives: Azure Neural TTS (UAE North confirmed), Amazon Polly (me-central-1), or self-hosted Coqui TTS.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:2,legal:2,retail:4,education:4,government:3,manufacturing:2,technology:3}}},
 
 // ── Meta ────────────────────────────────────────────────────────────────────
@@ -1403,6 +1656,7 @@ uses:['Open-source production','General purpose AI','Fine-tuning base','On-prem 
 pros:['Fully open source','Near frontier quality','No vendor lock-in','Commercial use allowed'],cons:['Requires 140GB+ VRAM self-hosted'],
 link:'https://llama.meta.com',scores:{q:90,s:82,c:90,l:72},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Azure AI Foundry + AWS Bedrock + GCP Vertex AI + Alibaba DashScope',selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Self-host: Azure UAE North', 'Azure AI Foundry (partial)'],note:'Open-source Meta model (MIT license). Self-hosting on UAE-region cloud VMs gives full sovereignty. Azure AI Foundry offers managed hosting but UAE North inference routing for Llama is subject to the same Azure caveats. Recommended: deploy on dedicated GPU VMs in AWS me-central-1 for guaranteed UAE processing.'},
 bench:{mmlu:86.0,humanEval:88.4,mtBench:8.7,gsm8k:93.0,hellaSwag:92.0,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:5,manufacturing:4,technology:4}}},
 
 {id:'llama32-v',name:'Llama 3.2-90B Vision',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['LLM','Vision'],type:'open-source',
@@ -1413,6 +1667,7 @@ uses:['Open vision tasks','Document processing','Multimodal self-hosted apps'],
 pros:['Open source vision','No vendor lock-in','Strong multilingual'],cons:['Significant hardware needed'],
 link:'https://llama.meta.com',scores:{q:87,s:78,c:90,l:70},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Azure AI Foundry + AWS Bedrock + GCP Vertex AI',selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Self-host: Azure UAE North', 'Self-host: On-premises'],note:'Open-source multimodal model. Self-host for UAE sovereignty. Requires significant GPU VRAM (90B model). For smaller sovereign deployments consider Llama 3.1-8B instead.'},
 bench:{mmlu:84.0,humanEval:82.0,mtBench:8.4,gsm8k:90.0,hellaSwag:91.0,domains:{healthcare:3,finance:4,legal:3,retail:4,education:4,government:4,manufacturing:3,technology:4}}},
 
 {id:'llama31-8b',name:'Llama 3.1-8B',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['LLM','Code'],type:'open-source',
@@ -1423,6 +1678,7 @@ uses:['Edge deployment','Low-cost inference','Fine-tuning','Local AI assistants'
 pros:['Runs on RTX 3090','Very fast','Free','128K context'],cons:['Limited multilingual','Less capable for complex tasks'],
 link:'https://llama.meta.com',scores:{q:75,s:98,c:99,l:50},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Azure AI Foundry + AWS Bedrock + GCP Vertex AI + Alibaba DashScope',selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Self-host: Azure UAE North', 'Self-host: On-premises'],note:'Runs on a single RTX 3090 GPU (16GB VRAM). Easiest Llama model to self-host for UAE sovereignty. Fast, low cost, and fully under your control. Excellent sovereign option for resource-constrained organizations.'},
 bench:{mmlu:73.0,humanEval:72.6,mtBench:8.1,gsm8k:84.0,hellaSwag:89.0,domains:{healthcare:2,finance:3,legal:2,retail:3,education:3,government:3,manufacturing:2,technology:3}}},
 
 {id:'codellama',name:'Code Llama 70B',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['Code','LLM'],type:'open-source',
@@ -1433,6 +1689,7 @@ uses:['Azure AI Foundry managed deployment','On-premise code generation','IDE / 
 pros:['✅ Available on Azure AI Foundry (serverless)','100K context for large files','FIM for code completion','Open weights — also self-hostable','Multiple size options (7B–70B)'],cons:['Llama 2-based — newer Llama 3 models surpass it for general tasks','Less capable than frontier LLMs like Claude 3.7 or GPT-4.1'],
 link:'https://ai.meta.com/blog/code-llama-large-language-model-coding',scores:{q:76,s:78,c:96,l:40},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Azure AI Foundry + AWS Bedrock + GCP Vertex AI',selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Self-host: Azure UAE North', 'Self-host: On-premises'],note:'Open-source code model. Azure AI Foundry offers managed hosting with UAE North caveats. Self-hosting on UAE-region instances gives full code sovereignty — important for government or defense code repositories.'},
 bench:{mmlu:null,humanEval:67.8,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:2,finance:2,legal:2,retail:2,education:3,government:2,manufacturing:4,technology:5}}},
 
 {id:'starcoder2',name:'StarCoder 2-15B',prov:'BigCode (HuggingFace)',icon:'⭐',clr:'#f59e0b',tasks:['Code'],type:'open-source',
@@ -1443,6 +1700,7 @@ uses:['Code generation','Autocomplete','Code translation','On-premise coding ass
 pros:['600+ programming languages','4T tokens of code training','Efficient — runs on single A100','Strong code benchmark scores','Permissive licence for research'],cons:['16K context only','Not instruction-tuned by default (use Instruct variant)','HumanEval 46% — below frontier LLMs'],
 link:'https://huggingface.co/bigcode/starcoder2-15b',scores:{q:72,s:88,c:98,l:35},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host only — no SaaS UAE region'],note:'No SaaS offering in UAE. Self-host on UAE-region GPU instances. Efficient for a 15B model — runs on a single A100 GPU. Best open-source code model for UAE-sovereign coding workflows.'},
 bench:{mmlu:null,humanEval:46.0,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:2,finance:2,legal:2,retail:2,education:3,government:2,manufacturing:4,technology:5}}},
 
 {id:'seamless',name:'SeamlessM4T v2',prov:'Meta',icon:'🦙',clr:'#8b5cf6',tasks:['STT','TTS','Translation'],type:'open-source',
@@ -1453,6 +1711,7 @@ uses:['Speech translation','Multilingual voice agents','Research','Low-resource 
 pros:['All-in-one STT+MT+TTS','100+ languages','Free','Single model'],cons:['Quality below specialized models','Requires GPU'],
 link:'https://github.com/facebookresearch/seamless_communication',scores:{q:76,s:72,c:99,l:99},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host only — no SaaS UAE region'],note:'Meta open-source speech-translation model. No SaaS UAE offering. Self-host for full sovereignty. Excellent for government and multilingual UAE deployments requiring STT + translation + TTS in one model, all within country borders.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:2,legal:3,retail:3,education:4,government:5,manufacturing:2,technology:3}}},
 
 // ── Alibaba / Qwen ──────────────────────────────────────────────────────────
@@ -1464,6 +1723,7 @@ uses:['Chinese NLP','Arabic AI','Arabic-English translation','Multilingual chatb
 pros:['Best Chinese model','Strong Arabic','Open source','128K context','17 languages','Best open-source Arabic NLP'],cons:['LLM-based translation — not a dedicated MT engine (slower/costlier than Azure Translator for bulk)','Self-hosting requires 144GB+ VRAM'],
 link:'https://huggingface.co/Qwen',scores:{q:92,s:82,c:95,l:95},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Alibaba Cloud (DashScope) + Azure AI Foundry + GCP Vertex AI',selfHost:true},
+sovereignty:{uae:'available',regions:['Alibaba Cloud UAE (Dubai)', 'Azure AI Foundry UAE North (limited)'],note:'Alibaba Cloud has a UAE (Dubai) data center with DashScope API access for Qwen models. Data processed within UAE when using Alibaba Cloud UAE endpoint. Also available on Azure AI Foundry with UAE North caveats. Strong Arabic support makes this a top choice for UAE-sovereign Arabic AI workloads.'},
 bench:{mmlu:86.1,humanEval:86.0,mtBench:8.9,gsm8k:95.0,hellaSwag:91.0,domains:{healthcare:4,finance:4,legal:4,retail:4,education:5,government:5,manufacturing:4,technology:4}}},
 
 {id:'qwen25-7b',name:'Qwen2.5-7B',prov:'Alibaba Cloud',icon:'☁️',clr:'#f97316',tasks:['LLM'],type:'open-source',
@@ -1474,6 +1734,7 @@ uses:['Edge deployment','Mobile apps','Chinese chatbots','Low-resource settings'
 pros:['Very lightweight','Strong Chinese','Free','128K context'],cons:['Less capable than 72B'],
 link:'https://huggingface.co/Qwen',scores:{q:76,s:97,c:99,l:87},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Alibaba Cloud (DashScope) + Azure AI Foundry + GCP Vertex AI',selfHost:true},
+sovereignty:{uae:'available',regions:['Alibaba Cloud UAE (Dubai)', 'Self-host: AWS me-central-1'],note:'Lightweight Qwen model. Available on Alibaba Cloud UAE. Also self-hostable on UAE-region VMs for full data control. Good for edge or cost-sensitive UAE deployments.'},
 bench:{mmlu:74.0,humanEval:72.0,mtBench:7.9,gsm8k:85.0,hellaSwag:87.0,domains:{healthcare:2,finance:3,legal:2,retail:3,education:3,government:4,manufacturing:2,technology:3}}},
 
 {id:'qwen25-vl',name:'Qwen2.5-VL-72B',prov:'Alibaba Cloud',icon:'☁️',clr:'#f97316',tasks:['LLM','Vision'],type:'open-source',
@@ -1484,6 +1745,7 @@ uses:['Document OCR','Chart understanding','Medical imaging','Video analysis','C
 pros:['Best open-source vision for Chinese','Document understanding','Video support','Open weights'],cons:['High memory requirement'],
 link:'https://huggingface.co/Qwen',scores:{q:88,s:75,c:90,l:88},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Alibaba Cloud (DashScope) + Azure AI Foundry',selfHost:true},
+sovereignty:{uae:'available',regions:['Alibaba Cloud UAE (Dubai)', 'Self-host: AWS me-central-1'],note:'Multimodal Qwen model with strong Arabic OCR. Available via Alibaba Cloud UAE. Self-hostable for full sovereignty. Excellent for UAE government document processing workflows.'},
 bench:{mmlu:82.0,humanEval:80.0,mtBench:8.5,gsm8k:91.0,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:4,manufacturing:4,technology:4}}},
 
 {id:'qwen25-coder',name:'Qwen2.5-Coder-32B',prov:'Alibaba Cloud',icon:'☁️',clr:'#f97316',tasks:['Code','LLM'],type:'open-source',
@@ -1494,6 +1756,7 @@ uses:['Code generation','Code review','Bug fixing','DevOps automation','Technica
 pros:['Best open code model','Multi-language coding','128K context','Strong Chinese+English code'],cons:['Requires 64GB+ VRAM'],
 link:'https://huggingface.co/Qwen',scores:{q:88,s:85,c:95,l:78},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Alibaba Cloud (DashScope) + Azure AI Foundry',selfHost:true},
+sovereignty:{uae:'available',regions:['Alibaba Cloud UAE (Dubai)', 'Azure AI Foundry UAE North (limited)'],note:'Code-specialized Qwen model. Available via Alibaba Cloud UAE. Also on Azure AI Foundry. Best open-source coding model available with confirmed UAE region support.'},
 bench:{mmlu:80.0,humanEval:92.7,mtBench:8.6,gsm8k:92.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:3,education:4,government:3,manufacturing:5,technology:5}}},
 
 // ── Cohere ──────────────────────────────────────────────────────────────────
@@ -1505,6 +1768,7 @@ uses:['Arabic-English translation','Enterprise RAG','Document Q&A','Agentic work
 pros:['RAG-optimized','Native Arabic translation (10 langs)','Tool use','Grounded citations','Enterprise SLA','On-prem available'],cons:['LLM-based translation — slower/costlier than dedicated MT (DeepL/Azure) for high volume','Less general than GPT-4o'],
 link:'https://cohere.com',scores:{q:88,s:80,c:68,l:82},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Cohere Cloud + Azure AI Foundry + AWS Bedrock + GCP Vertex AI',selfHost:false},
+sovereignty:{uae:'partial',regions:['US East / EU West (SaaS)', 'On-prem: any region'],note:'Cohere SaaS processes data in US/EU — not UAE. Enterprise on-premise deployment available for UAE sovereignty. Strong Arabic translation capability makes this valuable for UAE workloads when deployed on-prem.'},
 bench:{mmlu:80.0,humanEval:78.0,mtBench:8.5,gsm8k:88.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:4}}},
 
 {id:'cohere-r',name:'Command R',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['LLM'],type:'commercial',
@@ -1515,6 +1779,7 @@ uses:['RAG pipelines','Document summarization','Chatbots','Classification'],
 pros:['Very low cost','RAG-optimized','128K context'],cons:['10 language limit'],
 link:'https://cohere.com',scores:{q:80,s:88,c:96,l:65},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Cohere Cloud + Azure AI Foundry + AWS Bedrock + GCP Vertex AI',selfHost:false},
+sovereignty:{uae:'partial',regions:['US East / EU West (SaaS)', 'On-prem: any region'],note:'Same as Command R+. Cohere SaaS outside UAE. RAG-optimized — for UAE-sovereign RAG, deploy on-premise or use Claude via AWS Bedrock UAE with Titan Embeddings.'},
 bench:{mmlu:76.0,humanEval:72.0,mtBench:8.0,gsm8k:82.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:4,retail:4,education:3,government:4,manufacturing:3,technology:4}}},
 
 {id:'cohere-cmd-a',name:'Command A',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['LLM','Code','Translation'],type:'commercial',
@@ -1525,6 +1790,7 @@ uses:['Agentic workflows','Multi-step reasoning','Enterprise automation','Comple
 pros:['256K context','Agentic-optimized','Strong tool use','Enterprise grade'],cons:['Newer, less tested at scale'],
 link:'https://cohere.com',scores:{q:90,s:78,c:66,l:84},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Cohere Cloud + Azure AI Foundry + AWS Bedrock + GCP Vertex AI',selfHost:false},
+sovereignty:{uae:'partial',regions:['US East / EU West (SaaS)', 'On-prem: any region'],note:'Cohere Command A SaaS runs in US/EU. Enterprise on-premise option allows UAE-sovereign deployment. Agentic capabilities useful for UAE enterprise automation workflows when hosted in-country.'},
 bench:{mmlu:82.0,humanEval:80.0,mtBench:8.7,gsm8k:90.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:5}}},
 
 {id:'cohere-embed',name:'Embed v3 Multilingual',prov:'Cohere',icon:'🌊',clr:'#06b6d4',tasks:['Embedding'],type:'commercial',featured:true,
@@ -1535,6 +1801,7 @@ uses:['Multilingual semantic search','RAG embeddings','Cross-lingual retrieval',
 pros:['100+ languages','Best multilingual embeddings','Low cost','Top MTEB scores'],cons:['Embedding only','512 token context'],
 link:'https://cohere.com/embeddings',scores:{q:95,s:98,c:95,l:99},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Cohere Cloud + Azure AI Foundry + AWS Bedrock + GCP Vertex AI',selfHost:false},
+sovereignty:{uae:'partial',regions:['US East / EU West (SaaS)', 'On-prem: any region'],note:'Cohere embeddings SaaS runs outside UAE. Enterprise on-premise deployment available for UAE sovereignty. Alternatively, open-source multilingual-E5-Large provides free self-hostable embeddings.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:5,education:5,government:5,manufacturing:4,technology:5}}},
 
 // ── Mistral ─────────────────────────────────────────────────────────────────
@@ -1546,6 +1813,7 @@ uses:['European language apps','Code generation','GDPR-compliant AI','Enterprise
 pros:['Strong European languages','GDPR-friendly','Function calling','EU data residency option'],cons:['Less multilingual than Qwen for Asian languages'],
 link:'https://mistral.ai',scores:{q:88,s:83,c:65,l:80},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Mistral Cloud (La Plateforme) + Azure AI Foundry + AWS Bedrock + GCP Vertex AI',selfHost:false},
+sovereignty:{uae:'partial',regions:['EU (France/Germany) SaaS', 'Azure UAE North (limited)'],note:'Mistral SaaS runs on EU servers (GDPR-compliant but not UAE). Available on Azure AI Foundry with UAE North routing caveats. For UAE sovereignty, use Mistral open-weight models self-hosted on UAE-region infrastructure.'},
 bench:{mmlu:84.0,humanEval:92.1,mtBench:8.9,gsm8k:91.0,hellaSwag:89.0,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:5,manufacturing:4,technology:5}}},
 
 {id:'mistral-nemo',name:'Mistral NeMo 12B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['LLM'],type:'open-source',
@@ -1556,6 +1824,7 @@ uses:['European language deployments','Cost-efficient EU AI','Self-hosted assist
 pros:['Great European languages','128K context','Open weights','NVIDIA-optimized'],cons:['Less capable than Large 2'],
 link:'https://mistral.ai',scores:{q:78,s:92,c:95,l:72},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Mistral Cloud + Azure AI Foundry + AWS Bedrock',selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Self-host: Azure UAE North', 'Self-host: On-premises'],note:'Open-source Apache 2.0. 12B model runs on single A100. Self-host on UAE-region VMs for full sovereignty. Azure AI Foundry also available with UAE North routing caveats.'},
 bench:{mmlu:75.0,humanEval:75.0,mtBench:8.2,gsm8k:80.0,hellaSwag:87.0,domains:{healthcare:3,finance:3,legal:3,retail:3,education:3,government:4,manufacturing:3,technology:3}}},
 
 {id:'mixtral',name:'Mixtral 8x22B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['LLM','Code'],type:'open-source',
@@ -1566,6 +1835,7 @@ uses:['Self-hosted production','Code generation','European AI','Research'],
 pros:['Efficient MoE architecture','Strong coding','Open source'],cons:['Requires 4x A100 for self-hosting'],
 link:'https://mistral.ai',scores:{q:85,s:84,c:88,l:72},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Mistral Cloud + Azure AI Foundry + AWS Bedrock',selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Self-host: Azure UAE North', 'Self-host: On-premises'],note:'Open-source MoE model. Self-hosting gives full UAE sovereignty. 8x22B requires multi-GPU but 8x7B runs on 2-4x A100s. Azure AI Foundry managed hosting has UAE North caveats.'},
 bench:{mmlu:77.8,humanEval:75.0,mtBench:8.7,gsm8k:88.0,hellaSwag:88.7,domains:{healthcare:3,finance:4,legal:3,retail:3,education:3,government:4,manufacturing:3,technology:4}}},
 
 {id:'pixtral',name:'Pixtral Large 124B',prov:'Mistral AI',icon:'💫',clr:'#eab308',tasks:['Vision','LLM'],type:'open-source',
@@ -1576,6 +1846,7 @@ uses:['Document parsing','Multi-image analysis','Visual RAG','Open vision models
 pros:['Open source vision','Multi-image','European compliant','Long context'],cons:['Significant hardware needed'],
 link:'https://mistral.ai',scores:{q:86,s:72,c:85,l:65},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Mistral Cloud + Azure AI Foundry',selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Self-host: On-premises'],note:'Open-source vision model. Self-host for UAE sovereignty. No confirmed UAE SaaS hosting. Self-host on UAE-region VMs for sovereign multimodal document processing.'},
 bench:{mmlu:78.0,humanEval:76.0,mtBench:8.3,gsm8k:86.0,hellaSwag:null,domains:{healthcare:3,finance:3,legal:4,retail:3,education:3,government:3,manufacturing:4,technology:4}}},
 
 // ── DeepSeek ─────────────────────────────────────────────────────────────────
@@ -1587,6 +1858,7 @@ uses:['Code generation','Math reasoning','Chinese NLP','Cost-sensitive productio
 pros:['Cheapest frontier-class','Excellent coding','Strong Chinese','Open weights'],cons:['Privacy considerations for some use cases'],
 link:'https://deepseek.com',scores:{q:93,s:82,c:99,l:78},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'DeepSeek Cloud + Azure AI Foundry + AWS Bedrock + Alibaba DashScope',selfHost:true},
+sovereignty:{uae:'unavailable',regions:['China-based servers (DeepSeek)', 'US/EU (Azure AI Foundry)'],note:'⚠️ Data sovereignty risk: DeepSeek is a Chinese company and direct API use routes data to Chinese servers — significant compliance concern under UAE data protection law and sector regulations. Azure AI Foundry hosted version routes to US/EU data centers, not UAE. Not recommended for regulated UAE data.'},
 bench:{mmlu:88.5,humanEval:91.6,mtBench:8.9,gsm8k:97.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:4,education:4,government:3,manufacturing:5,technology:5}}},
 
 {id:'deepseek-r1',name:'DeepSeek R1',prov:'DeepSeek',icon:'🔬',clr:'#38bdf8',tasks:['LLM','Code'],type:'open-source',
@@ -1597,6 +1869,7 @@ uses:['Complex reasoning','Math','Code debugging','Research','Scientific analysi
 pros:['Open-source o1 alternative','Transparent thinking','Excellent reasoning'],cons:['Slow','High compute requirements'],
 link:'https://deepseek.com',scores:{q:95,s:40,c:85,l:68},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'DeepSeek Cloud + Azure AI Foundry + AWS Bedrock + Alibaba DashScope',selfHost:true},
+sovereignty:{uae:'unavailable',regions:['China-based servers (DeepSeek)', 'US/EU (Azure AI Foundry)'],note:'⚠️ Data sovereignty risk: Same concerns as DeepSeek V3. Chinese company, data routed to Chinese servers via direct API. Azure AI Foundry version routes to US/EU. Open-source weights available — self-host on UAE-region infrastructure if DeepSeek capability is required without sovereignty risk.'},
 bench:{mmlu:90.8,humanEval:92.5,mtBench:9.2,gsm8k:97.3,hellaSwag:null,domains:{healthcare:4,finance:5,legal:4,retail:2,education:5,government:3,manufacturing:5,technology:5}}},
 
 // ── Microsoft / Azure ────────────────────────────────────────────────────────
@@ -1608,6 +1881,7 @@ uses:['Device-side AI','Math & STEM','Code assistance','On-device enterprise AI'
 pros:['Exceptional reasoning for size','Runs on laptops','Very low cost','Microsoft ecosystem'],cons:['Short context (16K)'],
 link:'https://azure.microsoft.com/en-us/products/phi',scores:{q:82,s:97,c:98,l:58},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Azure AI Foundry (native)',selfHost:true},
+sovereignty:{uae:'partial',regions:['Azure UAE North', 'Self-host: any region'],note:'Microsoft Phi-4 is a native Azure AI Foundry model. Azure UAE North has Phi-4 with better residency characteristics than GPT-4 series — Microsoft has confirmed Azure Cognitive Services (including Phi models) are available in UAE North. Self-hosting also possible (open weights). Verify current UAE North availability with Microsoft.'},
 bench:{mmlu:84.8,humanEval:82.0,mtBench:8.6,gsm8k:91.0,hellaSwag:88.0,domains:{healthcare:3,finance:4,legal:3,retail:3,education:4,government:3,manufacturing:4,technology:5}}},
 
 {id:'phi4-mini',name:'Phi-4-mini (3.8B)',prov:'Microsoft',icon:'🔷',clr:'#38bdf8',tasks:['LLM'],type:'open-source',
@@ -1618,6 +1892,7 @@ uses:['Mobile AI','IoT deployment','Edge inference','Offline applications'],
 pros:['Runs on phones','Tiny memory footprint','Free','Strong reasoning for size'],cons:['Limited capability','Short context'],
 link:'https://azure.microsoft.com/en-us/products/phi',scores:{q:70,s:99,c:99,l:48},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Azure AI Foundry (native)',selfHost:true},
+sovereignty:{uae:'partial',regions:['Azure UAE North', 'Self-host: any region'],note:'Lightweight Phi-4 mini. Same Azure UAE North availability as Phi-4. Very small model (3.8B) — easily self-hostable on UAE-region VMs without GPU for CPU inference. Good for edge UAE sovereign deployments.'},
 bench:{mmlu:76.0,humanEval:70.0,mtBench:7.5,gsm8k:78.0,hellaSwag:82.0,domains:{healthcare:2,finance:2,legal:2,retail:3,education:3,government:2,manufacturing:3,technology:3}}},
 
 {id:'azure-tts',name:'Azure Neural TTS',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['TTS'],type:'commercial',
@@ -1628,6 +1903,7 @@ uses:['Enterprise apps','Call centers','Accessibility tools','Global products'],
 pros:['140+ languages','Custom voice','Low cost','SSML support','HIPAA compliant'],cons:['Azure lock-in'],
 link:'https://azure.microsoft.com',scores:{q:82,s:94,c:95,l:99},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Microsoft Azure',selfHost:false},
+sovereignty:{uae:'available',regions:['Azure UAE North (Abu Dhabi)'],note:'Microsoft Azure TTS (Neural/WaveNet) is confirmed available in Azure UAE North region. Data processed within UAE. HIPAA eligible. SOC2 compliant. Covers 140+ languages including Arabic. Recommended for UAE-compliant TTS in enterprise applications.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:4,legal:4,retail:5,education:5,government:5,manufacturing:4,technology:4}}},
 
 {id:'azure-stt',name:'Azure Speech-to-Text',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['STT'],type:'commercial',
@@ -1638,6 +1914,7 @@ uses:['Enterprise apps','Compliance recording','Call center analytics','HIPAA tr
 pros:['100+ languages','Custom models','Real-time','Enterprise compliance','Batch available'],cons:['Azure ecosystem dependency'],
 link:'https://azure.microsoft.com',scores:{q:85,s:90,c:85,l:99},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Microsoft Azure',selfHost:false},
+sovereignty:{uae:'available',regions:['Azure UAE North (Abu Dhabi)'],note:'Azure Speech-to-Text (Batch + Real-time) is available in Azure UAE North. Data stays within UAE borders. HIPAA eligible, SOC2 compliant. Supports Arabic with UAE dialect recognition. Recommended for UAE government and healthcare STT deployments.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:4,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:4}}},
 
 {id:'azure-trans',name:'Azure Translator',prov:'Microsoft Azure',icon:'🔷',clr:'#38bdf8',tasks:['Translation'],type:'commercial',
@@ -1648,6 +1925,7 @@ uses:['Document translation','Real-time translation','Multilingual apps','Enterp
 pros:['100+ languages','Low cost','Document format support','GDPR compliant'],cons:['Not LLM quality for nuanced text'],
 link:'https://azure.microsoft.com',scores:{q:82,s:97,c:92,l:99},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Microsoft Azure',selfHost:false},
+sovereignty:{uae:'available',regions:['Azure UAE North (Abu Dhabi)'],note:'Azure AI Translator confirmed available in UAE North region. Data processed within UAE borders. HIPAA eligible, GDPR and UAE data law compliant. Supports 100+ languages including Arabic. Best choice for UAE-sovereign bulk machine translation.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:5,education:5,government:5,manufacturing:4,technology:4}}},
 
 // ── AWS / Amazon ─────────────────────────────────────────────────────────────
@@ -1659,6 +1937,7 @@ uses:['AWS enterprise apps','Document analysis','Multimodal workflows','Automate
 pros:['AWS integration','300K context','Low cost','Multimodal','SOC2/HIPAA eligible'],cons:['AWS-only via Bedrock','Less known ecosystem'],
 link:'https://aws.amazon.com/bedrock/nova',scores:{q:86,s:78,c:88,l:78},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS Bedrock',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)', 'AWS Bedrock global'],note:'Amazon Nova Pro available via AWS Bedrock with UAE region (me-central-1). Use regional endpoint to pin inference to UAE. 300K context. Good for UAE-sovereign long-document processing on AWS infrastructure.'},
 bench:{mmlu:83.0,humanEval:75.0,mtBench:8.4,gsm8k:88.0,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:4,manufacturing:4,technology:4}}},
 
 {id:'amazon-nova-lite',name:'Amazon Nova Lite',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['LLM','Vision'],type:'commercial',
@@ -1669,6 +1948,7 @@ uses:['High-volume processing','Content classification','Real-time apps','Cost-s
 pros:['Very cheap','300K context','Fast','Multimodal','AWS native'],cons:['Less capable than Nova Pro'],
 link:'https://aws.amazon.com/bedrock/nova',scores:{q:80,s:92,c:98,l:72},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS Bedrock',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)', 'AWS Bedrock global'],note:'Amazon Nova Lite on AWS Bedrock UAE (me-central-1). Multimodal, cost-efficient. Regional endpoint ensures UAE-only processing. Good for UAE-sovereign vision and text tasks.'},
 bench:{mmlu:78.0,humanEval:68.0,mtBench:8.0,gsm8k:82.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:3,government:3,manufacturing:3,technology:4}}},
 
 {id:'amazon-nova-micro',name:'Amazon Nova Micro',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['LLM'],type:'commercial',
@@ -1679,6 +1959,7 @@ uses:['Ultra-high-volume text tasks','Simple classification','Cost-critical auto
 pros:['Cheapest Amazon model','Ultra-fast','AWS native'],cons:['Text only','Limited capability'],
 link:'https://aws.amazon.com/bedrock/nova',scores:{q:72,s:98,c:99,l:58},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS Bedrock',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)', 'AWS Bedrock global'],note:'Smallest Nova model. AWS Bedrock UAE (me-central-1). Ultra-low cost for simple UAE-sovereign tasks. Use regional endpoint for guaranteed UAE inference.'},
 bench:{mmlu:70.0,humanEval:60.0,mtBench:7.5,gsm8k:72.0,hellaSwag:null,domains:{healthcare:2,finance:3,legal:2,retail:4,education:3,government:2,manufacturing:2,technology:3}}},
 
 {id:'amazon-titan',name:'Amazon Titan Text Premier',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['LLM'],type:'commercial',
@@ -1689,6 +1970,7 @@ uses:['AWS enterprise workloads','Internal tools','Content generation','Summariz
 pros:['Deep AWS integration','Enterprise compliance','Simple API'],cons:['Less capable than frontier models','Short context'],
 link:'https://aws.amazon.com/bedrock/titan',scores:{q:74,s:86,c:90,l:58},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS Bedrock',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)'],note:'Amazon Titan text model on AWS Bedrock UAE (me-central-1). Regional endpoint guarantees UAE inference. Useful for AWS-native UAE workloads requiring in-country text generation.'},
 bench:{mmlu:72.0,humanEval:62.0,mtBench:7.8,gsm8k:75.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:3,education:3,government:4,manufacturing:3,technology:4}}},
 
 {id:'amazon-transcribe',name:'Amazon Transcribe',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['STT'],type:'commercial',
@@ -1699,6 +1981,7 @@ uses:['Call center analytics','Medical transcription','Compliance recording','AW
 pros:['AWS integration','PII redaction','Medical vocabulary','Speaker labels','Custom vocab'],cons:['More expensive than alternatives','AWS-only'],
 link:'https://aws.amazon.com/transcribe',scores:{q:80,s:82,c:78,l:78},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)'],note:'Amazon Transcribe is available in AWS UAE region (me-central-1). Audio data processed within UAE. Supports Arabic with UAE dialect. HIPAA eligible, SOC2 compliant. Recommended for UAE-compliant call center and meeting transcription.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:4,legal:5,retail:3,education:3,government:5,manufacturing:3,technology:3}}},
 
 {id:'amazon-polly',name:'Amazon Polly Neural',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['TTS'],type:'commercial',
@@ -1709,6 +1992,7 @@ uses:['AWS workloads','Podcasts','E-learning','IVR systems','Alexa skills'],
 pros:['AWS integration','SSML support','Long-form synthesis','Lexicon support'],cons:['Less natural than ElevenLabs'],
 link:'https://aws.amazon.com/polly',scores:{q:78,s:89,c:90,l:82},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)'],note:'Amazon Polly TTS is available in AWS UAE region (me-central-1). Audio synthesis stays within UAE. Supports Arabic. Good for UAE-sovereign IVR and TTS applications using AWS infrastructure.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:2,retail:4,education:4,government:3,manufacturing:3,technology:3}}},
 
 // ── IBM ──────────────────────────────────────────────────────────────────────
@@ -1720,6 +2004,7 @@ uses:['Enterprise automation','Code assistance','Document summarization','Health
 pros:['Enterprise-grade safety','IBM support','Open weights','watsonx integration','128K context'],cons:['Smaller capability than 70B models'],
 link:'https://www.ibm.com/watsonx',scores:{q:74,s:92,c:95,l:72},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'IBM Cloud (watsonx.ai) + Azure AI Foundry + AWS Bedrock + GCP Vertex AI',selfHost:true},
+sovereignty:{uae:'partial',regions:['IBM Cloud (US/EU)', 'Azure AI Foundry UAE North (limited)'],note:'IBM Cloud has no UAE region. IBM Granite available on Azure AI Foundry with UAE North inference routing caveats. For UAE sovereignty, self-host Granite (Apache 2.0 weights) on UAE-region VMs or contact IBM for UAE-specific deployment options.'},
 bench:{mmlu:73.0,humanEval:72.0,mtBench:7.8,gsm8k:78.0,hellaSwag:85.0,domains:{healthcare:4,finance:5,legal:4,retail:3,education:3,government:5,manufacturing:4,technology:4}}},
 
 {id:'ibm-granite-3b',name:'IBM Granite 3.1-3B',prov:'IBM',icon:'🔵',clr:'#1d4ed8',tasks:['LLM'],type:'open-source',
@@ -1730,6 +2015,7 @@ uses:['Edge enterprise AI','IoT/embedded AI','Form processing','Simple classific
 pros:['Edge-optimized','Enterprise trust','IBM support','Open weights'],cons:['Limited complex reasoning'],
 link:'https://www.ibm.com/watsonx',scores:{q:64,s:98,c:99,l:60},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'IBM Cloud (watsonx.ai) + Azure AI Foundry + AWS Bedrock + GCP Vertex AI',selfHost:true},
+sovereignty:{uae:'partial',regions:['IBM Cloud (US/EU)', 'Azure AI Foundry UAE North (limited)'],note:'Same as Granite 3.1-8B. Tiny model (3B) is very easily self-hostable on UAE-region VMs — CPU inference possible. Self-hosting is recommended for UAE sovereignty vs relying on IBM or Azure cloud.'},
 bench:{mmlu:64.0,humanEval:58.0,mtBench:7.2,gsm8k:68.0,hellaSwag:80.0,domains:{healthcare:3,finance:4,legal:3,retail:2,education:2,government:4,manufacturing:3,technology:3}}},
 
 {id:'ibm-watson-stt',name:'IBM Watson STT',prov:'IBM',icon:'🔵',clr:'#1d4ed8',tasks:['STT'],type:'commercial',
@@ -1740,6 +2026,7 @@ uses:['Call center transcription','Compliance recording','Healthcare documentati
 pros:['On-premise deployment','Custom language models','IBM enterprise support','HIPAA'],cons:['Higher cost than newer competitors','More complex setup'],
 link:'https://www.ibm.com/cloud/watson-speech-to-text',scores:{q:78,s:82,c:72,l:72},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'IBM Cloud',selfHost:true},
+sovereignty:{uae:'unavailable',regions:['IBM Cloud US/EU only'],note:'IBM Watson STT runs exclusively on IBM Cloud which has no UAE region. Data exits UAE for processing. Not suitable for regulated UAE data. Use Azure Speech (UAE North) or AWS Transcribe (me-central-1) as alternatives with UAE data residency.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:3,education:3,government:5,manufacturing:4,technology:3}}},
 
 // ── TII UAE / Falcon ─────────────────────────────────────────────────────────
@@ -1751,6 +2038,7 @@ uses:['Arabic NLP','Government AI (GCC region)','Open-source production','Resear
 pros:['Best Arabic open model','Apache 2.0 license','Strong multilingual','UAE/GCC sovereign AI'],cons:['32K context limit','Less GPU-efficient than MoE models'],
 link:'https://huggingface.co/tiiuae',scores:{q:83,s:80,c:98,l:85},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Azure AI Foundry + AWS Bedrock',selfHost:true},
+sovereignty:{uae:'available',regions:['Azure UAE North (Abu Dhabi)', 'Self-host: On-premises UAE'],note:'Built by Technology Innovation Institute (TII) in Abu Dhabi, UAE. Designed specifically for GCC and UAE sovereign deployments. Available via Azure AI Foundry with UAE North hosting. Falcon models have better Azure UAE North support than non-UAE provider models. The premier sovereign UAE AI model.'},
 bench:{mmlu:82.0,humanEval:80.0,mtBench:8.2,gsm8k:82.0,hellaSwag:88.0,domains:{healthcare:3,finance:4,legal:4,retail:3,education:4,government:5,manufacturing:3,technology:4}}},
 
 {id:'falcon3-7b',name:'Falcon 3-7B',prov:'TII UAE',icon:'🇦🇪',clr:'#22c55e',tasks:['LLM'],type:'open-source',
@@ -1761,6 +2049,7 @@ uses:['Arabic chatbots','Edge Arabic AI','Government edge deployment','Research'
 pros:['Best Arabic 7B model','Apache 2.0','Runs on modest hardware'],cons:['Limited context','Less multilingual than 40B'],
 link:'https://huggingface.co/tiiuae',scores:{q:72,s:95,c:99,l:76},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Azure AI Foundry + AWS Bedrock',selfHost:true},
+sovereignty:{uae:'available',regions:['Azure UAE North (Abu Dhabi)', 'Self-host: On-premises UAE'],note:'TII Abu Dhabi model. Runs on Azure UAE North with confirmed hosting. Lightweight enough for on-premises UAE deployment on a single A100 GPU. Strong Arabic. The top choice for sovereign UAE AI at lower cost.'},
 bench:{mmlu:72.0,humanEval:65.0,mtBench:7.6,gsm8k:72.0,hellaSwag:83.0,domains:{healthcare:2,finance:3,legal:3,retail:3,education:3,government:5,manufacturing:2,technology:3}}},
 
 // ── AI21 Labs ─────────────────────────────────────────────────────────────────
@@ -1772,6 +2061,7 @@ uses:['Long document Q&A','Legal contract review','Financial reports','Enterpris
 pros:['256K efficient context','Hybrid architecture','Lower memory for long context','Strong at summarization'],cons:['Less multilingual','Newer architecture'],
 link:'https://www.ai21.com',scores:{q:84,s:82,c:72,l:68},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AI21 Cloud + Azure AI Foundry + AWS Bedrock',selfHost:false},
+sovereignty:{uae:'partial',regions:['AWS Bedrock (US/EU primary)', 'Azure AI Foundry (EU/US)'],note:'AI21 Labs Jamba on AWS Bedrock and Azure. Neither confirms UAE-region inference for Jamba. AWS Bedrock UAE (me-central-1) may support it — verify with AWS. On-prem deployment available from AI21 for full UAE sovereignty.'},
 bench:{mmlu:80.0,humanEval:76.0,mtBench:8.3,gsm8k:86.0,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:3,education:4,government:4,manufacturing:3,technology:4}}},
 
 // ── xAI ──────────────────────────────────────────────────────────────────────
@@ -1783,6 +2073,7 @@ uses:['Real-time social analysis','Coding','Reasoning','Research with current da
 pros:['Real-time X data','Strong reasoning','Large context'],cons:['Limited API access','Privacy concerns'],
 link:'https://x.ai',scores:{q:91,s:80,c:60,l:70},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'xAI Cloud',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['US (xAI/X infrastructure)'],note:'xAI Grok runs on US-based infrastructure (X/Twitter data centers). No UAE region. Not suitable for UAE data residency requirements. Primarily available via X/Grok.com subscription, not enterprise API.'},
 bench:{mmlu:87.0,humanEval:88.0,mtBench:8.9,gsm8k:93.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:4,education:4,government:2,manufacturing:3,technology:5}}},
 
 // ── NVIDIA ────────────────────────────────────────────────────────────────────
@@ -1794,6 +2085,7 @@ uses:['Instruction-following','RLHF reward modeling','Open-source production','N
 pros:['NVIDIA-optimized inference','Top reward model','Open weights','Strong reasoning'],cons:['Requires NVIDIA GPU for best performance'],
 link:'https://build.nvidia.com/nvidia/llama-3_1-nemotron-70b-instruct',scores:{q:91,s:82,c:90,l:72},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'NVIDIA NIM + Azure AI Foundry + AWS Bedrock + GCP Vertex AI',selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Self-host: Azure UAE North', 'NVIDIA NIM (US)'],note:'Open-source NVIDIA model. NVIDIA NIM cloud service has no confirmed UAE region. Self-host on UAE GPU instances for sovereignty. Good for UAE deployments where NVIDIA GPU infrastructure is already in place.'},
 bench:{mmlu:85.0,humanEval:88.0,mtBench:8.98,gsm8k:95.0,hellaSwag:92.0,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:4,manufacturing:5,technology:5}}},
 
 // ── Allen AI ──────────────────────────────────────────────────────────────────
@@ -1805,6 +2097,7 @@ uses:['Academic research','Reproducibility','AI safety research','Open training 
 pros:['Fully open (weights + data + code)','Apache 2.0','Excellent for research'],cons:['Short context','Less capable than closed models'],
 link:'https://allenai.org/olmo',scores:{q:70,s:90,c:99,l:55},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host only — research model'],note:'Fully open research model (Apache 2.0). Self-host on UAE infrastructure for sovereignty. Not recommended for production — primarily for AI research and reproducibility. All data stays wherever you host it.'},
 bench:{mmlu:69.0,humanEval:62.0,mtBench:7.4,gsm8k:70.0,hellaSwag:82.0,domains:{healthcare:2,finance:2,legal:2,retail:2,education:3,government:2,manufacturing:2,technology:3}}},
 
 // ── BigScience ────────────────────────────────────────────────────────────────
@@ -1816,6 +2109,7 @@ uses:['Multilingual research','Low-resource language AI','Open science','Academi
 pros:['59 languages','Open weights','Low-resource languages','Community-trained'],cons:['Very short context','Large memory requirement','Outdated vs newer models'],
 link:'https://huggingface.co/bigscience/bloom',scores:{q:62,s:60,c:99,l:95},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host only — HuggingFace/research'],note:'Community model, self-host only for UAE sovereignty. Very large (176B) requiring significant GPU resources. Mainly valuable for rare low-resource languages not covered by other models. Self-host on UAE data center for research workloads.'},
 bench:{mmlu:58.0,humanEval:40.0,mtBench:6.8,gsm8k:35.0,hellaSwag:73.0,domains:{healthcare:2,finance:2,legal:2,retail:2,education:3,government:3,manufacturing:2,technology:2}}},
 
 // ── Baidu ─────────────────────────────────────────────────────────────────────
@@ -1827,6 +2121,7 @@ uses:['Chinese enterprise AI','Search augmented generation','Chinese document pr
 pros:['Best Chinese language model','Baidu search integration','Strong Chinese culture understanding'],cons:['Limited international access','China deployment focus'],
 link:'https://cloud.baidu.com/product/wenxinworkshop',scores:{q:86,s:78,c:88,l:72},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Baidu Cloud (ERNIE API)',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['Baidu Cloud (China)'],note:'⚠️ Chinese company (Baidu). Inference on Baidu Cloud China servers. Significant data sovereignty concern under UAE data protection law. Not recommended for regulated UAE data. Use Qwen or Falcon as UAE-sovereign alternatives for Chinese/multilingual AI.'},
 bench:{mmlu:81.0,humanEval:78.0,mtBench:8.5,gsm8k:90.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:4,education:4,government:4,manufacturing:3,technology:4}}},
 
 // ── Tencent ───────────────────────────────────────────────────────────────────
@@ -1838,6 +2133,7 @@ uses:['Chinese enterprise AI','Tencent ecosystem apps','Gaming AI','Social media
 pros:['256K context','389B MoE architecture','Strong Chinese','Tencent ecosystem'],cons:['Mainly China-accessible','Limited global presence'],
 link:'https://hunyuan.tencent.com',scores:{q:84,s:76,c:86,l:70},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Tencent Cloud',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['Tencent Cloud (China)'],note:'⚠️ Chinese company (Tencent). Primarily China-accessible. Tencent Cloud has some international regions but UAE is not confirmed. Data sovereignty concern under UAE data protection law. Not recommended for regulated UAE workloads.'},
 bench:{mmlu:80.0,humanEval:75.0,mtBench:8.3,gsm8k:88.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:4,education:3,government:4,manufacturing:3,technology:4}}},
 
 // ── Perplexity ────────────────────────────────────────────────────────────────
@@ -1849,6 +2145,7 @@ uses:['Research assistants','News Q&A','Fact-checking','Current events analysis'
 pros:['Live web search','Citations','Current events','Low hallucination'],cons:['Not for offline/private data','Search adds latency'],
 link:'https://perplexity.ai',scores:{q:82,s:74,c:87,l:72},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Perplexity Cloud + AWS',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['US (Perplexity/AWS)'],note:'Perplexity SaaS runs on US-based infrastructure. No UAE region. Web search feature compounds data routing concerns. Not suitable for UAE data residency requirements. For search-augmented AI within UAE, build RAG on Bedrock with UAE-sovereign vector storage.'},
 bench:{mmlu:78.0,humanEval:70.0,mtBench:8.2,gsm8k:80.0,hellaSwag:null,domains:{healthcare:3,finance:4,legal:4,retail:3,education:4,government:3,manufacturing:3,technology:5}}},
 
 // ── ElevenLabs ────────────────────────────────────────────────────────────────
@@ -1860,6 +2157,7 @@ uses:['Audiobooks','Podcasts','Video narration','Voice cloning','Interactive med
 pros:['Emotional range','Voice cloning','29+ languages','Real-time streaming','Best quality'],cons:['Not open source','Per-character pricing'],
 link:'https://elevenlabs.io',scores:{q:98,s:82,c:70,l:92},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'ElevenLabs Cloud (US/EU)',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['US (primary)', 'EU (enterprise option)', 'India (enterprise option)'],note:'ElevenLabs primary infrastructure is US-based. Enterprise plans offer EU and India data residency but not UAE. No UAE data center. Audio data exits UAE for synthesis. For UAE-sovereign TTS, use Azure Neural TTS (UAE North), Amazon Polly (me-central-1), or self-hosted Coqui TTS.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:3,legal:3,retail:5,education:5,government:3,manufacturing:2,technology:4}}},
 
 {id:'playht',name:'PlayHT 2.0 Turbo',prov:'Play.ht',icon:'▶️',clr:'#eab308',tasks:['TTS'],type:'third-party',
@@ -1870,6 +2168,7 @@ uses:['Real-time voice agents','Podcasts','Voice cloning','Interactive AI'],
 pros:['Ultra-low latency','900+ voices','142 languages','Voice cloning'],cons:['Rate limits on free tier'],
 link:'https://play.ht',scores:{q:91,s:98,c:72,l:95},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Play.ht Cloud (AWS)',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['AWS US (us-east-1)'],note:'Play.ht runs exclusively on AWS US infrastructure. No UAE region support. Voice data processed in the US. For UAE-compliant TTS, use Azure Neural TTS (UAE North) or Amazon Polly (me-central-1).'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:2,legal:2,retail:5,education:5,government:2,manufacturing:2,technology:4}}},
 
 {id:'murf',name:'Murf AI',prov:'Murf',icon:'🎤',clr:'#7c3aed',tasks:['TTS'],type:'third-party',
@@ -1880,6 +2179,7 @@ uses:['Corporate training videos','E-learning','Podcasts','Advertisement voiceov
 pros:['Studio quality','Voice changer','Video sync','Team collaboration','Free tier'],cons:['Limited languages vs ElevenLabs','No real-time streaming'],
 link:'https://murf.ai',scores:{q:85,s:78,c:78,l:75},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Murf Cloud',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['US/EU (Murf Cloud)'],note:'Murf AI runs on US/EU cloud infrastructure. No UAE region. Studio-quality TTS but not UAE data-residency compliant. For corporate TTS within UAE, Azure Neural TTS or self-hosted Coqui TTS are recommended alternatives.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:3,retail:4,education:5,government:3,manufacturing:3,technology:3}}},
 
 {id:'resemble',name:'Resemble AI',prov:'Resemble AI',icon:'🎭',clr:'#06b6d4',tasks:['TTS'],type:'third-party',
@@ -1890,6 +2190,7 @@ uses:['Real-time voice agents','Game character voices','Live dubbing','Enterpris
 pros:['Ultra-low latency (<50ms)','Voice cloning','Enterprise on-prem available','Custom voices'],cons:['More expensive','Fewer languages'],
 link:'https://resemble.ai',scores:{q:87,s:99,c:65,l:70},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Resemble Cloud + On-prem Enterprise',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (Resemble Cloud)', 'On-prem: enterprise option'],note:'Resemble AI offers enterprise on-premise deployment which can be hosted in UAE data centers or cloud VMs. SaaS option runs in the US. For UAE sovereignty, request on-premise enterprise plan and deploy within UAE. Sub-50ms latency maintained with on-prem GPU servers.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:2,retail:4,education:4,government:3,manufacturing:2,technology:5}}},
 
 {id:'cartesia',name:'Cartesia Sonic',prov:'Cartesia',icon:'🔈',clr:'#22c55e',tasks:['TTS'],type:'third-party',
@@ -1900,6 +2201,7 @@ uses:['Real-time conversational AI','Voice assistants','Interactive apps','Low-l
 pros:['Industry-leading latency','Streaming API','Good quality','Affordable'],cons:['Limited language count','Newer company'],
 link:'https://cartesia.ai',scores:{q:84,s:99,c:90,l:65},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Cartesia Cloud',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['US (Cartesia Cloud)'],note:'Cartesia Sonic runs on US-based cloud infrastructure. No UAE region. Ultra-low latency TTS but not UAE data-residency compliant. For latency-sensitive UAE TTS, consider Azure Speech streaming (UAE North) or self-hosted Coqui TTS on UAE GPU servers.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:2,legal:2,retail:4,education:4,government:2,manufacturing:2,technology:5}}},
 
 // ── STT Third-party ───────────────────────────────────────────────────────────
@@ -1911,6 +2213,7 @@ uses:['Real-time captioning','Call centers','Voice agents','Podcast transcriptio
 pros:['Real-time streaming','Lowest WER','Speaker diarization','Custom vocabulary','On-prem available'],cons:['Limited language count vs Whisper'],
 link:'https://deepgram.com',scores:{q:93,s:97,c:88,l:72},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Deepgram Cloud (GCP)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (primary)', 'EU (api.eu.deepgram.com)', 'Self-host: enterprise option'],note:'Deepgram SaaS primary region is US. EU endpoint available (api.eu.deepgram.com) but no UAE endpoint. Enterprise self-hosted deployment available — can be hosted on UAE-region VMs (AWS me-central-1 or Azure UAE North) or on-premises GPU servers for full data sovereignty.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:5,education:4,government:4,manufacturing:4,technology:5}}},
 
 {id:'assemblyai',name:'AssemblyAI Universal-1',prov:'AssemblyAI',icon:'🔊',clr:'#a78bfa',tasks:['STT'],type:'third-party',
@@ -1921,6 +2224,7 @@ uses:['Meeting analytics','Podcast processing','Content moderation','Audio intel
 pros:['LLM-over-audio','Speaker labels','Auto-chapters','Sentiment analysis'],cons:['Higher latency','Less language support than Whisper'],
 link:'https://assemblyai.com',scores:{q:88,s:75,c:72,l:70},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AssemblyAI Cloud (AWS)',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['AWS US (us-east-1)'],note:'AssemblyAI processes audio on AWS US infrastructure. No UAE region support. LeMUR (LLM over audio) feature also US-hosted. Not suitable for regulated UAE audio data. Use AWS Transcribe (me-central-1) or Azure Speech (UAE North) for UAE-compliant transcription.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:5,retail:4,education:5,government:4,manufacturing:3,technology:5}}},
 
 {id:'speechmatics',name:'Speechmatics',prov:'Speechmatics',icon:'📡',clr:'#0ea5e9',tasks:['STT'],type:'third-party',
@@ -1931,6 +2235,7 @@ uses:['Enterprise STT','On-premise compliance','Call analytics','Government tran
 pros:['50+ languages','On-premise available','Strong accuracy','GDPR compliant','Speaker diarization'],cons:['Higher cost','Less consumer awareness'],
 link:'https://speechmatics.com',scores:{q:88,s:86,c:75,l:94},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Speechmatics Cloud (AWS + Azure)',selfHost:false},
+sovereignty:{uae:'partial',regions:['AWS + Azure (US/EU)', 'On-prem: enterprise option'],note:'Speechmatics cloud runs on AWS + Azure in US/EU regions — no UAE cloud endpoint. However, on-premise enterprise deployment is available and can be hosted in UAE data centers. Self-hosted deployment gives full sovereignty for STT. Contact Speechmatics for on-premise UAE pricing.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:4}}},
 
 {id:'rev-ai',name:'Rev AI',prov:'Rev',icon:'🎧',clr:'#f97316',tasks:['STT'],type:'third-party',
@@ -1941,6 +2246,7 @@ uses:['Legal transcription','Compliance recording','Court reporting','Media tran
 pros:['Human review option','Very high accuracy for legal','Compliance focus','Good punctuation'],cons:['Higher price','English-centric'],
 link:'https://rev.ai',scores:{q:88,s:72,c:68,l:65},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Rev Cloud (AWS)',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['AWS US'],note:'Rev AI runs on AWS US infrastructure. No UAE region. Human review feature compounds data export concerns. Not suitable for UAE-regulated audio data. Use AWS Transcribe (me-central-1) with custom vocabulary for high-accuracy UAE Arabic transcription.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:5,retail:3,education:3,government:4,manufacturing:2,technology:3}}},
 
 // ── Translation ───────────────────────────────────────────────────────────────
@@ -1952,6 +2258,7 @@ uses:['Legal/medical translation','EU language content','Marketing localization'
 pros:['Best European translation quality','GDPR compliant','Glossary support','Document formats'],cons:['33 language limit'],
 link:'https://deepl.com',scores:{q:94,s:90,c:82,l:72},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'DeepL Cloud (EU)',selfHost:false},
+sovereignty:{uae:'unavailable',regions:['EU (Germany/Netherlands)'],note:'DeepL is EU-hosted (GDPR compliant) but not UAE. All translation requests exit UAE — processed in European data centers. For UAE-sovereign machine translation, use Azure Translator (UAE North confirmed) or self-hosted SeamlessM4T/OPUS-MT models.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:5,retail:4,education:5,government:5,manufacturing:4,technology:4}}},
 
 {id:'modernmt',name:'ModernMT',prov:'Translated',icon:'🔤',clr:'#16a34a',tasks:['Translation'],type:'third-party',
@@ -1962,6 +2269,7 @@ uses:['Adaptive translation','LSP/agency workflows','Content localization','Doma
 pros:['Learns from corrections','Context-aware (250K context)','GDPR compliant','Adaptive memory'],cons:['Less known than DeepL','Enterprise-focused'],
 link:'https://modernmt.com',scores:{q:88,s:86,c:85,l:82},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'ModernMT Cloud + On-prem Enterprise',selfHost:false},
+sovereignty:{uae:'partial',regions:['EU SaaS', 'On-prem: enterprise for LSPs'],note:'ModernMT SaaS is EU-hosted. Enterprise on-premise deployment available for UAE data residency. The adaptive translation memory feature works in self-hosted mode. For UAE-sovereign adaptive MT, deploy on-premise within UAE data center or cloud VMs.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:5,retail:4,education:5,government:5,manufacturing:4,technology:4}}},
 
 // ── Embeddings ────────────────────────────────────────────────────────────────
@@ -1973,6 +2281,7 @@ uses:['Semantic search','RAG pipelines','Clustering','Classification','Similarit
 pros:['High quality','Low cost','Multilingual','Dimensionality reduction'],cons:['8K context limit'],
 link:'https://platform.openai.com',scores:{q:92,s:97,c:92,l:85},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'OpenAI Cloud + Azure AI Foundry (Azure OpenAI)',selfHost:false},
+sovereignty:{uae:'partial',regions:['US (OpenAI)', 'Azure UAE North (limited)'],note:'OpenAI embeddings API processes data in the US. Via Azure AI Foundry, UAE North endpoint exists but same inference routing caveats apply. For UAE-sovereign embeddings, consider Amazon Titan Embeddings (Bedrock UAE) or self-hosted multilingual-E5-Large.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:5,education:5,government:5,manufacturing:4,technology:5}}},
 
 {id:'e5-multi',name:'Multilingual-E5-Large',prov:'Microsoft',icon:'🔷',clr:'#38bdf8',tasks:['Embedding'],type:'open-source',
@@ -1983,6 +2292,7 @@ uses:['Cross-lingual search','Multilingual RAG','Open-source embeddings'],
 pros:['100+ languages','Free','Fast','Self-hosted'],cons:['512 token context'],
 link:'https://huggingface.co/intfloat/multilingual-e5-large',scores:{q:87,s:98,c:99,l:99},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Self-host: Azure UAE North', 'Self-host: On-premises'],note:'Fully open-source embedding model (Apache 2.0). Self-host on UAE-region VMs or on-premises — CPU inference is possible for this relatively small model. Free, no API costs, and full UAE data sovereignty. Best free option for UAE-sovereign multilingual RAG pipelines.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:4,manufacturing:4,technology:4}}},
 
 {id:'amazon-titan-emb',name:'Amazon Titan Embeddings',prov:'AWS',icon:'🟠',clr:'#f97316',tasks:['Embedding'],type:'commercial',
@@ -1993,6 +2303,7 @@ uses:['AWS RAG pipelines','Knowledge bases','Bedrock-native search','Multimodal 
 pros:['AWS native','Bedrock integration','Low cost','Multimodal version available'],cons:['AWS dependency','Less multilingual'],
 link:'https://aws.amazon.com/bedrock/titan',scores:{q:82,s:96,c:92,l:65},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS Bedrock',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)'],note:'Amazon Titan Embeddings available via AWS Bedrock in UAE (me-central-1). Vector embeddings generated within UAE. Recommended for UAE-sovereign RAG pipelines and knowledge bases built on AWS Bedrock.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:4,education:4,government:4,manufacturing:4,technology:4}}},
 
 // ── Amazon Q Developer (AWS code AI) ─────────────────────────────────────────
@@ -2004,6 +2315,7 @@ uses:['AWS-native code generation','IDE code completion','Security vulnerability
 pros:['Deep AWS service knowledge','IDE plugins for VS Code + IntelliJ','Security scanning built-in','Free tier available','AWS CLI integration'],cons:['Best suited for AWS-centric workloads','Less capable for non-AWS architectures','Subscription model (per user)'],
 link:'https://aws.amazon.com/q/developer',scores:{q:80,s:88,c:86,l:40},
 deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'AWS',selfHost:false},
+sovereignty:{uae:'available',regions:['AWS me-central-1 (UAE)'],note:'Amazon Q Developer runs on AWS infrastructure which includes UAE region. For enterprise deployments, data processing can be pinned to me-central-1. Best for UAE government or regulated organizations already using AWS cloud infrastructure.'},
 bench:{mmlu:null,humanEval:72.0,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:2,retail:3,education:3,government:3,manufacturing:4,technology:5}}},
 
 // ── Reka AI ───────────────────────────────────────────────────────────────────
@@ -2037,6 +2349,7 @@ uses:['Chinese language applications','Bilingual AI assistants','On-premise Chin
 pros:['Best-in-class Chinese performance','Apache 2.0','Strong bilingual English+Chinese','Available on HuggingFace'],cons:['4K context — short by current standards','Less multilingual than Qwen'],
 link:'https://huggingface.co/01-ai/Yi-1.5-34B',scores:{q:82,s:80,c:96,l:78},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Alibaba DashScope',selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: AWS me-central-1', 'Alibaba DashScope UAE (via Alibaba Cloud)'],note:'Open-source bilingual model. Self-host for full UAE sovereignty. Also available via Alibaba Cloud UAE endpoint for managed inference with UAE data residency. Good Chinese+Arabic bilingual option.'},
 bench:{mmlu:81.5,humanEval:76.0,mtBench:8.3,gsm8k:90.0,hellaSwag:88.0,domains:{healthcare:3,finance:4,legal:3,retail:3,education:4,government:4,manufacturing:3,technology:4}}},
 
 // ── Stability AI ──────────────────────────────────────────────────────────────
@@ -2048,6 +2361,7 @@ uses:['Edge/offline code completion','Embedded AI coding assistants','Lightweigh
 pros:['Runs on CPU (no GPU needed)','Very fast','16K context for a 3B model','Permissive licence'],cons:['Less capable than StarCoder 2 or CodeLlama','Limited to code tasks'],
 link:'https://huggingface.co/stabilityai/stable-code-3b',scores:{q:62,s:99,c:99,l:30},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: CPU/GPU on-premises', 'Self-host: any region'],note:'Lightweight open-source code model — unique in that it runs on CPU (no GPU required). Self-host on UAE on-premises hardware or cloud VMs with no GPU needed. Full sovereignty, zero cost per inference. Good for UAE deployments with no GPU infrastructure.'},
 bench:{mmlu:null,humanEval:32.0,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:1,finance:2,legal:1,retail:2,education:3,government:2,manufacturing:3,technology:4}}},
 
 // ── Other TTS/STT ─────────────────────────────────────────────────────────────
@@ -2060,6 +2374,7 @@ uses:['Self-hosted TTS','Voice cloning','Research','Cost-sensitive deployments']
 pros:['Free & open source','Voice cloning','17 languages','No API costs'],cons:['Requires GPU','Setup complexity'],
 link:'https://github.com/coqui-ai/TTS',scores:{q:79,s:70,c:99,l:80},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host: GPU on-premises', 'Self-host: AWS me-central-1'],note:'Open-source TTS (Coqui license). Self-host on UAE-region GPU instances or on-premises. Voice cloning from 6-second audio. Full data sovereignty — audio never leaves your UAE infrastructure. Best free sovereign TTS option for UAE deployments.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:2,finance:2,legal:2,retail:3,education:4,government:3,manufacturing:2,technology:3}}},
 
 {id:'sarvam',name:'Sarvam-2B',prov:'Sarvam AI',icon:'🇮🇳',clr:'#f97316',tasks:['LLM','TTS','STT'],type:'open-source',
@@ -2070,6 +2385,7 @@ uses:['Indian language apps','Regional STT/TTS','Government digital services','I
 pros:['Best Indic language support','Free','STT+TTS+LLM in one'],cons:['Limited to Indian languages','Small context'],
 link:'https://sarvam.ai',scores:{q:78,s:84,c:99,l:60},
 deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:true},
+sovereignty:{uae:'selfhost',regions:['Self-host only — Indic language focus'],note:'Open-source model for Indian languages. Self-host for sovereignty. Niche relevance for UAE — useful only for organizations serving large South Asian communities (Hindi, Tamil, etc.) in the UAE. Full sovereignty when self-hosted.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:3,retail:3,education:4,government:5,manufacturing:2,technology:3}}},
 ];
 
@@ -2259,6 +2575,7 @@ function goPage(p){
   if(p==='catalog')renderCatalog();
   if(p==='benchmarks')renderBenchmarks();
   if(p==='guide')renderGuide();
+  if(p==='sovereignty')renderSovereignty();
 }
 
 function quickTask(t){
@@ -2973,6 +3290,723 @@ function renderDeployMatrix(){
 }
 
 
+
+
+// ══════════════════════════════════════════════════════════════════
+// SOVEREIGNTY — COUNTRY PROFILES + INTELLIGENT MATCHING ENGINE
+// ══════════════════════════════════════════════════════════════════
+
+const COUNTRY_PROFILES = {
+  'UAE': {
+    flag:'🇦🇪', name:'United Arab Emirates', region:'Middle East & Africa',
+    cloudZones:['aws-me','azure-uae','alibaba-me'],
+    selfHostOk:true,
+    infra:['AWS me-central-1 (Abu Dhabi/UAE)','Azure UAE North (Abu Dhabi)','Alibaba Cloud UAE (Dubai)'],
+    laws:'Federal Decree-Law No. 45 of 2021 (PDPL) · TDRA · CBUAE · MoHAP sector regulations',
+    compliance:['UAE PDPL','TDRA','CBUAE'],
+    infraNote:'Strong in-country cloud infrastructure. AWS me-central-1 and Azure UAE North provide confirmed AI inference within UAE borders.',
+    recommended:['falcon3-40b','falcon3-7b','claude37','claude35','qwen25-72b','amazon-nova-pro','azure-stt','azure-trans'],
+    tip:'Falcon 3 (built by TII Abu Dhabi) is purpose-designed for UAE sovereign AI. Claude via AWS Bedrock me-central-1 with regional endpoint is the top enterprise LLM choice.'
+  },
+  'Saudi Arabia': {
+    flag:'🇸🇦', name:'Saudi Arabia', region:'Middle East & Africa',
+    cloudZones:['aws-me','azure-uae'],
+    selfHostOk:true,
+    infra:['AWS me-central-1 (UAE — closest compliant)','AWS me-south-1 (Bahrain)','Azure UAE North (nearest)'],
+    laws:'Saudi PDPL (Personal Data Protection Law 2021) · SDAIA · NCA Cloud Computing Regulatory Framework · SAMA regulations for banking',
+    compliance:['Saudi PDPL','SDAIA','SAMA'],
+    infraNote:'Saudi Arabia has limited in-country AI cloud infrastructure (Azure announced KSA regions, AI availability limited). Most sovereign deployments use nearby UAE/Bahrain AWS regions or on-premises Saudi data centers.',
+    recommended:['falcon3-40b','falcon3-7b','claude37','claude35','qwen25-72b','llama33','amazon-nova-pro','azure-stt'],
+    tip:'For KSA-sovereign AI, self-hosting Falcon 3 or Llama 3.3 on Saudi on-premises GPU infrastructure gives the strongest compliance posture. AWS me-central-1 (UAE) is the nearest certified cloud region.'
+  },
+  'Germany': {
+    flag:'🇩🇪', name:'Germany', region:'European Union',
+    cloudZones:['aws-eu','azure-eu','gcp-eu','openai-eu'],
+    selfHostOk:true,
+    infra:['AWS eu-central-1 (Frankfurt)','Azure Germany West Central (Frankfurt)','GCP europe-west3 (Frankfurt)'],
+    laws:'GDPR (EU) · BDSG (German Federal Data Protection Act) · BSI regulations · EU AI Act',
+    compliance:['GDPR','BDSG','EU AI Act'],
+    infraNote:'Excellent in-country cloud coverage. Frankfurt is one of Europe\'s top cloud hubs. All major providers have Germany regions with full data residency.',
+    recommended:['claude37','claude35','mistral-large','gpt4o','gemini25','deepl','azure-stt','azure-trans'],
+    tip:'Germany has the strongest GDPR enforcement in the EU. Mistral AI (EU-based, GDPR by design) and DeepL (Germany-hosted) are uniquely suited to German data residency. All major cloud AI services offer Frankfurt/Germany regions.'
+  },
+  'France': {
+    flag:'🇫🇷', name:'France', region:'European Union',
+    cloudZones:['aws-eu','azure-eu','gcp-eu','openai-eu'],
+    selfHostOk:true,
+    infra:['AWS eu-west-3 (Paris)','Azure France Central (Paris)','GCP europe-west9 (Paris)'],
+    laws:'GDPR (EU) · CNIL regulations · EU AI Act · SecNumCloud (ANSSI certification)',
+    compliance:['GDPR','CNIL','EU AI Act'],
+    infraNote:'Paris is a major EU cloud hub. France has specific SecNumCloud certification requirements for government workloads (HDS, health data hosting).',
+    recommended:['mistral-large','claude37','gpt4o','gemini25','azure-stt','azure-trans','deepl'],
+    tip:'Mistral AI is a French company — EU-hosted, GDPR-compliant by design, with France Central Azure hosting. For SecNumCloud-compliant AI, Mistral or self-hosted open models are strongest.'
+  },
+  'United Kingdom': {
+    flag:'🇬🇧', name:'United Kingdom', region:'Europe (Non-EU)',
+    cloudZones:['aws-eu','azure-eu','gcp-eu','openai-eu'],
+    selfHostOk:true,
+    infra:['AWS eu-west-2 (London)','Azure UK South (London)','GCP europe-west2 (London)'],
+    laws:'UK GDPR · Data Protection Act 2018 · ICO guidance · UK AI Regulation (pro-innovation framework)',
+    compliance:['UK GDPR','DPA 2018','ICO'],
+    infraNote:'London is Europe\'s top cloud hub. Post-Brexit UK has its own UK GDPR but maintains adequacy with EU. All major AI providers have London/UK South regions.',
+    recommended:['claude37','gpt4o','gemini25','mistral-large','azure-stt','deepl'],
+    tip:'UK AI regulation is pro-innovation and lighter-touch than EU. All major frontier models are available in UK South Azure region or AWS eu-west-2 London with full UK data residency.'
+  },
+  'India': {
+    flag:'🇮🇳', name:'India', region:'Asia Pacific',
+    cloudZones:['aws-apac','azure-apac','gcp-apac'],
+    selfHostOk:true,
+    infra:['AWS ap-south-1 (Mumbai)','AWS ap-south-2 (Hyderabad)','Azure Central India (Pune)','GCP asia-south1 (Mumbai)'],
+    laws:'DPDPA 2023 (Digital Personal Data Protection Act) · IT Act 2000 · RBI guidelines for banking AI',
+    compliance:['DPDPA 2023','IT Act','RBI'],
+    infraNote:'India has strong cloud infrastructure with multiple regions. AWS, Azure and GCP all have Mumbai/Pune presence. ElevenLabs offers India data residency for enterprise contracts.',
+    recommended:['claude37','gpt4o','gemini25','azure-stt','azure-trans','sarvam','llama33'],
+    tip:'Sarvam-2B is purpose-built for Indian languages (Hindi, Tamil, Telugu, etc.) and can be self-hosted in India for full DPDPA compliance. For English-first enterprise AI, Claude on AWS Bedrock Mumbai region is recommended.'
+  },
+  'Singapore': {
+    flag:'🇸🇬', name:'Singapore', region:'Asia Pacific',
+    cloudZones:['aws-apac','azure-apac','gcp-apac'],
+    selfHostOk:true,
+    infra:['AWS ap-southeast-1 (Singapore)','Azure Southeast Asia (Singapore)','GCP asia-southeast1 (Singapore)'],
+    laws:'PDPA 2012 (Personal Data Protection Act) · MAS TRM Guidelines (banking) · IMDA AI governance framework',
+    compliance:['PDPA','MAS TRM','IMDA'],
+    infraNote:'Singapore is the primary APAC cloud hub. All major providers have Singapore regions with full AI service availability. MAS TRM requires data residency controls for financial institutions.',
+    recommended:['claude37','gpt4o','gemini25','azure-stt','deepgram','assemblyai'],
+    tip:'Singapore\'s PDPA is pragmatic and all major cloud AI services are available in-region. For MAS-regulated financial AI, use AWS Bedrock ap-southeast-1 or Azure Southeast Asia with data residency pinning.'
+  },
+  'Japan': {
+    flag:'🇯🇵', name:'Japan', region:'Asia Pacific',
+    cloudZones:['aws-apac','azure-apac','gcp-apac'],
+    selfHostOk:true,
+    infra:['AWS ap-northeast-1 (Tokyo)','AWS ap-northeast-3 (Osaka)','Azure Japan East (Tokyo)','GCP asia-northeast1 (Tokyo)'],
+    laws:'APPI (Act on Protection of Personal Information) · METI AI governance guidelines · FSA regulations for financial AI',
+    compliance:['APPI','METI AI Guidelines'],
+    infraNote:'Japan has excellent cloud coverage — Tokyo and Osaka AWS regions, Azure Japan East. All major AI services available in Japan regions.',
+    recommended:['claude37','gpt4o','gemini25','azure-stt','azure-trans'],
+    tip:'Japan\'s APPI requires data handling agreements and purpose limitation. All frontier cloud AI models are available in Tokyo/Osaka regions. GPT-4 via Azure Japan East and Claude via AWS ap-northeast-1 are well-established for Japanese enterprise AI.'
+  },
+  'Australia': {
+    flag:'🇦🇺', name:'Australia', region:'Asia Pacific',
+    cloudZones:['aws-apac','azure-apac','gcp-apac'],
+    selfHostOk:true,
+    infra:['AWS ap-southeast-2 (Sydney)','Azure Australia East (Sydney)','GCP australia-southeast1 (Sydney)'],
+    laws:'Privacy Act 1988 (Privacy Amendment 2022) · ASD Essential Eight · ISM (Information Security Manual)',
+    compliance:['Privacy Act','ASD Essential Eight','ISM'],
+    infraNote:'Sydney is a well-served cloud hub. All major AI services available in Australia East/Southeast. Government classified workloads require GovCloud or certified platforms (ASD).',
+    recommended:['claude37','gpt4o','gemini25','azure-stt','deepgram'],
+    tip:'For Australian government AI, check ASD certification status. Claude on AWS Bedrock ap-southeast-2 and Azure Australia East are strong choices for regulated enterprise deployments.'
+  },
+  'United States': {
+    flag:'🇺🇸', name:'United States', region:'Americas',
+    cloudZones:['aws-us','azure-us','gcp-us','openai-us'],
+    selfHostOk:true,
+    infra:['AWS us-east-1/us-west-2','Azure East US / West US','GCP us-central1/us-east4','OpenAI US (native)'],
+    laws:'CCPA (California) · HIPAA (healthcare) · FedRAMP (government) · SOC 2 · US AI Executive Order 2023',
+    compliance:['HIPAA','FedRAMP','SOC 2','CCPA'],
+    infraNote:'All AI models are natively hosted in the US. No residency constraints for most commercial workloads. Government (FedRAMP) and healthcare (HIPAA) add specific requirements.',
+    recommended:['claude37','gpt4o','gpt41','gemini25','claude35','deepgram','assemblyai'],
+    tip:'For HIPAA-regulated US healthcare AI: Azure (BAA), AWS Bedrock (BAA), and Cohere on-prem are confirmed HIPAA-eligible. For FedRAMP government: use Azure Government or AWS GovCloud.'
+  },
+  'Canada': {
+    flag:'🇨🇦', name:'Canada', region:'Americas',
+    cloudZones:['aws-us','azure-us','gcp-us','openai-us'],
+    selfHostOk:true,
+    infra:['AWS ca-central-1 (Montreal)','AWS ca-west-1 (Calgary)','Azure Canada Central (Toronto)','GCP northamerica-northeast1 (Montreal)'],
+    laws:'PIPEDA · Quebec Law 25 (Bill 64) · Bill C-27 (AIDA — pending) · Treasury Board Directive on Automated Decision-Making',
+    compliance:['PIPEDA','Quebec Law 25','AIDA (pending)'],
+    infraNote:'Canada has Montreal and Toronto cloud regions. Quebec Law 25 has GDPR-like requirements. Government AI is subject to Treasury Board directives.',
+    recommended:['claude37','gpt4o','gemini25','azure-stt'],
+    tip:'Quebec Law 25 (most stringent Canadian privacy law) requires data residency controls similar to GDPR. All major AI services are available in ca-central-1 or Canada Central Azure with in-Canada processing.'
+  },
+  'Brazil': {
+    flag:'🇧🇷', name:'Brazil', region:'Americas',
+    cloudZones:['aws-us','azure-us','gcp-us'],
+    selfHostOk:true,
+    infra:['AWS sa-east-1 (São Paulo)','Azure Brazil South (São Paulo)','GCP southamerica-east1 (São Paulo)'],
+    laws:'LGPD (Lei Geral de Proteção de Dados 2020) · BACEN regulations for financial AI',
+    compliance:['LGPD','BACEN'],
+    infraNote:'Brazil has São Paulo cloud regions but AI service availability is more limited than US/EU. LGPD follows GDPR-like principles.',
+    recommended:['claude37','gpt4o','azure-stt','llama33'],
+    tip:'Brazil\'s LGPD requires lawful basis for data processing. For LGPD-compliant AI, use São Paulo AWS/Azure regions where AI service availability is confirmed, or self-host open-source models on Brazilian infrastructure.'
+  },
+  'South Korea': {
+    flag:'🇰🇷', name:'South Korea', region:'Asia Pacific',
+    cloudZones:['aws-apac','azure-apac','gcp-apac'],
+    selfHostOk:true,
+    infra:['AWS ap-northeast-2 (Seoul)','Azure Korea Central (Seoul)','GCP asia-northeast3 (Seoul)'],
+    laws:'PIPA (Personal Information Protection Act) · Financial Services Commission AI guidelines',
+    compliance:['PIPA','PIPC','FSC'],
+    infraNote:'Seoul has strong cloud coverage. AWS, Azure, and GCP all have Korea regions with AI services available.',
+    recommended:['claude37','gpt4o','gemini25','azure-stt'],
+    tip:'PIPA has strict consent and purpose-limitation requirements. All major AI services are available in Seoul regions — confirm specific model availability in ap-northeast-2 for each service.'
+  },
+  'South Africa': {
+    flag:'🇿🇦', name:'South Africa', region:'Middle East & Africa',
+    cloudZones:['aws-me','azure-eu'],
+    selfHostOk:true,
+    infra:['AWS af-south-1 (Cape Town)','Azure South Africa North (Johannesburg)'],
+    laws:'POPIA (Protection of Personal Information Act 2020) · FSCA guidelines for financial AI',
+    compliance:['POPIA','FSCA'],
+    infraNote:'South Africa has AWS Cape Town and Azure Johannesburg. AI service availability in these regions is more limited vs primary regions.',
+    recommended:['claude37','llama33','gemma3-27b','azure-stt'],
+    tip:'For POPIA-compliant AI, use self-hosted open models (Llama 3, Gemma) on SA-region cloud VMs, or Claude/Bedrock via AWS af-south-1 where available. Verify specific AI model availability in af-south-1.'
+  },
+  'Netherlands': {
+    flag:'🇳🇱', name:'Netherlands', region:'European Union',
+    cloudZones:['aws-eu','azure-eu','gcp-eu','openai-eu'],
+    selfHostOk:true,
+    infra:['AWS eu-west-3 (Paris nearby) / eu-central-1 (Frankfurt)','Azure West Europe (Amsterdam)','GCP europe-west4 (Netherlands)'],
+    laws:'GDPR (EU) · Dutch UAVG · Autoriteit Persoonsgegevens (AP) · EU AI Act',
+    compliance:['GDPR','UAVG','EU AI Act'],
+    infraNote:'Amsterdam/Netherlands is a major EU cloud hub — Azure West Europe and GCP europe-west4 are here. Strong GDPR enforcement through the AP.',
+    recommended:['claude37','gpt4o','mistral-large','gemini25','azure-stt','deepl'],
+    tip:'Azure West Europe (Amsterdam) offers all major AI services within Netherlands. GCP europe-west4 is also in the Netherlands. Full GDPR compliance achievable with any major cloud AI provider.'
+  },
+  'Switzerland': {
+    flag:'🇨🇭', name:'Switzerland', region:'Europe (Non-EU)',
+    cloudZones:['aws-eu','azure-eu','gcp-eu'],
+    selfHostOk:true,
+    infra:['AWS eu-central-2 (Zurich)','Azure Switzerland North (Zurich)','GCP europe-west6 (Zurich)'],
+    laws:'Swiss Federal Act on Data Protection (revFADP 2023) · FINMA regulations for banking',
+    compliance:['revFADP','FINMA'],
+    infraNote:'Zurich is exceptionally well-served for cloud. AWS, Azure, and GCP all have Zurich regions. Switzerland is not EU but maintains similar data protection standards.',
+    recommended:['claude37','gpt4o','mistral-large','azure-stt'],
+    tip:'Switzerland\'s revFADP mirrors GDPR closely. Zurich cloud regions give full in-Switzerland AI processing. For FINMA-regulated financial AI, Azure Switzerland North and AWS eu-central-2 are well-established.'
+  },
+  'Spain': {
+    flag:'🇪🇸', name:'Spain', region:'European Union',
+    cloudZones:['aws-eu','azure-eu','gcp-eu','openai-eu'],
+    selfHostOk:true,
+    infra:['AWS eu-south-2 (Spain)','Azure Spain Central','GCP europe-southwest1 (Madrid)'],
+    laws:'GDPR (EU) · LOPDGDD (Spanish data protection) · EU AI Act',
+    compliance:['GDPR','LOPDGDD','EU AI Act'],
+    infraNote:'Spain now has AWS, Azure, and GCP regions in Madrid. Full EU GDPR compliance available in-country.',
+    recommended:['claude37','gpt4o','mistral-large','gemini25','azure-trans','deepl'],
+    tip:'Madrid AWS, Azure Spain Central, and GCP Madrid (europe-southwest1) all provide in-Spain AI inference. Full EU GDPR compliance for Spanish and multilingual workloads.'
+  },
+  'Poland': {
+    flag:'🇵🇱', name:'Poland', region:'European Union',
+    cloudZones:['aws-eu','azure-eu','gcp-eu','openai-eu'],
+    selfHostOk:true,
+    infra:['Azure Poland Central (Warsaw)','AWS eu-central-1 (Frankfurt — nearby)'],
+    laws:'GDPR (EU) · UODO (Polish data protection authority) · EU AI Act',
+    compliance:['GDPR','UODO','EU AI Act'],
+    infraNote:'Azure has a Poland Central region in Warsaw. AWS nearest is Frankfurt. GCP does not have a Poland-specific region but EU routing applies.',
+    recommended:['claude37','gpt4o','azure-stt','mistral-large','deepl'],
+    tip:'For in-Poland AI processing, Azure Poland Central is the strongest option. DeepL translates Polish excellently and is EU-hosted. AWS workloads route to Frankfurt (EU) for GDPR compliance.'
+  },
+  'China': {
+    flag:'🇨🇳', name:'China', region:'Asia Pacific',
+    cloudZones:['alibaba-me'],
+    selfHostOk:true,
+    infra:['Alibaba Cloud China','Tencent Cloud China','Baidu Cloud China','AWS cn-north-1 (Beijing)','Azure China (21Vianet)'],
+    laws:'PIPL (Personal Information Protection Law 2021) · DSL (Data Security Law) · CAC regulations · MLPS (Multi-Level Protection Scheme)',
+    compliance:['PIPL','DSL','CAC','MLPS'],
+    infraNote:'China requires data processed by special ICP-licensed entities (21Vianet for Azure, local partners for AWS). Global AI models may not be legally accessible or have restrictions.',
+    recommended:['qwen25-72b','ernie4','hunyuan','llama33'],
+    tip:'For mainland China AI deployments, Qwen 2.5 (Alibaba, China-native) and ERNIE (Baidu) are natively compliant. Self-hosting Llama 3 on Alibaba Cloud China or AWS China (cn-north-1) gives flexibility. Global OpenAI/Anthropic APIs may not be accessible from China.'
+  },
+  'Kuwait': {
+    flag:'🇰🇼', name:'Kuwait', region:'Middle East & Africa',
+    cloudZones:['aws-me','azure-uae'],
+    selfHostOk:true,
+    infra:['AWS me-central-1 (UAE — closest)','AWS me-south-1 (Bahrain)','Azure UAE North'],
+    laws:'Law No. 20 of 2014 (E-Commerce Law) · CBK regulations for banking AI · Sector-specific CITRA regulations',
+    compliance:['CITRA','CBK'],
+    infraNote:'Kuwait has no in-country major AI cloud region. AWS UAE (me-central-1) and Bahrain (me-south-1) are the nearest sovereign cloud options. Many enterprises use self-hosted on-premises in Kuwait data centers.',
+    recommended:['falcon3-40b','falcon3-7b','claude37','llama33','qwen25-72b','azure-stt'],
+    tip:'For Kuwait data sovereignty, self-hosting Falcon 3 or Llama 3 on Kuwaiti on-premises GPU servers provides the strongest compliance. AWS Bedrock in UAE (me-central-1) is the nearest cloud option.'
+  },
+  'Bahrain': {
+    flag:'🇧🇭', name:'Bahrain', region:'Middle East & Africa',
+    cloudZones:['aws-me','azure-uae'],
+    selfHostOk:true,
+    infra:['AWS me-south-1 (Bahrain — in-country!)','Azure UAE North (nearby)'],
+    laws:'PDPA (Bahrain Personal Data Protection Law 2019) · CBB regulations · EGA cloud policy',
+    compliance:['Bahrain PDPA','CBB','EGA'],
+    infraNote:'Bahrain is unique in having its own AWS region (me-south-1). This provides in-country AI inference on AWS Bedrock. Azure\'s nearest is UAE North.',
+    recommended:['claude37','claude35','amazon-nova-pro','amazon-transcribe','falcon3-7b','llama33'],
+    tip:'Bahrain has its own AWS region (me-south-1) — use AWS Bedrock with Bahrain regional endpoint for guaranteed in-country Claude and Nova inference. This makes Bahrain one of the best-served Gulf states for sovereign cloud AI.'
+  },
+  'Qatar': {
+    flag:'🇶🇦', name:'Qatar', region:'Middle East & Africa',
+    cloudZones:['aws-me','azure-uae'],
+    selfHostOk:true,
+    infra:['AWS me-central-1 (UAE — closest)','GCP me-central1 (Doha — in-country!)','Azure UAE North'],
+    laws:'PDPL (Qatar Personal Data Privacy Protection Law) · QCB regulations · NIC cloud framework',
+    compliance:['Qatar PDPL','QCB','NIC'],
+    infraNote:'Qatar uniquely has a GCP region (me-central1 in Doha). AWS uses UAE (me-central-1) as nearest. This makes GCP Gemini models potentially in-country for Qatar.',
+    recommended:['gemini25','gemini20-flash','claude37','falcon3-7b','llama33','amazon-nova-pro'],
+    tip:'Qatar is one of the few GCC countries with an in-country GCP region (me-central1, Doha). Gemini models via GCP Vertex AI with Qatar pinning may provide in-country inference. AWS me-central-1 (UAE) is also close.'
+  },
+  'Egypt': {
+    flag:'🇪🇬', name:'Egypt', region:'Middle East & Africa',
+    cloudZones:['aws-me','azure-uae'],
+    selfHostOk:true,
+    infra:['AWS me-central-1 (UAE — nearest)','Azure UAE North (nearest)'],
+    laws:'PDPL (Egypt Personal Data Protection Law 2020) · CBE regulations · NTRA cloud guidelines',
+    compliance:['Egypt PDPL','CBE','NTRA'],
+    infraNote:'Egypt has no major in-country cloud region. UAE-based cloud (AWS me-central-1, Azure UAE North) is the nearest compliant option. On-premises in Egyptian data centers is an alternative.',
+    recommended:['falcon3-40b','qwen25-72b','llama33','claude37','azure-stt','azure-trans'],
+    tip:'For Arabic-first Egyptian AI with data sovereignty, Falcon 3 or Qwen 2.5 self-hosted in Egyptian data centers, or Claude via AWS UAE (me-central-1) are recommended. Strong Arabic NLP is critical for Egyptian market.'
+  },
+  'Kenya': {
+    flag:'🇰🇪', name:'Kenya', region:'Middle East & Africa',
+    cloudZones:['aws-me'],
+    selfHostOk:true,
+    infra:['AWS af-south-1 (Cape Town — nearest)','Azure South Africa North (nearest)'],
+    laws:'Data Protection Act 2019 · CBK guidelines for financial AI',
+    compliance:['Kenya DPA 2019','CBK'],
+    infraNote:'Kenya has no major in-country cloud region. Cape Town and Johannesburg are the nearest. Most Kenyan AI deployments use EU or US regions.',
+    recommended:['llama33','gemma3-27b','claude37','azure-stt'],
+    tip:'For Kenya-sovereign AI, self-hosting Llama 3 or Gemma 3 on Kenyan cloud VMs or on-premises servers is the strongest option. Cape Town AWS (af-south-1) is closest cloud with AI services.'
+  },
+  'Mexico': {
+    flag:'🇲🇽', name:'Mexico', region:'Americas',
+    cloudZones:['aws-us','azure-us','gcp-us'],
+    selfHostOk:true,
+    infra:['AWS us-east-1/us-west-2 (US — nearest)','Azure Mexico Central (limited AI)','GCP us-central1 (US)'],
+    laws:'LFPDPPP (Federal Law on Protection of Personal Data 2010) · INAI guidelines · CNBV for financial AI',
+    compliance:['LFPDPPP','INAI','CNBV'],
+    infraNote:'Mexico has limited in-country cloud AI. Azure announced Mexico Central but AI service availability is limited. Most AI inference routes to US regions.',
+    recommended:['claude37','gpt4o','azure-stt','azure-trans','llama33'],
+    tip:'Mexico\'s LFPDPPP allows cross-border data transfer under safeguards. US-based AI cloud services (AWS, Azure, OpenAI) are generally compliant with Mexican requirements when appropriate DPAs are in place.'
+  },
+  'Israel': {
+    flag:'🇮🇱', name:'Israel', region:'Middle East & Africa',
+    cloudZones:['aws-eu','azure-eu','gcp-eu'],
+    selfHostOk:true,
+    infra:['GCP me-west1 (Tel Aviv — in-country!)','AWS eu-west-1 (Ireland — nearest)','Azure Israel Central (Tel Aviv)'],
+    laws:'Privacy Protection Law 1981 · PPA (Privacy Protection Authority) · NISA (National Cyber Directorate) guidelines',
+    compliance:['Privacy Protection Law','PPA','NISA'],
+    infraNote:'Israel has both GCP me-west1 (Tel Aviv) and Azure Israel Central. GCP Gemini models are potentially in-country for Israel.',
+    recommended:['gemini25','gemini20-flash','claude37','gpt4o','azure-stt'],
+    tip:'Israel is well-served with GCP Tel Aviv (me-west1) and Azure Israel Central. Gemini models via GCP and Azure AI services provide strong in-country options for Israeli data sovereignty.'
+  },
+  'Nigeria': {
+    flag:'🇳🇬', name:'Nigeria', region:'Middle East & Africa',
+    cloudZones:['aws-me'],
+    selfHostOk:true,
+    infra:['AWS af-south-1 (Cape Town — nearest)','Azure South Africa North (nearest)'],
+    laws:'NDPR (Nigeria Data Protection Regulation 2019) · NITDA Act · CBN guidelines for financial AI',
+    compliance:['NDPR','NITDA','CBN'],
+    infraNote:'Nigeria has no major in-country cloud region. Cape Town is nearest. Nigerian AI typically routes through EU or South Africa regions.',
+    recommended:['llama33','gemma3-27b','bloom','claude37'],
+    tip:'For Nigerian data sovereignty, self-hosting is the strongest option. BLOOM-176B supports Yoruba and Igbo — rare low-resource West African languages. Llama 3 self-hosted on Nigerian infrastructure gives full control.'
+  },
+  'Sweden': {
+    flag:'🇸🇪', name:'Sweden', region:'European Union',
+    cloudZones:['aws-eu','azure-eu','gcp-eu','openai-eu'],
+    selfHostOk:true,
+    infra:['AWS eu-north-1 (Stockholm)','Azure Sweden Central (Gävle)','GCP europe-north1 (Hamina, Finland)'],
+    laws:'GDPR (EU) · Swedish DPA (IMY) · EU AI Act',
+    compliance:['GDPR','IMY','EU AI Act'],
+    infraNote:'Sweden has AWS Stockholm and Azure Sweden Central. GCP uses Finland but within the EU. Microsoft\'s major EU sustainability data center is in Sweden.',
+    recommended:['claude37','gpt4o','mistral-large','azure-stt','deepl'],
+    tip:'Azure Sweden Central is one of Microsoft\'s flagship sustainable cloud regions. All major AI services available in Stockholm/Sweden regions for GDPR-compliant processing.'
+  },
+};
+
+// ── Cloud zone classifier ─────────────────────────────────────────
+const CLOUD_ZONE_PATTERNS = {
+  'aws-me':     /aws.*me-|me-central|me-south|aws.*uae|aws.*bahrain|aws.*middle.east/i,
+  'azure-uae':  /azure.*uae|uae.north|uae.central/i,
+  'alibaba-me': /alibaba.*uae|alibaba.*dubai|alibaba.*middle|dashscope.*uae|alibaba cloud uae/i,
+  'aws-eu':     /aws.*eu-|eu-west|eu-central|eu-south|eu-north|aws.*europe|aws.*frankfurt|aws.*ireland|aws.*london|aws.*paris|aws.*stockholm|aws.*milan|aws.*zurich|aws.*spain/i,
+  'azure-eu':   /azure.*eu|azure.*europe|azure.*france|azure.*germany|azure.*ireland|azure.*uk|azure.*north.eu|azure.*west.eu|azure.*sweden|azure.*poland|azure.*switzerland|azure.*spain|azure.*italy|azure.*norway/i,
+  'gcp-eu':     /gcp.*eu|europe-west|europe-north|gcp.*frankfurt|gcp.*london|gcp.*paris|gcp.*amsterdam|gcp.*madrid|gcp.*warsaw|gcp.*zurich/i,
+  'openai-eu':  /openai.*eu|eu\.api\.openai|api\.eu\.openai/i,
+  'aws-us':     /aws.*us-|us-east|us-west|aws.*north.america|aws.*virginia|aws.*oregon|aws.*ohio|aws.*california/i,
+  'azure-us':   /azure.*us|azure.*east.us|azure.*west.us|azure.*central.us|azure.*north.central|azure.*south.central/i,
+  'gcp-us':     /gcp.*us|us-central|us-east|gcp.*iowa|gcp.*virginia|gcp.*oregon/i,
+  'openai-us':  /openai.*cloud|openai.*us|openai hq|us.*openai/i,
+  'aws-apac':   /aws.*ap-|ap-south|ap-southeast|ap-northeast|ap-east|aws.*singapore|aws.*tokyo|aws.*osaka|aws.*sydney|aws.*mumbai|aws.*seoul|aws.*jakarta/i,
+  'azure-apac': /azure.*asia|azure.*japan|azure.*korea|azure.*australia|azure.*india|azure.*southeast.asia|azure.*east.asia|azure.*central.india|azure.*west.india|azure.*south.india/i,
+  'gcp-apac':   /gcp.*asia|asia-south|asia-southeast|asia-northeast|australia-southeast|gcp.*tokyo|gcp.*singapore|gcp.*sydney|gcp.*mumbai|gcp.*seoul/i,
+};
+
+function getModelCloudZones(model) {
+  if (!model.sovereignty) return [];
+  const regStr = (model.sovereignty.regions || []).join(' ');
+  return Object.entries(CLOUD_ZONE_PATTERNS)
+    .filter(([zone, rx]) => rx.test(regStr))
+    .map(([zone]) => zone);
+}
+
+function getModelStatusForCountry(model, countryKey) {
+  const cp = COUNTRY_PROFILES[countryKey];
+  if (!cp || !model.sovereignty) return null;
+  const uae = model.sovereignty.uae;
+
+  // Self-host models: always deployable in any country
+  if (uae === 'selfhost') {
+    return {
+      status: 'selfhost',
+      badge: '🟣 Self-Host',
+      note: `Open-source model — deploy on ${cp.name} on-premises or in-country cloud VMs for full sovereignty. No data leaves your infrastructure.`
+    };
+  }
+
+  const modelZones = getModelCloudZones(model);
+  const countryZones = cp.cloudZones || [];
+  const overlap = modelZones.filter(z => countryZones.includes(z));
+
+  if (overlap.length > 0) {
+    const zoneLabels = overlap.map(z => z.replace('aws-','AWS ').replace('azure-','Azure ').replace('gcp-','GCP ').replace('openai-','OpenAI ').replace('alibaba-','Alibaba '));
+    return {
+      status: uae === 'partial' ? 'partial' : 'available',
+      badge: uae === 'partial' ? '🟡 Partial' : '🟢 Sovereign',
+      note: `Available via ${zoneLabels.join(', ')} within ${cp.name} region${uae==='partial'?' — verify inference routing with provider':''}.`
+    };
+  }
+
+  // Check on-prem option
+  if (model.deploy && model.deploy.onPrem) {
+    return {
+      status: 'partial',
+      badge: '🟡 On-Prem Option',
+      note: `No SaaS region in ${cp.name}. Enterprise on-premise deployment available — host on ${cp.name} infrastructure for full sovereignty.`
+    };
+  }
+
+  return {
+    status: 'unavailable',
+    badge: '🔴 Not in Country',
+    note: `No ${cp.name} region for this SaaS model. Data exits country for inference. Not recommended for regulated ${cp.name} data without vendor DPA.`
+  };
+}
+
+// ── State ────────────────────────────────────────────────────────
+let sovFilter = 'all';
+let sovCurrentCountry = null;
+
+// ── Country search autocomplete ──────────────────────────────────
+const ALL_COUNTRY_NAMES = Object.keys(COUNTRY_PROFILES);
+
+function onSovCountryInput(val) {
+  const dd = document.getElementById('sovCountryDropdown');
+  if (!val.trim()) { dd.style.display='none'; return; }
+  const matches = ALL_COUNTRY_NAMES.filter(c => c.toLowerCase().includes(val.toLowerCase()));
+  if (!matches.length) { dd.style.display='none'; return; }
+  dd.innerHTML = matches.slice(0,10).map(c => {
+    const cp = COUNTRY_PROFILES[c];
+    return `<div class="sov-cs-option" onclick="selectCountry('${c}')">
+      <span class="sov-cs-option-flag">${cp.flag}</span>
+      <span class="sov-cs-option-name">${cp.name}</span>
+      <span class="sov-cs-option-region">${cp.region}</span>
+    </div>`;
+  }).join('');
+  dd.style.display = 'block';
+}
+
+function onSovCountryKey(e) {
+  if (e.key === 'Escape') document.getElementById('sovCountryDropdown').style.display='none';
+  if (e.key === 'Enter') {
+    const val = e.target.value.trim();
+    const match = ALL_COUNTRY_NAMES.find(c => c.toLowerCase() === val.toLowerCase());
+    if (match) selectCountry(match);
+  }
+}
+
+function selectCountry(countryKey) {
+  sovCurrentCountry = countryKey;
+  sovFilter = 'all';
+  const cp = COUNTRY_PROFILES[countryKey];
+
+  // Update input + close dropdown
+  const inp = document.getElementById('sovCountryInput');
+  if (inp) { inp.value = cp ? cp.flag + ' ' + cp.name : countryKey; }
+  const dd = document.getElementById('sovCountryDropdown');
+  if (dd) dd.style.display = 'none';
+
+  // Update recent chips
+  const chipsEl = document.getElementById('sovCountryChips');
+  if (chipsEl) {
+    const existing = Array.from(chipsEl.querySelectorAll('.sov-cs-chip')).map(c=>c.dataset.country);
+    const newRecent = [countryKey, ...existing.filter(c=>c!==countryKey)].slice(0,4);
+    chipsEl.innerHTML = newRecent.map(k => {
+      const p = COUNTRY_PROFILES[k];
+      return p ? `<div class="sov-cs-chip" data-country="${k}" onclick="selectCountry('${k}')">${p.flag} ${p.name}</div>` : '';
+    }).join('');
+  }
+
+  // Highlight quick-select buttons
+  document.querySelectorAll('.sov-qs-btn').forEach(b=>{
+    b.classList.toggle('active-country', b.getAttribute('onclick').includes("'"+countryKey+"'"));
+  });
+
+  // Show analysis
+  document.getElementById('sovDefaultState').style.display = 'none';
+  document.getElementById('sovAnalysisPanel').style.display = 'block';
+
+  // Reset filter pills
+  document.querySelectorAll('.sov-pill').forEach(p => p.classList.toggle('active', p.getAttribute('onclick').includes("'all'")));
+
+  renderSovereignty();
+}
+
+function setSovFilter(f) {
+  sovFilter = f;
+  document.querySelectorAll('.sov-pill').forEach(p => p.classList.toggle('active', p.getAttribute('onclick').includes("'"+f+"'")));
+  renderSovereigntyGrid();
+  const grid = document.getElementById('sovModelGrid');
+  if (grid) setTimeout(()=>grid.scrollIntoView({behavior:'smooth',block:'start'}), 80);
+}
+
+function setSovRegion(f) { setSovFilter(f); }
+
+// ── Main render entry ────────────────────────────────────────────
+function renderSovereignty() {
+  if (!sovCurrentCountry) return;
+  renderCountryHeader();
+  renderSovereigntySummary();
+  renderRecommended();
+  renderSovereigntyGrid();
+  renderCloudTable();
+  // Reset AI panel
+  const aiResult = document.getElementById('sovAiResult');
+  if (aiResult) aiResult.style.display='none';
+  const aiBtn = document.getElementById('sovAiBtn');
+  if (aiBtn) { aiBtn.disabled=false; aiBtn.textContent='✨ Get AI Recommendation'; }
+  const aiTitle = document.getElementById('sovAiTitle');
+  if (aiTitle) aiTitle.textContent = `AI Sovereign Advisor — ${COUNTRY_PROFILES[sovCurrentCountry]?.name || sovCurrentCountry}`;
+}
+
+function renderCountryHeader() {
+  const cp = COUNTRY_PROFILES[sovCurrentCountry];
+  if (!cp) return;
+  const el = document.getElementById('sovCountryHeader');
+  if (!el) return;
+  const cloudTags = cp.infra.map(i=>`<span class="sov-ch-cloud">☁️ ${i}</span>`).join('');
+  el.innerHTML = `
+    <div class="sov-country-header">
+      <div class="sov-ch-flag">${cp.flag}</div>
+      <div>
+        <div class="sov-ch-name">${cp.name}</div>
+        <div class="sov-ch-region">${cp.region}</div>
+        <div class="sov-ch-law">⚖️ ${cp.laws}</div>
+        <div class="sov-ch-infra">${cloudTags}</div>
+      </div>
+    </div>`;
+}
+
+function sovStatusLabel(status) {
+  return {available:'🟢 Sovereign',partial:'🟡 Partial',unavailable:'🔴 Not Compliant',selfhost:'🟣 Self-Host'}[status]||status;
+}
+
+function renderSovereigntySummary() {
+  const el = document.getElementById('sovSummaryGrid');
+  if (!el || !sovCurrentCountry) return;
+  const counts = {available:0,partial:0,unavailable:0,selfhost:0};
+  M.filter(m=>m.sovereignty).forEach(m=>{
+    const s = getModelStatusForCountry(m, sovCurrentCountry);
+    if (s && counts[s.status]!==undefined) counts[s.status]++;
+  });
+  el.innerHTML = [
+    {k:'available',   n:counts.available,   color:'var(--lime)',   icon:'🟢', label:'Sovereign',          sub:'Click to list all sovereign models'},
+    {k:'partial',     n:counts.partial,     color:'var(--amber)',  icon:'🟡', label:'Partial',             sub:'Click to list partial models'},
+    {k:'unavailable', n:counts.unavailable, color:'var(--rose)',   icon:'🔴', label:'Not Compliant',       sub:'Click to list non-compliant models'},
+    {k:'selfhost',    n:counts.selfhost,    color:'var(--violet)', icon:'🟣', label:'Self-Host',           sub:'Click to list self-host options'},
+  ].map(c=>`
+    <div class="sov-sum-card" onclick="setSovFilter('${c.k}')" style="cursor:pointer;transition:.15s;border:1px solid ${c.k===sovFilter?'var(--gold-rim)':'var(--rim)'}">
+      <div class="sov-sum-n" style="color:${c.color}">${c.n}</div>
+      <div class="sov-sum-l">${c.icon} ${c.label}</div>
+      <div class="sov-sum-sub">${c.sub}</div>
+    </div>`).join('');
+}
+
+function renderRecommended() {
+  const el = document.getElementById('sovRecommended');
+  const lbl = document.getElementById('sovRecCountry');
+  const cp = COUNTRY_PROFILES[sovCurrentCountry];
+  if (!el || !cp) return;
+  if (lbl) lbl.textContent = cp.name;
+  const recIds = cp.recommended || [];
+  const recModels = recIds.map(id=>M.find(m=>m.id===id)).filter(Boolean);
+  el.innerHTML = recModels.map(m=>{
+    const s = getModelStatusForCountry(m, sovCurrentCountry);
+    const st = s ? s.status : 'available';
+    return `
+      <div class="sov-card border-${st}" onclick="openModal('${m.id}')" style="background:var(--elevated)">
+        <div class="sov-card-header">
+          <div class="sov-card-icon">${m.icon}</div>
+          <div style="flex:1;min-width:0">
+            <div class="sov-card-name">${m.name}</div>
+            <div class="sov-card-prov">${m.prov}</div>
+          </div>
+          <span class="sov-badge ${st}">${sovStatusLabel(st)}</span>
+        </div>
+        <div class="sov-card-note" style="font-size:11px">${s ? s.note : ''}</div>
+      </div>`;
+  }).join('');
+
+  // Tip box
+  if (cp.tip) {
+    el.insertAdjacentHTML('afterend', `<div class="sov-tip" style="margin-bottom:20px"><div class="sov-tip-icon">💡</div><div><strong>Sovereignty Tip for ${cp.name}:</strong> ${cp.tip}</div></div>`);
+    // Remove previous tip if any
+    const tips = document.querySelectorAll('#sovAnalysisPanel .sov-tip');
+    if (tips.length > 1) tips[0].remove();
+  }
+}
+
+function renderSovereigntyGrid() {
+  const el = document.getElementById('sovModelGrid');
+  if (!el || !sovCurrentCountry) return;
+
+  let models = M.filter(m=>m.sovereignty);
+  const statusMap = new Map();
+  models.forEach(m => {
+    const s = getModelStatusForCountry(m, sovCurrentCountry);
+    if (s) statusMap.set(m.id, s);
+  });
+
+  if (sovFilter !== 'all') {
+    models = models.filter(m => (statusMap.get(m.id)||{}).status === sovFilter);
+  }
+
+  const groups = {available:[],partial:[],unavailable:[],selfhost:[]};
+  models.forEach(m => {
+    const s = statusMap.get(m.id);
+    if (s && groups[s.status]) groups[s.status].push({m,s});
+  });
+
+  const groupConfig = [
+    {key:'available',   label:'🟢 Sovereign',         desc:'In-country inference confirmed'},
+    {key:'partial',     label:'🟡 Partial',            desc:'Region exists; verify with provider'},
+    {key:'selfhost',    label:'🟣 Self-Host Option',   desc:'Open weights — deploy in-country'},
+    {key:'unavailable', label:'🔴 Not Compliant',      desc:'Data exits country'},
+  ];
+
+  let html = '';
+  groupConfig.forEach(g=>{
+    const grp = groups[g.key];
+    if (!grp.length) return;
+    html += `<div class="sov-section-label">${g.label} <span style="color:var(--text3);font-size:10px;font-weight:400;text-transform:none;letter-spacing:0;margin-left:4px">— ${g.desc} · ${grp.length} models</span></div>`;
+    html += '<div class="sov-grid">';
+    grp.forEach(({m,s})=>{
+      const regionTags = (m.sovereignty.regions||[]).map(r=>`<span class="sov-region-tag">📍 ${r}</span>`).join('');
+      const deployBadges = [
+        m.deploy&&m.deploy.saas ? '<span class="dbadge saas">SaaS</span>' : '',
+        m.deploy&&m.deploy.onPrem ? '<span class="dbadge onprem">On-Prem</span>' : '',
+        m.deploy&&m.deploy.selfHost ? '<span class="dbadge selfhost">Self-Host</span>' : '',
+      ].join('');
+      html += `
+        <div class="sov-card border-${s.status}" onclick="openModal('${m.id}')">
+          <div class="sov-card-header">
+            <div class="sov-card-icon">${m.icon}</div>
+            <div style="flex:1;min-width:0">
+              <div class="sov-card-name">${m.name}</div>
+              <div class="sov-card-prov">${m.prov} · ${m.tasks.join(', ')}</div>
+            </div>
+            <span class="sov-badge ${s.status}">${s.badge}</span>
+          </div>
+          <div class="sov-card-regions">${regionTags}</div>
+          <div class="sov-card-note">${s.note}</div>
+          <div class="sov-card-footer">
+            <div class="sov-deploy-tags">${deployBadges}</div>
+            <span style="font-size:10px;color:var(--text3)">Click for details →</span>
+          </div>
+        </div>`;
+    });
+    html += '</div>';
+  });
+
+  if (!html) html = '<div class="empty"><div class="empty-icon">🛡</div><div class="empty-title">No models match this filter</div></div>';
+  el.innerHTML = html;
+}
+
+function renderCloudTable() {
+  const cp = COUNTRY_PROFILES[sovCurrentCountry];
+  if (!cp) return;
+  const title = document.getElementById('sovCloudTableTitle');
+  if (title) title.textContent = `☁️ Available Cloud Infrastructure — ${cp.name}`;
+  const body = document.getElementById('sovCloudTableBody');
+  if (!body) return;
+  const headerRow = `<tr>
+    <th>Cloud Provider</th><th>${cp.name} Region</th>
+    <th>AI Services Available</th><th>Data Residency</th><th>Notes</th>
+  </tr>`;
+  const rows = cp.infra.map(inf => {
+    const isAWS = /aws/i.test(inf);
+    const isAzure = /azure/i.test(inf);
+    const isGCP = /gcp|google/i.test(inf);
+    const isAlibaba = /alibaba/i.test(inf);
+    const isInCountry = !/(nearest|nearby|closest)/i.test(inf);
+    const badge = isInCountry ? '<span class="sov-badge available">🟢 In-Country</span>' : '<span class="sov-badge partial">🟡 Nearby</span>';
+    const provider = isAWS?'AWS':isAzure?'Microsoft Azure':isGCP?'Google Cloud':isAlibaba?'Alibaba Cloud':'Cloud';
+    const services = isAWS?'Bedrock (Claude, Llama, Nova, Titan), Transcribe, Polly':
+                     isAzure?'Azure OpenAI (limited), Speech, Translator, AI Foundry, Phi':
+                     isGCP?'Vertex AI (Gemini), Cloud Speech, Cloud TTS':
+                     isAlibaba?'DashScope (Qwen models), core AI services':'AI services';
+    return `<tr>
+      <td><strong>${provider}</strong></td>
+      <td style="font-family:'Geist Mono',monospace;font-size:11px">${inf}</td>
+      <td style="font-size:11px">${services}</td>
+      <td>${badge}</td>
+      <td style="font-size:11px;color:var(--text3)">${isInCountry?'In-country inference available':'Nearest regional option; data may cross border'}</td>
+    </tr>`;
+  }).join('');
+  body.innerHTML = headerRow + rows;
+}
+
+// ── AI Sovereign Advisor (Claude API) ────────────────────────────
+async function runSovAI() {
+  const cp = COUNTRY_PROFILES[sovCurrentCountry];
+  if (!cp) return;
+  const apiKey = document.getElementById('apiKey')?.value?.trim();
+  const btn = document.getElementById('sovAiBtn');
+  const result = document.getElementById('sovAiResult');
+  if (!result) return;
+  if (!apiKey) {
+    result.innerHTML = '<span style="color:var(--rose)">⚠ Please add your Anthropic API key in the top bar to enable AI recommendations.</span>';
+    result.style.display='block';
+    return;
+  }
+  btn.disabled=true;
+  btn.textContent='Analysing…';
+  result.style.display='block';
+  result.innerHTML='<div class="sov-ai-loading">Analysing sovereignty landscape for '+cp.name+'…</div>';
+
+  // Build context about available models
+  const sovModels = M.filter(m=>m.sovereignty).map(m=>{
+    const s = getModelStatusForCountry(m, sovCurrentCountry);
+    return `${m.name} (${m.prov}): ${s?s.status:'unknown'} — ${s?s.note:''}`;
+  }).join('\n');
+
+  const prompt = `You are an expert AI sovereignty and data residency consultant. A customer in ${cp.name} (${cp.region}) wants to deploy AI models while meeting local data residency and regulatory requirements.
+
+Country Profile:
+- Laws/Regulations: ${cp.laws}
+- Available Cloud Infrastructure: ${cp.infra.join(', ')}
+- Compliance frameworks: ${cp.compliance.join(', ')}
+
+All AI model sovereignty statuses for ${cp.name}:
+${sovModels}
+
+Please provide:
+1. A brief 2-sentence summary of the sovereignty landscape for ${cp.name}
+2. Your top 3 recommended AI models for ${cp.name} sovereign deployment (with specific reasons)
+3. The biggest risk or watch-out (1-2 sentences)
+4. One practical deployment architecture recommendation
+
+Format as clean prose with section headers using **bold**. Be specific, practical, and concise. Maximum 300 words.`;
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:600,messages:[{role:'user',content:prompt}]})
+    });
+    const data = await resp.json();
+    if (data.error) throw new Error(data.error.message);
+    const text = (data.content||[]).map(b=>b.text||'').join('').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+    result.innerHTML = text;
+  } catch(e) {
+    result.innerHTML = `<span style="color:var(--rose)">⚠ API error: ${e.message}. Check your API key and try again.</span>`;
+  }
+  btn.disabled=false;
+  btn.textContent='✨ Regenerate';
+}
 
 
 function showToast(msg){
