@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ModelMatch">
+<meta name="application-name" content="ModelMatch AI">
+<meta name="theme-color" content="#05060d">
+<meta name="description" content="AI model advisor — find the right LLM, TTS, STT or embedding model for your use case, region and budget.">
+<meta name="msapplication-TileColor" content="#05060d">
+
+<!-- PWA Manifest inline as data URI -->
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22ModelMatch%20AI%20Advisor%22%2C%22short_name%22%3A%22ModelMatch%22%2C%22description%22%3A%22AI%20model%20advisor%20for%20enterprise%20LLM%20selection%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22orientation%22%3A%22portrait%22%2C%22background_color%22%3A%22%2305060d%22%2C%22theme_color%22%3A%22%2305060d%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520xmlns%3D%2527http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%2527%2520viewBox%3D%25270%25200%252096%252096%2527%253E%253Crect%2520width%3D%252796%2527%2520height%3D%252796%2527%2520rx%3D%252720%2527%2520fill%3D%2527%2523c9a84c%2527%2F%253E%253Ctext%2520x%3D%252748%2527%2520y%3D%252768%2527%2520text-anchor%3D%2527middle%2527%2520font-size%3D%252756%2527%253E%25E2%2597%2586%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22any%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+
+<!-- Apple touch icon (inline SVG as data URI) -->
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%23c9a84c'/><text x='90' y='130' text-anchor='middle' font-size='110' fill='%2305060d'>◆</text></svg>">
+
+<title>ModelMatch — AI Advisor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void:     #05060d;
+  --base:     #090b14;
+  --surface:  #0e1120;
+  --card:     #131727;
+  --raised:   #181d2e;
+  --rim:      rgba(255,255,255,.07);
+  --rim2:     rgba(255,255,255,.13);
+  --text:     #e9edf8;
+  --text2:    #8d97b8;
+  --text3:    #4d5673;
+  --gold:     #c9a84c;
+  --gold2:    #e6c56a;
+  --gold-bg:  rgba(201,168,76,.07);
+  --gold-rim: rgba(201,168,76,.28);
+  --teal:     #3ecfb2;
+  --teal-bg:  rgba(62,207,178,.07);
+  --sky:      #5bafd6;
+  --lime:     #7dcd6e;
+  --rose:     #f06b7a;
+  --amber:    #e8a44a;
+  --violet:   #9b7ff4;
+  --r:        10px;
+  --r-lg:     16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--void);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
+@keyframes blink{0%,100%{opacity:0}50%{opacity:1}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* ══ LAYOUT ══ */
+.app{display:grid;grid-template-rows:56px 1fr;height:100vh}
+.topbar{display:flex;align-items:center;padding:0 20px;gap:14px;border-bottom:1px solid var(--rim);background:rgba(9,11,20,.92);backdrop-filter:blur(20px);position:relative;z-index:10}
+.tb-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tb-mark{width:30px;height:30px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--void);font-weight:900}
+.tb-name{font-weight:700;font-size:15px;letter-spacing:-.02em;color:var(--text)}
+.tb-name span{color:var(--gold)}
+.tb-badge{font-size:10px;padding:2px 8px;background:var(--teal-bg);color:var(--teal);border:1px solid rgba(62,207,178,.2);border-radius:20px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.tb-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.tb-key-wrap{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--rim);border-radius:8px;padding:5px 10px}
+.tb-key-label{font-size:10px;color:var(--text3);white-space:nowrap}
+.tb-key-input{background:none;border:none;color:var(--text);font-size:11px;font-family:'JetBrains Mono',monospace;outline:none;width:160px}
+.tb-key-input::placeholder{color:var(--text3)}
+.tb-settings-btn{width:30px;height:30px;background:var(--surface);border:1px solid var(--rim);border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text2);font-size:14px;transition:.15s}
+.tb-settings-btn:hover{border-color:var(--rim2);color:var(--text)}
+
+/* ══ MAIN SPLIT ══ */
+.main{display:grid;grid-template-columns:1fr 340px;height:100%;overflow:hidden}
+@media(max-width:900px){.main{grid-template-columns:1fr}.context-panel{display:none}}
+
+/* ══ CHAT PANEL ══ */
+.chat-panel{display:flex;flex-direction:column;height:100%;position:relative;overflow:hidden}
+
+/* Background texture */
+.chat-panel::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 20% 0%,rgba(201,168,76,.04) 0%,transparent 60%),
+             radial-gradient(ellipse 50% 40% at 80% 100%,rgba(62,207,178,.03) 0%,transparent 60%);
+  pointer-events:none;z-index:0}
+
+/* ── Messages ── */
+.msgs-wrap{flex:1;overflow-y:auto;padding:24px 24px 0;display:flex;flex-direction:column;gap:18px;position:relative;z-index:1}
+.msgs-wrap::-webkit-scrollbar{width:4px}
+.msgs-wrap::-webkit-scrollbar-thumb{background:var(--rim2);border-radius:2px}
+
+/* Welcome screen */
+.welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:1;padding:40px 24px;animation:fadeIn .5s ease both}
+.welcome-icon{font-size:44px;margin-bottom:20px;animation:float 3s ease-in-out infinite}
+.welcome-title{font-family:'Instrument Serif',serif;font-size:clamp(22px,3vw,32px);color:var(--text);margin-bottom:10px;letter-spacing:-.02em}
+.welcome-title em{font-style:italic;color:var(--gold2)}
+.welcome-sub{font-size:13px;color:var(--text2);line-height:1.75;max-width:520px;margin-bottom:28px}
+.welcome-starters{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-width:560px;width:100%}
+.starter{background:var(--card);border:1px solid var(--rim);border-radius:10px;padding:12px 16px;cursor:pointer;text-align:left;transition:.15s;font-family:'DM Sans',sans-serif}
+.starter:hover{border-color:var(--gold-rim);background:var(--gold-bg)}
+.starter-icon{font-size:18px;margin-bottom:6px;display:block}
+.starter-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px}
+.starter-sub{font-size:11px;color:var(--text3);line-height:1.4}
+
+/* Messages */
+.msg{display:flex;gap:10px;animation:fadeUp .3s ease both;max-width:800px}
+.msg.user{flex-direction:row-reverse;margin-left:auto}
+.msg-av{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:2px}
+.msg.ai .msg-av{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--void)}
+.msg.user .msg-av{background:var(--raised);color:var(--text2);border:1px solid var(--rim)}
+.msg-content{display:flex;flex-direction:column;gap:8px;min-width:0;max-width:calc(100% - 44px)}
+.msg-bubble{padding:12px 16px;border-radius:var(--r-lg);font-size:13px;line-height:1.7;word-break:break-word}
+.msg.ai .msg-bubble{background:var(--card);border:1px solid var(--rim);border-top-left-radius:4px}
+.msg.user .msg-bubble{background:var(--gold-bg);border:1px solid var(--gold-rim);border-top-right-radius:4px;color:var(--text)}
+.msg-bubble strong{color:var(--text);font-weight:700}
+.msg-bubble em{color:var(--gold2);font-style:normal}
+.msg-bubble code{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--surface);padding:1px 5px;border-radius:4px;color:var(--teal)}
+.msg-bubble ul{padding-left:16px;margin:6px 0}
+.msg-bubble li{margin-bottom:3px}
+.msg-bubble a{color:var(--sky);text-decoration:none}
+.msg-bubble a:hover{text-decoration:underline}
+
+/* Typing indicator */
+.typing-bubble{padding:12px 16px;background:var(--card);border:1px solid var(--rim);border-radius:var(--r-lg);border-top-left-radius:4px;display:flex;align-items:center;gap:5px}
+.typing-dot{width:6px;height:6px;background:var(--text3);border-radius:50%;animation:blink .9s ease infinite}
+.typing-dot:nth-child(2){animation-delay:.2s}
+.typing-dot:nth-child(3){animation-delay:.4s}
+
+/* Model recommendation cards inline in chat */
+.rec-cards{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.rec-card{background:var(--raised);border:1px solid var(--rim);border-radius:var(--r);padding:12px 14px;cursor:pointer;transition:.15s;border-left:3px solid var(--gold)}
+.rec-card:hover{border-color:var(--gold-rim);background:var(--card)}
+.rec-card-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.rec-card-icon{font-size:18px;flex-shrink:0}
+.rec-card-name{font-size:13px;font-weight:700;color:var(--text)}
+.rec-card-prov{font-size:10px;color:var(--text3)}
+.rec-card-badges{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
+.rb{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:700;white-space:nowrap}
+.rb.saas{background:rgba(62,207,178,.1);color:var(--teal);border:1px solid rgba(62,207,178,.25)}
+.rb.onprem{background:rgba(155,127,244,.1);color:var(--violet);border:1px solid rgba(155,127,244,.25)}
+.rb.selfhost{background:rgba(125,205,110,.1);color:var(--lime);border:1px solid rgba(125,205,110,.25)}
+.rb.available{background:rgba(125,205,110,.1);color:var(--lime);border:1px solid rgba(125,205,110,.2)}
+.rb.partial{background:rgba(232,164,74,.1);color:var(--amber);border:1px solid rgba(232,164,74,.2)}
+.rb.unavailable{background:rgba(240,107,122,.08);color:var(--rose);border:1px solid rgba(240,107,122,.2)}
+.rec-card-why{font-size:11px;color:var(--text2);line-height:1.5}
+.rec-card-meta{display:flex;gap:12px;margin-top:7px;padding-top:7px;border-top:1px solid var(--rim)}
+.rec-meta-item{font-size:10px;color:var(--text3);display:flex;align-items:center;gap:4px}
+.rec-meta-val{color:var(--text2);font-weight:600}
+
+/* Quick suggestion chips after messages */
+.msg-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.msg-chip{padding:5px 12px;background:var(--surface);border:1px solid var(--rim);border-radius:20px;font-size:11px;color:var(--text2);cursor:pointer;transition:.12s;font-family:'DM Sans',sans-serif;font-weight:500}
+.msg-chip:hover{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg)}
+
+/* ── Input area ── */
+.input-area{padding:16px 24px 20px;border-top:1px solid var(--rim);background:rgba(9,11,20,.8);backdrop-filter:blur(10px);position:relative;z-index:1}
+.input-row{display:flex;gap:8px;align-items:flex-end}
+.input-box{flex:1;background:var(--card);border:1px solid var(--rim);border-radius:12px;padding:12px 16px;color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;resize:none;outline:none;max-height:120px;line-height:1.6;transition:.2s}
+.input-box:focus{border-color:var(--gold-rim);background:var(--raised)}
+.input-box::placeholder{color:var(--text3)}
+.send-btn{width:44px;height:44px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--void);flex-shrink:0;transition:.2s;font-weight:900}
+.send-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(201,168,76,.35)}
+.send-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.input-meta{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.input-hint{font-size:10px;color:var(--text3)}
+.new-chat-btn{font-size:11px;color:var(--text3);cursor:pointer;border:none;background:none;font-family:'DM Sans',sans-serif;padding:2px 0;transition:.15s}
+.new-chat-btn:hover{color:var(--text2)}
+
+/* ══ CONTEXT PANEL (right) ══ */
+.context-panel{border-left:1px solid var(--rim);background:var(--base);display:flex;flex-direction:column;overflow:hidden}
+.cp-head{padding:18px 18px 14px;border-bottom:1px solid var(--rim)}
+.cp-title{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
+.cp-sub{font-size:11px;color:var(--text3)}
+.cp-body{flex:1;overflow-y:auto;padding:14px}
+.cp-body::-webkit-scrollbar{width:3px}
+.cp-body::-webkit-scrollbar-thumb{background:var(--rim2)}
+
+/* Context model cards */
+.cp-model{background:var(--card);border:1px solid var(--rim);border-radius:10px;padding:12px;margin-bottom:8px;cursor:pointer;transition:.15s;animation:fadeUp .3s ease both}
+.cp-model:hover{border-color:var(--rim2);background:var(--raised)}
+.cp-model-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.cp-model-icon{font-size:16px}
+.cp-model-name{font-size:12px;font-weight:700;color:var(--text)}
+.cp-model-prov{font-size:10px;color:var(--text3)}
+.cp-model-why{font-size:11px;color:var(--text2);line-height:1.5;margin-bottom:6px}
+.cp-model-tags{display:flex;flex-wrap:wrap;gap:4px}
+.cp-tag{font-size:10px;padding:2px 7px;border-radius:4px;background:var(--surface);color:var(--text2);border:1px solid var(--rim)}
+
+.cp-empty{text-align:center;padding:40px 16px;color:var(--text3)}
+.cp-empty-icon{font-size:28px;margin-bottom:10px;opacity:.4}
+.cp-empty-text{font-size:12px;line-height:1.6}
+
+/* Stats strip */
+.cp-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.cp-stat{background:var(--card);border:1px solid var(--rim);border-radius:8px;padding:10px;text-align:center}
+.cp-stat-n{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--gold2)}
+.cp-stat-l{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+
+/* ══ ACCESS GATE ══ */
+.gate{position:fixed;inset:0;background:rgba(5,6,13,.96);z-index:1000;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(12px)}
+.gate-box{background:var(--card);border:1px solid var(--rim2);border-radius:var(--r-lg);padding:40px 36px;width:100%;max-width:380px;animation:fadeUp .4s ease both;box-shadow:0 40px 80px rgba(0,0,0,.6)}
+.gate-icon{font-size:36px;text-align:center;margin-bottom:16px}
+.gate-title{font-family:'Instrument Serif',serif;font-size:24px;text-align:center;margin-bottom:6px}
+.gate-sub{font-size:13px;color:var(--text2);text-align:center;line-height:1.6;margin-bottom:24px}
+.gate-input{width:100%;background:var(--surface);border:1px solid var(--rim2);color:var(--text);padding:11px 14px;border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:12px;transition:.2s}
+.gate-input:focus{border-color:var(--gold-rim)}
+.gate-btn{width:100%;padding:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:9px;color:var(--void);font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.2s}
+.gate-btn:hover{opacity:.9;transform:translateY(-1px)}
+.gate-err{font-size:12px;color:var(--rose);text-align:center;min-height:18px;margin-bottom:8px}
+.gate-skip{font-size:11px;color:var(--text3);text-align:center;margin-top:12px;cursor:pointer}
+.gate-skip:hover{color:var(--text2)}
+
+/* ══ SETUP MODAL ══ */
+.setup-overlay{position:fixed;inset:0;background:rgba(5,6,13,.7);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.setup-overlay.open{display:flex}
+.setup-box{background:var(--card);border:1px solid var(--rim2);border-radius:var(--r-lg);padding:28px 28px;width:100%;max-width:420px;animation:fadeUp .3s ease both}
+.setup-title{font-size:14px;font-weight:800;margin-bottom:4px}
+.setup-sub{font-size:12px;color:var(--text3);margin-bottom:20px}
+.setup-row{margin-bottom:14px}
+.setup-label{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.setup-input{width:100%;background:var(--surface);border:1px solid var(--rim2);color:var(--text);padding:9px 12px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:.2s}
+.setup-input:focus{border-color:var(--gold-rim)}
+.setup-actions{display:flex;gap:8px;margin-top:18px}
+.setup-save{flex:1;padding:10px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:8px;color:var(--void);font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+.setup-cancel{padding:10px 16px;border:1px solid var(--rim);background:none;border-radius:8px;color:var(--text2);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* ══ PORTAL CONNECTION ══ */
+.tb-conn{display:flex;align-items:center;gap:7px;padding:5px 12px;background:var(--surface);border:1px solid var(--rim);border-radius:8px;cursor:pointer;transition:.15s}
+.tb-conn:hover{border-color:var(--rim2)}
+.tb-conn.connected{border-color:rgba(125,205,110,.3);background:rgba(125,205,110,.06)}
+.tb-conn.error{border-color:rgba(240,107,122,.3);background:rgba(240,107,122,.05)}
+.tb-conn.loading{border-color:var(--gold-rim);background:var(--gold-bg)}
+.conn-dot{width:7px;height:7px;border-radius:50%;background:var(--text3);flex-shrink:0;transition:.3s}
+.tb-conn.connected .conn-dot{background:var(--lime);box-shadow:0 0 6px rgba(125,205,110,.5)}
+.tb-conn.error .conn-dot{background:var(--rose)}
+.tb-conn.loading .conn-dot{background:var(--gold2);animation:pulse 1s ease infinite}
+.conn-label{font-size:11px;font-weight:600;color:var(--text3);white-space:nowrap}
+.tb-conn.connected .conn-label{color:var(--lime)}
+.tb-conn.error .conn-label{color:var(--rose)}
+.tb-conn.loading .conn-label{color:var(--gold2)}
+
+/* Setup portal section */
+.setup-divider{height:1px;background:var(--rim);margin:16px 0}
+.setup-section-title{font-size:11px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.setup-section-title::before{content:'';flex:1;height:1px;background:var(--gold-rim)}
+.setup-section-title::after{content:'';flex:1;height:1px;background:var(--gold-rim)}
+.portal-status{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;font-size:11px;margin-bottom:10px;line-height:1.5;min-height:36px}
+.portal-status.idle{background:var(--surface);color:var(--text3)}
+.portal-status.loading{background:var(--gold-bg);color:var(--gold2);border:1px solid var(--gold-rim)}
+.portal-status.ok{background:rgba(125,205,110,.08);color:var(--lime);border:1px solid rgba(125,205,110,.2)}
+.portal-status.err{background:rgba(240,107,122,.07);color:var(--rose);border:1px solid rgba(240,107,122,.2)}
+.portal-status-icon{flex-shrink:0;font-size:14px}
+.setup-connect-btn{width:100%;padding:9px;background:var(--surface);border:1px solid var(--gold-rim);border-radius:8px;color:var(--gold2);font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.2s;margin-bottom:6px}
+.setup-connect-btn:hover{background:var(--gold-bg)}
+.setup-connect-btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* Repos list */
+.repos-list{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.repo-item{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--rim);border-radius:8px;padding:8px 10px}
+.repo-icon{font-size:14px}
+.repo-name{font-size:11px;font-weight:700;color:var(--text);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.repo-count{font-size:10px;color:var(--teal);font-family:'JetBrains Mono',monospace;font-weight:700}
+.repo-del{width:20px;height:20px;background:none;border:none;cursor:pointer;color:var(--text3);font-size:13px;display:flex;align-items:center;justify-content:center;border-radius:4px;flex-shrink:0}
+.repo-del:hover{color:var(--rose);background:rgba(240,107,122,.1)}
+
+
+/* ══════════════════════════════════════════════════════
+   MOBILE / PWA STYLES
+══════════════════════════════════════════════════════ */
+
+/* Safe area insets for iPhone notch/Dynamic Island */
+:root {
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left, 0px);
+  --safe-right:  env(safe-area-inset-right, 0px);
+}
+
+/* Prevent iOS rubber-band scroll on body, allow only in msgs */
+html, body { overscroll-behavior: none; -webkit-overflow-scrolling: touch; touch-action: manipulation; }
+
+/* App shell adapts to safe areas */
+.app { grid-template-rows: calc(56px + var(--safe-top)) 1fr; }
+.topbar { padding-top: calc(10px + var(--safe-top)); height: auto; min-height: calc(56px + var(--safe-top)); }
+.input-area { padding-bottom: calc(20px + var(--safe-bottom)); }
+
+/* On small screens: hide context panel, go full-width chat */
+@media (max-width: 768px) {
+  .main { grid-template-columns: 1fr !important; }
+  .context-panel { display: none !important; }
+  .tb-key-wrap { display: none !important; }
+  .tb-settings-btn { width: 36px; height: 36px; font-size: 16px; }
+
+  /* Bigger touch targets */
+  .send-btn { width: 48px; height: 48px; font-size: 18px; border-radius: 12px; flex-shrink: 0; }
+  .input-box { font-size: 16px !important; /* prevent iOS zoom */ border-radius: 14px; padding: 13px 16px; }
+  .msg-bubble { font-size: 14px; }
+
+  /* Topbar compact */
+  .topbar { padding: calc(var(--safe-top) + 10px) 14px 10px; gap: 10px; }
+  .tb-name { font-size: 14px; }
+  .tb-badge { display: none; }
+  .tb-conn { padding: 5px 10px; }
+  .conn-label { font-size: 10px; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* Welcome screen */
+  .welcome { padding: 28px 16px; }
+  .welcome-starters { grid-template-columns: 1fr; gap: 8px; }
+  .welcome-title { font-size: 22px; }
+  .welcome-sub { font-size: 12px; }
+
+  /* Messages */
+  .msgs-wrap { padding: 16px 14px 0; gap: 14px; }
+  .msg { max-width: 100%; }
+  .msg.user { max-width: 88%; }
+  .rec-card { padding: 10px 12px; }
+  .rec-card-meta { flex-wrap: wrap; gap: 6px; }
+
+  /* Suggestion chips - horizontal scroll */
+  .msg-chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  .msg-chips::-webkit-scrollbar { display: none; }
+  .msg-chip { flex-shrink: 0; }
+
+  /* Input area */
+  .input-area { padding: 12px 14px calc(12px + var(--safe-bottom)); }
+  .input-meta { display: none; } /* hide hint on mobile */
+  .input-row { gap: 8px; }
+
+  /* Setup modal full screen on mobile */
+  .setup-overlay { align-items: flex-end; }
+  .setup-box { border-radius: 20px 20px 0 0; padding: 24px 20px calc(24px + var(--safe-bottom)); max-width: 100%; max-height: 90vh; overflow-y: auto; }
+
+  /* Gate centered, full width */
+  .gate-box { margin: 16px; max-width: calc(100% - 32px); }
+}
+
+/* Landscape phone */
+@media (max-width: 768px) and (orientation: landscape) {
+  .welcome { padding: 16px; }
+  .welcome-icon { display: none; }
+  .welcome-starters { grid-template-columns: 1fr 1fr; }
+}
+
+/* ══ INSTALL BANNER ══ */
+.install-banner {
+  position: fixed; bottom: calc(var(--safe-bottom) + 80px); left: 16px; right: 16px;
+  background: var(--raised); border: 1px solid var(--gold-rim); border-radius: 16px;
+  padding: 14px 16px; display: flex; align-items: center; gap: 12px;
+  z-index: 300; box-shadow: 0 8px 40px rgba(0,0,0,.6);
+  animation: fadeUp .4s ease both;
+  transform-origin: bottom center;
+}
+.ib-icon { width: 44px; height: 44px; background: linear-gradient(135deg,var(--gold),var(--gold2)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--void); flex-shrink: 0; }
+.ib-text { flex: 1; }
+.ib-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.ib-sub { font-size: 11px; color: var(--text2); line-height: 1.4; }
+.ib-actions { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
+.ib-install { padding: 7px 14px; background: linear-gradient(135deg,var(--gold),var(--gold2)); border: none; border-radius: 8px; color: var(--void); font-size: 12px; font-weight: 800; cursor: pointer; font-family: 'DM Sans',sans-serif; white-space: nowrap; }
+.ib-dismiss { padding: 5px; background: none; border: none; color: var(--text3); font-size: 18px; cursor: pointer; line-height: 1; }
+
+/* ══ IOS INSTALL INSTRUCTIONS ══ */
+.ios-install-modal {
+  position: fixed; inset: 0; background: rgba(5,6,13,.85); z-index: 400;
+  display: none; align-items: flex-end; backdrop-filter: blur(6px);
+}
+.ios-install-modal.open { display: flex; }
+.ios-install-box {
+  background: var(--card); border: 1px solid var(--rim2); border-radius: 20px 20px 0 0;
+  padding: 24px 20px calc(20px + var(--safe-bottom)); width: 100%;
+  animation: fadeUp .3s ease both;
+}
+.ios-step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+.ios-step-n { width: 26px; height: 26px; background: var(--gold-bg); border: 1px solid var(--gold-rim); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: var(--gold2); flex-shrink: 0; margin-top: 1px; }
+.ios-step-text { font-size: 13px; color: var(--text2); line-height: 1.6; }
+.ios-step-text strong { color: var(--text); }
+.ios-close { width: 100%; padding: 12px; background: var(--surface); border: 1px solid var(--rim); border-radius: 10px; color: var(--text2); font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'DM Sans',sans-serif; margin-top: 4px; }
+
+</style>
+</head>
+<body>
+
+<!-- ══ ACCESS GATE ══ -->
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <div class="gate-icon">🔐</div>
+    <div class="gate-title">ModelMatch Advisor</div>
+    <div class="gate-sub">Enter your access code to continue, or skip to use your own API key</div>
+    <div class="gate-err" id="gateErr"></div>
+    <input class="gate-input" id="gateInput" type="password" placeholder="Access code" onkeydown="if(event.key==='Enter')tryAccess()">
+    <button class="gate-btn" onclick="tryAccess()">Continue →</button>
+    <div class="gate-skip" onclick="skipGate()">Skip — I'll enter my own API key</div>
+  </div>
+</div>
+
+<!-- ══ SETUP MODAL ══ -->
+<div class="setup-overlay" id="setupOverlay">
+  <div class="setup-box">
+    <div class="setup-title">⚙️ Advisor Settings</div>
+    <div class="setup-sub">Configure the AI Advisor for your organisation</div>
+    <div class="setup-row">
+      <div class="setup-label">Anthropic API Key</div>
+      <input class="setup-input" id="setupKey" type="password" placeholder="sk-ant-…">
+    </div>
+    <div class="setup-row">
+      <div class="setup-label">Access Code (optional — share with users)</div>
+      <input class="setup-input" id="setupCode" type="text" placeholder="Leave blank for open access">
+    </div>
+    <div class="setup-row">
+      <div class="setup-label">Advisor Name / Brand</div>
+      <input class="setup-input" id="setupBrand" type="text" placeholder="ModelMatch Advisor">
+    </div>
+    <div class="setup-row">
+      <div class="setup-label">Welcome Message</div>
+      <input class="setup-input" id="setupWelcome" type="text" placeholder="Hi! Ask me anything about AI models…">
+    </div>
+
+    <div class="setup-divider"></div>
+    <div class="setup-section-title">Connect to Portal</div>
+
+    <div class="setup-row">
+      <div class="setup-label">Portal HTML URL <span style="color:var(--text3);font-weight:400;text-transform:none">(GitHub Pages or raw URL)</span></div>
+      <input class="setup-input" id="setupPortalUrl" type="url"
+        placeholder="https://yourusername.github.io/repo/modelmatch-sovereign.html" value="https://arun-cloudsec.github.io/modelmatch/modelmatch-ai">
+      <div style="font-size:10px;color:var(--text3);margin-top:5px;line-height:1.5">
+        Paste the URL to your hosted modelmatch portal HTML. The chat will fetch live model data from it so both stay in sync automatically.
+        Also accepts: <code style="font-family:monospace;font-size:10px;color:var(--teal)">https://raw.githubusercontent.com/user/repo/main/modelmatch-sovereign.html</code>
+      </div>
+    </div>
+    <div class="setup-row">
+      <div class="setup-label">GitHub Token <span style="color:var(--text3);font-weight:400;text-transform:none">(optional — for private repos)</span></div>
+      <input class="setup-input" id="setupGhToken" type="password" placeholder="ghp_… (only needed for private repos)">
+    </div>
+
+    <div class="portal-status idle" id="portalStatus">
+      <span class="portal-status-icon">🔗</span>
+      <span id="portalStatusText">No portal connected. Enter your portal URL above and click Connect.</span>
+    </div>
+
+    <button class="setup-connect-btn" id="connectBtn" onclick="testAndConnectPortal()">
+      🔄 Connect & Fetch Models from Portal
+    </button>
+
+    <div id="reposList" class="repos-list" style="display:none"></div>
+
+    <div class="setup-actions">
+      <button class="setup-save" onclick="saveSetup()">Save Settings</button>
+      <button class="setup-cancel" onclick="closeSetup()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ APP ══ -->
+<div class="app">
+  <!-- Topbar -->
+  <div class="topbar">
+    <a class="tb-logo" href="#">
+      <div class="tb-mark">◆</div>
+      <div class="tb-name" id="brandName">ModelMatch<span>AI</span></div>
+    </a>
+    <div class="tb-badge">AI Advisor</div>
+    <div class="tb-conn" id="tbConn" onclick="openSetup()" title="Portal connection — click to configure">
+      <div class="conn-dot"></div>
+      <div class="conn-label" id="connLabel">Not connected</div>
+    </div>
+    <div class="tb-right">
+      <div class="tb-key-wrap">
+        <div class="tb-key-label">API KEY</div>
+        <input class="tb-key-input" id="apiKeyInput" type="password" placeholder="sk-ant-… (optional)" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="tb-settings-btn" onclick="openSetup()" title="Settings">⚙</div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <!-- Chat panel -->
+    <div class="chat-panel">
+      <div class="msgs-wrap" id="msgsWrap">
+        <!-- Welcome shown until first message -->
+        <div class="welcome" id="welcomeScreen">
+          <div class="welcome-icon">🤖</div>
+          <div class="welcome-title">Your <em>AI Model Advisor</em></div>
+          <div class="welcome-sub" id="welcomeText">I'm connected to your live ModelMatch portal and know every model in your database. Tell me what you're building — use case, country, deployment preference, or budget — and I'll recommend the right model.</div>
+          <div class="welcome-starters">
+            <div class="starter" onclick="sendStarter(this)">
+              <span class="starter-icon">🏗️</span>
+              <div class="starter-title">Recommend models for my use case</div>
+              <div class="starter-sub">Tell me what you're building and I'll find the best fit</div>
+            </div>
+            <div class="starter" onclick="sendStarter(this)">
+              <span class="starter-icon">🛡️</span>
+              <div class="starter-title">Check data sovereignty for my country</div>
+              <div class="starter-sub">Which models keep my data in my country?</div>
+            </div>
+            <div class="starter" onclick="sendStarter(this)">
+              <span class="starter-icon">💰</span>
+              <div class="starter-title">Find the most cost-effective option</div>
+              <div class="starter-sub">Compare costs for my expected usage volume</div>
+            </div>
+            <div class="starter" onclick="sendStarter(this)">
+              <span class="starter-icon">🔒</span>
+              <div class="starter-title">Self-hosted vs SaaS deployment</div>
+              <div class="starter-sub">Understand the tradeoffs for my organisation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input area -->
+      <div class="input-area">
+        <div class="input-row">
+          <textarea class="input-box" id="inputBox" placeholder="Ask about models, use cases, pricing, deployment, data sovereignty…" rows="1"
+            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage()}"
+            oninput="autoResize(this)"></textarea>
+          <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+        </div>
+        <div class="input-meta">
+          <div class="input-hint">Press Enter to send · Shift+Enter for new line</div>
+          <button class="new-chat-btn" onclick="newChat()">↺ New chat</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Context panel -->
+    <div class="context-panel">
+      <div class="cp-head">
+        <div class="cp-title">Recommended Models</div>
+        <div class="cp-sub" id="cpSub">Models will appear here as you chat</div>
+      </div>
+      <div class="cp-body" id="cpBody">
+        <div class="cp-stats">
+          <div class="cp-stat"><div class="cp-stat-n">85+</div><div class="cp-stat-l">Models</div></div>
+          <div class="cp-stat"><div class="cp-stat-n">28</div><div class="cp-stat-l">Countries</div></div>
+          <div class="cp-stat"><div class="cp-stat-n">7</div><div class="cp-stat-l">Task types</div></div>
+        </div>
+        <div class="cp-empty" id="cpEmpty">
+          <div class="cp-empty-icon">💬</div>
+          <div class="cp-empty-text">Recommended models will appear here as the conversation develops</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// COMPACT MODEL DATABASE (85 models)
+// ══════════════════════════════════════════════════════════════════
+const MODELS = {
+  'gpt41':        {name:'GPT-4.1',        prov:'OpenAI',     icon:'🟢', tasks:['LLM','Code','Vision'],  tier:'mid',  pIn:2,    pOut:8,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'partial',    ctx:'1M'},
+  'gpt41-mini':   {name:'GPT-4.1 Mini',   prov:'OpenAI',     icon:'🟢', tasks:['LLM','Code'],            tier:'low',  pIn:0.4,  pOut:1.6,  deploy:{saas:true,onPrem:false,selfHost:false}, uae:'partial',    ctx:'1M'},
+  'gpt41-nano':   {name:'GPT-4.1 Nano',   prov:'OpenAI',     icon:'🟢', tasks:['LLM'],                   tier:'low',  pIn:0.1,  pOut:0.4,  deploy:{saas:true,onPrem:false,selfHost:false}, uae:'partial',    ctx:'1M'},
+  'gpt4o':        {name:'GPT-4o',         prov:'OpenAI',     icon:'🟢', tasks:['LLM','Vision','Code'],   tier:'mid',  pIn:2.5,  pOut:10,   deploy:{saas:true,onPrem:false,selfHost:false}, uae:'partial',    ctx:'128K'},
+  'gpt4o-mini':   {name:'GPT-4o Mini',    prov:'OpenAI',     icon:'🟢', tasks:['LLM','Code'],            tier:'low',  pIn:0.15, pOut:0.6,  deploy:{saas:true,onPrem:false,selfHost:false}, uae:'partial',    ctx:'128K'},
+  'o3':           {name:'o3',             prov:'OpenAI',     icon:'🟢', tasks:['LLM','Code'],            tier:'high', pIn:10,   pOut:40,   deploy:{saas:true,onPrem:false,selfHost:false}, uae:'partial',    ctx:'200K'},
+  'o4-mini':      {name:'o4-mini',        prov:'OpenAI',     icon:'🟢', tasks:['LLM','Code'],            tier:'mid',  pIn:1.1,  pOut:4.4,  deploy:{saas:true,onPrem:false,selfHost:false}, uae:'partial',    ctx:'200K'},
+  'codex':        {name:'OpenAI Codex',   prov:'OpenAI',     icon:'🟢', tasks:['Code'],                  tier:'mid',  pIn:3,    pOut:12,   deploy:{saas:true,onPrem:false,selfHost:false}, uae:'partial',    ctx:'200K'},
+  'oai-tts':      {name:'OpenAI TTS',     prov:'OpenAI',     icon:'🟢', tasks:['TTS'],                   tier:'mid',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'partial',    ctx:'-'},
+  'whisper':      {name:'Whisper v3',     prov:'OpenAI',     icon:'🟢', tasks:['STT'],                   tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:true},  uae:'partial',    ctx:'-'},
+  'claude37':     {name:'Claude 3.7 Sonnet',prov:'Anthropic',icon:'🟣', tasks:['LLM','Code','Vision'],  tier:'mid',  pIn:3,    pOut:15,   deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'200K'},
+  'claude35':     {name:'Claude 3.5 Sonnet',prov:'Anthropic',icon:'🟣', tasks:['LLM','Code','Vision'],  tier:'mid',  pIn:3,    pOut:15,   deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'200K'},
+  'claude-haiku': {name:'Claude 3.5 Haiku',prov:'Anthropic', icon:'🟣', tasks:['LLM','Code'],            tier:'low',  pIn:0.8,  pOut:4,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'200K'},
+  'claude3-opus': {name:'Claude 3 Opus',  prov:'Anthropic',  icon:'🟣', tasks:['LLM','Vision'],          tier:'high', pIn:15,   pOut:75,   deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'200K'},
+  'gemini25':     {name:'Gemini 2.5 Pro', prov:'Google',     icon:'🔴', tasks:['LLM','Vision','Code'],   tier:'mid',  pIn:1.25, pOut:10,   deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'1M'},
+  'gemini20-flash':{name:'Gemini 2.0 Flash',prov:'Google',   icon:'🔴', tasks:['LLM','Vision'],          tier:'low',  pIn:0.1,  pOut:0.4,  deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'1M'},
+  'gemini15-flash':{name:'Gemini 1.5 Flash',prov:'Google',   icon:'🔴', tasks:['LLM','Vision'],          tier:'low',  pIn:0.075,pOut:0.3,  deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'1M'},
+  'gemma3-27b':   {name:'Gemma 3-27B',    prov:'Google',     icon:'🔴', tasks:['LLM','Vision'],          tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:true},  uae:'selfhost',   ctx:'128K'},
+  'gemma2-9b':    {name:'Gemma 2-9B',     prov:'Google',     icon:'🔴', tasks:['LLM'],                   tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:true},  uae:'selfhost',   ctx:'8K'},
+  'g-stt':        {name:'Google STT (Chirp)',prov:'Google',   icon:'🔴', tasks:['STT'],                   tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'-'},
+  'g-tts':        {name:'Google Cloud TTS',prov:'Google',     icon:'🔴', tasks:['TTS'],                   tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'-'},
+  'llama33':      {name:'Llama 3.3-70B',  prov:'Meta',       icon:'🦙', tasks:['LLM','Code'],            tier:'low',  pIn:0.59, pOut:0.79, deploy:{saas:true,onPrem:true, selfHost:true},  uae:'selfhost',   ctx:'128K'},
+  'llama32-v':    {name:'Llama 3.2-90B Vision',prov:'Meta',  icon:'🦙', tasks:['LLM','Vision'],          tier:'low',  pIn:0.9,  pOut:0.9,  deploy:{saas:true,onPrem:true, selfHost:true},  uae:'selfhost',   ctx:'128K'},
+  'llama31-8b':   {name:'Llama 3.1-8B',   prov:'Meta',       icon:'🦙', tasks:['LLM','Code'],            tier:'free', pIn:0.1,  pOut:0.1,  deploy:{saas:true,onPrem:true, selfHost:true},  uae:'selfhost',   ctx:'128K'},
+  'codellama':    {name:'Code Llama 70B', prov:'Meta',        icon:'🦙', tasks:['Code','LLM'],            tier:'low',  pIn:0.5,  pOut:1.5,  deploy:{saas:true,onPrem:true, selfHost:true},  uae:'selfhost',   ctx:'100K'},
+  'starcoder2':   {name:'StarCoder 2-15B',prov:'BigCode',     icon:'⭐', tasks:['Code'],                  tier:'free', pIn:0,    pOut:0,    deploy:{saas:false,onPrem:true, selfHost:true},  uae:'selfhost',   ctx:'16K'},
+  'seamless':     {name:'SeamlessM4T v2', prov:'Meta',        icon:'🦙', tasks:['STT','TTS','Translation'],tier:'free',pIn:0,   pOut:0,    deploy:{saas:false,onPrem:true, selfHost:true},  uae:'selfhost',   ctx:'-'},
+  'qwen25-72b':   {name:'Qwen2.5-72B',   prov:'Alibaba',     icon:'☁️', tasks:['LLM','Code','Translation'],tier:'low',pIn:0.4, pOut:1.2,  deploy:{saas:true,onPrem:true, selfHost:true},  uae:'available',  ctx:'128K'},
+  'qwen25-7b':    {name:'Qwen2.5-7B',    prov:'Alibaba',     icon:'☁️', tasks:['LLM'],                   tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:true, selfHost:true},  uae:'available',  ctx:'128K'},
+  'qwen25-vl':    {name:'Qwen2.5-VL-72B',prov:'Alibaba',     icon:'☁️', tasks:['LLM','Vision'],          tier:'low',  pIn:0.4,  pOut:0.4,  deploy:{saas:true,onPrem:true, selfHost:true},  uae:'available',  ctx:'128K'},
+  'qwen25-coder': {name:'Qwen2.5-Coder-32B',prov:'Alibaba',  icon:'☁️', tasks:['Code'],                  tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:true, selfHost:true},  uae:'available',  ctx:'128K'},
+  'cohere-rplus': {name:'Cohere Command R+',prov:'Cohere',    icon:'🟤', tasks:['LLM','Translation'],     tier:'mid',  pIn:2.5,  pOut:10,   deploy:{saas:true,onPrem:true, selfHost:false}, uae:'partial',    ctx:'128K'},
+  'cohere-cmd-a': {name:'Cohere Command A',prov:'Cohere',     icon:'🟤', tasks:['LLM'],                   tier:'mid',  pIn:2.5,  pOut:10,   deploy:{saas:true,onPrem:true, selfHost:false}, uae:'partial',    ctx:'256K'},
+  'cohere-embed': {name:'Cohere Embed v3',prov:'Cohere',      icon:'🟤', tasks:['Embedding'],             tier:'low',  pIn:0.1,  pOut:0,    deploy:{saas:true,onPrem:true, selfHost:false}, uae:'partial',    ctx:'-'},
+  'mistral-large':{name:'Mistral Large 2',prov:'Mistral AI',  icon:'⚡', tasks:['LLM','Code'],            tier:'mid',  pIn:3,    pOut:9,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'partial',    ctx:'128K'},
+  'mistral-nemo': {name:'Mistral NeMo',   prov:'Mistral AI',  icon:'⚡', tasks:['LLM'],                   tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:true},  uae:'selfhost',   ctx:'128K'},
+  'mixtral':      {name:'Mixtral 8x22B',  prov:'Mistral AI',  icon:'⚡', tasks:['LLM','Code'],            tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:true},  uae:'selfhost',   ctx:'65K'},
+  'pixtral':      {name:'Pixtral 12B',    prov:'Mistral AI',  icon:'⚡', tasks:['LLM','Vision'],          tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:true},  uae:'selfhost',   ctx:'128K'},
+  'deepseek-v3':  {name:'DeepSeek V3',    prov:'DeepSeek',    icon:'🔵', tasks:['LLM','Code'],            tier:'low',  pIn:0.14, pOut:0.28, deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'128K'},
+  'deepseek-r1':  {name:'DeepSeek R1',    prov:'DeepSeek',    icon:'🔵', tasks:['LLM','Code'],            tier:'low',  pIn:0.55, pOut:2.19, deploy:{saas:true,onPrem:false,selfHost:true},  uae:'unavailable',ctx:'128K'},
+  'phi4':         {name:'Phi-4 (14B)',    prov:'Microsoft',   icon:'🔷', tasks:['LLM','Code'],            tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:true},  uae:'partial',    ctx:'16K'},
+  'phi4-mini':    {name:'Phi-4 mini',     prov:'Microsoft',   icon:'🔷', tasks:['LLM'],                   tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:true},  uae:'partial',    ctx:'128K'},
+  'azure-tts':    {name:'Azure Neural TTS',prov:'Microsoft',  icon:'🔷', tasks:['TTS'],                   tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'-'},
+  'azure-stt':    {name:'Azure Speech-to-Text',prov:'Microsoft',icon:'🔷',tasks:['STT'],                  tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'-'},
+  'azure-trans':  {name:'Azure AI Translator',prov:'Microsoft',icon:'🔷', tasks:['Translation'],          tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'-'},
+  'amazon-nova-pro':{name:'Amazon Nova Pro',prov:'AWS',       icon:'🟠', tasks:['LLM','Vision'],          tier:'low',  pIn:0.8,  pOut:3.2,  deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'300K'},
+  'amazon-nova-lite':{name:'Amazon Nova Lite',prov:'AWS',     icon:'🟠', tasks:['LLM','Vision'],          tier:'low',  pIn:0.06, pOut:0.24, deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'300K'},
+  'amazon-nova-micro':{name:'Amazon Nova Micro',prov:'AWS',   icon:'🟠', tasks:['LLM'],                   tier:'low',  pIn:0.035,pOut:0.14, deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'128K'},
+  'amazon-transcribe':{name:'Amazon Transcribe',prov:'AWS',   icon:'🟠', tasks:['STT'],                   tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'-'},
+  'amazon-polly': {name:'Amazon Polly',   prov:'AWS',         icon:'🟠', tasks:['TTS'],                   tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'-'},
+  'amazon-titan-emb':{name:'Amazon Titan Embeddings',prov:'AWS',icon:'🟠',tasks:['Embedding'],            tier:'low',  pIn:0.1,  pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'-'},
+  'amazon-q':     {name:'Amazon Q Developer',prov:'AWS',      icon:'🟠', tasks:['Code'],                  tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'available',  ctx:'-'},
+  'falcon3-40b':  {name:'Falcon 3-40B',   prov:'TII UAE',     icon:'🇦🇪',tasks:['LLM','Code'],            tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:true},  uae:'available',  ctx:'32K'},
+  'falcon3-7b':   {name:'Falcon 3-7B',    prov:'TII UAE',     icon:'🇦🇪',tasks:['LLM'],                   tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:true},  uae:'available',  ctx:'32K'},
+  'ibm-granite-8b':{name:'IBM Granite 3.1-8B',prov:'IBM',     icon:'🔵', tasks:['LLM','Code'],            tier:'low',  pIn:0.05, pOut:0.1,  deploy:{saas:true,onPrem:true, selfHost:false}, uae:'partial',    ctx:'128K'},
+  'jamba15':      {name:'Jamba 1.5 Large',prov:'AI21 Labs',   icon:'🔮', tasks:['LLM'],                   tier:'mid',  pIn:2,    pOut:8,    deploy:{saas:true,onPrem:true, selfHost:false}, uae:'partial',    ctx:'256K'},
+  'grok3':        {name:'Grok 3',         prov:'xAI',         icon:'✖️', tasks:['LLM','Code'],            tier:'mid',  pIn:3,    pOut:15,   deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'131K'},
+  'nemotron':     {name:'Llama-3.1-Nemotron-70B',prov:'NVIDIA',icon:'🟩',tasks:['LLM'],                  tier:'free', pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:true},  uae:'selfhost',   ctx:'128K'},
+  'elevenlabs':   {name:'ElevenLabs v2',  prov:'ElevenLabs',  icon:'🎙️', tasks:['TTS'],                   tier:'mid',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'-'},
+  'playht':       {name:'PlayHT 2.0 Turbo',prov:'Play.ht',    icon:'▶️', tasks:['TTS'],                   tier:'mid',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'-'},
+  'murf':         {name:'Murf AI',        prov:'Murf',         icon:'🎤', tasks:['TTS'],                   tier:'mid',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'-'},
+  'resemble':     {name:'Resemble AI',    prov:'Resemble AI',  icon:'🎭', tasks:['TTS'],                   tier:'mid',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:true, selfHost:false}, uae:'partial',    ctx:'-'},
+  'cartesia':     {name:'Cartesia Sonic', prov:'Cartesia',     icon:'🔈', tasks:['TTS'],                   tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'-'},
+  'deepgram':     {name:'Deepgram Nova-2',prov:'Deepgram',     icon:'🎤', tasks:['STT'],                   tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:true, selfHost:false}, uae:'partial',    ctx:'-'},
+  'assemblyai':   {name:'AssemblyAI Universal-1',prov:'AssemblyAI',icon:'🔊',tasks:['STT'],               tier:'mid',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'-'},
+  'speechmatics': {name:'Speechmatics',   prov:'Speechmatics', icon:'📡', tasks:['STT'],                   tier:'mid',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:true, selfHost:false}, uae:'partial',    ctx:'-'},
+  'rev-ai':       {name:'Rev AI',         prov:'Rev',           icon:'🎧', tasks:['STT'],                   tier:'mid',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'-'},
+  'deepl':        {name:'DeepL Pro API',  prov:'DeepL',         icon:'🌐', tasks:['Translation'],           tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'unavailable',ctx:'-'},
+  'modernmt':     {name:'ModernMT',       prov:'Translated',    icon:'🔤', tasks:['Translation'],           tier:'low',  pIn:0,    pOut:0,    deploy:{saas:true,onPrem:true, selfHost:false}, uae:'partial',    ctx:'-'},
+  'text-emb3':    {name:'text-embedding-3-large',prov:'OpenAI',icon:'🟢',tasks:['Embedding'],             tier:'low',  pIn:0.13, pOut:0,    deploy:{saas:true,onPrem:false,selfHost:false}, uae:'partial',    ctx:'-'},
+  'e5-multi':     {name:'Multilingual-E5-Large',prov:'Microsoft',icon:'🔷',tasks:['Embedding'],           tier:'free', pIn:0,    pOut:0,    deploy:{saas:false,onPrem:true, selfHost:true},  uae:'selfhost',   ctx:'-'},
+  'coqui':        {name:'Coqui TTS (XTTS v2)',prov:'Coqui AI',icon:'🐸', tasks:['TTS'],                   tier:'free', pIn:0,    pOut:0,    deploy:{saas:false,onPrem:true, selfHost:true},  uae:'selfhost',   ctx:'-'},
+  'sarvam':       {name:'Sarvam-2B',      prov:'Sarvam AI',    icon:'🇮🇳', tasks:['LLM','TTS','STT'],       tier:'free', pIn:0,    pOut:0,    deploy:{saas:false,onPrem:true, selfHost:true},  uae:'selfhost',   ctx:'-'},
+  'seamless':     {name:'SeamlessM4T v2', prov:'Meta',          icon:'🦙', tasks:['STT','TTS','Translation'],tier:'free',pIn:0,   pOut:0,    deploy:{saas:false,onPrem:true, selfHost:true},  uae:'selfhost',   ctx:'-'},
+};
+
+// Model summary for system prompt
+const MODEL_SUMMARY = `AVAILABLE AI MODELS DATABASE (85 models):
+[gpt41] GPT-4.1 | OpenAI | LLM,Code,Vision | SaaS | $2/$8per1M | 1M ctx | sovereign:partial(Azure UAE limited)
+[gpt41-mini] GPT-4.1 Mini | OpenAI | LLM,Code | SaaS | $0.40/$1.60per1M | 1M ctx | sovereign:partial
+[gpt41-nano] GPT-4.1 Nano | OpenAI | LLM | SaaS | $0.10/$0.40per1M | 1M ctx | sovereign:partial — cheapest GPT-4
+[gpt4o] GPT-4o | OpenAI | LLM,Vision,Code | SaaS | $2.50/$10per1M | 128K ctx | sovereign:partial
+[gpt4o-mini] GPT-4o Mini | OpenAI | LLM,Code | SaaS | $0.15/$0.60per1M | 128K ctx | sovereign:partial
+[o3] o3 | OpenAI | LLM,Code | SaaS | $10/$40per1M | 200K ctx | sovereign:partial — best reasoning model
+[o4-mini] o4-mini | OpenAI | LLM,Code | SaaS | $1.10/$4.40per1M | 200K ctx | sovereign:partial
+[codex] OpenAI Codex | OpenAI | Code | SaaS | $3/$12per1M | 200K ctx | sovereign:partial — agentic coding
+[oai-tts] OpenAI TTS | OpenAI | TTS | SaaS | $15/1M chars | — | sovereign:partial
+[whisper] Whisper v3 | OpenAI | STT | SaaS+SelfHost | $0.006/min API / Free self-hosted | sovereign:partial
+[claude37] Claude 3.7 Sonnet | Anthropic | LLM,Code,Vision | SaaS | $3/$15per1M | 200K ctx | sovereign:AVAILABLE(AWS me-central-1 UAE,Bahrain) — best-in-class coding, extended thinking
+[claude35] Claude 3.5 Sonnet | Anthropic | LLM,Code,Vision | SaaS | $3/$15per1M | 200K ctx | sovereign:AVAILABLE — fast and capable
+[claude-haiku] Claude 3.5 Haiku | Anthropic | LLM,Code | SaaS | $0.80/$4per1M | 200K ctx | sovereign:AVAILABLE — cheapest Claude, very fast
+[claude3-opus] Claude 3 Opus | Anthropic | LLM,Vision | SaaS | $15/$75per1M | 200K ctx | sovereign:AVAILABLE
+[gemini25] Gemini 2.5 Pro | Google | LLM,Vision,Code | SaaS | $1.25/$10per1M | 1M ctx | sovereign:UNAVAILABLE(GCP no UAE region) — 1M ctx but data exits UAE
+[gemini20-flash] Gemini 2.0 Flash | Google | LLM,Vision | SaaS | $0.10/$0.40per1M | 1M ctx | sovereign:UNAVAILABLE — cheapest frontier
+[gemini15-flash] Gemini 1.5 Flash | Google | LLM,Vision | SaaS | $0.075/$0.30per1M | 1M ctx | sovereign:UNAVAILABLE
+[gemma3-27b] Gemma 3-27B | Google | LLM,Vision | SelfHost | Free | 128K ctx | sovereign:SELFHOST — open-source vision+LLM
+[gemma2-9b] Gemma 2-9B | Google | LLM | SelfHost | Free | 8K ctx | sovereign:SELFHOST
+[g-stt] Google Cloud STT (Chirp) | Google | STT | SaaS | $0.016/min | sovereign:UNAVAILABLE
+[g-tts] Google Cloud TTS | Google | TTS | SaaS | $4/1M chars | sovereign:UNAVAILABLE
+[llama33] Llama 3.3-70B | Meta | LLM,Code | SaaS+SelfHost | Free/$0.59per1M via Azure | 128K ctx | sovereign:SELFHOST — near GPT-4o quality, MIT license
+[llama32-v] Llama 3.2-90B Vision | Meta | LLM,Vision | SaaS+SelfHost | Free self-host | sovereign:SELFHOST
+[llama31-8b] Llama 3.1-8B | Meta | LLM,Code | SaaS+SelfHost | Free self-host, runs on RTX 3090 | sovereign:SELFHOST
+[codellama] Code Llama 70B | Meta | Code | SaaS+SelfHost | Free self-host | sovereign:SELFHOST
+[starcoder2] StarCoder 2-15B | BigCode | Code | SelfHost | Free | 16K ctx | sovereign:SELFHOST — 600+ languages
+[seamless] SeamlessM4T v2 | Meta | STT+TTS+Translation | SelfHost | Free | sovereign:SELFHOST — 100+ languages
+[qwen25-72b] Qwen2.5-72B | Alibaba | LLM,Code,Translation | SaaS+SelfHost | $0.40/$1.20per1M | 128K ctx | sovereign:AVAILABLE(Alibaba Cloud UAE Dubai) — BEST Arabic + Chinese open model
+[qwen25-7b] Qwen2.5-7B | Alibaba | LLM | SaaS+SelfHost | Free | sovereign:AVAILABLE
+[qwen25-vl] Qwen2.5-VL-72B | Alibaba | LLM,Vision | SaaS+SelfHost | $0.40per1M | sovereign:AVAILABLE — Arabic OCR best-in-class
+[qwen25-coder] Qwen2.5-Coder-32B | Alibaba | Code | SaaS+SelfHost | Free | sovereign:AVAILABLE — matches GPT-4o on coding
+[cohere-rplus] Cohere Command R+ | Cohere | LLM,Translation | SaaS+OnPrem | $2.50/$10per1M | 128K ctx | sovereign:partial — great Arabic translation LLM, on-prem available
+[cohere-cmd-a] Cohere Command A | Cohere | LLM | SaaS+OnPrem | $2.50/$10per1M | 256K ctx | sovereign:partial — agentic, on-prem
+[cohere-embed] Cohere Embed v3 | Cohere | Embedding | SaaS+OnPrem | $0.10/1M | sovereign:partial — #1 multilingual embeddings (MTEB)
+[mistral-large] Mistral Large 2 | Mistral AI | LLM,Code | SaaS | $3/$9per1M | 128K ctx | sovereign:partial(EU-hosted, GDPR) — best EU-native frontier
+[mistral-nemo] Mistral NeMo 12B | Mistral AI | LLM | SaaS+SelfHost | Free | 128K ctx | sovereign:SELFHOST
+[mixtral] Mixtral 8x22B | Mistral AI | LLM,Code | SaaS+SelfHost | Free | sovereign:SELFHOST — MoE, fast
+[pixtral] Pixtral 12B | Mistral AI | LLM,Vision | SaaS+SelfHost | Free | sovereign:SELFHOST
+[deepseek-v3] DeepSeek V3 | DeepSeek | LLM,Code | SaaS | $0.14/$0.28per1M | sovereign:UNAVAILABLE+RISK(Chinese servers — data sovereignty concern)
+[deepseek-r1] DeepSeek R1 | DeepSeek | LLM,Code | SaaS+SelfHost | $0.55per1M API / Free self-host | sovereign:UNAVAILABLE+RISK(Chinese servers)
+[phi4] Phi-4 14B | Microsoft | LLM,Code | SaaS+SelfHost | Free | 16K ctx | sovereign:partial(Azure UAE North)
+[phi4-mini] Phi-4 mini 3.8B | Microsoft | LLM | SaaS+SelfHost | Free, runs on CPU | sovereign:partial
+[azure-tts] Azure Neural TTS | Microsoft | TTS | SaaS | $16/1M chars | sovereign:AVAILABLE(Azure UAE North) — 140+ languages including Arabic
+[azure-stt] Azure Speech-to-Text | Microsoft | STT | SaaS | $1/hr | sovereign:AVAILABLE(Azure UAE North) — Arabic dialect support
+[azure-trans] Azure AI Translator | Microsoft | Translation | SaaS | $10/1M chars | sovereign:AVAILABLE(Azure UAE North) — 100+ languages
+[amazon-nova-pro] Amazon Nova Pro | AWS | LLM,Vision | SaaS | $0.80/$3.20per1M | 300K ctx | sovereign:AVAILABLE(AWS me-central-1 UAE)
+[amazon-nova-lite] Amazon Nova Lite | AWS | LLM,Vision | SaaS | $0.06/$0.24per1M | 300K ctx | sovereign:AVAILABLE
+[amazon-nova-micro] Amazon Nova Micro | AWS | LLM | SaaS | $0.035/$0.14per1M | 128K ctx | sovereign:AVAILABLE — cheapest sovereign LLM
+[amazon-transcribe] Amazon Transcribe | AWS | STT | SaaS | $0.024/min | sovereign:AVAILABLE — Arabic, auto speaker labels
+[amazon-polly] Amazon Polly | AWS | TTS | SaaS | $4/1M chars | sovereign:AVAILABLE — 30+ languages, Arabic
+[amazon-titan-emb] Amazon Titan Embeddings | AWS | Embedding | SaaS | $0.10/1M | sovereign:AVAILABLE
+[amazon-q] Amazon Q Developer | AWS | Code | SaaS | Free/$19/mo | sovereign:AVAILABLE — best for AWS workloads
+[falcon3-40b] Falcon 3-40B | TII UAE | LLM,Code | SaaS+SelfHost | Free | sovereign:AVAILABLE(Azure UAE North) — BUILT IN UAE, best sovereign Arabic LLM
+[falcon3-7b] Falcon 3-7B | TII UAE | LLM | SaaS+SelfHost | Free | sovereign:AVAILABLE(Azure UAE North) — lightweight, UAE-native
+[ibm-granite-8b] IBM Granite 3.1-8B | IBM | LLM,Code | SaaS+OnPrem | $0.05per1M | sovereign:partial — enterprise compliance
+[jamba15] Jamba 1.5 Large | AI21 Labs | LLM | SaaS+OnPrem | $2/$8per1M | 256K ctx | sovereign:partial — hybrid SSM-Transformer
+[grok3] Grok 3 | xAI | LLM,Code | SaaS | $3/$15per1M | 131K ctx | sovereign:UNAVAILABLE(US)
+[nemotron] Llama-Nemotron-70B | NVIDIA | LLM | SaaS+SelfHost | Free | sovereign:SELFHOST
+[elevenlabs] ElevenLabs Multilingual v2 | ElevenLabs | TTS | SaaS | $0.30/1K chars | sovereign:UNAVAILABLE — BEST quality TTS, voice cloning
+[playht] PlayHT 2.0 Turbo | Play.ht | TTS | SaaS | $0.99/100K chars | sovereign:UNAVAILABLE — ultra-low latency <100ms
+[murf] Murf AI | Murf | TTS | SaaS | $19/mo | sovereign:UNAVAILABLE — studio quality, video sync
+[resemble] Resemble AI | Resemble AI | TTS | SaaS+OnPrem | $0.006/sec | sovereign:partial(on-prem available) — <50ms latency
+[cartesia] Cartesia Sonic | Cartesia | TTS | SaaS | $0.005/min | sovereign:UNAVAILABLE — lowest latency TTS globally
+[deepgram] Deepgram Nova-2 | Deepgram | STT | SaaS+OnPrem | $0.0043/min | sovereign:partial(on-prem available) — 30% lower WER than Whisper
+[assemblyai] AssemblyAI Universal-1 | AssemblyAI | STT | SaaS | $0.65/hr | sovereign:UNAVAILABLE — LLM-over-audio (LeMUR)
+[speechmatics] Speechmatics | Speechmatics | STT | SaaS+OnPrem | $0.25/hr | sovereign:partial(on-prem) — 50+ languages
+[rev-ai] Rev AI | Rev | STT | SaaS | $0.02/min | sovereign:UNAVAILABLE — human review option
+[deepl] DeepL Pro | DeepL | Translation | SaaS | $5.49/1M chars | sovereign:UNAVAILABLE(EU Germany) — BEST European language quality
+[modernmt] ModernMT | Translated | Translation | SaaS+OnPrem | $0.00002/char | sovereign:partial(on-prem) — adaptive, learns from corrections
+[text-emb3] text-embedding-3-large | OpenAI | Embedding | SaaS | $0.13/1M | sovereign:partial
+[e5-multi] Multilingual-E5-Large | Microsoft | Embedding | SelfHost | Free | sovereign:SELFHOST — 100+ languages
+[coqui] Coqui TTS (XTTS v2) | Coqui AI | TTS | SelfHost | Free | sovereign:SELFHOST — voice cloning from 6s audio
+[sarvam] Sarvam-2B | Sarvam AI | LLM,TTS,STT | SelfHost | Free | sovereign:SELFHOST — Indic languages only`;
+
+// ══════════════════════════════════════════════════════════════════
+// SETTINGS & ACCESS CONTROL
+// ══════════════════════════════════════════════════════════════════
+const CFG_KEY = 'mm_chat_cfg';
+let cfg = JSON.parse(localStorage.getItem(CFG_KEY) || '{}');
+// Pre-load known portal URL if none configured yet
+if (!cfg.portalUrl) cfg.portalUrl = 'https://arun-cloudsec.github.io/modelmatch/modelmatch-ai';
+
+// Access gate
+const GATE_EL = document.getElementById('gate');
+function tryAccess() {
+  const code = document.getElementById('gateInput').value.trim();
+  const required = cfg.accessCode || '';
+  if (!required || code === required) {
+    GATE_EL.style.display = 'none';
+    if (cfg.apiKey) document.getElementById('apiKeyInput').value = cfg.apiKey;
+    initWelcome();
+  } else {
+    document.getElementById('gateErr').textContent = 'Incorrect access code. Please try again.';
+  }
+}
+function skipGate() {
+  GATE_EL.style.display = 'none';
+  if (cfg.apiKey) document.getElementById('apiKeyInput').value = cfg.apiKey;
+  initWelcome();
+}
+
+// Settings
+function openSetup() {
+  document.getElementById('setupKey').value = cfg.apiKey || '';
+  document.getElementById('setupCode').value = cfg.accessCode || '';
+  document.getElementById('setupBrand').value = cfg.brand || '';
+  document.getElementById('setupWelcome').value = cfg.welcomeMsg || '';
+  document.getElementById('setupOverlay').classList.add('open');
+}
+function closeSetup() { document.getElementById('setupOverlay').classList.remove('open'); }
+function saveSetup() {
+  cfg.apiKey = document.getElementById('setupKey').value.trim();
+  cfg.accessCode = document.getElementById('setupCode').value.trim();
+  cfg.brand = document.getElementById('setupBrand').value.trim();
+  cfg.welcomeMsg = document.getElementById('setupWelcome').value.trim();
+  localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
+  if (cfg.apiKey) document.getElementById('apiKeyInput').value = cfg.apiKey;
+  if (cfg.brand) document.getElementById('brandName').innerHTML = cfg.brand.replace(/AI$/, '<span>AI</span>');
+  if (cfg.welcomeMsg) document.getElementById('welcomeText').textContent = cfg.welcomeMsg;
+  closeSetup();
+  showToast('Settings saved');
+}
+
+function initWelcome() {
+  if (cfg.brand) document.getElementById('brandName').innerHTML = cfg.brand.replace(/AI$/, '<span>AI</span>');
+  if (cfg.welcomeMsg) document.getElementById('welcomeText').textContent = cfg.welcomeMsg;
+  // No access code = skip gate entirely on next load
+  if (!cfg.accessCode) localStorage.setItem('mm_no_gate', '1');
+}
+
+// Skip gate if no access code configured
+if (!cfg.accessCode || localStorage.getItem('mm_no_gate')) {
+  GATE_EL.style.display = 'none';
+  if (cfg.apiKey) document.getElementById('apiKeyInput').value = cfg.apiKey;
+  initWelcome();
+}
+
+// ══════════════════════════════════════════════════════════════════
+// CHAT STATE
+// ══════════════════════════════════════════════════════════════════
+let history = [];
+let lastRecommended = [];
+let isLoading = false;
+
+// ══════════════════════════════════════════════════════════════════
+// SYSTEM PROMPT
+// ══════════════════════════════════════════════════════════════════
+function buildSystemPrompt() {
+  return `You are the ModelMatch AI Advisor — an expert AI model consultant helping organisations find the right AI model for their specific requirements.
+
+You have access to a comprehensive database of 85+ AI models. Your job is to ask the right questions and provide clear, actionable recommendations.
+
+${MODEL_SUMMARY}
+
+## YOUR CONVERSATION APPROACH:
+When a user first asks a vague question, gather information across these dimensions BEFORE recommending:
+1. **Use Case** — What are they building? (customer service chatbot, document processing, voice assistant, translation pipeline, code generation, semantic search, etc.)
+2. **Location / Sovereignty** — Which country will this be deployed in? Do they have data residency requirements?
+3. **Deployment preference** — SaaS/API, self-hosted on their own servers, on-premise?
+4. **Scale & Budget** — Expected volume? Any cost constraints?
+5. **Special requirements** — Languages? Real-time vs batch? Specific integrations (AWS, Azure, etc.)?
+
+Don't ask all these at once. Ask the most important 1-2 questions first, then refine.
+
+## RECOMMENDATION FORMAT:
+When recommending models, ALWAYS include a JSON block at the end of your response (after your explanation) in this exact format:
+<recommendations>
+[{"id":"model_id","why":"1-sentence reason","fit":90},{"id":"model_id2","why":"reason","fit":75}]
+</recommendations>
+
+Use 2-4 model IDs from the database. "fit" is 0-100. This block is parsed by the UI — always include it when recommending models.
+
+## IMPORTANT RULES:
+- Be concise but specific. No fluff.
+- Always mention data sovereignty implications when the user mentions a country.
+- Flag DeepSeek as having data sovereignty risk (Chinese company, data on Chinese servers).
+- For UAE/GCC: recommend Falcon 3 (built by TII Abu Dhabi), Claude via AWS Bedrock me-central-1, or Qwen via Alibaba Cloud UAE.
+- For EU: mention GDPR compliance, recommend Mistral (EU-native) or Azure/AWS EU regions.
+- For self-hosted: recommend Llama 3.3, Qwen2.5, Mistral, or Falcon depending on language needs.
+- Always recommend the most cost-effective option for the use case, not just the most capable.
+- When recommending TTS: ask if they need voice cloning, specific languages, or real-time streaming.
+- When recommending STT: ask about language, real-time vs batch, speaker diarization needs.`;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// CHAT RENDERING
+// ══════════════════════════════════════════════════════════════════
+const msgsWrap = document.getElementById('msgsWrap');
+const welcomeScreen = document.getElementById('welcomeScreen');
+
+function hideWelcome() {
+  if (welcomeScreen) { welcomeScreen.style.display = 'none'; }
+}
+
+function appendUserMsg(text) {
+  hideWelcome();
+  const div = document.createElement('div');
+  div.className = 'msg user';
+  div.innerHTML = `<div class="msg-av" id="uAvInit">${getUserInitial()}</div><div class="msg-content"><div class="msg-bubble">${escHtml(text)}</div></div>`;
+  msgsWrap.appendChild(div);
+  scrollBottom();
+}
+
+function appendTyping() {
+  const div = document.createElement('div');
+  div.className = 'msg ai';
+  div.id = 'typingMsg';
+  div.innerHTML = `<div class="msg-av">◆</div><div class="msg-content"><div class="typing-bubble"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>`;
+  msgsWrap.appendChild(div);
+  scrollBottom();
+  return div;
+}
+
+function removeTyping() {
+  const t = document.getElementById('typingMsg');
+  if (t) t.remove();
+}
+
+function appendAIMsg(text, chips) {
+  const { clean, recs } = parseResponse(text);
+  const div = document.createElement('div');
+  div.className = 'msg ai';
+  let html = `<div class="msg-av">◆</div><div class="msg-content"><div class="msg-bubble">${formatMarkdown(clean)}</div>`;
+  if (recs.length) {
+    html += `<div class="rec-cards">${recs.map(r => buildRecCard(r)).join('')}</div>`;
+  }
+  if (chips && chips.length) {
+    html += `<div class="msg-chips">${chips.map(c=>`<div class="msg-chip" onclick="sendChip('${escAttr(c)}')">${escHtml(c)}</div>`).join('')}</div>`;
+  }
+  html += '</div>';
+  div.innerHTML = html;
+  msgsWrap.appendChild(div);
+  scrollBottom();
+  if (recs.length) updateContextPanel(recs);
+}
+
+function parseResponse(text) {
+  const recMatch = text.match(/<recommendations>([\s\S]*?)<\/recommendations>/);
+  let recs = [];
+  let clean = text.replace(/<recommendations>[\s\S]*?<\/recommendations>/g, '').trim();
+  if (recMatch) {
+    try {
+      const arr = JSON.parse(recMatch[1].trim());
+      recs = arr.map(r => ({...r, model: MODELS[r.id]})).filter(r => r.model);
+      lastRecommended = recs;
+    } catch(e) {}
+  }
+  return { clean, recs };
+}
+
+function buildRecCard(r) {
+  const m = r.model;
+  if (!m) return '';
+  const depBadges = [
+    m.deploy.saas && `<span class="rb saas">SaaS</span>`,
+    m.deploy.onPrem && `<span class="rb onprem">On-Prem</span>`,
+    m.deploy.selfHost && `<span class="rb selfhost">Self-Host</span>`,
+  ].filter(Boolean).join('');
+  const sovBadge = `<span class="rb ${m.uae}">${m.uae==='available'?'🟢 Sovereign':m.uae==='partial'?'🟡 Partial':m.uae==='selfhost'?'🟣 Self-Host':'🔴 Not Compliant'}</span>`;
+  const priceTxt = m.pIn > 0 ? `$${m.pIn}/$${m.pOut} per 1M tokens` : (m.tier === 'free' ? 'Free / Open-source' : 'Usage-based');
+  const fitBar = r.fit ? `<div style="height:3px;background:var(--rim);border-radius:2px;margin-top:8px;overflow:hidden"><div style="height:100%;width:${r.fit}%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px"></div></div>` : '';
+  return `<div class="rec-card" onclick="cardClick('${r.id}')">
+    <div class="rec-card-head">
+      <div class="rec-card-icon">${m.icon}</div>
+      <div>
+        <div class="rec-card-name">${m.name}</div>
+        <div class="rec-card-prov">${m.prov}</div>
+      </div>
+      <div class="rec-card-badges">${sovBadge}${depBadges}</div>
+    </div>
+    <div class="rec-card-why">${escHtml(r.why||'')}</div>
+    <div class="rec-card-meta">
+      <div class="rec-meta-item">💰 <span class="rec-meta-val">${priceTxt}</span></div>
+      <div class="rec-meta-item">📐 <span class="rec-meta-val">${m.ctx||'-'}</span></div>
+      ${m.tasks.map(t=>`<div class="rec-meta-item"><span class="rec-meta-val">${t}</span></div>`).join('')}
+    </div>
+    ${r.fit ? `<div style="height:3px;background:var(--rim);border-radius:2px;margin-top:8px;overflow:hidden"><div style="height:100%;width:${r.fit}%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px"></div></div>` : ''}
+  </div>`;
+}
+
+function updateContextPanel(recs) {
+  const body = document.getElementById('cpBody');
+  const sub = document.getElementById('cpSub');
+  const empty = document.getElementById('cpEmpty');
+  if (!body) return;
+  if (empty) empty.style.display = 'none';
+  if (sub) sub.textContent = `${recs.length} model${recs.length>1?'s':''} recommended`;
+  // Keep stats, rebuild cards
+  const statsEl = body.querySelector('.cp-stats');
+  body.innerHTML = '';
+  if (statsEl) body.appendChild(statsEl);
+  recs.forEach((r,i) => {
+    const m = r.model;
+    if (!m) return;
+    const card = document.createElement('div');
+    card.className = 'cp-model';
+    card.style.animationDelay = `${i*0.05}s`;
+    card.onclick = () => cardClick(r.id);
+    const tags = m.tasks.map(t=>`<span class="cp-tag">${t}</span>`).join('');
+    card.innerHTML = `
+      <div class="cp-model-head">
+        <div class="cp-model-icon">${m.icon}</div>
+        <div><div class="cp-model-name">${m.name}</div><div class="cp-model-prov">${m.prov}</div></div>
+      </div>
+      <div class="cp-model-why">${escHtml(r.why||'')}</div>
+      <div class="cp-model-tags">${tags}</div>`;
+    body.appendChild(card);
+  });
+}
+
+function cardClick(id) {
+  const m = MODELS[id];
+  if (!m) return;
+  const q = `Tell me more about ${m.name} by ${m.prov}`;
+  sendMessage(q);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// SEND MESSAGE
+// ══════════════════════════════════════════════════════════════════
+async function sendMessage(override) {
+  if (isLoading) return;
+  const box = document.getElementById('inputBox');
+  const text = override || box.value.trim();
+  if (!text) return;
+  if (!override) { box.value = ''; autoResize(box); }
+
+  const apiKey = document.getElementById('apiKeyInput').value.trim() || cfg.apiKey;
+  if (!apiKey) {
+    appendAIMsg("⚠️ Please enter your Anthropic API key in the top bar to start chatting. You can get one at [console.anthropic.com](https://console.anthropic.com).", []);
+    return;
+  }
+
+  history.push({ role: 'user', content: text });
+  appendUserMsg(text);
+  const typingEl = appendTyping();
+  isLoading = true;
+  document.getElementById('sendBtn').disabled = true;
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1024,
+        system: buildSystemPrompt(),
+        messages: history.slice(-16)
+      })
+    });
+    const data = await resp.json();
+    if (data.error) throw new Error(data.error.message);
+    const reply = (data.content||[]).map(b=>b.text||'').join('');
+    history.push({ role: 'assistant', content: reply });
+    removeTyping();
+    const chips = suggestFollowUps(reply, text);
+    appendAIMsg(reply, chips);
+  } catch(e) {
+    removeTyping();
+    appendAIMsg(`⚠️ Error: ${e.message}. Please check your API key and try again.`, []);
+    history.pop();
+  }
+  isLoading = false;
+  document.getElementById('sendBtn').disabled = false;
+}
+
+function suggestFollowUps(reply, userMsg) {
+  const chips = [];
+  const low = reply.toLowerCase();
+  if (low.includes('llm') || low.includes('language model')) chips.push('What about self-hosted options?');
+  if (low.includes('price') || low.includes('cost') || low.includes('$')) chips.push('Estimate monthly cost for 1M requests');
+  if (low.includes('sovereign') || low.includes('uae') || low.includes('data residency')) chips.push('Which models are fully sovereign in UAE?');
+  if (low.includes('arabic')) chips.push('Which has the best Arabic quality?');
+  if (low.includes('recommend') || low.includes('suggest')) chips.push('Compare these models side by side');
+  if (low.includes('tts') || low.includes('speech')) chips.push('Which supports Arabic voice cloning?');
+  if (low.includes('on-prem') || low.includes('self-host')) chips.push('What GPU do I need for self-hosting?');
+  return chips.slice(0, 3);
+}
+
+function sendStarter(el) {
+  const title = el.querySelector('.starter-title').textContent;
+  sendMessage(title);
+}
+function sendChip(text) { sendMessage(text); }
+
+function newChat() {
+  history = [];
+  lastRecommended = [];
+  msgsWrap.innerHTML = '';
+  msgsWrap.appendChild(welcomeScreen);
+  welcomeScreen.style.display = '';
+  const body = document.getElementById('cpBody');
+  const statsEl = body ? body.querySelector('.cp-stats') : null;
+  if (body) {
+    body.innerHTML = '';
+    if (statsEl) body.appendChild(statsEl);
+    body.insertAdjacentHTML('beforeend', '<div class="cp-empty" id="cpEmpty"><div class="cp-empty-icon">💬</div><div class="cp-empty-text">Recommended models will appear here as the conversation develops</div></div>');
+  }
+  const sub = document.getElementById('cpSub');
+  if (sub) sub.textContent = 'Models will appear here as you chat';
+}
+
+// ══════════════════════════════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════════════════════════════
+function formatMarkdown(text) {
+  return text
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g,'<em>$1</em>')
+    .replace(/`([^`]+)`/g,'<code>$1</code>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank">$1</a>')
+    .replace(/^### (.*$)/gm,'<strong style="font-size:13px;color:var(--gold2)">$1</strong>')
+    .replace(/^## (.*$)/gm,'<strong style="font-size:14px;color:var(--gold2)">$1</strong>')
+    .replace(/^- (.*$)/gm,'<li style="margin-left:14px">$1</li>')
+    .replace(/\n\n/g,'<br><br>')
+    .replace(/\n/g,'<br>');
+}
+function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function escAttr(s){ return String(s).replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
+function scrollBottom(){ msgsWrap.scrollTop = msgsWrap.scrollHeight; }
+function autoResize(el){ el.style.height='auto'; el.style.height=Math.min(el.scrollHeight,120)+'px'; }
+function getUserInitial(){ return 'U'; }
+function showToast(msg){
+  let t = document.getElementById('_toast');
+  if (!t) { t = document.createElement('div'); t.id='_toast'; t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--raised);border:1px solid var(--gold-rim);color:var(--text);padding:8px 18px;border-radius:8px;font-size:12px;z-index:999;transition:.3s;opacity:0'; document.body.appendChild(t); }
+  t.textContent = msg; t.style.opacity = '1';
+  setTimeout(() => t.style.opacity = '0', 2000);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// PORTAL CONNECTION ENGINE
+// Fetches live model data from the hosted modelmatch portal HTML
+// ══════════════════════════════════════════════════════════════════
+
+let portalModels = {};          // models loaded from portal (replaces built-in when connected)
+let portalMeta   = null;        // { url, modelCount, fetchedAt, version }
+let dynamicSummary = '';        // MODEL_SUMMARY built from portal data
+
+// Resolve any portal URL to the best fetchable form
+function toRawUrl(url) {
+  url = url.trim().replace(/\/$/, '');
+  if (!url) return '';
+
+  // Already a raw GitHub URL — use as-is
+  if (url.includes('raw.githubusercontent.com')) return url;
+
+  // GitHub Pages: https://USER.github.io/REPO/FILE
+  // These are directly fetchable (CORS open), so return them as-is.
+  // We also build a raw fallback in case the Pages URL fails.
+  if (url.match(/\.github\.io/)) return url;
+
+  // github.com/USER/REPO/blob/BRANCH/FILE  →  raw
+  const ghBlob = url.match(/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/blob\/([^\/]+)\/(.+)$/);
+  if (ghBlob) {
+    const [, user, repo, branch, file] = ghBlob;
+    return `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${file}`;
+  }
+  // github.com/USER/REPO  →  assume main/modelmatch-sovereign.html
+  const ghRepo = url.match(/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)$/);
+  if (ghRepo) {
+    const [, user, repo] = ghRepo;
+    return `https://raw.githubusercontent.com/${user}/${repo}/main/modelmatch-sovereign.html`;
+  }
+  // Any other direct URL (Azure Static Web Apps, Netlify, own server, etc.)
+  return url;
+}
+
+// Build fallback raw URL for GitHub Pages in case the Pages URL fails CORS
+function toRawFallback(url) {
+  const ghPages = url.match(/^https?:\/\/([^.]+)\.github\.io\/([^\/]+)\/(.+)$/);
+  if (ghPages) {
+    const [, user, repo, file] = ghPages;
+    // Try with and without .html extension
+    return [
+      `https://raw.githubusercontent.com/${user}/${repo}/main/${file}`,
+      `https://raw.githubusercontent.com/${user}/${repo}/main/${file}.html`,
+    ];
+  }
+  return [];
+}
+
+// Parse the M=[...] array out of the portal HTML using bracket counting
+function parsePortalHTML(html) {
+  const marker = 'const M=[';
+  const start = html.indexOf(marker);
+  if (start === -1) return null;
+
+  let depth = 0, inStr = false, strChar = '', i = start + marker.length - 1; // start at '['
+  for (; i < html.length; i++) {
+    const ch = html[i];
+    if (inStr) {
+      if (ch === strChar && html[i - 1] !== '\\') inStr = false;
+    } else {
+      if (ch === "'" || ch === '"' || ch === '`') { inStr = true; strChar = ch; }
+      else if (ch === '[' || ch === '{') depth++;
+      else if (ch === ']' || ch === '}') {
+        depth--;
+        if (depth === 0 && ch === ']') { i++; break; }
+      }
+    }
+  }
+  const arrayStr = html.slice(start + marker.length - 1, i); // "[{...}]"
+
+  try {
+    // Safe evaluation — no external access, pure data
+    const arr = new Function('"use strict"; return ' + arrayStr)();
+    return Array.isArray(arr) ? arr : null;
+  } catch (e) {
+    console.error('Portal parse error:', e.message);
+    return null;
+  }
+}
+
+// Convert portal M[] format → chat MODELS{} format
+function convertPortalModels(arr) {
+  const out = {};
+  for (const m of arr) {
+    if (!m.id) continue;
+    out[m.id] = {
+      name:    m.name     || '',
+      prov:    m.prov     || '',
+      icon:    m.icon     || '🔲',
+      tasks:   m.tasks    || [],
+      type:    m.type     || 'commercial',
+      tier:    m.tier     || 'mid',
+      pIn:     m.pIn      || 0,
+      pOut:    m.pOut     || 0,
+      deploy: {
+        saas:     m.deploy?.saas     || false,
+        onPrem:   m.deploy?.onPrem   || false,
+        selfHost: m.deploy?.selfHost || false,
+      },
+      uae:   m.sovereignty?.uae || 'unknown',
+      ctx:   m.ctx  || '-',
+      desc:  m.desc || '',
+      fromPortal: true,
+    };
+  }
+  return out;
+}
+
+// Build the compact text summary Claude uses for recommendations
+function buildDynamicSummary(models) {
+  return 'LIVE MODEL DATABASE FROM PORTAL (source of truth):\n' +
+    Object.entries(models).map(([id, m]) => {
+      const tasks  = m.tasks.join(',');
+      const deploy = [m.deploy.saas&&'SaaS',m.deploy.onPrem&&'OnPrem',m.deploy.selfHost&&'SelfHost'].filter(Boolean).join('+') || 'Unknown';
+      const price  = m.pIn > 0 ? `$${m.pIn}/$${m.pOut}per1M` : (m.tier === 'free' ? 'free' : 'usage-based');
+      return `[${id}] ${m.name} | ${m.prov} | ${tasks} | ${deploy} | ${price} | ctx:${m.ctx} | sovereign:${m.uae}`;
+    }).join('\n');
+}
+
+// Update UI connection indicator
+function setConnStatus(state, label) {
+  const el = document.getElementById('tbConn');
+  const lbl = document.getElementById('connLabel');
+  if (!el || !lbl) return;
+  el.className = 'tb-conn ' + state;
+  lbl.textContent = label;
+}
+
+// Update the in-modal portal status box
+function setPortalStatus(state, text) {
+  const el = document.getElementById('portalStatus');
+  const txt = document.getElementById('portalStatusText');
+  if (!el || !txt) return;
+  el.className = 'portal-status ' + state;
+  txt.innerHTML = text;
+}
+
+// Render the repos list inside settings modal
+function renderReposList() {
+  const el = document.getElementById('reposList');
+  if (!el) return;
+  if (portalMeta) {
+    el.style.display = 'flex';
+    const d = new Date(portalMeta.fetchedAt);
+    const timeStr = d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    el.innerHTML = `
+      <div class="repo-item">
+        <span class="repo-icon">📦</span>
+        <div style="flex:1;min-width:0">
+          <div class="repo-name" title="${portalMeta.url}">${portalMeta.url.replace('https://','').slice(0,55)}…</div>
+          <div style="font-size:10px;color:var(--text3)">Fetched at ${timeStr} · ${portalMeta.modelCount} models loaded</div>
+        </div>
+        <span class="repo-count">${portalMeta.modelCount}</span>
+        <button class="repo-del" onclick="disconnectPortal()" title="Disconnect">✕</button>
+      </div>`;
+  } else {
+    el.style.display = 'none';
+    el.innerHTML = '';
+  }
+}
+
+// ── Main connect function (called from Connect button) ────────────
+async function testAndConnectPortal() {
+  const urlInput = document.getElementById('setupPortalUrl');
+  const tokenInput = document.getElementById('setupGhToken');
+  const btn = document.getElementById('connectBtn');
+  if (!urlInput) return;
+
+  const rawUrl = toRawUrl(urlInput.value.trim());
+  if (!rawUrl) {
+    setPortalStatus('err', '⚠ Please enter a valid URL to your hosted portal.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Fetching…';
+  setPortalStatus('loading', '<span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;border:2px solid var(--gold-rim);border-top-color:var(--gold2);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0"></span> Fetching portal from GitHub…</span>');
+  setConnStatus('loading', 'Connecting…');
+
+  try {
+    const token = tokenInput?.value?.trim();
+    const headers = { 'Cache-Control': 'no-cache' };
+    if (token) headers['Authorization'] = 'Bearer ' + token;
+
+    // Build list of URLs to try in order
+    const urlsToTry = [rawUrl, ...toRawFallback(rawUrl)];
+    let html = null, lastErr = '';
+    for (const tryUrl of urlsToTry) {
+      try {
+        const resp = await fetch(tryUrl, { headers });
+        if (resp.ok) { html = await resp.text(); rawUrl = tryUrl; break; }
+        lastErr = `HTTP ${resp.status} from ${tryUrl}`;
+      } catch(e) { lastErr = e.message; }
+    }
+    if (!html) throw new Error(`Could not fetch portal. Last error: ${lastErr}. Check the URL is publicly accessible.`);
+    if (html.length < 5000) throw new Error('Response too small — may not be the portal HTML. Check the URL is correct.');
+
+    const arr = parsePortalHTML(html);
+    if (!arr) throw new Error('Could not find model database (const M=[...]) in the fetched file. Make sure the URL points to the complete modelmatch portal HTML.');
+    if (arr.length < 10) throw new Error(`Only ${arr.length} models found — expected 80+. Check the URL points to the correct file.`);
+
+    // ✅ Success — apply to global state
+    portalModels = convertPortalModels(arr);
+    dynamicSummary = buildDynamicSummary(portalModels);
+    portalMeta = { url: rawUrl, modelCount: arr.length, fetchedAt: new Date().toISOString() };
+
+    // Persist
+    cfg.portalUrl = rawUrl;
+    if (token) cfg.ghToken = token;
+    sessionStorage.setItem('mm_portal_models', JSON.stringify({models: portalModels, summary: dynamicSummary, meta: portalMeta}));
+    localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
+
+    const domain = new URL(rawUrl).hostname;
+    setPortalStatus('ok', `✅ <strong>${arr.length} models loaded</strong> from <code style="font-size:10px;color:var(--teal)">${domain}</code>. Chat now uses live data from your portal — any updates to the portal will be reflected here automatically.`);
+    setConnStatus('connected', `Portal · ${arr.length} models`);
+    renderReposList();
+
+  } catch(e) {
+    setPortalStatus('err', `❌ ${e.message}`);
+    setConnStatus('error', 'Connection failed');
+  }
+
+  btn.disabled = false;
+  btn.textContent = '🔄 Connect & Fetch Models from Portal';
+}
+
+function disconnectPortal() {
+  portalModels = {};
+  dynamicSummary = '';
+  portalMeta = null;
+  delete cfg.portalUrl;
+  delete cfg.ghToken;
+  localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
+  sessionStorage.removeItem('mm_portal_models');
+  setConnStatus('', 'Not connected');
+  setPortalStatus('idle', '🔗 No portal connected. Enter your portal URL above and click Connect.');
+  renderReposList();
+  const inp = document.getElementById('setupPortalUrl');
+  if (inp) inp.value = '';
+  updateModelCount();
+}
+
+// Auto-reconnect from session cache on page load
+function tryRestorePortalSession() {
+  const cached = sessionStorage.getItem('mm_portal_models');
+  if (cached) {
+    try {
+      const { models, summary, meta } = JSON.parse(cached);
+      portalModels = models;
+      dynamicSummary = summary;
+      portalMeta = meta;
+      setConnStatus('connected', `Portal · ${meta.modelCount} models`);
+      updateModelCount();
+      return true;
+    } catch(e) {}
+  }
+  // Try re-fetching if URL saved in config
+  if (cfg.portalUrl) {
+    const inp = document.getElementById('setupPortalUrl');
+    if (inp) inp.value = cfg.portalUrl;
+    setConnStatus('loading', 'Reconnecting…');
+    // Silently reconnect in background
+    testAndConnectPortalSilent(cfg.portalUrl, cfg.ghToken);
+  }
+  return false;
+}
+
+async function testAndConnectPortalSilent(url, token) {
+  try {
+    const headers = { 'Cache-Control': 'no-cache' };
+    if (token) headers['Authorization'] = 'Bearer ' + token;
+    const resp = await fetch(url, { headers });
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const html = await resp.text();
+    const arr = parsePortalHTML(html);
+    if (!arr || arr.length < 10) throw new Error('Parse failed');
+    portalModels = convertPortalModels(arr);
+    dynamicSummary = buildDynamicSummary(portalModels);
+    portalMeta = { url, modelCount: arr.length, fetchedAt: new Date().toISOString() };
+    sessionStorage.setItem('mm_portal_models', JSON.stringify({models: portalModels, summary: dynamicSummary, meta: portalMeta}));
+    const dom = (() => { try { return new URL(url).hostname.replace('arun-cloudsec.github.io','your portal'); } catch{return 'portal';} })();
+    setConnStatus('connected', `${dom} · ${arr.length} models`);
+    updateModelCount();
+  } catch(e) {
+    setConnStatus('error', 'Reconnect failed');
+  }
+}
+
+function updateModelCount() {
+  const count = Object.keys(portalModels).length || Object.keys(MODELS).length;
+  const statEl = document.querySelector('.cp-stat-n');
+  if (statEl) statEl.textContent = count + '+';
+}
+
+// Override the system prompt builder to use portal data when available
+const _origBuildSystemPrompt = buildSystemPrompt;
+function buildSystemPrompt() {
+  if (dynamicSummary) {
+    return _origBuildSystemPrompt().replace(MODEL_SUMMARY, dynamicSummary);
+  }
+  return _origBuildSystemPrompt();
+}
+
+// Override MODELS lookup to prefer portal data
+const _origBuildRecCard = buildRecCard;
+function buildRecCard(r) {
+  // Use portal models if available, else fall back to built-in
+  if (portalModels[r.id]) r = { ...r, model: portalModels[r.id] };
+  return _origBuildRecCard(r);
+}
+
+// Patch parseResponse to look up in portal models too
+const _origParseResponse = parseResponse;
+function parseResponse(text) {
+  const result = _origParseResponse(text);
+  result.recs = result.recs.map(r => ({
+    ...r,
+    model: portalModels[r.id] || MODELS[r.id] || r.model
+  }));
+  return result;
+}
+
+// ── Hook into openSetup to populate portal URL ────────────────────
+const _origOpenSetup = openSetup;
+function openSetup() {
+  _origOpenSetup();
+  const inp = document.getElementById('setupPortalUrl');
+  if (inp && cfg.portalUrl) inp.value = cfg.portalUrl;
+  const tok = document.getElementById('setupGhToken');
+  if (tok && cfg.ghToken) tok.value = cfg.ghToken;
+  renderReposList();
+  if (portalMeta) {
+    setPortalStatus('ok', `✅ <strong>${portalMeta.modelCount} models</strong> loaded from portal. Last synced at ${new Date(portalMeta.fetchedAt).toLocaleTimeString()}.`);
+  }
+}
+
+// ── Hook into saveSetup to persist portal URL ─────────────────────
+const _origSaveSetup = saveSetup;
+function saveSetup() {
+  const url = document.getElementById('setupPortalUrl')?.value?.trim();
+  const tok = document.getElementById('setupGhToken')?.value?.trim();
+  if (url) { cfg.portalUrl = toRawUrl(url); }
+  if (tok) { cfg.ghToken = tok; }
+  _origSaveSetup();
+}
+
+// ── Init on load ──────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  tryRestorePortalSession();
+});
+// Also try immediately in case DOMContentLoaded already fired
+setTimeout(tryRestorePortalSession, 100);
+
+// ══════════════════════════════════════════════════════════════════
+// PWA — SERVICE WORKER + INSTALL PROMPT + OFFLINE CACHE
+// ══════════════════════════════════════════════════════════════════
+
+// ── Service Worker registration ───────────────────────────────────
+const SW_SRC = `
+const CACHE = 'modelmatch-v1';
+const OFFLINE_ASSETS = [self.location.pathname];
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE).then(c => c.addAll(OFFLINE_ASSETS))
+      .then(() => self.skipWaiting())
+  );
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
+});
+self.addEventListener('fetch', e => {
+  // Cache-first for the app shell; network-first for API calls
+  if (e.request.url.includes('api.anthropic.com') ||
+      e.request.url.includes('raw.githubusercontent.com') ||
+      e.request.url.includes('github.io')) {
+    // Network first, fall back to nothing (live data)
+    e.respondWith(fetch(e.request).catch(() => new Response('', {status: 503})));
+  } else {
+    // Cache first for the app shell
+    e.respondWith(
+      caches.match(e.request).then(cached => cached || fetch(e.request)
+        .then(resp => {
+          if (resp.ok) {
+            const clone = resp.clone();
+            caches.open(CACHE).then(c => c.put(e.request, clone));
+          }
+          return resp;
+        })
+      )
+    );
+  }
+});
+`;
+
+if ('serviceWorker' in navigator) {
+  const blob = new Blob([SW_SRC], { type: 'application/javascript' });
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl, { scope: './' })
+    .then(reg => console.log('SW registered, scope:', reg.scope))
+    .catch(err => console.log('SW skipped (file:// protocol or blocked):', err.message));
+}
+
+// ── Install prompt (Android / Desktop Chrome) ─────────────────────
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Show banner after 3s if not already installed
+  setTimeout(() => {
+    if (!isInstalled()) showInstallBanner();
+  }, 3000);
+});
+
+window.addEventListener('appinstalled', () => {
+  hideInstallBanner();
+  deferredPrompt = null;
+  showToast('✅ ModelMatch installed to home screen!');
+});
+
+function isInstalled() {
+  return window.matchMedia('(display-mode: standalone)').matches ||
+         window.navigator.standalone === true;
+}
+
+function showInstallBanner() {
+  const b = document.getElementById('installBanner');
+  if (b && !localStorage.getItem('mm_install_dismissed')) b.style.display = 'flex';
+}
+function hideInstallBanner() {
+  const b = document.getElementById('installBanner');
+  if (b) b.style.display = 'none';
+}
+function dismissInstall() {
+  hideInstallBanner();
+  localStorage.setItem('mm_install_dismissed', '1');
+}
+
+document.getElementById('installBtn')?.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') showToast('Installing…');
+    deferredPrompt = null;
+    hideInstallBanner();
+  }
+});
+
+// ── iOS — show instructions instead of banner ─────────────────────
+function isIOS() {
+  return /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+}
+function isInStandaloneMode() {
+  return window.navigator.standalone === true;
+}
+
+if (isIOS() && !isInStandaloneMode()) {
+  // On iOS show a subtle "Add to Home Screen" button in topbar
+  setTimeout(() => {
+    const tb = document.querySelector('.tb-right');
+    if (tb && !localStorage.getItem('mm_ios_hint_dismissed')) {
+      const btn = document.createElement('button');
+      btn.className = 'tb-settings-btn';
+      btn.title = 'Add to Home Screen';
+      btn.innerHTML = '⊕';
+      btn.style.cssText = 'color:var(--gold2);border-color:var(--gold-rim);font-size:18px;font-weight:300';
+      btn.onclick = () => openIosModal();
+      tb.insertBefore(btn, tb.firstChild);
+    }
+  }, 1000);
+}
+
+function openIosModal() {
+  document.getElementById('iosModal').classList.add('open');
+}
+function closeIosModal() {
+  document.getElementById('iosModal').classList.remove('open');
+  localStorage.setItem('mm_ios_hint_dismissed', '1');
+}
+
+// ── Mobile keyboard — scroll input into view ──────────────────────
+const inputBox = document.getElementById('inputBox');
+if (inputBox) {
+  inputBox.addEventListener('focus', () => {
+    setTimeout(() => inputBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 300);
+  });
+}
+
+// ── Prevent double-tap zoom on buttons ────────────────────────────
+document.addEventListener('touchend', e => {
+  if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+    e.preventDefault();
+    e.target.closest('button')?.click();
+  }
+}, { passive: false });
+
+// ── Pull-to-refresh prevention (allow only in msgs area) ──────────
+let startY = 0;
+document.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
+document.addEventListener('touchmove', e => {
+  const el = e.target.closest('.msgs-wrap, .setup-box, .cp-body');
+  if (!el && e.cancelable) e.preventDefault();
+}, { passive: false });
+
+// ── Show installed state indicator ────────────────────────────────
+if (isInstalled()) {
+  const badge = document.querySelector('.tb-badge');
+  if (badge) { badge.textContent = '📱 App'; badge.style.color = 'var(--lime)'; }
+}
+
+// Enter key on gate
+document.getElementById('gateInput').addEventListener('keydown', e => { if (e.key==='Enter') tryAccess(); });
+</script>
+
+<!-- ══ PWA INSTALL BANNER (Android/Desktop) ══ -->
+<div class="install-banner" id="installBanner" style="display:none">
+  <div class="ib-icon">◆</div>
+  <div class="ib-text">
+    <div class="ib-title">Install ModelMatch AI</div>
+    <div class="ib-sub">Add to home screen for instant access — works offline too</div>
+  </div>
+  <div class="ib-actions">
+    <button class="ib-install" id="installBtn">Install</button>
+    <button class="ib-dismiss" onclick="dismissInstall()">✕</button>
+  </div>
+</div>
+
+<!-- ══ IOS INSTALL GUIDE MODAL ══ -->
+<div class="ios-install-modal" id="iosModal">
+  <div class="ios-install-box">
+    <div style="font-family:'Instrument Serif',serif;font-size:20px;color:var(--text);margin-bottom:18px;text-align:center">Add to Home Screen</div>
+    <div class="ios-step">
+      <div class="ios-step-n">1</div>
+      <div class="ios-step-text">Tap the <strong>Share button</strong> <span style="font-size:16px">⎋</span> at the bottom of Safari</div>
+    </div>
+    <div class="ios-step">
+      <div class="ios-step-n">2</div>
+      <div class="ios-step-text">Scroll down and tap <strong>"Add to Home Screen"</strong></div>
+    </div>
+    <div class="ios-step">
+      <div class="ios-step-n">3</div>
+      <div class="ios-step-text">Tap <strong>"Add"</strong> in the top right — ModelMatch appears on your home screen like a native app</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--rim);border-radius:10px;padding:12px;font-size:11px;color:var(--text3);line-height:1.6;margin-bottom:16px">
+      💡 <strong style="color:var(--text2)">Tip:</strong> Open this page in <strong style="color:var(--text)">Safari</strong> (not Chrome) for the Add to Home Screen option to appear on iPhone/iPad.
+    </div>
+    <button class="ios-close" onclick="closeIosModal()">Got it</button>
+  </div>
+</div>
+
+</body>
+</html>
