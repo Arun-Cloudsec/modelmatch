@@ -642,10 +642,30 @@ table.btbl td{padding:9px 12px;vertical-align:middle}
 .sov-status-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
 .sov-leg-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)}
 .sov-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.sov-badge.full{background:rgba(212,160,44,.14);color:#d4a02c;border:1px solid rgba(212,160,44,.45);box-shadow:inset 0 0 0 1px rgba(212,160,44,.08)}
 .sov-badge.available{background:rgba(125,205,110,.12);color:#7dcd6e;border:1px solid rgba(125,205,110,.3)}
-.sov-badge.partial{background:rgba(232,164,74,.12);color:#e8a44a;border:1px solid rgba(232,164,74,.3)}
-.sov-badge.unavailable{background:rgba(240,107,122,.1);color:#f06b7a;border:1px solid rgba(240,107,122,.25)}
+.sov-badge.partial{background:rgba(232,164,74,.14);color:#e8a44a;border:1px solid rgba(232,164,74,.4)}
+.sov-badge.unavailable{background:rgba(240,107,122,.14);color:#f06b7a;border:1px solid rgba(240,107,122,.4)}
 .sov-badge.selfhost{background:rgba(155,127,244,.1);color:#9b7ff4;border:1px solid rgba(155,127,244,.25)}
+.sov-card-badge{margin:0 0 10px 0}
+.sov-modal-banner{margin:-2px 0 18px 0;padding:14px 16px;border-radius:10px;display:flex;align-items:flex-start;gap:12px;font-size:12.5px;line-height:1.6}
+.sov-modal-banner.full{background:rgba(212,160,44,.08);border:1px solid rgba(212,160,44,.35);color:var(--text)}
+.sov-modal-banner.available{background:rgba(125,205,110,.08);border:1px solid rgba(125,205,110,.3);color:var(--text)}
+.sov-modal-banner.partial{background:rgba(232,164,74,.1);border:1px solid rgba(232,164,74,.45);color:var(--text)}
+.sov-modal-banner.unavailable{background:rgba(240,107,122,.1);border:1px solid rgba(240,107,122,.5);color:var(--text)}
+.sov-modal-banner.selfhost{background:rgba(155,127,244,.08);border:1px solid rgba(155,127,244,.3);color:var(--text)}
+.sov-mb-icon{font-size:22px;line-height:1;flex-shrink:0}
+.sov-mb-title{font-weight:800;font-size:13px;margin-bottom:4px;letter-spacing:.02em}
+.sov-mb-body{color:var(--text2)}
+
+.sov-legend-inline{background:var(--surface);border:1px solid var(--rim);border-radius:10px;padding:14px 16px;margin:-4px 0 14px 0}
+.sov-legend-inline .sli-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sov-legend-inline .sli-title::before{content:'ⓘ';font-size:14px;color:var(--gold2)}
+.sov-legend-inline .sli-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px 18px}
+.sov-legend-inline .sli-row{display:flex;align-items:flex-start;gap:8px;font-size:11.5px;color:var(--text2);line-height:1.5}
+.sov-legend-inline .sli-row .sov-badge{flex-shrink:0;margin-top:1px}
+.sov-legend-inline .sli-desc{padding-top:3px}
+.sov-legend-inline .sli-desc strong{color:var(--text);font-weight:600}
 
 .sov-section-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--text3);margin:20px 0 10px;display:flex;align-items:center;gap:8px}
 .sov-section-label::after{content:'';flex:1;height:1px;background:var(--rim)}
@@ -1145,6 +1165,34 @@ body.has-ticker #loginPage { padding-top: 32px; }
         <div class="filter-bar"><span class="filter-label">Language</span><div class="chips" id="f-lang"></div></div>
         <div class="filter-bar"><span class="filter-label">Type</span><div class="chips" id="f-type"></div></div>
         <div class="filter-bar"><span class="filter-label">Deployment</span><div class="chips" id="f-deploy"></div></div>
+
+        <div class="sov-legend-inline">
+          <div class="sli-title">What do these sovereignty labels mean?</div>
+          <div class="sli-rows">
+            <div class="sli-row">
+              <span class="sov-badge full">🛡️ UAE Sovereign</span>
+              <span class="sli-desc"><strong>Hosted inside the UAE.</strong> Your data never leaves the country. Safe for government, healthcare, and regulated financial workloads.</span>
+            </div>
+            <div class="sli-row">
+              <span class="sov-badge available">🟢 UAE Compliant</span>
+              <span class="sli-desc"><strong>UAE region is available.</strong> Data stays in-country when you use the regional (not global/cross-region) endpoint. Verify your configuration.</span>
+            </div>
+            <div class="sli-row">
+              <span class="sov-badge partial">⚠️ May Route Outside UAE</span>
+              <span class="sli-desc"><strong>Traffic can leak.</strong> A UAE region exists but quota or routing may send inference to Europe or the US. Not safe for regulated data without written guarantees.</span>
+            </div>
+            <div class="sli-row">
+              <span class="sov-badge unavailable">⛔ Processed Outside UAE</span>
+              <span class="sli-desc"><strong>No UAE region at all.</strong> Your prompts are sent to US or EU data centers. Not compliant with UAE data sovereignty requirements.</span>
+            </div>
+            <div class="sli-row">
+              <span class="sov-badge selfhost">🔓 Self-host for Sovereignty</span>
+              <span class="sli-desc"><strong>Open-weight model.</strong> You choose where it runs. Sovereign only if you deploy it on UAE-region infrastructure or on-premises.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-bar"><span class="filter-label">🛡️ Sovereignty</span><div class="chips" id="f-sov"></div></div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
           <div style="font-size:12px;color:var(--text3)">Showing <strong id="cnt" style="color:var(--text)">0</strong> models</div>
         </div>
@@ -1556,10 +1604,11 @@ body.has-ticker #loginPage { padding-top: 32px; }
           </div>
 
           <div class="sov-status-legend" style="margin-bottom:18px">
-            <span class="sov-leg-item"><span class="sov-badge available">🟢 Sovereign</span> In-country inference confirmed</span>
-            <span class="sov-leg-item"><span class="sov-badge partial">🟡 Partial</span> Region exists; verify routing</span>
-            <span class="sov-leg-item"><span class="sov-badge unavailable">🔴 Not Compliant</span> Data exits country</span>
-            <span class="sov-leg-item"><span class="sov-badge selfhost">🟣 Self-Host</span> Open weights — deploy in-country</span>
+            <span class="sov-leg-item"><span class="sov-badge full">🛡️ UAE Sovereign</span> Hosted in UAE — data never leaves country</span>
+            <span class="sov-leg-item"><span class="sov-badge available">🟢 UAE Compliant</span> In-country inference confirmed</span>
+            <span class="sov-leg-item"><span class="sov-badge partial">⚠️ May Route Outside UAE</span> Region exists; traffic can leak</span>
+            <span class="sov-leg-item"><span class="sov-badge unavailable">⛔ Processed Outside UAE</span> Data exits country</span>
+            <span class="sov-leg-item"><span class="sov-badge selfhost">🔓 Self-Host</span> Open weights — deploy in-country</span>
           </div>
 
           <!-- Model grid — always visible, updates when filter changes -->
@@ -1610,6 +1659,449 @@ body.has-ticker #loginPage { padding-top: 32px; }
 // MODEL DATABASE  (90+ models with deploy + benchmark data)
 // ══════════════════════════════════════════════════════════════════
 const M=[
+// ── Core42 Compass (UAE Sovereign Cloud) ────────────────────────────────
+// All Compass entries are hosted in UAE region on Core42 sovereign cloud.
+// Source: https://www.core42.ai/compass/documentation/compass-overview
+// Full catalog + pricing: https://compass.core42.ai/model-catalog
+
+// OpenAI family on Compass
+{id:'compass-gpt54',name:'GPT-5.4 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code','Vision'],type:'commercial',featured:true,
+desc:'OpenAI GPT-5.4 hosted on Core42 Compass, UAE sovereign cloud. Same model as direct OpenAI but in UAE region with guaranteed data residency.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'high',ctx:'400K tokens',ctxN:400000,params:'~1T MoE',lat:'~500ms (in-region)',
+uses:['Regulated UAE workloads','Sovereign enterprise AI','Government AI'],
+pros:['UAE-hosted','Sovereign cloud','Data residency guaranteed','Latest GPT flagship'],cons:['Compass account required','Usage-based pricing'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:98,s:82,c:60,l:92},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency. Powered by G42/Core42. Suitable for government, healthcare, and regulated financial workloads requiring strict UAE data sovereignty.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-gpt52',name:'GPT-5.2 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code','Vision'],type:'commercial',
+desc:'OpenAI GPT-5.2 hosted on Core42 Compass. UAE sovereign cloud deployment of the GPT-5 generation with unified routing.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'high',ctx:'400K tokens',ctxN:400000,params:'~1T MoE',lat:'~500ms (in-region)',
+uses:['Regulated UAE workloads','Reasoning tasks','Enterprise chatbots'],
+pros:['UAE-hosted','Sovereign cloud','Unified thinking router'],cons:['Compass account required'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:96,s:82,c:62,l:92},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency. Powered by G42/Core42.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-gpt51',name:'GPT-5.1 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code','Vision'],type:'commercial',
+desc:'OpenAI GPT-5.1 hosted on Core42 Compass, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'high',ctx:'400K tokens',ctxN:400000,params:'~1T MoE',lat:'~500ms (in-region)',
+uses:['Regulated UAE workloads','Reasoning','Enterprise AI'],
+pros:['UAE-hosted','Sovereign cloud'],cons:['Compass account required'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:94,s:83,c:63,l:92},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-gpt5',name:'GPT-5 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code','Vision'],type:'commercial',
+desc:'OpenAI GPT-5 (original release, Aug 2025) hosted on Core42 Compass with UAE residency.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'high',ctx:'400K tokens',ctxN:400000,params:'~1T MoE',lat:'~500ms (in-region)',
+uses:['Regulated UAE workloads','Multimodal tasks'],
+pros:['UAE-hosted','Multimodal','Unified GPT architecture'],cons:['Superseded by 5.2/5.4 on most tasks'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:92,s:84,c:65,l:92},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-gpt5-mini',name:'GPT-5 mini (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'commercial',
+desc:'Efficient GPT-5 variant on Core42 Compass for high-volume workloads with UAE residency.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'400K tokens',ctxN:400000,params:'~20B',lat:'~220ms (in-region)',
+uses:['High-volume UAE chatbots','Classification','Summarization'],
+pros:['UAE-hosted','Fast','Cost-efficient for scale'],cons:['Less capable for complex reasoning'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:86,s:93,c:78,l:94},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:5,legal:4,retail:5,education:4,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-gpt41',name:'GPT-4.1 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code','Vision'],type:'commercial',
+desc:'OpenAI GPT-4.1 with 1M context hosted on Core42 Compass, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'high',ctx:'1M tokens',ctxN:1000000,params:'~200B',lat:'~450ms (in-region)',
+uses:['Long-context UAE workloads','Document analysis','Enterprise chatbots'],
+pros:['UAE-hosted','1M context','Sovereign cloud'],cons:['Compass account required'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:95,s:86,c:66,l:93},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:90.0,humanEval:95.0,mtBench:9.2,gsm8k:97.0,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:5,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-gpt41-mini',name:'GPT-4.1 mini (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'commercial',
+desc:'Efficient GPT-4.1 variant on Core42 Compass with UAE residency.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'1M tokens',ctxN:1000000,params:'~8B',lat:'~200ms (in-region)',
+uses:['High-volume UAE chatbots','Summarization','Customer service'],
+pros:['UAE-hosted','Very fast in-region','1M context'],cons:['Less capable for complex tasks'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:82,s:96,c:85,l:95},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:5,legal:4,retail:5,education:4,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-gpt4o',name:'GPT-4o (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Vision','Code'],type:'commercial',
+desc:'OpenAI GPT-4o multimodal flagship on Core42 Compass, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'~200B',lat:'~350ms (in-region)',
+uses:['Multimodal UAE workloads','Vision tasks','Audio-aware chat'],
+pros:['UAE-hosted','Multimodal','Fast in-region'],cons:['Smaller context than 4.1'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:88,s:93,c:74,l:94},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:88.7,humanEval:90.2,mtBench:9.1,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:4,legal:4,retail:5,education:5,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-gpt4o-mini',name:'GPT-4o mini (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Vision'],type:'commercial',
+desc:'Compact GPT-4o on Core42 Compass. Best cost-performance multimodal option in UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'128K tokens',ctxN:128000,params:'~8B',lat:'~180ms (in-region)',
+uses:['High-volume multimodal','Cost-sensitive UAE apps'],
+pros:['UAE-hosted','Very cheap','Vision capable'],cons:['Less capable than flagship'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:78,s:97,c:89,l:96},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:5,education:5,government:4,manufacturing:4,technology:5}}},
+
+{id:'compass-gpt4o-audio',name:'GPT-4o Audio (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','STT','TTS'],type:'commercial',
+desc:'GPT-4o with native audio input/output on Core42 Compass, UAE region. For voice-first applications.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'~200B',lat:'~400ms (in-region)',
+uses:['Voice assistants','Arabic voice AI','Call center automation'],
+pros:['UAE-hosted','Native audio I/O','Arabic voice support'],cons:['Compass account required'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:85,s:88,c:68,l:92},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:3,retail:5,education:4,government:4,manufacturing:3,technology:5}}},
+
+{id:'compass-gpt4o-realtime',name:'GPT-4o Realtime (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','STT','TTS'],type:'commercial',
+desc:'Realtime conversational GPT-4o for low-latency voice applications, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'~200B',lat:'~250ms (in-region)',
+uses:['Realtime voice agents','Live translation','Conversational AI'],
+pros:['UAE-hosted','Streaming audio','Low latency in region'],cons:['Higher cost per session'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:85,s:92,c:62,l:96},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:3,retail:5,education:4,government:4,manufacturing:3,technology:5}}},
+
+{id:'compass-gpt-realtime',name:'gpt-realtime (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','STT','TTS'],type:'commercial',
+desc:'First GA realtime model — responds to audio and text inputs in realtime. UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'N/A',lat:'~200ms (in-region)',
+uses:['Production voice AI','Realtime translation','Live customer service'],
+pros:['UAE-hosted','GA realtime','Streaming'],cons:['Newer API surface'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:86,s:93,c:62,l:96},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:3,retail:5,education:4,government:4,manufacturing:3,technology:5}}},
+
+{id:'compass-gpt-image-1',name:'GPT Image 1 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['Vision'],type:'commercial',
+desc:'OpenAI image generation model hosted on Core42 Compass, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'N/A',ctxN:null,params:'N/A',lat:'~3s (in-region)',
+uses:['Marketing creative','Product imagery','Localized visuals'],
+pros:['UAE-hosted','High quality output','Prompt following'],cons:['Per-image pricing'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:90,s:70,c:60,l:90},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:2,finance:3,legal:2,retail:5,education:4,government:3,manufacturing:3,technology:5}}},
+
+{id:'compass-o1',name:'o1 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'commercial',
+desc:'OpenAI o1 reasoning model on Core42 Compass. Deep chain-of-thought reasoning in UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'high',ctx:'200K tokens',ctxN:200000,params:'~200B',lat:'~10s+ (in-region)',
+uses:['Complex reasoning','Research','Advanced math/coding'],
+pros:['UAE-hosted','Top-tier reasoning','Long context'],cons:['Very slow','Expensive per token'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:97,s:30,c:40,l:70},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:3,education:5,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-o3-mini',name:'o3-mini (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'commercial',
+desc:'Compact reasoning model on Core42 Compass. Fast reasoning with UAE residency.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'~20B',lat:'~2s (in-region)',
+uses:['Cost-efficient reasoning','Coding','Math'],
+pros:['UAE-hosted','Reasoning at lower cost','Fast for reasoning model'],cons:['Less capable than o1'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:91,s:65,c:75,l:85},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:5,legal:4,retail:4,education:5,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-o4-mini',name:'o4-mini (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'commercial',
+desc:'Next-gen compact reasoning model on Core42 Compass, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'~20B',lat:'~2s (in-region)',
+uses:['Efficient reasoning','Coding','Math','Agents'],
+pros:['UAE-hosted','Improved reasoning','Good cost/quality'],cons:['Compass account required'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:93,s:68,c:74,l:85},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:5,legal:4,retail:4,education:5,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-gpt-oss-120b',name:'gpt-oss-120b (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'open-source',featured:true,
+desc:"OpenAI's Apache-2.0 open-weight 120B model hosted on Core42 Compass with UAE sovereignty. Available on Core42, Cerebras, and AMD backends.",
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'120B',lat:'~400ms (in-region)',
+uses:['Open-weight UAE deployment','Fine-tuning','Sovereign reasoning'],
+pros:['UAE-hosted','Apache 2.0','Fine-tunable','Multiple hardware backends'],cons:['Newer, less battle-tested'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:88,s:85,c:82,l:93},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Core42 Compass (UAE region) · Cerebras · AMD',selfHost:true},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Open-weight model (Apache 2.0) hosted on Core42 UAE region. Full UAE data residency. Can also be self-hosted on-premises or in sovereign cloud for maximum control.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:5,government:5,manufacturing:5,technology:5}}},
+
+{id:'compass-gpt-oss-20b',name:'gpt-oss-20b (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'open-source',
+desc:"OpenAI's smaller Apache-2.0 open-weight 20B model on Core42 Compass. Efficient open model with UAE residency.",
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'128K tokens',ctxN:128000,params:'20B',lat:'~200ms (in-region)',
+uses:['Lightweight UAE deployments','Fine-tuning','Edge-like inference'],
+pros:['UAE-hosted','Apache 2.0','Fast','Cheap'],cons:['Less capable than 120b'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:80,s:94,c:89,l:95},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:true},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Open-weight model (Apache 2.0) hosted on Core42 UAE region. Full UAE data residency. Self-hostable.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:5,education:5,government:4,manufacturing:5,technology:5}}},
+
+{id:'compass-gpt4o-mini-tts',name:'GPT-4o mini TTS (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['TTS'],type:'commercial',
+desc:'Text-to-speech on Core42 Compass, UAE region. Multilingual voice synthesis.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'N/A',ctxN:null,params:'N/A',lat:'~300ms (in-region)',
+uses:['Voice interfaces','Accessibility','Multilingual narration'],
+pros:['UAE-hosted','Natural voices','Arabic support'],cons:['No voice cloning'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:82,s:94,c:88,l:95},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:3,retail:5,education:5,government:4,manufacturing:3,technology:4}}},
+
+{id:'compass-gpt4o-transcribe',name:'GPT-4o Transcribe (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['STT'],type:'commercial',
+desc:'High-accuracy speech-to-text on Core42 Compass, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'N/A',ctxN:null,params:'N/A',lat:'~400ms (in-region)',
+uses:['Meeting transcription','Arabic STT','Regulated audio workflows'],
+pros:['UAE-hosted','Accurate','Strong Arabic'],cons:['Longer audio = higher cost'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:92,s:88,c:72,l:93},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency. Suitable for regulated audio transcription (healthcare calls, legal depositions, government meetings).'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:3,technology:4}}},
+
+{id:'compass-gpt4o-mini-transcribe',name:'GPT-4o mini Transcribe (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['STT'],type:'commercial',
+desc:'Efficient STT on Core42 Compass for high-volume transcription with UAE residency.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'N/A',ctxN:null,params:'N/A',lat:'~300ms (in-region)',
+uses:['High-volume transcription','Cost-sensitive STT'],
+pros:['UAE-hosted','Cheap','Fast'],cons:['Slightly lower accuracy than flagship'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:85,s:94,c:87,l:95},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:5,legal:4,retail:5,education:4,government:5,manufacturing:3,technology:4}}},
+
+// Anthropic Claude on Compass
+{id:'compass-claude-opus-46',name:'Claude Opus 4.6 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code','Vision'],type:'commercial',featured:true,
+desc:'Anthropic Claude Opus 4.6 flagship hosted on Core42 Compass, UAE region — full UAE data residency for the most capable Claude model.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'high',ctx:'200K tokens',ctxN:200000,params:'N/A',lat:'~800ms (in-region)',
+uses:['Regulated UAE enterprise AI','Long-form analysis','Agentic coding'],
+pros:['UAE-hosted','Top-tier reasoning','200K context','Strong on coding'],cons:['Premium pricing'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:97,s:78,c:55,l:90},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency. One of very few sovereign-hosted deployments of Claude flagship models.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:5,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-claude-sonnet-46',name:'Claude Sonnet 4.6 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code','Vision'],type:'commercial',
+desc:'Claude Sonnet 4.6 on Core42 Compass — strong quality at lower cost than Opus, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'N/A',lat:'~450ms (in-region)',
+uses:['Production enterprise chatbots','Document analysis','Coding'],
+pros:['UAE-hosted','Strong quality/cost','200K context'],cons:['Compass account required'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:92,s:89,c:72,l:93},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:5,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-claude-sonnet-4',name:'Claude Sonnet 4 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code','Vision'],type:'commercial',
+desc:'Claude Sonnet 4 on Core42 Compass, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'200K tokens',ctxN:200000,params:'N/A',lat:'~450ms (in-region)',
+uses:['Enterprise AI','Content generation','Analysis'],
+pros:['UAE-hosted','Fast','Balanced'],cons:['Superseded by 4.6 for quality-sensitive tasks'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:89,s:91,c:75,l:93},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:5,government:5,manufacturing:4,technology:5}}},
+
+// Alibaba Qwen on Compass
+{id:'compass-qwen3-14b',name:'Qwen3-14B (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'open-source',
+desc:'Alibaba Qwen3-14B open-weight LLM hosted on Core42 Compass, UAE region. Strong multilingual and coding capabilities.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'128K tokens',ctxN:128000,params:'14B',lat:'~250ms (in-region)',
+uses:['Multilingual enterprise','Coding','Chinese/English workflows'],
+pros:['UAE-hosted','Open weights','Multilingual','Fine-tunable'],cons:['Smaller than flagship Qwen'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:84,s:92,c:88,l:94},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:true},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Open-weight Qwen3-14B hosted on Core42 UAE region. Full UAE data residency. Self-hostable as a sovereign fallback.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:5,education:5,government:4,manufacturing:4,technology:5}}},
+
+{id:'compass-qwen3-reranker',name:'Qwen3 Reranker (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM'],type:'open-source',
+desc:'Qwen3 reranker model for RAG pipelines on Core42 Compass, UAE region. Improves retrieval quality.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'8K tokens',ctxN:8000,params:'N/A',lat:'~50ms (in-region)',
+uses:['RAG reranking','Search quality','Enterprise search'],
+pros:['UAE-hosted','Fast','Multilingual reranking'],cons:['Specialty model — not a chat LLM'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:86,s:97,c:92,l:96},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:true},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Open-weight reranker hosted on Core42 UAE region. Full UAE data residency. Essential for sovereign RAG pipelines.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:5,education:5,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-qwen3-embedding',name:'Qwen3 Embedding (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['Embedding'],type:'open-source',
+desc:'Qwen3 multilingual embedding model on Core42 Compass, UAE region. Strong Arabic and Chinese embeddings.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'8K tokens',ctxN:8000,params:'N/A',lat:'~20ms (in-region)',
+uses:['Multilingual RAG','Vector search','Cross-lingual retrieval'],
+pros:['UAE-hosted','Strong Arabic embeddings','Multilingual'],cons:['Specialty model'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:89,s:98,c:92,l:97},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:true},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Open-weight embedding model hosted on Core42 UAE region. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:5,education:5,government:5,manufacturing:4,technology:5}}},
+
+// DeepSeek on Compass
+{id:'compass-deepseek-r1',name:'DeepSeek R1 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'open-source',featured:true,
+desc:'DeepSeek R1 reasoning model on Core42 Compass — strong reasoning performance at open-weight cost, UAE residency.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Russian'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'671B MoE',lat:'~3s (in-region)',
+uses:['Reasoning at lower cost','Math/coding','Sovereign alternative to o1'],
+pros:['UAE-hosted','Open weights (MIT)','Strong reasoning','Fine-tunable'],cons:['Chinese lab origin concerns for some orgs'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:94,s:55,c:80,l:85},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:true},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Open-weight DeepSeek R1 hosted on Core42 UAE region. Full UAE data residency. Because weights are MIT-licensed, can also be self-hosted for maximum control.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:5,legal:4,retail:4,education:5,government:4,manufacturing:4,technology:5}}},
+
+// OpenAI Embeddings on Compass
+{id:'compass-embeddings-3-large',name:'Embeddings 3 Large (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['Embedding'],type:'commercial',
+desc:'OpenAI text-embedding-3-large on Core42 Compass, UAE region. High-quality general-purpose embeddings.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi','Russian','Turkish'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'8K tokens',ctxN:8000,params:'N/A',lat:'~30ms (in-region)',
+uses:['RAG pipelines','Semantic search','Classification'],
+pros:['UAE-hosted','Industry-standard quality','3072-dim'],cons:['Larger dimensions = higher storage cost'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:92,s:97,c:85,l:97},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency. Suitable for sovereign RAG pipelines.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:5,education:5,government:5,manufacturing:4,technology:5}}},
+
+// Meta Llama on Compass
+{id:'compass-llama-33-70b',name:'Llama 3.3 70B (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'open-source',
+desc:'Meta Llama 3.3 70B open-weight model on Core42 Compass, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Hindi','Thai'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'70B',lat:'~400ms (in-region)',
+uses:['Open-source enterprise','Fine-tuning','Sovereign chatbots'],
+pros:['UAE-hosted','Open weights','Fine-tunable'],cons:['Less multilingual than Qwen for Arabic'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:85,s:86,c:82,l:93},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:true},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Open-weight Llama hosted on Core42 UAE region. Full UAE data residency. Self-hostable.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:5,education:5,government:4,manufacturing:5,technology:5}}},
+
+{id:'compass-llama-3-70b',name:'Llama 3 70B (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM'],type:'open-source',
+desc:'Meta Llama 3 70B on Core42 Compass, UAE region. Battle-tested open-weight LLM.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'8K tokens',ctxN:8192,params:'70B',lat:'~400ms (in-region)',
+uses:['Proven open-source deployments','Fine-tuning','Chatbots'],
+pros:['UAE-hosted','Widely supported','Stable'],cons:['Small 8K context','Superseded by 3.3'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:80,s:86,c:83,l:93},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:true},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Open-weight Llama hosted on Core42 UAE region. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:4,education:4,government:4,manufacturing:4,technology:4}}},
+
+{id:'compass-llama-32-90b-vision',name:'Llama 3.2 90B Vision (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Vision'],type:'open-source',
+desc:'Meta Llama 3.2 90B with vision on Core42 Compass, UAE region. Open-weight multimodal option.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Hindi','Thai'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'90B',lat:'~500ms (in-region)',
+uses:['Open-source vision','Document OCR','Chart analysis'],
+pros:['UAE-hosted','Open weights','Vision capable'],cons:['Larger footprint to self-host'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:82,s:82,c:78,l:92},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:true},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Open-weight multimodal Llama hosted on Core42 UAE region. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:5,education:5,government:4,manufacturing:4,technology:5}}},
+
+// Mistral on Compass
+{id:'compass-mistral-7b',name:'Mistral 7B (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM'],type:'open-source',
+desc:'Mistral 7B open-weight LLM on Core42 Compass, UAE region.',
+langs:['English','French','Spanish','German','Italian','Portuguese','Arabic'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'32K tokens',ctxN:32768,params:'7B',lat:'~150ms (in-region)',
+uses:['Lightweight deployments','Cost-sensitive apps','Edge-style inference'],
+pros:['UAE-hosted','Very small','Cheap','Fast'],cons:['Limited capability at 7B'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:72,s:96,c:92,l:96},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:true},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Open-weight Mistral 7B hosted on Core42 UAE region. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:3,retail:4,education:4,government:3,manufacturing:4,technology:4}}},
+
+{id:'compass-mistral-small-32',name:'Mistral Small 3.2 (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'open-source',
+desc:'Mistral Small 3.2 on Core42 Compass, UAE region. Efficient European open-weight LLM.',
+langs:['English','French','Spanish','German','Italian','Portuguese','Arabic','Dutch','Russian'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'128K tokens',ctxN:128000,params:'24B',lat:'~200ms (in-region)',
+uses:['EU-origin open-source option','Multilingual EU+GCC','Fine-tuning'],
+pros:['UAE-hosted','EU model heritage','Strong multilingual European'],cons:['Less Arabic depth than Qwen'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:82,s:93,c:88,l:95},
+deploy:{onPrem:true,cloud:true,hybrid:true,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:true},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Open-weight Mistral Small 3.2 hosted on Core42 UAE region. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:4,finance:4,legal:4,retail:5,education:4,government:4,manufacturing:4,technology:5}}},
+
+// Cohere on Compass
+{id:'compass-command-r',name:'Cohere Command R (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM'],type:'commercial',
+desc:'Cohere Command R on Core42 Compass, UAE region. Built for enterprise RAG and long-context tasks.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'35B',lat:'~300ms (in-region)',
+uses:['Enterprise RAG','Conversational AI','Long-context workflows'],
+pros:['UAE-hosted','Optimized for RAG','Multilingual'],cons:['Less general-purpose than GPT/Claude'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:84,s:90,c:75,l:93},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:5,education:4,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-command-r-plus',name:'Cohere Command R+ (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM'],type:'commercial',
+desc:'Cohere Command R+ on Core42 Compass — stronger reasoning and generation than R, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'104B',lat:'~450ms (in-region)',
+uses:['Enterprise RAG at quality','Complex conversational AI','Advanced reasoning'],
+pros:['UAE-hosted','Stronger than Command R','Enterprise-grade'],cons:['Higher cost per token'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:88,s:83,c:68,l:92},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:5,education:5,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-command-a',name:'Cohere Command A (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'commercial',
+desc:'Cohere Command A on Core42 Compass — advanced model with enhanced performance across tasks, UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Italian','Portuguese','Japanese','Korean','Hindi'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'256K tokens',ctxN:256000,params:'N/A',lat:'~500ms (in-region)',
+uses:['Agentic workflows','Long-context analysis','Advanced enterprise tasks'],
+pros:['UAE-hosted','256K context','Strong across tasks'],cons:['Newer, less battle-tested'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:90,s:82,c:68,l:92},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:5,education:5,government:5,manufacturing:4,technology:5}}},
+
+// Core42-native models on Compass
+{id:'compass-k2-think',name:'K2 Think Core42',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM','Code'],type:'commercial',featured:true,
+desc:'Core42-native 32B reasoning model deployed in UAE region. Sovereign-first AI designed and hosted by G42/Core42.',
+langs:['English','Arabic','Chinese','Spanish','French','German'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'mid',ctx:'128K tokens',ctxN:128000,params:'32B',lat:'~300ms (in-region)',
+uses:['UAE-native sovereign AI','Reasoning','Regulated workloads'],
+pros:['UAE-native','Sovereign by design','Purpose-built for region'],cons:['Newer, fewer benchmarks than global models'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:84,s:88,c:82,l:95},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Core42-native model designed and deployed in UAE region. Full UAE data residency. Arguably the most sovereign option in the catalog — both the hosting and the model development are UAE-anchored.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:5,finance:5,legal:5,retail:4,education:4,government:5,manufacturing:4,technology:5}}},
+
+{id:'compass-lfm2-8b',name:'LFM2-8B-A1B (Compass)',prov:'Core42 Compass',icon:'🧭',clr:'#d4a02c',tasks:['LLM'],type:'commercial',
+desc:'Liquid Foundation Models LFM2-8B-A1B — 8.3B hybrid MoE on Core42 Compass. Efficient inference on phones, laptops, embedded systems. UAE region.',
+langs:['English','Arabic','Chinese','Spanish','French','German','Japanese','Korean'],
+pricing:'Compass usage-based · see catalog',pIn:null,pOut:null,tier:'low',ctx:'32K tokens',ctxN:32768,params:'8.3B MoE',lat:'~150ms (in-region)',
+uses:['Edge-like deployments','Cost-sensitive UAE apps','Embedded systems'],
+pros:['UAE-hosted','MoE efficiency','CPU-capable','Cheap'],cons:['Smaller capability envelope'],
+link:'https://compass.core42.ai/model-catalog',scores:{q:76,s:95,c:91,l:96},
+deploy:{onPrem:false,cloud:true,hybrid:false,saas:true,saasHost:'Core42 Compass (UAE region)',selfHost:false},
+sovereignty:{uae:'full',regions:['Core42 UAE region (sovereign cloud)'],note:'Hosted in UAE region on Core42 sovereign cloud. Full UAE data residency.'},
+bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:4,legal:3,retail:5,education:4,government:4,manufacturing:5,technology:4}}},
+
 // ── OpenAI ─────────────────────────────────────────────────────────────────
 {id:'gpt41',name:'GPT-4.1',prov:'OpenAI',icon:'🟢',clr:'#10b981',tasks:['LLM','Code','Vision'],type:'commercial',featured:true,
 desc:"OpenAI's latest flagship. 1M context window, improved coding and instruction following.",
@@ -2952,7 +3444,7 @@ window.addEventListener('DOMContentLoaded', initAdminView);
 // APP STATE
 // ══════════════════════════════════════════════════════════════════
 let currentUser=null;
-let state={task:'all',prov:'All',lang:'All',type:'All',deploy:''};
+let state={task:'all',prov:'All',lang:'All',type:'All',deploy:'',sov:''};
 let catTaskFilter='all';
 let estimSel=[];
 let compareSelected=[];
@@ -3206,6 +3698,16 @@ function initExplorer(){
   ];
   document.getElementById('f-deploy').innerHTML=DEPLOY_OPTS.map(d=>
     `<div class="chip ${state.deploy===d.k?'active':''}" onclick="setF('deploy','${d.k}')">${d.l}</div>`).join('');
+  // Sovereignty chips
+  const SOV_OPTS=[
+    {k:'',l:'All Sovereignty'},
+    {k:'full',l:'🛡️ UAE Sovereign only'},
+    {k:'sovereign',l:'✅ UAE-compliant (full + available)'},
+    {k:'hide-noncompliant',l:'⛔ Hide non-compliant'},
+  ];
+  const sovEl=document.getElementById('f-sov');
+  if(sovEl) sovEl.innerHTML=SOV_OPTS.map(d=>
+    `<div class="chip ${state.sov===d.k?'active':''}" onclick="setF('sov','${d.k}')">${d.l}</div>`).join('');
   document.getElementById('f-type').innerHTML=TYPES.map(t=>
     `<div class="chip ${state.type===t?'active':''}" onclick="setF('type','${t}')">${t==='All'?'All Types':t==='open-source'?'🔓 Open Source':t==='third-party'?'🔗 3rd Party':'☁️ Commercial'}</div>`).join('');
   renderGrid();
@@ -3225,9 +3727,41 @@ function getFiltered(){
       if(state.deploy==='onPrem'&&!m.deploy?.onPrem)return false;
       if(state.deploy==='selfHost'&&!m.deploy?.selfHost)return false;
     }
+    if(state.sov){
+      const s = m.sovereignty?.uae;
+      if(state.sov==='sovereign' && !(s==='full' || s==='available'))return false;
+      if(state.sov==='hide-noncompliant' && (s==='unavailable' || s==='partial'))return false;
+      if(state.sov==='full' && s!=='full')return false;
+    }
     if(q&&!m.name.toLowerCase().includes(q)&&!m.prov.toLowerCase().includes(q)&&!m.desc.toLowerCase().includes(q))return false;
     return true;
   }).sort((a,b)=>(b.featured?1:0)-(a.featured?1:0)||b.scores.q-a.scores.q);
+}
+
+function sovBadgeFor(m){
+  const s = m.sovereignty && m.sovereignty.uae;
+  if (s === 'full')        return {cls:'full',         label:'🛡️ UAE Sovereign',              short:'Sovereign'};
+  if (s === 'available')   return {cls:'available',    label:'🟢 UAE Compliant',               short:'Compliant'};
+  if (s === 'partial')     return {cls:'partial',      label:'⚠️ May Route Outside UAE',       short:'Partial'};
+  if (s === 'unavailable') return {cls:'unavailable', label:'⛔ Processed Outside UAE',        short:'Not compliant'};
+  if (s === 'selfhost')    return {cls:'selfhost',     label:'🔓 Self-host for Sovereignty',  short:'Self-host'};
+  return null;
+}
+
+function sovBannerFor(m){
+  const b = sovBadgeFor(m);
+  if (!b) return '';
+  const bodies = {
+    full:        'Hosted in UAE region with guaranteed in-country inference. Fully compliant with UAE data sovereignty.',
+    available:   'UAE region is available and, when configured correctly, inference stays in-country. Verify you are using the regional (not global/cross-region) endpoint.',
+    partial:     '<strong>Traffic may route outside UAE.</strong> A UAE region exists but quota or routing configuration can cause inference to execute in other regions. Not recommended for regulated UAE data without written guarantees from the provider.',
+    unavailable: '<strong>Data is processed outside the UAE.</strong> No UAE region is offered; inference runs in the provider\u2019s global data centers (typically US/EU). Not compliant with UAE data sovereignty requirements.',
+    selfhost:    'Open-weight model. Sovereignty depends on where <em>you</em> deploy it — self-host in UAE (on-premises or UAE-region VMs) for full compliance.',
+  };
+  return `<div class="sov-modal-banner ${b.cls}">
+    <div class="sov-mb-icon">${b.label.split(' ')[0]}</div>
+    <div><div class="sov-mb-title">${b.label.replace(/^\S+\s/,'')}</div><div class="sov-mb-body">${bodies[b.cls]}</div></div>
+  </div>`;
 }
 
 function renderGrid(){
@@ -3238,11 +3772,13 @@ function renderGrid(){
   g.innerHTML=list.map((m,i)=>{
     const pc=m.tier==='free'?'var(--teal)':m.tier==='low'?'var(--lime)':m.tier==='mid'?'var(--amber)':'var(--rose)';
     const dl=m.langs.slice(0,5);const more=m.langs.length-5;
+    const sb=sovBadgeFor(m);
     return `<div class="model-card ${m.featured?'featured':''}" style="animation-delay:${i*.03}s" onclick="openModal('${m.id}')">
       <div class="card-top">
         <div class="card-badge" style="background:${m.clr}15">${m.icon}</div>
         <div class="card-info"><div class="card-name">${m.name}</div><div class="card-prov">${m.prov}</div></div>
       </div>
+      ${sb?`<div class="sov-card-badge"><span class="sov-badge ${sb.cls}">${sb.label}</span></div>`:''}
       <div class="card-tags">
         ${m.tasks.map(t=>{
           if(t==='Translation'&&m.tasks.includes('LLM')){
@@ -3298,6 +3834,7 @@ function openModal(id){
     </div>
     <div class="modal-body">
       <p style="font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:20px">${m.desc}</p>
+      ${sovBannerFor(m)}
       <div class="modal-kpi-grid">
         <div class="mkpi"><div class="mkpi-label">Quality</div><div class="mkpi-val" style="color:var(--teal)">${m.scores.q}/100</div></div>
         <div class="mkpi"><div class="mkpi-label">Speed</div><div class="mkpi-val" style="color:var(--sky)">${m.scores.s}/100</div></div>
