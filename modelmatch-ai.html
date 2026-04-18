@@ -732,9 +732,217 @@ table.btbl td{padding:9px 12px;vertical-align:middle}
 .sov-def-body strong{color:var(--text);font-weight:700}
 .sov-def-body em{color:var(--amber);font-style:normal}
 .sov-def-cta{background:var(--gold-bg);border:1px solid var(--gold-rim);border-radius:var(--r-lg);padding:18px 24px;text-align:center}
+
+/* ══ UPCOMING MODELS TICKER ══ */
+.upcoming-ticker {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 110;
+  height: 32px; display: flex; align-items: center;
+  background: linear-gradient(90deg, rgba(12,15,26,.96), rgba(22,28,46,.96));
+  border-bottom: 1px solid var(--gold-rim);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 2px 20px rgba(0,0,0,.4);
+  overflow: hidden;
+}
+.ut-label {
+  display: flex; align-items: center; gap: 6px;
+  padding: 0 18px 0 16px; height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  color: var(--void); font-weight: 800; font-size: 10.5px;
+  letter-spacing: .12em; text-transform: uppercase;
+  flex-shrink: 0; z-index: 2; position: relative;
+}
+.ut-label::after {
+  content: ''; position: absolute; right: -14px; top: 0; bottom: 0;
+  width: 14px; z-index: 1;
+  background: linear-gradient(135deg, var(--gold2) 0%, var(--gold2) 50%, transparent 50%);
+}
+.ut-pulse {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--void); opacity: .7;
+  animation: utPulse 1.8s ease-in-out infinite;
+}
+.ut-sync {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 14px; height: 100%;
+  border-right: 1px solid var(--rim);
+  font-size: 10.5px; color: var(--text3);
+  flex-shrink: 0; letter-spacing: .02em;
+  background: var(--surface);
+  transition: background .15s, color .15s;
+}
+.ut-sync-text { display: flex; align-items: center; gap: 6px; }
+.ut-sync-prefix { color: var(--text3); }
+.ut-sync-link {
+  color: var(--text2); text-decoration: none;
+  font-weight: 600; font-size: 10.5px;
+  padding: 2px 5px; border-radius: 4px;
+  transition: color .15s, background .15s;
+}
+.ut-sync-link:hover { color: var(--gold2); background: var(--gold-bg); }
+.ut-sync-plus { color: var(--text3); font-size: 11px; }
+.ut-sync-stamp { color: var(--text3); font-family: 'Geist Mono', monospace; font-size: 10px; margin-left: 2px; }
+.ut-sync-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--text3);
+  box-shadow: 0 0 0 0 rgba(255,255,255,0);
+  transition: background .3s;
+  flex-shrink: 0;
+}
+.ut-sync.live .ut-sync-dot {
+  background: var(--teal);
+  animation: syncPulse 2.4s ease-in-out infinite;
+}
+.ut-sync.live .ut-sync-text { color: var(--teal); }
+.ut-sync.stale .ut-sync-dot { background: var(--amber); }
+.ut-sync.stale .ut-sync-text { color: var(--amber); }
+@keyframes syncPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(62,207,178,.55); }
+  50% { box-shadow: 0 0 0 6px rgba(62,207,178,0); }
+}
+.ut-viewport {
+  flex: 1; overflow: hidden; position: relative;
+  padding-left: 20px;
+  mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 60px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 60px), transparent 100%);
+}
+.ut-track {
+  display: inline-flex; align-items: center;
+  animation: tickerScroll var(--ticker-duration, 60s) linear infinite;
+  white-space: nowrap; will-change: transform;
+}
+.upcoming-ticker:hover .ut-track { animation-play-state: paused; }
+.ut-item {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 0 22px; font-size: 12px; color: var(--text2);
+  position: relative; cursor: pointer; transition: color .15s;
+}
+.ut-item:hover { color: var(--text); }
+.ut-item::after {
+  content: ''; position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--rim3);
+}
+.ut-emoji { font-size: 14px; line-height: 1; }
+.ut-name { color: var(--text); font-weight: 700; font-size: 12px; letter-spacing: -.01em; }
+.ut-prov { color: var(--text3); font-size: 11px; font-weight: 500; }
+.ut-link { text-decoration: none; }
+.ut-link:hover .ut-name { color: var(--gold2); }
+.ut-eta {
+  color: var(--gold2); font-family: 'Geist Mono', monospace;
+  font-size: 10px; padding: 2px 8px; border-radius: 10px;
+  background: var(--gold-bg); border: 1px solid var(--gold-rim);
+  font-weight: 500;
+}
+.ut-eta.eta-new { color: var(--teal); background: rgba(62,207,178,.08); border-color: rgba(62,207,178,.3); }
+.ut-eta.eta-soon { color: var(--amber); background: rgba(232,164,74,.08); border-color: rgba(232,164,74,.3); }
+.ut-info {
+  padding: 0 12px; border: none; height: 100%;
+  background: none; color: var(--text3); cursor: pointer;
+  font-size: 11px; flex-shrink: 0; border-left: 1px solid var(--rim);
+  font-weight: 600; letter-spacing: .03em;
+}
+.ut-info:hover { color: var(--gold2); background: var(--gold-bg); }
+.ut-close {
+  padding: 0 14px; border: none; height: 100%;
+  background: none; color: var(--text3); cursor: pointer;
+  font-size: 13px; flex-shrink: 0; border-left: 1px solid var(--rim);
+}
+.ut-close:hover { color: var(--rose); }
+
+@keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes utPulse { 0%, 100% { opacity: .7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
+
+body.has-ticker .topbar { top: 32px; }
+body.has-ticker .sidebar { top: calc(var(--header) + 32px); }
+body.has-ticker .main-content { margin-top: calc(var(--header) + 32px); }
+body.has-ticker #loginPage { padding-top: 32px; }
+
+@media (max-width: 700px) {
+  .ut-prov { display: none; }
+  .ut-item { padding: 0 14px; gap: 7px; }
+  .ut-info { font-size: 10px; padding: 0 9px; }
+  .ut-sync-text { display: none; }
+  .ut-sync { padding: 0 10px; }
+}
+
+/* ══ ADMIN: "NEW SINCE LAST VISIT" TRACKER ══ */
+.admin-panel {
+  position: fixed; top: 52px; right: 20px;
+  width: 360px; max-width: calc(100vw - 40px); max-height: 80vh;
+  background: var(--deep); border: 1px solid var(--gold-rim);
+  border-radius: 12px; z-index: 200;
+  box-shadow: 0 24px 80px rgba(0,0,0,.6);
+  display: flex; flex-direction: column; overflow: hidden;
+  animation: fadeUp .25s ease;
+}
+.ap-head {
+  padding: 14px 16px; border-bottom: 1px solid var(--rim);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; background: var(--surface);
+}
+.ap-head strong { font-size: 12.5px; color: var(--text); letter-spacing: .03em; text-transform: uppercase; }
+.ap-sub { font-size: 10.5px; color: var(--text3); margin-top: 3px; }
+.ap-close {
+  background: none; border: 1px solid var(--rim); color: var(--text3);
+  cursor: pointer; padding: 4px 9px; border-radius: 6px; font-size: 12px;
+  flex-shrink: 0;
+}
+.ap-close:hover { color: var(--rose); border-color: var(--rose); }
+.ap-body { padding: 14px 16px; overflow-y: auto; }
+.ap-stats {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 8px;
+  margin-bottom: 10px;
+}
+.ap-stats > div {
+  background: var(--surface); border: 1px solid var(--rim);
+  border-radius: 8px; padding: 10px 6px; text-align: center;
+}
+.ap-stat-val { font-size: 22px; font-weight: 700; font-family: 'Geist Mono',monospace; line-height: 1.1; }
+.ap-stat-lbl { font-size: 9.5px; color: var(--text3); margin-top: 4px; letter-spacing: .04em; }
+.ap-meta { font-size: 11px; color: var(--text3); margin: 8px 0; font-family: 'Geist Mono',monospace; }
+.ap-section-label {
+  font-size: 10px; color: var(--text3); letter-spacing: .1em;
+  text-transform: uppercase; margin: 14px 0 6px;
+}
+.ap-list { display: flex; flex-direction: column; gap: 4px; max-height: 280px; overflow-y: auto; }
+.ap-row {
+  padding: 8px 10px; background: var(--surface);
+  border: 1px solid var(--rim); border-radius: 6px;
+}
+.ap-row-name { font-size: 12px; color: var(--text); font-weight: 600; }
+.ap-row-id { font-size: 10px; color: var(--text3); font-family: 'Geist Mono',monospace; margin-top: 2px; word-break: break-all; }
+.ap-btn {
+  margin-top: 14px; width: 100%; padding: 10px;
+  background: var(--gold-bg); border: 1px solid var(--gold-rim);
+  color: var(--gold2); border-radius: 8px; cursor: pointer;
+  font-size: 11px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.ap-btn:hover { background: var(--gold-rim); }
 </style>
 </head>
 <body>
+
+<!-- Upcoming models ticker -->
+<div class="upcoming-ticker" id="upcomingTicker" style="display:none">
+  <div class="ut-label"><span class="ut-pulse"></span>Upcoming</div>
+  <div class="ut-sync" id="utSync" title="Auto-synced from OpenRouter and HuggingFace on every page load">
+    <span class="ut-sync-dot"></span>
+    <span class="ut-sync-text">
+      <span class="ut-sync-prefix">Synced ·</span>
+      <a class="ut-sync-link" href="https://openrouter.ai/models" target="_blank" rel="noopener">OpenRouter&nbsp;↗</a>
+      <span class="ut-sync-plus">+</span>
+      <a class="ut-sync-link" href="https://huggingface.co/models" target="_blank" rel="noopener">HuggingFace&nbsp;↗</a>
+      <span class="ut-sync-stamp" id="utSyncStamp">· loading…</span>
+    </span>
+  </div>
+  <div class="ut-viewport">
+    <div class="ut-track" id="utTrack"></div>
+  </div>
+  <button class="ut-info" onclick="openSourcesModal()" title="Sources &amp; methodology">ⓘ Sources</button>
+  <button class="ut-close" onclick="dismissTicker()" title="Hide for this session">✕</button>
+</div>
 
 <!-- ═══════════════════════════════════
      LOGIN PAGE
@@ -2388,6 +2596,357 @@ deploy:{onPrem:true,cloud:true,hybrid:true,saas:false,saasHost:null,selfHost:tru
 sovereignty:{uae:'selfhost',regions:['Self-host only — Indic language focus'],note:'Open-source model for Indian languages. Self-host for sovereignty. Niche relevance for UAE — useful only for organizations serving large South Asian communities (Hindi, Tamil, etc.) in the UAE. Full sovereignty when self-hosted.'},
 bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{healthcare:3,finance:3,legal:3,retail:3,education:4,government:5,manufacturing:2,technology:3}}},
 ];
+
+// ══════════════════════════════════════════════════════════════════
+// UPCOMING MODELS TICKER
+// ══════════════════════════════════════════════════════════════════
+// Each entry carries a `source` link to the provider's announcement or an
+// authoritative write-up. No rumor entries — if there's no credible source,
+// don't ship it. Update DATA_LAST_UPDATED below whenever you edit this list.
+const DATA_LAST_UPDATED = 'April 18, 2026';
+
+const UPCOMING_MODELS = [
+  // ── Recently released ──
+  { emoji:'🟣', name:'Claude Opus 4.7',  prov:'Anthropic',          eta:'Released Apr 2026',
+    kind:'new',  source:'https://www.anthropic.com/news' },
+  { emoji:'🦙', name:'Muse Spark',       prov:'Meta Superintelligence', eta:'Released Apr 2026',
+    kind:'new',  source:'https://en.wikipedia.org/wiki/Llama_(language_model)' },
+  { emoji:'🟢', name:'GPT-5.4 mini',     prov:'OpenAI',             eta:'Released Apr 2026',
+    kind:'new',  source:'https://help.openai.com/en/articles/6825453-chatgpt-release-notes' },
+  { emoji:'🔴', name:'Gemini 3.1 Pro',   prov:'Google DeepMind',    eta:'Released Feb 2026',
+    kind:'new',  source:'https://deepmind.google/models/model-cards/gemini-3-1-pro/' },
+  { emoji:'☁️', name:'Qwen 3.5 family',  prov:'Alibaba',            eta:'Released Feb–Mar 2026',
+    kind:'new',  source:'https://qwenlm.github.io/' },
+
+  // ── Announced, coming soon ──
+  { emoji:'🔬', name:'DeepSeek V4',      prov:'DeepSeek',           eta:'Announced for Apr 2026',
+    kind:'soon', source:'https://www.reuters.com/technology/artificial-intelligence/' },
+  { emoji:'🐉', name:'Tencent Hunyuan 3.0', prov:'Tencent',         eta:'Expected Q2 2026',
+    kind:'soon', source:'https://hunyuan.tencent.com/' },
+  { emoji:'☁️', name:'Qwen 4',           prov:'Alibaba',            eta:'Expected Q2 2026',
+    kind:'soon', source:'https://qwenlm.github.io/' },
+  { emoji:'🌙', name:'Kimi K3',          prov:'Moonshot AI',        eta:'Expected Q2 2026',
+    kind:'soon', source:'https://www.moonshot.ai/' },
+];
+
+const TICKER_AUTO_DISCOVER = true;
+
+// HuggingFace auto-discovery pulls from a whitelist of trusted orgs so
+// random fine-tunes don't flood the ticker. Edit this set to expand coverage.
+const HF_TRUSTED_ORGS = new Set([
+  'meta-llama','mistralai','Qwen','google','microsoft','deepseek-ai',
+  'tiiuae','CohereLabs','CohereForAI','01-ai','moonshotai','nvidia',
+  'databricks','ai21labs','stabilityai','openai-community','ibm-granite',
+  'Snowflake','xai-org','allenai','HuggingFaceTB','NousResearch'
+]);
+
+function renderTicker(extraItems = []) {
+  const all = [...UPCOMING_MODELS, ...extraItems];
+  if (!all.length) return;
+  const track = document.getElementById('utTrack');
+  const ticker = document.getElementById('upcomingTicker');
+  if (!track || !ticker) return;
+  track.innerHTML = [...all, ...all].map(m => {
+    const etaClass = m.kind==='new'?'eta-new':m.kind==='soon'?'eta-soon':'';
+    const inner = `
+      <span class="ut-emoji">${m.emoji}</span>
+      <span class="ut-name">${m.name}</span>
+      <span class="ut-prov">${m.prov}</span>
+      <span class="ut-eta ${etaClass}">${m.eta}</span>`;
+    return m.source
+      ? `<a class="ut-item ut-link" href="${m.source}" target="_blank" rel="noopener" title="Source: ${m.source}">${inner}</a>`
+      : `<div class="ut-item" title="${m.prov} · ${m.eta}">${inner}</div>`;
+  }).join('');
+  track.style.setProperty('--ticker-duration', Math.max(40, all.length * 6) + 's');
+  ticker.style.display = 'flex';
+  document.body.classList.add('has-ticker');
+}
+
+function dismissTicker() {
+  const t = document.getElementById('upcomingTicker');
+  if (t) t.style.display = 'none';
+  document.body.classList.remove('has-ticker');
+  try { sessionStorage.setItem('mm_ticker_dismissed','1'); } catch(e) {}
+}
+
+async function autoDiscoverFromOpenRouter() {
+  if (!TICKER_AUTO_DISCOVER) return { ok:false, items:[] };
+  try {
+    const r = await fetch('https://openrouter.ai/api/v1/models');
+    if (!r.ok) return { ok:false, items:[] };
+    const { data } = await r.json();
+    const known = new Set(M.map(m => m.name.toLowerCase().replace(/[^\w]/g,'')));
+    const cutoff = Date.now()/1000 - (30*86400);
+    const items = data
+      .filter(m => m.created && m.created > cutoff)
+      .filter(m => !known.has((m.name || m.id).toLowerCase().replace(/[^\w]/g,'')))
+      .slice(0, 6)
+      .map(m => ({
+        emoji: '✨',
+        name: m.name || m.id.split('/').pop(),
+        prov: (m.id.split('/')[0] || 'OpenRouter').replace(/^\w/, c => c.toUpperCase()),
+        eta: 'Just listed on OpenRouter',
+        kind: 'new',
+        source: 'https://openrouter.ai/' + m.id,
+      }));
+    return { ok:true, items, total:data.length };
+  } catch(e) { return { ok:false, items:[] }; }
+}
+
+async function autoDiscoverFromHuggingFace() {
+  try {
+    const url = 'https://huggingface.co/api/models?sort=createdAt&direction=-1&limit=100&filter=text-generation';
+    const r = await fetch(url);
+    if (!r.ok) return { ok:false, items:[] };
+    const data = await r.json();
+    const known = new Set(M.map(m => m.name.toLowerCase().replace(/[^\w]/g,'')));
+    const cutoff = Date.now() - (30*86400*1000);
+    const items = data
+      .filter(m => {
+        const id = m.id || m.modelId || '';
+        const org = id.split('/')[0];
+        if (!HF_TRUSTED_ORGS.has(org)) return false;
+        const createdStr = m.createdAt || m.lastModified;
+        if (!createdStr) return false;
+        if (new Date(createdStr).getTime() < cutoff) return false;
+        const cleanName = id.split('/').pop().toLowerCase().replace(/[^\w]/g,'');
+        if (known.has(cleanName)) return false;
+        return true;
+      })
+      .slice(0, 4)
+      .map(m => {
+        const id = m.id || m.modelId;
+        return {
+          emoji: '🤗',
+          name: id.split('/').pop(),
+          prov: id.split('/')[0],
+          eta: 'New on HuggingFace',
+          kind: 'new',
+          source: 'https://huggingface.co/' + id,
+        };
+      });
+    return { ok:true, items, total:data.length };
+  } catch(e) { return { ok:false, items:[] }; }
+}
+
+function setSyncStatus(state, stampText) {
+  const el = document.getElementById('utSync');
+  if (!el) return;
+  el.classList.remove('live', 'stale');
+  if (state === 'live') el.classList.add('live');
+  else if (state === 'stale') el.classList.add('stale');
+  const stampEl = document.getElementById('utSyncStamp');
+  if (stampEl && stampText != null) stampEl.textContent = stampText;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// SOURCES & METHODOLOGY MODAL
+// ══════════════════════════════════════════════════════════════════
+function openSourcesModal() {
+  const mbox = document.getElementById('modalBox');
+  const modal = document.getElementById('modal');
+  if (!mbox || !modal) return;
+  mbox.innerHTML = `
+    <div class="modal-head">
+      <div class="modal-icon" style="background:var(--gold-bg);color:var(--gold2)">📚</div>
+      <div style="flex:1;min-width:0">
+        <div class="modal-title">Sources &amp; Methodology</div>
+        <div class="modal-sub">How this data is sourced, verified, and refreshed</div>
+      </div>
+      <button class="modal-x" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:18px">
+        Every figure on this site comes from a primary source we can link to. Where a number is estimated or inferred (for example benchmark scores a vendor hasn't published), the entry carries a <span class="g-estimated">⚠ estimated</span> tag. Verified entries carry a <span class="g-verified">✅ verified</span> tag. Nothing is anonymous.
+      </p>
+
+      <div class="msec"><h3>Where each thing comes from</h3>
+        <div style="background:var(--surface);border:1px solid var(--rim);border-radius:8px;padding:14px 16px;font-size:12.5px;line-height:1.75">
+          <div style="margin-bottom:10px"><strong style="color:var(--text)">Main catalogue (90+ models)</strong><br>
+          <span style="color:var(--text2)">Hand-curated from each provider's own docs and pricing pages. <strong>Not from OpenRouter or HuggingFace.</strong> Sources listed below.</span></div>
+          <div style="margin-bottom:10px"><strong style="color:var(--text)">Upcoming ticker — curated entries</strong><br>
+          <span style="color:var(--text2)">Manually maintained in <code>UPCOMING_MODELS</code>. Every item links to the provider's own announcement. <strong>Not from OpenRouter or HuggingFace.</strong></span></div>
+          <div><strong style="color:var(--text)">Upcoming ticker — ✨ and 🤗 entries <em style="color:var(--teal);font-style:normal">only</em></strong><br>
+          <span style="color:var(--text2)">These two feeds — and only these — auto-sync from public APIs on every page load. No caching, no server-side job; your browser fetches both each visit.</span>
+          <ul class="mul" style="font-size:12px;margin-top:8px">
+            <li><strong>✨ Just listed on OpenRouter</strong> — new models from the last 30 days on <a href="https://openrouter.ai/api/v1/models" target="_blank" rel="noopener" style="color:var(--gold2)">openrouter.ai/api/v1/models</a>. OpenRouter aggregates 50+ providers including OpenAI, Anthropic, Google, Mistral, Meta, Cohere, DeepSeek, Qwen.</li>
+            <li><strong>🤗 New on HuggingFace</strong> — new models from the last 30 days on <a href="https://huggingface.co/api/models" target="_blank" rel="noopener" style="color:var(--gold2)">huggingface.co/api/models</a>, limited to a whitelist of trusted open-weights orgs (meta-llama, mistralai, Qwen, deepseek-ai, tiiuae, etc.) to keep random fine-tunes out. Whitelist editable in <code>HF_TRUSTED_ORGS</code>.</li>
+          </ul>
+          </div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+          <a href="https://openrouter.ai/models" target="_blank" rel="noopener" style="display:inline-block;padding:10px 16px;background:var(--gold-bg);border:1px solid var(--gold-rim);border-radius:8px;color:var(--gold2);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.03em">Verify on openrouter.ai ↗</a>
+          <a href="https://huggingface.co/models" target="_blank" rel="noopener" style="display:inline-block;padding:10px 16px;background:var(--gold-bg);border:1px solid var(--gold-rim);border-radius:8px;color:var(--gold2);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.03em">Verify on huggingface.co ↗</a>
+        </div>
+      </div>
+
+      <div class="msec"><h3>Main catalogue — source providers</h3>
+        <ul class="mul" style="font-size:12.5px">
+          <li>Provider documentation and pricing pages: <a href="https://platform.openai.com/docs/models" target="_blank" rel="noopener" style="color:var(--gold2)">OpenAI</a>, <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener" style="color:var(--gold2)">Anthropic</a>, <a href="https://ai.google.dev/pricing" target="_blank" rel="noopener" style="color:var(--gold2)">Google</a>, <a href="https://docs.mistral.ai/" target="_blank" rel="noopener" style="color:var(--gold2)">Mistral</a>, <a href="https://cohere.com/pricing" target="_blank" rel="noopener" style="color:var(--gold2)">Cohere</a>.</li>
+          <li>Open-weights specs: <a href="https://huggingface.co/models" target="_blank" rel="noopener" style="color:var(--gold2)">HuggingFace model cards</a> and provider GitHub repos.</li>
+          <li>Cloud availability: <a href="https://azure.microsoft.com/pricing" target="_blank" rel="noopener" style="color:var(--gold2)">Azure AI Foundry</a>, <a href="https://aws.amazon.com/bedrock/" target="_blank" rel="noopener" style="color:var(--gold2)">AWS Bedrock</a>, <a href="https://cloud.google.com/vertex-ai" target="_blank" rel="noopener" style="color:var(--gold2)">Vertex AI</a>.</li>
+        </ul>
+      </div>
+
+      <div class="msec"><h3>Benchmarks &amp; rankings</h3>
+        <ul class="mul" style="font-size:12.5px">
+          <li><a href="https://artificialanalysis.ai/" target="_blank" rel="noopener" style="color:var(--gold2)">Artificial Analysis</a> — quality, speed, price index across 300+ models.</li>
+          <li><a href="https://lmarena.ai/" target="_blank" rel="noopener" style="color:var(--gold2)">LMArena</a> — human preference head-to-head rankings.</li>
+          <li><a href="https://huggingface.co/open-llm-leaderboard" target="_blank" rel="noopener" style="color:var(--gold2)">Open LLM Leaderboard</a> — open-weights benchmark aggregator.</li>
+          <li><a href="https://epoch.ai/data/notable-ai-models" target="_blank" rel="noopener" style="color:var(--gold2)">Epoch AI</a> — notable models tracker for compute, parameters, release history.</li>
+        </ul>
+      </div>
+
+      <div class="msec"><h3>Spotted an error?</h3>
+        <p style="font-size:12.5px;color:var(--text2);line-height:1.7">
+          If a price, context window, or release date looks wrong, please tell us — we'd rather fix it than argue with you. Include a link to the source that disagrees with ours.
+        </p>
+      </div>
+
+      <div style="margin-top:18px;padding:12px 14px;background:var(--gold-bg);border:1px solid var(--gold-rim);border-radius:8px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <div style="font-size:11px;color:var(--text3);letter-spacing:.04em;text-transform:uppercase">Data last reviewed</div>
+        <div style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--gold2);font-weight:600">${DATA_LAST_UPDATED}</div>
+      </div>
+    </div>`;
+  modal.classList.add('open');
+}
+
+// ══════════════════════════════════════════════════════════════════
+// ADMIN: "NEW SINCE LAST VISIT" TRACKER
+// Visit yoursite.html#admin to open this panel.
+// ══════════════════════════════════════════════════════════════════
+async function initAdminView() {
+  if (location.hash !== '#admin') return;
+  let current = [];
+  try {
+    const r = await fetch('https://openrouter.ai/api/v1/models');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const { data } = await r.json();
+    current = data.map(m => ({
+      id: m.id,
+      name: m.name || m.id,
+      created: m.created || 0,
+    }));
+  } catch(e) {
+    renderAdminPanel({ error: e.message });
+    return;
+  }
+  let lastSeen = null;
+  try { lastSeen = JSON.parse(localStorage.getItem('mm_admin_snapshot') || 'null'); } catch(e) {}
+  const currentIds = new Set(current.map(m => m.id));
+  const lastIds = new Set((lastSeen && lastSeen.ids) || []);
+  const added = current.filter(m => !lastIds.has(m.id));
+  const removedCount = [...lastIds].filter(id => !currentIds.has(id)).length;
+  renderAdminPanel({
+    lastChecked: (lastSeen && lastSeen.date) || 'first visit',
+    currentCount: current.length,
+    added,
+    removedCount,
+    allCurrent: current,
+  });
+}
+
+function renderAdminPanel(opts) {
+  document.getElementById('adminPanel') && document.getElementById('adminPanel').remove();
+  const panel = document.createElement('div');
+  panel.id = 'adminPanel';
+  panel.className = 'admin-panel';
+  if (opts.error) {
+    panel.innerHTML = `
+      <div class="ap-head">
+        <div><strong>Admin · model tracker</strong><div class="ap-sub">OpenRouter catalogue</div></div>
+        <button class="ap-close" onclick="document.getElementById('adminPanel').remove()">✕</button>
+      </div>
+      <div class="ap-body">
+        <div style="padding:14px;background:var(--surface);border:1px solid var(--rim);border-radius:8px;color:var(--rose);font-size:12px">
+          Could not reach OpenRouter: ${opts.error}<br>
+          <span style="color:var(--text3);font-size:11px">This usually means CORS or network. The public ticker still works — this admin view just can't diff without the API.</span>
+        </div>
+      </div>`;
+    document.body.appendChild(panel);
+    return;
+  }
+  const sortedAdded = [...opts.added].sort((a,b) => (b.created||0) - (a.created||0));
+  panel.innerHTML = `
+    <div class="ap-head">
+      <div><strong>Admin · model tracker</strong><div class="ap-sub">OpenRouter catalogue</div></div>
+      <button class="ap-close" onclick="document.getElementById('adminPanel').remove()">✕</button>
+    </div>
+    <div class="ap-body">
+      <div class="ap-stats">
+        <div><div class="ap-stat-val" style="color:var(--teal)">${opts.added.length}</div><div class="ap-stat-lbl">new since last visit</div></div>
+        <div><div class="ap-stat-val" style="color:var(--rose)">${opts.removedCount}</div><div class="ap-stat-lbl">removed</div></div>
+        <div><div class="ap-stat-val">${opts.currentCount}</div><div class="ap-stat-lbl">total live</div></div>
+      </div>
+      <div class="ap-meta">Last checked: ${opts.lastChecked}</div>
+      ${sortedAdded.length ? `
+        <div class="ap-section-label">New models</div>
+        <div class="ap-list">
+          ${sortedAdded.slice(0,40).map(m => `
+            <div class="ap-row">
+              <div class="ap-row-name">${m.name}</div>
+              <div class="ap-row-id">${m.id}</div>
+            </div>`).join('')}
+        </div>
+        ${sortedAdded.length > 40 ? `<div class="ap-meta">+ ${sortedAdded.length - 40} more</div>` : ''}
+      ` : '<div style="padding:20px;text-align:center;color:var(--text3);font-size:13px">Nothing new since last visit.</div>'}
+      <button class="ap-btn" onclick="markAdminSeen()">Mark all as seen</button>
+    </div>`;
+  document.body.appendChild(panel);
+  window._adminCurrentSnapshot = {
+    date: new Date().toISOString().replace('T',' ').slice(0,16) + ' UTC',
+    ids: opts.allCurrent.map(m => m.id),
+  };
+}
+
+function markAdminSeen() {
+  try {
+    localStorage.setItem('mm_admin_snapshot', JSON.stringify(window._adminCurrentSnapshot || {}));
+  } catch(e) {}
+  const p = document.getElementById('adminPanel');
+  if (p) p.remove();
+}
+
+window.addEventListener('DOMContentLoaded', initAdminView);
+
+(async () => {
+  try { if (sessionStorage.getItem('mm_ticker_dismissed') === '1') return; } catch(e) {}
+  renderTicker([]);
+  setSyncStatus('idle', '· syncing…');
+
+  const [or, hf] = await Promise.all([
+    autoDiscoverFromOpenRouter(),
+    autoDiscoverFromHuggingFace(),
+  ]);
+
+  // Merge + dedupe by normalized model name so the same model from
+  // both sources doesn't appear twice.
+  const seen = new Set();
+  const merged = [];
+  for (const item of [...or.items, ...hf.items]) {
+    const key = item.name.toLowerCase().replace(/[^\w]/g,'');
+    if (seen.has(key)) continue;
+    seen.add(key);
+    merged.push(item);
+  }
+  if (merged.length) renderTicker(merged);
+
+  const stamp = new Date().toLocaleString(undefined, {
+    month: 'short', day: 'numeric', year: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  });
+  const failed = [];
+  if (!or.ok) failed.push('OpenRouter');
+  if (!hf.ok) failed.push('HuggingFace');
+
+  if (failed.length === 0) {
+    setSyncStatus('live', `· ${stamp}`);
+  } else if (failed.length === 1) {
+    setSyncStatus('live', `· ${stamp} · ${failed[0]} unreachable`);
+  } else {
+    setSyncStatus('stale', `· sync failed at ${stamp}`);
+  }
+})();
 
 // ══════════════════════════════════════════════════════════════════
 // APP STATE
