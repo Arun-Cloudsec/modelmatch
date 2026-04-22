@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ModelMatch AI — the LLM intelligence platform I wish existed</title>
+<meta name="description" content="60+ LLM / TTS / STT / embedding models from 30+ providers, with live pricing, sovereignty analysis for 12 countries, and a Claude-powered advisor. Free.">
+<meta property="og:title" content="ModelMatch AI — the LLM intelligence platform I wish existed">
+<meta property="og:description" content="60+ LLM / TTS / STT / embedding models, live pricing, sovereignty analysis for 12 countries, Claude-powered advisor. Free to use.">
+<meta property="og:type" content="article">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#05070d;--bg2:#0b1020;--surface:#111620;
+  --text:#e8edf5;--text2:#95a3ba;--text3:#4a5874;
+  --accent:#4f7cff;--accent2:#7c3aed;
+  --green:#06d6a0;--warn:#ffa502;--rose:#ff4757;--info:#00b4d8;--gold:#f59e0b;
+  --rim:rgba(255,255,255,.08);--rim2:rgba(255,255,255,.14);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+
+.bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(ellipse 900px 500px at 20% 0%,rgba(79,124,255,.12),transparent 60%),
+  radial-gradient(ellipse 700px 400px at 80% 60%,rgba(124,58,237,.1),transparent 60%),
+  radial-gradient(ellipse 500px 300px at 50% 110%,rgba(6,214,160,.06),transparent 60%)}
+.grid-lines{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:
+  linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 80%)}
+
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 28px 100px}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:28px 0}
+nav a.brand{text-decoration:none;display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:700;color:var(--text);font-size:16px;letter-spacing:-.01em}
+nav a.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:navDot 2s ease-in-out infinite}
+@keyframes navDot{0%,100%{opacity:1}50%{opacity:.4}}
+nav .nav-right{display:flex;gap:12px;align-items:center}
+nav .back{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text3);text-decoration:none;padding:8px 14px;border:1px solid var(--rim2);border-radius:99px;transition:all .2s}
+nav .back:hover{color:var(--accent);border-color:rgba(79,124,255,.4)}
+nav .cta-nav{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#fff;text-decoration:none;padding:9px 18px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:99px;transition:all .2s}
+nav .cta-nav:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,124,255,.35)}
+
+/* HERO */
+.hero{padding:30px 0 20px}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding:7px 16px;background:rgba(79,124,255,.08);border:1px solid rgba(79,124,255,.2);border-radius:99px;margin-bottom:24px}
+.kicker::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:navDot 1.8s ease-in-out infinite}
+
+h1{font-family:'Syne',sans-serif;font-size:clamp(42px,6.5vw,78px);font-weight:800;line-height:1.04;letter-spacing:-.03em;margin-bottom:26px}
+h1 .accent{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.lead{font-size:20px;color:var(--text2);line-height:1.55;max-width:760px}
+.lead strong{color:var(--text);font-weight:600}
+
+.byline{margin-top:30px;display:flex;align-items:center;gap:14px;font-size:14px;color:var(--text3)}
+.byline .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;color:#fff;font-weight:800;font-size:16px}
+.byline strong{color:var(--text);font-weight:600;display:block}
+
+/* STAT STRIP */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:44px 0 24px}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--surface);border:1px solid var(--rim);border-radius:14px;padding:22px 20px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+.stat:hover{border-color:rgba(79,124,255,.4);transform:translateY(-3px)}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));background-size:200% 100%;animation:statShimmer 3.5s linear infinite}
+@keyframes statShimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.stat-num{font-family:'Syne',sans-serif;font-size:40px;font-weight:800;line-height:1;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;letter-spacing:-.02em}
+.stat-lbl{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+
+/* PRIMARY CTA */
+.primary-cta{display:flex;gap:14px;margin:30px 0 56px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;border-radius:99px;font-weight:600;font-size:15px;transition:all .2s;letter-spacing:-.005em;border:none;cursor:pointer;font-family:inherit}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(79,124,255,.45)}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:transparent;color:var(--text);text-decoration:none;border-radius:99px;font-weight:600;font-size:15px;border:1px solid var(--rim2);transition:all .2s}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+
+/* SECTION */
+section{padding:50px 0;border-top:1px solid var(--rim)}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;font-weight:600}
+h2{font-family:'Syne',sans-serif;font-size:clamp(30px,4.5vw,44px);font-weight:700;letter-spacing:-.022em;line-height:1.12;margin-bottom:22px}
+h2 .accent{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.prose{font-size:17px;line-height:1.75;color:var(--text2);max-width:720px}
+.prose p{margin-bottom:18px}
+.prose p strong{color:var(--text);font-weight:600}
+
+.pullquote{padding:22px 26px;background:rgba(255,255,255,.02);border-left:3px solid var(--accent);border-radius:4px;font-size:17px;color:var(--text);margin:26px 0;font-style:italic;line-height:1.6;max-width:660px}
+
+/* FEATURE GRID */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+@media(max-width:900px){.features{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.features{grid-template-columns:1fr}}
+.feature{background:var(--surface);border:1px solid var(--rim);border-radius:14px;padding:22px;position:relative;transition:border-color .25s,transform .25s}
+.feature:hover{border-color:rgba(79,124,255,.4);transform:translateY(-4px)}
+.feature-icon{width:42px;height:42px;border-radius:10px;background:rgba(79,124,255,.12);border:1px solid rgba(79,124,255,.25);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
+.feature h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.008em}
+.feature p{font-size:13px;color:var(--text2);line-height:1.55}
+
+/* SOVEREIGNTY HIGHLIGHT */
+.sov-block{background:linear-gradient(135deg,rgba(6,214,160,.06),rgba(0,180,216,.04));border:1px solid rgba(6,214,160,.25);border-radius:18px;padding:38px;margin:40px 0;position:relative;overflow:hidden}
+.sov-block::before{content:'🛡️';position:absolute;top:-20px;right:-10px;font-size:180px;opacity:.05;line-height:1}
+.sov-label{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green);padding:5px 14px;background:rgba(6,214,160,.08);border:1px solid rgba(6,214,160,.3);border-radius:99px;margin-bottom:16px}
+.sov-block h3{font-family:'Syne',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.015em;margin-bottom:14px;line-height:1.2;position:relative}
+.sov-block p{font-size:16px;color:var(--text2);line-height:1.7;max-width:680px;position:relative;margin-bottom:14px}
+.sov-block p strong{color:var(--text)}
+.flag-strip{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;position:relative}
+.flag-chip{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);padding:5px 10px;border:1px solid var(--rim2);border-radius:99px;letter-spacing:.04em;background:rgba(255,255,255,.02)}
+
+/* USE CASE ROW */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+@media(max-width:900px){.cases{grid-template-columns:1fr}}
+.case{background:var(--surface);border:1px solid var(--rim);border-radius:12px;padding:20px;border-left:3px solid var(--accent)}
+.case.green{border-left-color:var(--green)}
+.case.gold{border-left-color:var(--gold)}
+.case-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.1em;font-weight:600;margin-bottom:8px;text-transform:uppercase}
+.case h4{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3}
+.case p{font-size:13px;color:var(--text2);line-height:1.55}
+
+/* COVERAGE BLOCK */
+.providers{margin-top:26px;display:flex;gap:8px;flex-wrap:wrap}
+.prov{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);padding:6px 12px;border:1px solid var(--rim);border-radius:6px;background:var(--surface);letter-spacing:.03em}
+.prov.highlight{border-color:rgba(79,124,255,.35);color:var(--accent)}
+
+/* WHY-BUILT */
+.story-quote{font-family:'Syne',sans-serif;font-size:clamp(24px,3.5vw,34px);font-weight:700;color:var(--text);line-height:1.25;letter-spacing:-.015em;max-width:780px;margin:20px 0 6px}
+.story-quote .accent{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* BIG CTA */
+.final-cta{background:linear-gradient(135deg,rgba(79,124,255,.1),rgba(124,58,237,.08));border:1px solid rgba(79,124,255,.25);border-radius:18px;padding:44px 38px;margin:50px 0 0;text-align:center;position:relative;overflow:hidden}
+.final-cta::before{content:'◆';position:absolute;font-size:300px;top:-80px;right:-60px;opacity:.04;color:var(--accent);line-height:1}
+.final-cta h3{font-family:'Syne',sans-serif;font-size:clamp(26px,3.5vw,36px);font-weight:700;margin-bottom:12px;letter-spacing:-.018em;line-height:1.2;position:relative}
+.final-cta p{color:var(--text2);margin-bottom:28px;font-size:16px;max-width:560px;margin-left:auto;margin-right:auto;position:relative}
+.final-cta .btn-primary{font-size:16px;padding:16px 34px;position:relative}
+
+footer{padding:40px 0 20px;border-top:1px solid var(--rim);margin-top:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+footer .left{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text3);letter-spacing:.04em}
+footer .left strong{color:var(--text2)}
+footer .right{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);padding:4px 10px;border:1px solid var(--rim);border-radius:6px;letter-spacing:.04em}
+
+/* Number count-up animation */
+@keyframes countPop{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}
+.stat-num{animation:countPop .6s cubic-bezier(.22,1,.36,1) forwards;animation-delay:var(--d,0s)}
+.stat:nth-child(1) .stat-num{--d:.1s}
+.stat:nth-child(2) .stat-num{--d:.2s}
+.stat:nth-child(3) .stat-num{--d:.3s}
+.stat:nth-child(4) .stat-num{--d:.4s}
+</style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+<div class="grid-lines"></div>
+
+<div class="wrap">
+
+  <nav>
+    <a class="brand" href="https://arun-cloudsec.github.io"><span class="dot"></span> Arun</a>
+    <div class="nav-right">
+      <a class="back" href="https://arun-cloudsec.github.io">← Hub</a>
+    </div>
+  </nav>
+
+  <section class="hero" style="border:none;padding-top:30px">
+    <div class="kicker">ModelMatch AI · Launched Apr 2026</div>
+    <h1>Stop guessing which <span class="accent">LLM to pick.</span></h1>
+    <p class="lead">An intelligence platform for the messy reality of enterprise AI: <strong>60+ models, 30+ providers, live pricing, sovereignty analysis for 12 countries, and a Claude-powered advisor.</strong> Built because I was tired of opening 14 browser tabs every time a customer asked <em>"which model should we use?"</em></p>
+    <div class="byline">
+      <div class="av">A</div>
+      <div><strong>Arun</strong>Cloud &amp; AI Security Architect</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-num">60+</div><div class="stat-lbl">Models</div></div>
+      <div class="stat"><div class="stat-num">30+</div><div class="stat-lbl">Providers</div></div>
+      <div class="stat"><div class="stat-num">12</div><div class="stat-lbl">Sovereignty profiles</div></div>
+      <div class="stat"><div class="stat-num">7</div><div class="stat-lbl">Task types</div></div>
+    </div>
+  </section>
+
+  <!-- ═══ WHY I BUILT IT ═══ -->
+  <section id="why">
+    <div class="section-label">Why this exists</div>
+    <h2>Every "best LLM" article is <span class="accent">already out of date.</span></h2>
+    <div class="prose">
+      <p>In the last 18 months I've been asked the same question by every customer I work with: <em>"which model should we use?"</em></p>
+      <p>And every single time, the honest answer required me to cross-check pricing pages, official papers, regional availability, data-residency fine print, and at least three benchmark leaderboards. For one question. That is broken.</p>
+      <p>Worse: most of the public comparison sites are either built by a specific vendor (so Claude always wins, or GPT always wins, depending on who paid), or they stop at "here's a table of models" without ever asking the real questions — <strong>what's it going to cost monthly at my actual volume? Is the inference region inside my country? What's the open-source alternative if the budget is cut?</strong></p>
+      <div class="pullquote">ModelMatch is the tool I wish existed every time someone said "we need to pick an LLM by Friday."</div>
+      <p>So I built it. Vendor-neutral. No affiliate links. No hidden partner tiers. Pricing sourced directly from provider documentation and sovereignty classifications done country-by-country from actual regulatory documents — not marketing pages.</p>
+    </div>
+  </section>
+
+  <!-- ═══ THE SIX FEATURES ═══ -->
+  <section>
+    <div class="section-label">What's inside</div>
+    <h2>Six tools, one platform.</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🔍</div>
+        <h3>Model Explorer</h3>
+        <p>Filter 60+ models by task, language, provider, deployment mode, and sovereignty status. Find the shortlist in 30 seconds.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💰</div>
+        <h3>Cost Estimator</h3>
+        <p>Input real-world volume (requests/day, tokens per call). Get monthly cost across up to 6 models, side-by-side, input vs output broken down.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⚖️</div>
+        <h3>Compare Models</h3>
+        <p>Head-to-head across 4 models on quality, speed, context window, pricing, language support, deployment. Shortlist → decision.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🏆</div>
+        <h3>Benchmarks</h3>
+        <p>MMLU, HumanEval, MT-Bench, GSM8K, HellaSwag. Plus domain leaderboards — "best for Arabic", "best for code", "best for translation".</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🛡️</div>
+        <h3>Sovereignty Analyzer</h3>
+        <p>Pick a country. See which models stay in-country, which route elsewhere, which are self-hostable. Critical for GCC, EU, regulated sectors.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Advisor</h3>
+        <p>Claude-powered chat with all 60+ models in context. Ask in plain English — <em>"best Arabic customer-service model under $500/month"</em> — get a defended recommendation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SOVEREIGNTY BLOCK — THE UNIQUE ANGLE ═══ -->
+  <section>
+    <div class="section-label">The feature you won't find anywhere else</div>
+    <h2>Sovereignty, by country.</h2>
+
+    <div class="sov-block">
+      <div class="sov-label">🛡️ Unique to ModelMatch</div>
+      <h3>The most common compliance trap isn't where your data is stored.<br>It's where inference actually runs.</h3>
+      <p>Azure OpenAI in UAE North can execute inference in West Europe during peak load. Claude on GCP "available in Dubai" may route to Frankfurt. A vendor's local office is not the same as local compute.</p>
+      <p><strong>ModelMatch classifies every model against 12 jurisdictions</strong> — UAE, Saudi, Germany, Singapore, India, US, UK, Australia, Japan, France, Canada, Brazil — with four residency states: in-country sovereign, in-country compliant, may-route-outside, or processed-abroad. Plus a self-host flag for open-weight models you can deploy anywhere.</p>
+      <p>This is the view a government, bank, or healthcare team actually needs — and the one every other comparison tool skips.</p>
+
+      <div class="flag-strip">
+        <span class="flag-chip">🇦🇪 UAE</span>
+        <span class="flag-chip">🇸🇦 Saudi Arabia</span>
+        <span class="flag-chip">🇩🇪 Germany</span>
+        <span class="flag-chip">🇸🇬 Singapore</span>
+        <span class="flag-chip">🇮🇳 India</span>
+        <span class="flag-chip">🇺🇸 United States</span>
+        <span class="flag-chip">🇬🇧 United Kingdom</span>
+        <span class="flag-chip">🇦🇺 Australia</span>
+        <span class="flag-chip">🇯🇵 Japan</span>
+        <span class="flag-chip">🇫🇷 France</span>
+        <span class="flag-chip">🇨🇦 Canada</span>
+        <span class="flag-chip">🇧🇷 Brazil</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHO IT'S FOR ═══ -->
+  <section>
+    <div class="section-label">Who it's for</div>
+    <h2>Three conversations this tool ends fast.</h2>
+    <div class="cases">
+      <div class="case">
+        <div class="case-label">The Architect</div>
+        <h4>"Give me a defensible shortlist for a RAG build in UAE North."</h4>
+        <p>Filter to Arabic-capable LLMs, UAE sovereign, under $0.50/1M input. Shortlist drops to 3 models. Go to benchmarks.</p>
+      </div>
+      <div class="case green">
+        <div class="case-label">The CFO</div>
+        <h4>"How much does this actually cost per month at 100k queries/day?"</h4>
+        <p>Load usage profile into the estimator. Pick GPT-4o-mini, Claude Haiku, Gemini Flash, Llama 3. Get side-by-side monthly in 10 seconds.</p>
+      </div>
+      <div class="case gold">
+        <div class="case-label">The Compliance Officer</div>
+        <h4>"Confirm no customer data leaves UAE for this workload."</h4>
+        <p>Sovereignty filter → UAE → in-country sovereign only. Five models qualify. Export the list with citations to provider docs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COVERAGE ═══ -->
+  <section>
+    <div class="section-label">Providers covered</div>
+    <h2>Vendor-neutral. <span class="accent">No commercial bias.</span></h2>
+    <p class="prose" style="margin-top:-6px">Every major frontier provider, every major cloud, every major open-weight family — plus specialists for TTS, STT, translation, and embeddings. If a model is production-relevant, it's in the catalogue.</p>
+    <div class="providers">
+      <span class="prov highlight">OpenAI</span>
+      <span class="prov highlight">Anthropic</span>
+      <span class="prov highlight">Google DeepMind</span>
+      <span class="prov highlight">Meta</span>
+      <span class="prov">Alibaba Qwen</span>
+      <span class="prov">Cohere</span>
+      <span class="prov">Mistral</span>
+      <span class="prov">DeepSeek</span>
+      <span class="prov">Microsoft Phi</span>
+      <span class="prov">Azure</span>
+      <span class="prov">AWS Bedrock</span>
+      <span class="prov">IBM watsonx</span>
+      <span class="prov">TII Falcon 🇦🇪</span>
+      <span class="prov">NVIDIA</span>
+      <span class="prov">AI21 Labs</span>
+      <span class="prov">xAI</span>
+      <span class="prov">01.AI</span>
+      <span class="prov">Allen AI</span>
+      <span class="prov">Baidu</span>
+      <span class="prov">Tencent</span>
+      <span class="prov">Perplexity</span>
+      <span class="prov">ElevenLabs</span>
+      <span class="prov">Deepgram</span>
+      <span class="prov">AssemblyAI</span>
+      <span class="prov">DeepL</span>
+      <span class="prov">Sarvam AI</span>
+      <span class="prov">+ more</span>
+    </div>
+  </section>
+
+  <!-- ═══ STORY ═══ -->
+  <section>
+    <div class="section-label">The simple truth</div>
+    <div class="story-quote">
+      Picking the right model isn't a vendor decision.<br>It's an <span class="accent">architecture decision.</span><br>Your tools should treat it that way.
+    </div>
+    <div class="prose" style="margin-top:26px">
+      <p>ModelMatch doesn't tell you which model is "best." It tells you which models survive your actual constraints — <strong>budget, language, latency, sovereignty, deployment mode, compliance envelope</strong> — and lets you defend the decision afterwards with live data.</p>
+      <p>Free. No signup required to browse. No ads, ever. Built as a public reference because this information should be easy to find.</p>
+    </div>
+  </section>
+
+  <!-- ═══ FINAL CLOSING ═══ -->
+  <div class="final-cta">
+    <h3>Pick the model that fits your constraints —<br>not the one that fits someone's marketing.</h3>
+    <p>Vendor-neutral. Sovereignty-aware. Built for architects who defend their decisions.</p>
+  </div>
+
+  <footer>
+    <div class="left">Arun · <strong>Cloud &amp; AI Security Architect</strong></div>
+    <div class="right">
+      <span class="chip">ModelMatch AI</span>
+      <span class="chip">60+ models</span>
+      <span class="chip">Vendor-neutral</span>
+      <span class="chip">Apr 2026</span>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
