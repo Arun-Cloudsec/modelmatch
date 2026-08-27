@@ -1,10 +1,12 @@
 {
   "name": "modelmatch-post",
-  "version": "1.1.0",
-  "description": "ModelMatch AI \u2014 LinkedIn launch page (catalog refreshed 2026-08-21)",
+  "version": "1.2.0",
+  "description": "ModelMatch AI \u2014 LinkedIn launch page (catalog synced 2026-08-27)",
   "scripts": {
     "start": "serve . -l $PORT --no-clipboard",
-    "test": "node catalog-test.js"
+    "test": "node catalog-test.js && node sync-test.js",
+    "test:catalog": "node catalog-test.js",
+    "test:sync": "node sync-test.js"
   },
   "dependencies": {
     "serve": "^14.2.1"
@@ -13,6 +15,6 @@
     "node": ">=18"
   },
   "devDependencies": {
-    "jsdom": "^24.0.0"
+    "jsdom": "^24.1.3"
   }
 }

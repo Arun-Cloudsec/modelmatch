@@ -647,6 +647,7 @@ table.btbl td{padding:9px 12px;vertical-align:middle}
 .sov-badge.partial{background:rgba(232,164,74,.14);color:#e8a44a;border:1px solid rgba(232,164,74,.4)}
 .sov-badge.unavailable{background:rgba(240,107,122,.14);color:#f06b7a;border:1px solid rgba(240,107,122,.4)}
 .sov-badge.selfhost{background:rgba(155,127,244,.1);color:#9b7ff4;border:1px solid rgba(155,127,244,.25)}
+.sov-badge.bloc{background:rgba(96,165,250,.12);color:#60a5fa;border:1px solid rgba(96,165,250,.32)}
 .sov-card-badge{margin:0 0 10px 0}
 .sov-modal-banner{margin:-2px 0 18px 0;padding:14px 16px;border-radius:10px;display:flex;align-items:flex-start;gap:12px;font-size:12.5px;line-height:1.6}
 .sov-modal-banner.full{background:rgba(212,160,44,.08);border:1px solid rgba(212,160,44,.35);color:var(--text)}
@@ -674,6 +675,7 @@ table.btbl td{padding:9px 12px;vertical-align:middle}
 .sov-card{background:var(--surface);border:1px solid var(--rim);border-radius:var(--r-lg);padding:16px 18px;transition:.15s;cursor:pointer}
 .sov-card:hover{border-color:var(--rim2);background:var(--elevated)}
 .sov-card.border-available{border-left:3px solid #7dcd6e}
+.sov-card.border-bloc{border-left:3px solid #60a5fa}
 .sov-card.border-partial{border-left:3px solid #e8a44a}
 .sov-card.border-unavailable{border-left:3px solid #f06b7a}
 .sov-card.border-selfhost{border-left:3px solid #9b7ff4}
@@ -721,6 +723,9 @@ table.btbl td{padding:9px 12px;vertical-align:middle}
 .sov-qs-btn{padding:6px 12px;border-radius:20px;border:1px solid var(--rim);background:none;color:var(--text2);font-size:12px;cursor:pointer;font-family:'Cabinet Grotesk',sans-serif;transition:.15s;font-weight:600}
 .sov-qs-btn:hover{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg)}
 .sov-qs-btn.active-country{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg)}
+.sov-cs-chip.active{display:inline-flex;align-items:center;gap:8px;border-color:var(--gold-rim);background:var(--gold-bg);color:var(--gold2);font-weight:700}
+.sov-cs-chip-x{background:none;border:none;color:inherit;opacity:.6;cursor:pointer;font-size:11px;line-height:1;padding:2px 3px;border-radius:4px;transition:.15s}
+.sov-cs-chip-x:hover{opacity:1;background:rgba(255,255,255,.08)}
 
 .sov-empty-state{text-align:center;padding:60px 20px;display:flex;flex-direction:column;align-items:center}
 
@@ -940,6 +945,58 @@ body.has-ticker #loginPage { padding-top: 32px; }
   text-transform: uppercase;
 }
 .ap-btn:hover { background: var(--gold-rim); }
+
+/* ═══ Provenance / freshness strip ═══ */
+.prov-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:7px 20px;background:var(--surface);border-bottom:1px solid var(--rim);
+  font-size:11px;color:var(--text2);line-height:1.5}
+.prov-bar .pv-left,.prov-bar .pv-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+.prov-bar .pv-tag{font-family:'Geist Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.12em;
+  color:var(--gold2);background:var(--gold-bg);border:1px solid var(--gold-rim);border-radius:4px;padding:2px 6px}
+.prov-bar .pv-src{white-space:nowrap}
+.prov-bar .pv-dim{color:var(--text3)}
+.prov-bar .pv-sep{color:var(--text3);opacity:.5}
+.prov-bar .pv-stamp{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  font-family:'Geist Mono',monospace;font-size:10.5px}
+.prov-bar .pv-stamp strong{color:var(--text);font-weight:600}
+.prov-bar .pv-dot{width:7px;height:7px;border-radius:50%;flex:none;box-shadow:0 0 0 3px rgba(255,255,255,.04)}
+.prov-bar .pv-btn{background:transparent;border:1px solid var(--rim);border-radius:6px;color:var(--text2);
+  font-size:10.5px;font-weight:600;padding:4px 9px;cursor:pointer;white-space:nowrap;transition:.15s}
+.prov-bar .pv-btn:hover{border-color:var(--gold-rim);color:var(--gold2);background:var(--gold-bg)}
+@media(max-width:900px){.prov-bar .pv-left .pv-dim,.prov-bar .pv-sep{display:none}}
+
+/* ═══ Modality summary dashboard ═══ */
+.ms-wrap{background:var(--elevated);border:1px solid var(--rim);border-radius:12px;
+  padding:18px 20px;margin:0 0 22px}
+.ms-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.ms-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:21px;background:var(--gold-bg);border:1px solid var(--gold-rim);flex:none}
+.ms-title{font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.01em}
+.ms-sub{font-size:11.5px;color:var(--text3);margin-top:2px;line-height:1.5}
+.ms-stamp{margin-left:auto;font-family:'Geist Mono',monospace;font-size:10px;color:var(--text3);
+  border:1px solid var(--rim);border-radius:6px;padding:4px 8px;white-space:nowrap}
+.ms-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(126px,1fr));gap:10px;margin-bottom:16px}
+.ms-kpi{background:var(--surface);border:1px solid var(--rim);border-radius:9px;padding:11px 13px}
+.ms-kpi-n{font-size:22px;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+.ms-kpi-l{font-size:10.5px;color:var(--text2);font-weight:600;margin-top:3px}
+.ms-kpi-s{font-size:9.5px;color:var(--text3);margin-top:2px;line-height:1.45}
+.ms-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.ms-col-t{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--text3);margin-bottom:9px}
+.ms-row{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text2);
+  padding:5px 0;border-bottom:1px solid var(--rim)}
+.ms-row:last-child{border-bottom:none}
+.ms-row-n{margin-left:auto;font-family:'Geist Mono',monospace;font-size:11px;color:var(--text);font-weight:600;flex:none}
+.ms-bar{height:4px;border-radius:2px;background:var(--rim);overflow:hidden;width:56px;flex:none}
+.ms-bar i{display:block;height:100%;border-radius:2px}
+.ms-note{margin-top:14px;padding:9px 12px;border-radius:8px;font-size:11px;line-height:1.6;
+  background:var(--gold-bg);border:1px solid var(--gold-rim);color:var(--text2)}
+.ms-scroll{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:7px;
+  font-size:11px;color:var(--text3);border-top:1px dashed var(--rim);padding-top:12px}
+.ms-yn{font-family:'Geist Mono',monospace;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;flex:none}
+.ms-yn.y{color:var(--lime);background:rgba(163,230,53,.1);border:1px solid rgba(163,230,53,.25)}
+.ms-yn.n{color:var(--text3);background:var(--surface);border:1px solid var(--rim)}
+.ms-yn.p{color:var(--amber);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25)}
 </style>
 </head>
 <body>
@@ -1107,6 +1164,9 @@ body.has-ticker #loginPage { padding-top: 32px; }
     </div>
   </div>
 
+  <!-- Provenance / freshness strip -->
+  <div class="prov-bar" id="provBar"></div>
+
   <div style="display:flex;flex:1">
     <!-- Sidebar -->
     <div class="sidebar">
@@ -1165,39 +1225,16 @@ body.has-ticker #loginPage { padding-top: 32px; }
         </div>
         <div class="sec-label">Select Use Case</div>
         <div id="task-grid"></div>
+        <div id="taskSummary"></div>
         <div class="sec-label">Filters</div>
         <div class="filter-bar" style="align-items:flex-start"><span class="filter-label" style="padding-top:4px">Provider</span><div class="chips" id="f-prov" style="flex-wrap:wrap;max-height:72px;overflow-y:auto"></div></div>
         <div class="filter-bar"><span class="filter-label">Language</span><div class="chips" id="f-lang"></div></div>
         <div class="filter-bar"><span class="filter-label">Type</span><div class="chips" id="f-type"></div></div>
         <div class="filter-bar"><span class="filter-label">Deployment</span><div class="chips" id="f-deploy"></div></div>
 
-        <div class="sov-legend-inline">
-          <div class="sli-title">What do these sovereignty labels mean?</div>
-          <div class="sli-rows">
-            <div class="sli-row">
-              <span class="sov-badge full">🛡️ UAE Sovereign</span>
-              <span class="sli-desc"><strong>Hosted inside the UAE.</strong> Your data never leaves the country. Safe for government, healthcare, and regulated financial workloads.</span>
-            </div>
-            <div class="sli-row">
-              <span class="sov-badge available">🟢 UAE Compliant</span>
-              <span class="sli-desc"><strong>UAE region is available.</strong> Data stays in-country when you use the regional (not global/cross-region) endpoint. Verify your configuration.</span>
-            </div>
-            <div class="sli-row">
-              <span class="sov-badge partial">⚠️ May Route Outside UAE</span>
-              <span class="sli-desc"><strong>Traffic can leak.</strong> A UAE region exists but quota or routing may send inference to Europe or the US. Not safe for regulated data without written guarantees.</span>
-            </div>
-            <div class="sli-row">
-              <span class="sov-badge unavailable">⛔ Processed Outside UAE</span>
-              <span class="sli-desc"><strong>No UAE region at all.</strong> Your prompts are sent to US or EU data centers. Not compliant with UAE data sovereignty requirements.</span>
-            </div>
-            <div class="sli-row">
-              <span class="sov-badge selfhost">🔓 Self-host for Sovereignty</span>
-              <span class="sli-desc"><strong>Open-weight model.</strong> You choose where it runs. Sovereign only if you deploy it on UAE-region infrastructure or on-premises.</span>
-            </div>
-          </div>
-        </div>
+        <div class="sov-legend-inline" id="sovLegendInline"></div>
 
-        <div class="filter-bar"><span class="filter-label">🛡️ Sovereignty</span><div class="chips" id="f-sov"></div></div>
+        <div class="filter-bar"><span class="filter-label">🛡️ Sovereignty <span id="sovScopeLabel" style="color:var(--gold2);font-weight:700"></span></span><div class="chips" id="f-sov"></div></div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
           <div style="font-size:12px;color:var(--text3)">Showing <strong id="cnt" style="color:var(--text)">0</strong> models</div>
         </div>
@@ -1222,6 +1259,7 @@ body.has-ticker #loginPage { padding-top: 32px; }
           <div class="chips" id="cat-task-chips" style="flex-wrap:nowrap;overflow-x:auto"></div>
           <span style="font-size:11px;color:var(--text3);margin-left:auto;white-space:nowrap" id="catCount"></span>
         </div>
+        <div id="catTaskSummary"></div>
         <div class="tbl-wrap">
           <table class="ctbl">
             <thead><tr>
@@ -1621,19 +1659,14 @@ body.has-ticker #loginPage { padding-top: 32px; }
           <div class="sov-region-filter" style="margin-bottom:8px">
             <label>Show:</label>
             <button class="sov-pill active" onclick="setSovFilter('all')">All Models</button>
-            <button class="sov-pill" onclick="setSovFilter('available')">🟢 Sovereign</button>
+            <button class="sov-pill" onclick="setSovFilter('available')">🟢 In-country</button>
+            <button class="sov-pill" onclick="setSovFilter('bloc')">🔵 In-bloc</button>
             <button class="sov-pill" onclick="setSovFilter('partial')">🟡 Partial</button>
             <button class="sov-pill" onclick="setSovFilter('unavailable')">🔴 Not Compliant</button>
             <button class="sov-pill" onclick="setSovFilter('selfhost')">🟣 Self-Host</button>
           </div>
 
-          <div class="sov-status-legend" style="margin-bottom:18px">
-            <span class="sov-leg-item"><span class="sov-badge full">🛡️ UAE Sovereign</span> Hosted in UAE — data never leaves country</span>
-            <span class="sov-leg-item"><span class="sov-badge available">🟢 UAE Compliant</span> In-country inference confirmed</span>
-            <span class="sov-leg-item"><span class="sov-badge partial">⚠️ May Route Outside UAE</span> Region exists; traffic can leak</span>
-            <span class="sov-leg-item"><span class="sov-badge unavailable">⛔ Processed Outside UAE</span> Data exits country</span>
-            <span class="sov-leg-item"><span class="sov-badge selfhost">🔓 Self-Host</span> Open weights — deploy in-country</span>
-          </div>
+          <div class="sov-status-legend" style="margin-bottom:18px" id="sovStatusLegend"></div>
 
           <!-- Model grid — always visible, updates when filter changes -->
           <div id="sovModelGrid"></div>
@@ -1641,6 +1674,7 @@ body.has-ticker #loginPage { padding-top: 32px; }
           <!-- Recommended models -->
           <div class="sov-section-label" style="margin-top:24px">⭐ Recommended for <span id="sovRecCountry">this region</span></div>
           <div id="sovRecommended" class="sov-grid" style="margin-bottom:24px"></div>
+          <div id="sovTipBox"></div>
 
           <!-- AI Advisor -->
           <div class="sov-ai-panel" id="sovAiPanel">
@@ -10017,9 +10051,76 @@ bench:{mmlu:null,humanEval:null,mtBench:null,gsm8k:null,hellaSwag:null,domains:{
 // Each entry carries a `source` link to the provider's announcement or an
 // authoritative write-up. No rumor entries — if there's no credible source,
 // don't ship it. Update DATA_LAST_UPDATED below whenever you edit this list.
-const DATA_LAST_UPDATED = 'May 9, 2026';
+const DATA_LAST_UPDATED = 'August 27, 2026';
+
+// ══════════════════════════════════════════════════════════════════
+// DATA PROVENANCE & SYNC STAMPS
+// Three different things, deliberately kept apart:
+//   priceVerified — last time every price was checked against a vendor page
+//   catalogSynced — last time the model list was reviewed for adds/removals
+//   liveFeeds     — auto-refreshed in the browser on every page load
+// ══════════════════════════════════════════════════════════════════
+const DATA_SYNC = {
+  priceVerified : '2026-08-21',
+  catalogSynced : '2026-08-27',
+  reviewedBy    : 'ModelMatch curation — hand-checked against vendor docs',
+  primarySources: [
+    {label:'Vendor pricing & model docs', detail:'Anthropic, OpenAI, Google, xAI, Mistral, Cohere, Meta, DeepSeek, Alibaba', href:'https://platform.claude.com/docs/en/about-claude/pricing'},
+    {label:'Cloud region availability',   detail:'AWS Bedrock, Azure AI Foundry, GCP Vertex AI',                              href:'https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html'},
+    {label:'UAE sovereign catalogue',     detail:'Core42 Compass model + pricing docs',                                       href:'https://www.core42.ai/compass/documentation/compass-models'},
+    {label:'Live release feeds',          detail:'OpenRouter + HuggingFace — fetched by your browser each visit',             href:'https://openrouter.ai/api/v1/models'},
+  ],
+  note: 'Prices and regions are hand-curated from primary vendor sources, not scraped from aggregators. Entries carry a per-model verification stamp.'
+};
+
+function fmtSyncDate(iso){
+  try{
+    const d = new Date(iso + 'T00:00:00Z');
+    return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
+  }catch(e){ return iso; }
+}
+function daysSince(iso){
+  try{ return Math.floor((Date.now() - new Date(iso+'T00:00:00Z').getTime())/86400000); }
+  catch(e){ return null; }
+}
+
+// Renders the provenance strip that sits directly under the top bar.
+function renderProvenanceBar(){
+  const el = document.getElementById('provBar');
+  if(!el) return;
+  const age  = daysSince(DATA_SYNC.priceVerified);
+  const fresh = age === null ? 'unknown' : age <= 14 ? 'fresh' : age <= 45 ? 'aging' : 'stale';
+  const dot  = {fresh:'var(--lime)',aging:'var(--amber)',stale:'var(--rose)',unknown:'var(--text3)'}[fresh];
+  const ageTxt = age === null ? '' : age === 0 ? 'today' : age === 1 ? '1 day ago' : age + ' days ago';
+  el.innerHTML = `
+    <div class="pv-left">
+      <span class="pv-tag">SOURCE</span>
+      <span class="pv-src">Vendor pricing &amp; model documentation (hand-curated)</span>
+      <span class="pv-sep">·</span>
+      <span class="pv-src pv-dim">AWS Bedrock / Azure AI Foundry / GCP Vertex region data</span>
+      <span class="pv-sep">·</span>
+      <span class="pv-src pv-dim">Core42 Compass (UAE)</span>
+      <span class="pv-sep">·</span>
+      <span class="pv-src pv-dim">OpenRouter + HuggingFace live feeds</span>
+    </div>
+    <div class="pv-right">
+      <span class="pv-stamp"><span class="pv-dot" style="background:${dot}"></span>Catalog last synced <strong>${fmtSyncDate(DATA_SYNC.catalogSynced)}</strong></span>
+      <span class="pv-stamp pv-dim">Prices verified <strong>${fmtSyncDate(DATA_SYNC.priceVerified)}</strong>${ageTxt?` <span class="pv-dim">(${ageTxt})</span>`:''}</span>
+      <button class="pv-btn" onclick="openSourcesModal()">ⓘ Sources &amp; methodology</button>
+    </div>`;
+}
 
 const UPCOMING_MODELS = [
+  // ── Added in the 2026-08-27 sync ──
+  // Reported by release trackers, not yet confirmed against a vendor pricing
+  // page, so they sit in the ticker rather than the priced catalogue.
+  { emoji:'🇨🇳', name:'GLM-5.3-Flash',        prov:'Z.AI',                   eta:'Reported 26 Aug 2026 · pricing unverified',
+    kind:'new',  source:'https://z.ai/' },
+  { emoji:'🇨🇳', name:'GLM-5.2 Turbo',        prov:'Z.AI',                   eta:'Reported 17 Aug 2026 · pricing unverified',
+    kind:'new',  source:'https://z.ai/' },
+  { emoji:'⚠️', name:'Claude 3 Haiku (Vertex AI)', prov:'Google Cloud',      eta:'Shut down 23 Aug 2026',
+    kind:'soon', source:'https://docs.cloud.google.com/vertex-ai/docs/release-notes' },
+
   // ── Just shipped (refreshed 2026-08-21) ──
   { emoji:'⚡', name:'Grok 4.6',             prov:'xAI',                    eta:'Shipped 12 Aug 2026',
     kind:'new',  source:'https://x.ai/api' },
@@ -10246,6 +10347,20 @@ function openSourcesModal() {
         <p style="font-size:12.5px;color:var(--text2);line-height:1.7">
           If a price, context window, or release date looks wrong, please tell us — we'd rather fix it than argue with you. Include a link to the source that disagrees with ours.
         </p>
+      </div>
+
+      <div class="msec"><h3>Sync stamps — what each date means</h3>
+        <div style="background:var(--surface);border:1px solid var(--rim);border-radius:8px;padding:14px 16px;font-size:12.5px;line-height:1.75">
+          <div style="margin-bottom:9px"><strong style="color:var(--text)">Prices verified — ${fmtSyncDate(DATA_SYNC.priceVerified)}</strong><br>
+          <span style="color:var(--text2)">The last date every per-token price in the catalogue was checked line-by-line against a live vendor pricing page. Individual entries carry their own <code>verified</code> stamp naming the source.</span></div>
+          <div style="margin-bottom:9px"><strong style="color:var(--text)">Catalog synced — ${fmtSyncDate(DATA_SYNC.catalogSynced)}</strong><br>
+          <span style="color:var(--text2)">The last date the model <em>list</em> was reviewed for additions, retirements and deprecation notices. A sync can happen without a full re-pricing pass, which is why the two dates differ.</span></div>
+          <div><strong style="color:var(--text)">Live feeds — every page load</strong><br>
+          <span style="color:var(--text2)">The ✨ OpenRouter and 🤗 HuggingFace ticker entries only. Fetched fresh by your browser each visit; nothing cached server-side.</span></div>
+        </div>
+        <div style="margin-top:10px;padding:10px 14px;background:rgba(240,107,122,.06);border:1px solid rgba(240,107,122,.15);border-radius:8px;font-size:11px;color:var(--text2);line-height:1.6">
+          <strong style="color:var(--rose)">⚠ Read this before quoting a price:</strong> ${DATA_SYNC.note} Anything moving faster than the sync cadence — introductory rates, long-context surcharges, sovereign-cloud catalogues — should be confirmed on the vendor page before it goes into a proposal.
+        </div>
       </div>
 
       <div style="margin-top:18px;padding:12px 14px;background:var(--gold-bg);border:1px solid var(--gold-rim);border-radius:8px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
@@ -10569,6 +10684,7 @@ function logout(){
 // APP INIT
 // ══════════════════════════════════════════════════════════════════
 function initApp(){
+  renderProvenanceBar();
   initExplorer();
   initEstimator();
   initCompare();
@@ -10660,10 +10776,12 @@ function initExplorer(){
   document.getElementById('f-deploy').innerHTML=DEPLOY_OPTS.map(d=>
     `<div class="chip ${state.deploy===d.k?'active':''}" onclick="setF('deploy','${d.k}')">${d.l}</div>`).join('');
   // Sovereignty chips
+  const _cn = activeCountryName(), _cf = activeCountryFlag();
+  const _bl = blocForCountry(ACTIVE_COUNTRY);
   const SOV_OPTS=[
     {k:'',l:'All Sovereignty'},
-    {k:'full',l:'🛡️ UAE Sovereign only'},
-    {k:'sovereign',l:'✅ UAE-compliant (full + available)'},
+    {k:'full',l:`${_cf} In-country only`},
+    _bl ? {k:'sovereign',l:`✅ ${_cn} or ${_bl.short}-compliant`} : {k:'sovereign',l:`✅ ${_cn}-compliant`},
     {k:'hide-noncompliant',l:'⛔ Hide non-compliant'},
   ];
   const sovEl=document.getElementById('f-sov');
@@ -10671,9 +10789,171 @@ function initExplorer(){
     `<div class="chip ${state.sov===d.k?'active':''}" onclick="setF('sov','${d.k}')">${d.l}</div>`).join('');
   document.getElementById('f-type').innerHTML=TYPES.map(t=>
     `<div class="chip ${state.type===t?'active':''}" onclick="setF('type','${t}')">${t==='All'?'All Types':t==='open-source'?'🔓 Open Source':t==='third-party'?'🔗 3rd Party':'☁️ Commercial'}</div>`).join('');
+  const sovLbl = document.getElementById('sovScopeLabel');
+  if (sovLbl) sovLbl.textContent = `${activeCountryFlag()} ${activeCountryName()}`;
+  renderInlineSovLegend();
   renderGrid();
 }
+// The Explorer legend used to be five hard-coded UAE sentences in the HTML.
+// It now restates itself for whichever country is active.
+function renderInlineSovLegend(){
+  const el = document.getElementById('sovLegendInline');
+  if (!el) return;
+  const cn = activeCountryName(), cf = activeCountryFlag();
+  const b  = blocForCountry(ACTIVE_COUNTRY);
+  const rows = [
+    ['available', `${cf} Sovereign in ${cn}`,
+     `<strong>Inference runs inside ${cn}.</strong> A region in-country is named in the provider's own data. Safe for government, healthcare and regulated financial workloads once you confirm you're calling the regional endpoint.`],
+    b ? ['bloc', b.strength==='legal'?`🔵 Compliant via ${b.short}`:`🔵 Regional (${b.short})`,
+      b.strength==='legal'
+        ? `<strong>Stays inside the ${b.label}.</strong> No ${cn} region, but the transfer is lawful under ${b.basis}. Enough for GDPR — not enough if a contract or regulator demands ${cn}-resident processing.`
+        : `<strong>Nearby, but outside ${cn}.</strong> The nearest regions sit in the ${b.label}. This is ${b.basis}, so treat it as a cross-border transfer.`] : null,
+    ['partial', `⚠️ Verify for ${cn}`,
+     `<strong>The platform reaches ${cn}; this model might not.</strong> AWS/Azure/GCP run regions in-country, but our data doesn't confirm this specific model is served from them. Check the provider's model-by-region matrix.`],
+    ['unavailable', `⛔ Processed outside ${cn}`,
+     `<strong>No ${cn} or in-bloc region.</strong> Prompts and responses leave the country for inference. Not compliant without a vendor DPA that covers the transfer.`],
+    ['selfhost', `🔓 Self-host for sovereignty`,
+     `<strong>Open-weight model.</strong> You choose where it runs. Sovereign only if you deploy it on ${cn} infrastructure — on-premises or in-country cloud VMs.`],
+  ].filter(Boolean);
+  el.innerHTML = `<div class="sli-title">What these labels mean for ${cf} ${cn}</div>
+    <div class="sli-rows">${rows.map(([cls,label,desc])=>
+      `<div class="sli-row"><span class="sov-badge ${cls}">${label}</span><span class="sli-desc">${desc}</span></div>`).join('')}</div>`;
+}
+
 function setTask(t){state.task=t;initExplorer();}
+
+// ══════════════════════════════════════════════════════════════════
+// MODALITY SUMMARY DASHBOARD
+// Picking TTS / STT / Vision / etc. should answer the buying questions
+// before you scroll: how many are there, how many are SaaS, who hosts
+// them, is on-prem an option, what does it cost, is it usable here.
+// ══════════════════════════════════════════════════════════════════
+const HOST_BUCKETS = [
+  {rx:/vertex|google cloud|google ai studio/i, label:'Google (Vertex AI / AI Studio)', color:'#4285f4'},
+  {rx:/azure|microsoft foundry|ai foundry/i,   label:'Microsoft Azure AI Foundry',     color:'#0078d4'},
+  {rx:/bedrock|\baws\b/i,                      label:'AWS Bedrock',                    color:'#ff9900'},
+  {rx:/core42|compass/i,                       label:'Core42 Compass (UAE sovereign)', color:'#d4a02c'},
+  {rx:/openai (api|cloud)/i,                   label:'OpenAI API',                     color:'#10a37f'},
+  {rx:/dashscope|alibaba/i,                    label:'Alibaba DashScope',              color:'#ff6a00'},
+  {rx:/watsonx|ibm cloud/i,                    label:'IBM watsonx',                    color:'#0f62fe'},
+  {rx:/self-host|nim/i,                        label:'Self-host / NVIDIA NIM',         color:'#76b900'},
+];
+
+function buildModalitySummary(list, taskId){
+  const meta = TASKS.find(t=>t.id===taskId) || {icon:'✨',name:'All Models',desc:'Everything in the catalogue'};
+  const n = list.length;
+  const count = f => list.filter(f).length;
+
+  const saas    = count(m=>m.deploy&&m.deploy.saas);
+  const onPrem  = count(m=>m.deploy&&m.deploy.onPrem);
+  const selfH   = count(m=>m.deploy&&m.deploy.selfHost);
+  const oss     = count(m=>m.type==='open-source');
+  const free    = count(m=>m.tier==='free');
+
+  // Hosting platforms
+  const hosts = HOST_BUCKETS.map(b=>({
+    ...b, n: count(m=>m.deploy&&m.deploy.saasHost&&b.rx.test(m.deploy.saasHost))
+  })).filter(h=>h.n>0).sort((a,b)=>b.n-a.n);
+
+  // Providers
+  const provCount = {};
+  list.forEach(m=>{ provCount[m.prov]=(provCount[m.prov]||0)+1; });
+  const provs = Object.entries(provCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+
+  // Sovereignty for the active country
+  const sov = {available:0,bloc:0,partial:0,unavailable:0,selfhost:0};
+  list.forEach(m=>{ const st=getModelStatusForCountry(m,ACTIVE_COUNTRY); if(st&&sov[st.status]!==undefined) sov[st.status]++; });
+  const bl = blocForCountry(ACTIVE_COUNTRY);
+
+  // Price band — modality-aware, since TTS/STT aren't priced per token
+  const tokPriced = list.filter(m=>m.pIn>0);
+  const perMin    = list.filter(m=>m.pPerMin>0);
+  const perChar   = list.filter(m=>m.pPerChar>0);
+  let priceLine = '—', priceSub = 'no published rate in catalogue';
+  if (perMin.length && (taskId==='STT')) {
+    const v = perMin.map(m=>m.pPerMin).sort((a,b)=>a-b);
+    priceLine = `$${v[0]}–$${v[v.length-1]}`; priceSub = `per audio minute · ${perMin.length} priced`;
+  } else if (perChar.length && (taskId==='TTS')) {
+    const v = perChar.map(m=>m.pPerChar*1e6).sort((a,b)=>a-b);
+    priceLine = `$${v[0].toFixed(0)}–$${v[v.length-1].toFixed(0)}`; priceSub = `per 1M characters · ${perChar.length} priced`;
+  } else if (tokPriced.length) {
+    const v = tokPriced.map(m=>m.pIn).sort((a,b)=>a-b);
+    priceLine = `$${v[0]}–$${v[v.length-1]}`; priceSub = `input per 1M tokens · ${tokPriced.length} priced`;
+  }
+
+  const pct = x => n ? Math.round(x/n*100) : 0;
+  const bar = (x,c) => `<span class="ms-bar"><i style="width:${pct(x)}%;background:${c}"></i></span>`;
+  const yn  = (x) => x>0 ? `<span class="ms-yn y">YES · ${x}</span>` : `<span class="ms-yn n">NONE</span>`;
+
+  return `
+  <div class="ms-wrap">
+    <div class="ms-head">
+      <div class="ms-icon">${meta.icon}</div>
+      <div style="min-width:0">
+        <div class="ms-title">${meta.name} — ${n} model${n===1?'':'s'} available</div>
+        <div class="ms-sub">${meta.desc} · summary first, full comparison below</div>
+      </div>
+      <div class="ms-stamp">synced ${fmtSyncDate(DATA_SYNC.catalogSynced)}</div>
+    </div>
+
+    <div class="ms-kpis">
+      <div class="ms-kpi"><div class="ms-kpi-n" style="color:var(--gold2)">${n}</div>
+        <div class="ms-kpi-l">Available</div><div class="ms-kpi-s">matching the current filters</div></div>
+      <div class="ms-kpi"><div class="ms-kpi-n" style="color:var(--sky)">${saas}</div>
+        <div class="ms-kpi-l">SaaS / API</div><div class="ms-kpi-s">${pct(saas)}% consumable as a managed API</div></div>
+      <div class="ms-kpi"><div class="ms-kpi-n" style="color:var(--lime)">${onPrem}</div>
+        <div class="ms-kpi-l">On-premises</div><div class="ms-kpi-s">${onPrem?'vendor ships an on-prem build':'no on-prem option here'}</div></div>
+      <div class="ms-kpi"><div class="ms-kpi-n" style="color:var(--violet)">${selfH}</div>
+        <div class="ms-kpi-l">Self-hostable</div><div class="ms-kpi-s">${oss} open-weight · run on your own GPUs</div></div>
+      <div class="ms-kpi"><div class="ms-kpi-n" style="color:var(--teal)">${priceLine}</div>
+        <div class="ms-kpi-l">Price range</div><div class="ms-kpi-s">${priceSub}</div></div>
+      <div class="ms-kpi"><div class="ms-kpi-n" style="color:var(--amber)">${provs.length?Object.keys(provCount).length:0}</div>
+        <div class="ms-kpi-l">Providers</div><div class="ms-kpi-s">${free?free+' free tier · ':''}${provs.length?provs[0][0]+' leads':'—'}</div></div>
+    </div>
+
+    <div class="ms-cols">
+      <div>
+        <div class="ms-col-t">Where it's hosted</div>
+        ${hosts.length ? hosts.map(h=>`
+          <div class="ms-row"><span>${h.label}</span>${bar(h.n,h.color)}<span class="ms-row-n">${h.n}</span></div>`).join('')
+          : `<div class="ms-row"><span style="color:var(--text3)">Vendor-operated clouds only — no hyperscaler listing</span></div>`}
+      </div>
+
+      <div>
+        <div class="ms-col-t">Deployment reality</div>
+        <div class="ms-row"><span>Managed SaaS / API</span>${yn(saas)}</div>
+        <div class="ms-row"><span>On-premises supported</span>${yn(onPrem)}</div>
+        <div class="ms-row"><span>Self-host (open weights)</span>${yn(selfH)}</div>
+        <div class="ms-row"><span>Air-gap capable</span>${onPrem+selfH>0?`<span class="ms-yn y">YES · ${onPrem+selfH}</span>`:`<span class="ms-yn n">NONE</span>`}</div>
+      </div>
+
+      <div>
+        <div class="ms-col-t">Usable in ${activeCountryFlag()} ${activeCountryName()}</div>
+        <div class="ms-row"><span>🟢 In-country inference</span>${bar(sov.available,'#7dcd6e')}<span class="ms-row-n">${sov.available}</span></div>
+        ${bl?`<div class="ms-row"><span>🔵 ${bl.strength==='legal'?'Compliant via '+bl.short:'Regional ('+bl.short+')'}</span>${bar(sov.bloc,'#60a5fa')}<span class="ms-row-n">${sov.bloc}</span></div>`:''}
+        <div class="ms-row"><span>🟡 Needs verification</span>${bar(sov.partial,'#e8a44a')}<span class="ms-row-n">${sov.partial}</span></div>
+        <div class="ms-row"><span>🟣 Self-host anywhere</span>${bar(sov.selfhost,'#9b7ff4')}<span class="ms-row-n">${sov.selfhost}</span></div>
+        <div class="ms-row"><span>🔴 Data leaves the country</span>${bar(sov.unavailable,'#f06b7a')}<span class="ms-row-n">${sov.unavailable}</span></div>
+      </div>
+
+      <div>
+        <div class="ms-col-t">Top providers</div>
+        ${provs.map(([p,c])=>`<div class="ms-row"><span>${p}</span>${bar(c,'var(--gold2)')}<span class="ms-row-n">${c}</span></div>`).join('') || '<div class="ms-row"><span style="color:var(--text3)">—</span></div>'}
+      </div>
+    </div>
+
+    ${onPrem===0 && selfH===0 ? `<div class="ms-note">⚠ Every model in this modality is vendor-hosted SaaS. If the workload needs on-premises or air-gapped inference, this list has nothing for you — widen the filter or look at the open-weight catalogue.</div>` : ''}
+    ${sov.available===0 && sov.selfhost>0 ? `<div class="ms-note">⚠ No model here runs inside ${activeCountryName()} as a managed service. The ${sov.selfhost} open-weight option${sov.selfhost===1?'':'s'} ${sov.selfhost===1?'is':'are'} the only route to in-country inference — you host ${sov.selfhost===1?'it':'them'} yourself.</div>` : ''}
+
+    <div class="ms-scroll">↓ Full model-by-model detail below — pricing, context, languages, regions and scores</div>
+  </div>`;
+}
+
+function renderTaskSummary(){
+  const el = document.getElementById('taskSummary');
+  if (!el) return;
+  el.innerHTML = buildModalitySummary(getFiltered(), state.task);
+}
 function setF(k,v){state[k]=v;initExplorer();}
 
 function getFiltered(){
@@ -10689,44 +10969,52 @@ function getFiltered(){
       if(state.deploy==='selfHost'&&!m.deploy?.selfHost)return false;
     }
     if(state.sov){
-      const s = m.sovereignty?.uae;
-      if(state.sov==='sovereign' && !(s==='full' || s==='available'))return false;
-      if(state.sov==='hide-noncompliant' && (s==='unavailable' || s==='partial'))return false;
-      if(state.sov==='full' && s!=='full')return false;
+      const st = (getModelStatusForCountry(m, ACTIVE_COUNTRY)||{}).status;
+      if(state.sov==='sovereign' && !(st==='available' || st==='bloc' || st==='selfhost'))return false;
+      if(state.sov==='hide-noncompliant' && (st==='unavailable' || st==='partial'))return false;
+      if(state.sov==='full' && st!=='available')return false;
     }
     if(q&&!m.name.toLowerCase().includes(q)&&!m.prov.toLowerCase().includes(q)&&!m.desc.toLowerCase().includes(q))return false;
     return true;
   }).sort((a,b)=>(b.featured?1:0)-(a.featured?1:0)||b.scores.q-a.scores.q);
 }
 
+// Both of these used to read `m.sovereignty.uae` directly, which is why the
+// UAE wording followed you onto every other country's view. They now go
+// through the same resolver the Sovereignty page uses.
 function sovBadgeFor(m){
-  const s = m.sovereignty && m.sovereignty.uae;
-  if (s === 'full')        return {cls:'full',         label:'🛡️ UAE Sovereign',              short:'Sovereign'};
-  if (s === 'available')   return {cls:'available',    label:'🟢 UAE Compliant',               short:'Compliant'};
-  if (s === 'partial')     return {cls:'partial',      label:'⚠️ May Route Outside UAE',       short:'Partial'};
-  if (s === 'unavailable') return {cls:'unavailable', label:'⛔ Processed Outside UAE',        short:'Not compliant'};
-  if (s === 'selfhost')    return {cls:'selfhost',     label:'🔓 Self-host for Sovereignty',  short:'Self-host'};
-  return null;
+  const st = getModelStatusForCountry(m, ACTIVE_COUNTRY);
+  if (!st) return null;
+  const cn = activeCountryName(), cf = activeCountryFlag();
+  const map = {
+    available:   {cls:'available',   label:`${cf} Sovereign in ${cn}`,     short:'In-country'},
+    bloc:        {cls:'bloc',        label:st.badge,                        short:'In-bloc'},
+    partial:     {cls:'partial',     label:`⚠️ Verify for ${cn}`,           short:'Partial'},
+    unavailable: {cls:'unavailable', label:`⛔ Processed outside ${cn}`,    short:'Not compliant'},
+    selfhost:    {cls:'selfhost',    label:'🔓 Self-host for sovereignty',  short:'Self-host'},
+  };
+  return map[st.status] || null;
 }
 
 function sovBannerFor(m){
-  const b = sovBadgeFor(m);
-  if (!b) return '';
-  const bodies = {
-    full:        'Hosted in UAE region with guaranteed in-country inference. Fully compliant with UAE data sovereignty.',
-    available:   'UAE region is available and, when configured correctly, inference stays in-country. Verify you are using the regional (not global/cross-region) endpoint.',
-    partial:     '<strong>Traffic may route outside UAE.</strong> A UAE region exists but quota or routing configuration can cause inference to execute in other regions. Not recommended for regulated UAE data without written guarantees from the provider.',
-    unavailable: '<strong>Data is processed outside the UAE.</strong> No UAE region is offered; inference runs in the provider\u2019s global data centers (typically US/EU). Not compliant with UAE data sovereignty requirements.',
-    selfhost:    'Open-weight model. Sovereignty depends on where <em>you</em> deploy it — self-host in UAE (on-premises or UAE-region VMs) for full compliance.',
-  };
+  const st = getModelStatusForCountry(m, ACTIVE_COUNTRY);
+  const b  = sovBadgeFor(m);
+  if (!st || !b) return '';
+  const regions = (st.regions||[]).slice(0,3).map(r=>`<span class="sov-region-tag">📍 ${r}</span>`).join('');
   return `<div class="sov-modal-banner ${b.cls}">
     <div class="sov-mb-icon">${b.label.split(' ')[0]}</div>
-    <div><div class="sov-mb-title">${b.label.replace(/^\S+\s/,'')}</div><div class="sov-mb-body">${bodies[b.cls]}</div></div>
+    <div>
+      <div class="sov-mb-title">${b.label.replace(/^\S+\s/,'')}</div>
+      <div class="sov-mb-body">${st.note}</div>
+      ${regions?`<div style="margin-top:7px;display:flex;gap:5px;flex-wrap:wrap">${regions}</div>`:''}
+      <div style="margin-top:7px;font-size:10.5px;color:var(--text3)">Evaluated against <strong style="color:var(--text2)">${activeCountryFlag()} ${activeCountryName()}</strong> — change it on the Sovereignty page.</div>
+    </div>
   </div>`;
 }
 
 function renderGrid(){
   const list=getFiltered();
+  renderTaskSummary();
   document.getElementById('cnt').textContent=list.length;
   const g=document.getElementById('models-grid');
   if(!list.length){g.innerHTML=`<div class="empty"><div class="empty-icon">🔍</div><div class="empty-title">No models found</div><div class="empty-sub">Try adjusting your filters</div></div>`;return;}
@@ -10852,6 +11140,8 @@ function renderCatalog(){
   if(catTaskFilter!=='all')list=list.filter(m=>m.tasks.includes(catTaskFilter));
   list.sort((a,b)=>sort==='quality'?b.scores.q-a.scores.q:sort==='speed'?b.scores.s-a.scores.s:sort==='price_asc'?(a.pIn+a.pOut/2)-(b.pIn+b.pOut/2):sort==='name'?a.name.localeCompare(b.name):b.ctxN-a.ctxN);
   document.getElementById('catCount').textContent=`${list.length} of ${M.length} models`;
+  const cts=document.getElementById('catTaskSummary');
+  if(cts) cts.innerHTML = buildModalitySummary(list, catTaskFilter);
   const pc=t=>t==='free'?'free':t==='low'?'low':t==='mid'?'mid':'high';
   document.getElementById('catBody').innerHTML=list.map(m=>`
     <tr onclick="openModal('${m.id}')">
@@ -11665,6 +11955,25 @@ const COUNTRY_PROFILES = {
 };
 
 // ── Cloud zone classifier ─────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════
+// SOVEREIGNTY ENGINE  (rewritten 2026-08-27)
+//
+// The old engine matched a model's `sovereignty.regions` array against
+// cloud-zone regexes. That array was written UAE-first, so every country
+// except the UAE fell through to "Not in Country" and the cards still
+// printed UAE region names. Germany returned 0 sovereign models.
+//
+// This version resolves three things per (model, country) pair:
+//   1. in-country evidence  — a region string naming a datacentre in
+//                             the selected country
+//   2. in-bloc evidence     — a region inside the country's legal bloc
+//                             (EU/EEA under GDPR; GCC as proximity only)
+//   3. platform reach       — the serving platform has a region in the
+//                             country, but this model's availability
+//                             there is not confirmed in our data
+// Nothing is hard-coded to the UAE.
+// ══════════════════════════════════════════════════════════════════
+
 const CLOUD_ZONE_PATTERNS = {
   'aws-me':     /aws.*me-|me-central|me-south|aws.*uae|aws.*bahrain|aws.*middle.east/i,
   'azure-uae':  /azure.*uae|uae.north|uae.central/i,
@@ -11682,60 +11991,225 @@ const CLOUD_ZONE_PATTERNS = {
   'gcp-apac':   /gcp.*asia|asia-south|asia-southeast|asia-northeast|australia-southeast|gcp.*tokyo|gcp.*singapore|gcp.*sydney|gcp.*mumbai|gcp.*seoul/i,
 };
 
-function getModelCloudZones(model) {
-  if (!model.sovereignty) return [];
-  const regStr = (model.sovereignty.regions || []).join(' ');
-  return Object.entries(CLOUD_ZONE_PATTERNS)
-    .filter(([zone, rx]) => rx.test(regStr))
-    .map(([zone]) => zone);
+// ── Which platform can serve a model, and where that platform has regions ──
+const PLATFORM_RULES = [
+  {rx:/bedrock/i,                                   name:'AWS Bedrock',      zones:['aws-us','aws-eu','aws-apac','aws-me']},
+  {rx:/core42|compass/i,                            name:'Core42 Compass',   zones:['azure-uae','aws-me']},
+  {rx:/azure|microsoft foundry|ai foundry/i,        name:'Azure AI Foundry', zones:['azure-us','azure-eu','azure-apac','azure-uae']},
+  {rx:/vertex|google cloud|google ai studio/i,      name:'GCP Vertex AI',    zones:['gcp-us','gcp-eu','gcp-apac']},
+  {rx:/dashscope|alibaba/i,                         name:'Alibaba DashScope',zones:['alibaba-me']},
+  {rx:/openai (api|cloud)/i,                        name:'OpenAI API',       zones:['openai-us','openai-eu']},
+  {rx:/watsonx|ibm cloud/i,                         name:'IBM watsonx',      zones:['aws-us','aws-eu']},
+];
+
+// ── Legal blocs. `strength:'legal'` means cross-border transfer inside the
+//    bloc is lawful by default. `'regional'` means geographically close but
+//    with NO automatic adequacy — surfaced with that caveat in the UI.
+const SOV_BLOCS = {
+  EU: {
+    label:'EU / EEA', short:'EU', strength:'legal',
+    basis:'GDPR intra-EEA transfer + EU AI Act',
+    members:['Germany','France','Netherlands','Spain','Poland','Sweden','Ireland','Italy','Belgium','Austria','Denmark','Finland','Portugal'],
+    adequacy:['United Kingdom','Switzerland'],
+    rx:/\beu-(west|central|south|north)-\d|europe-(west|north|southwest|central)\d?|west europe|north europe|sweden central|france central|germany west central|uk south|switzerland north|spain central|poland central|italy north|norway east|ireland|frankfurt|paris|amsterdam|stockholm|madrid|warsaw|zurich|milan|dublin|\(eu\b|eu —|eu-/i
+  },
+  GCC: {
+    label:'GCC', short:'GCC', strength:'regional',
+    basis:'geographic proximity only — no automatic cross-border adequacy',
+    members:['UAE','Saudi Arabia','Kuwait','Bahrain','Qatar','Oman'],
+    adequacy:[],
+    rx:/me-central-?1|me-south-1|uae north|uae central|abu dhabi|dubai|bahrain|doha|core42|compass/i
+  },
+  APAC: {
+    label:'Asia-Pacific', short:'APAC', strength:'regional',
+    basis:'geographic proximity only — each APAC jurisdiction sets its own rules',
+    members:['India','Singapore','Japan','Australia','South Korea'],
+    adequacy:[],
+    rx:/ap-(south|southeast|northeast|east)-\d|asia-(south|southeast|northeast)\d?|australia-southeast\d?|southeast asia|east asia|japan east|japan west|korea central|central india|south india|west india|australia east|singapore|tokyo|osaka|mumbai|hyderabad|seoul|sydney|jakarta/i
+  },
+  NA: {
+    label:'North America', short:'NA', strength:'regional',
+    basis:'geographic proximity only — US CLOUD Act exposure applies to US regions',
+    members:['United States','Canada','Mexico'],
+    adequacy:[],
+    rx:/us-(east|west)-?\d|ca-(central|west)-\d|east us|west us|central us|canada central|northamerica-northeast\d?|us-central\d?|virginia|oregon|ohio|montreal|toronto|calgary/i
+  },
+};
+
+function listJoin(a){
+  if (!a.length) return '';
+  if (a.length === 1) return a[0];
+  return a.slice(0,-1).join(', ') + ' and ' + a[a.length-1];
 }
 
-function getModelStatusForCountry(model, countryKey) {
-  const cp = COUNTRY_PROFILES[countryKey];
+function blocForCountry(countryKey){
+  if (!countryKey) return null;
+  for (const [k,b] of Object.entries(SOV_BLOCS)){
+    if (b.members.includes(countryKey) || b.adequacy.includes(countryKey)) return {key:k, ...b, viaAdequacy:b.adequacy.includes(countryKey)};
+  }
+  return null;
+}
+
+// ── Build the list of strings that identify a datacentre inside a country.
+//    Derived from the country's own `infra` list, skipping entries the data
+//    already flags as out-of-country ("nearest", "closest", "nearby").
+const _tokenCache = {};
+function countryRegionTokens(countryKey){
+  if (_tokenCache[countryKey]) return _tokenCache[countryKey];
+  const cp = _cprof(countryKey);
+  if (!cp) return [];
+  const out = [];
+  (cp.infra||[]).forEach(entry=>{
+    if (/nearest|nearby|closest|limited ai/i.test(entry)) return;
+    (entry.match(/\b[a-z]{2,12}-[a-z0-9]+-?\d*\b/gi)||[]).forEach(t=>out.push(t.toLowerCase()));
+    const paren = entry.match(/\(([^)]+)\)/);
+    if (paren) paren[1].split(/[\/,·—–-]/).forEach(p=>{
+      p = p.trim().replace(/in-country!?/i,'').trim();
+      if (p.length>2 && !/nearest|nearby|closest|limited|native|vendor/i.test(p)) out.push(p.toLowerCase());
+    });
+    const az = entry.match(/azure\s+([A-Za-z][A-Za-z ]{2,28}?)(?:\s*\(|\s*·|$)/i);
+    if (az) out.push(az[1].trim().toLowerCase());
+  });
+  out.push(cp.name.toLowerCase());
+  if (countryKey !== cp.name) out.push(countryKey.toLowerCase());
+  const uniq = [...new Set(out.filter(t=>t && t.length>2))];
+  _tokenCache[countryKey] = uniq;
+  return uniq;
+}
+
+// The text we search for region evidence. Deliberately excludes the curated
+// `sovereignty.note`, which is UAE-worded prose and would false-positive.
+function modelRegionCorpus(model){
+  const parts = [];
+  if (model.deploy && model.deploy.saasHost) parts.push(model.deploy.saasHost);
+  if (model.sovereignty && model.sovereignty.regions) parts.push(model.sovereignty.regions.join(' · '));
+  return parts.join(' · ');
+}
+
+function getModelCloudZones(model){
+  const regStr = modelRegionCorpus(model);
+  return Object.entries(CLOUD_ZONE_PATTERNS).filter(([z,rx])=>rx.test(regStr)).map(([z])=>z);
+}
+
+function modelPlatforms(model){
+  const host = (model.deploy && model.deploy.saasHost) || '';
+  return PLATFORM_RULES.filter(p=>p.rx.test(host));
+}
+
+// Pull out the human-readable region fragments that matched, so the card can
+// show *why* a model is rated the way it is instead of a stock UAE string.
+function matchedRegionFragments(model, test){
+  const corpus = modelRegionCorpus(model);
+  const frags = corpus.split(/\s*[·+]\s*/).map(f=>f.trim()).filter(Boolean);
+  const hits = frags.filter(f => test(f));
+  return [...new Set(hits)].slice(0,4);
+}
+
+function getModelStatusForCountry(model, countryKey){
+  const cp = _cprof(countryKey);
   if (!cp || !model.sovereignty) return null;
-  const uae = model.sovereignty.uae;
+  const cname   = cp.name;
+  const bloc    = blocForCountry(countryKey);
+  const tokens  = countryRegionTokens(countryKey);
+  const corpus  = modelRegionCorpus(model).toLowerCase();
+  const onPrem  = !!(model.deploy && model.deploy.onPrem);
+  const selfH   = !!(model.deploy && model.deploy.selfHost);
 
-  // Self-host models: always deployable in any country
-  if (uae === 'selfhost') {
+  // 1 ── Open weights: sovereignty is a deployment decision, not a vendor one.
+  if (model.sovereignty.uae === 'selfhost' || (model.type === 'open-source' && selfH && !(model.deploy && model.deploy.saas))) {
     return {
-      status: 'selfhost',
-      badge: '🟣 Self-Host',
-      note: `Open-source model — deploy on ${cp.name} on-premises or in-country cloud VMs for full sovereignty. No data leaves your infrastructure.`
+      status:'selfhost', badge:'🟣 Self-Host',
+      regions:[`Deploy anywhere in ${cname}`],
+      note:`Open-weight model — run it on ${cname} on-premises GPUs or in-country cloud VMs for full sovereignty. No data leaves infrastructure you control.`
     };
   }
 
-  const modelZones = getModelCloudZones(model);
+  // 2 ── In-country datacentre named in the model's own region data.
+  const inCountry = tokens.filter(t => corpus.includes(t));
+  if (inCountry.length) {
+    const frags = matchedRegionFragments(model, f => tokens.some(t => f.toLowerCase().includes(t)));
+    const partialFlag = model.sovereignty.uae === 'partial' && ['UAE','Saudi Arabia','Kuwait','Bahrain','Qatar','Egypt'].includes(countryKey);
+    return {
+      status: partialFlag ? 'partial' : 'available',
+      badge:  partialFlag ? '🟡 Partial' : '🟢 In-country',
+      regions: frags.length ? frags : inCountry.slice(0,3),
+      note: partialFlag
+        ? `A ${cname} region is offered but the catalogue flags this entry as routable outside ${cname}. Get the inference region in writing before using it for regulated data.`
+        : `Inference region inside ${cname} — ${(frags.length?frags:inCountry.slice(0,2)).join('; ')}. Confirm you are calling the regional endpoint, not the global one.`
+    };
+  }
+
+  // 3 ── Inside the country's legal / regional bloc.
+  if (bloc && bloc.rx.test(corpus)) {
+    const frags = matchedRegionFragments(model, f => bloc.rx.test(f));
+    const legal = bloc.strength === 'legal';
+    return {
+      status:'bloc', badge: legal ? `🔵 In-bloc (${bloc.short})` : `🔵 Regional (${bloc.short})`,
+      regions: frags.length ? frags : [bloc.label + ' region'],
+      note: legal
+        ? `No ${cname} region, but inference stays inside the ${bloc.label} — lawful under ${bloc.basis}${bloc.viaAdequacy?' (via adequacy decision)':''}. Fine for GDPR; not sufficient where a contract or regulator demands ${cname}-resident processing.`
+        : `Nearest regions are in the ${bloc.label} but outside ${cname}. This is ${bloc.basis}. Treat as a cross-border transfer and check your regulator's position before using it for regulated ${cname} data.`
+    };
+  }
+
+  // 4 ── The serving platform has regions in-country; this model's presence
+  //      there is simply not confirmed in our data. Say exactly that.
+  const plats = modelPlatforms(model);
   const countryZones = cp.cloudZones || [];
-  const overlap = modelZones.filter(z => countryZones.includes(z));
-
-  if (overlap.length > 0) {
-    const zoneLabels = overlap.map(z => z.replace('aws-','AWS ').replace('azure-','Azure ').replace('gcp-','GCP ').replace('openai-','OpenAI ').replace('alibaba-','Alibaba '));
+  const reachable = plats.filter(p => p.zones.some(z => countryZones.includes(z)));
+  if (reachable.length) {
     return {
-      status: uae === 'partial' ? 'partial' : 'available',
-      badge: uae === 'partial' ? '🟡 Partial' : '🟢 Sovereign',
-      note: `Available via ${zoneLabels.join(', ')} within ${cp.name} region${uae==='partial'?' — verify inference routing with provider':''}.`
+      status:'partial', badge:'🟡 Verify with provider',
+      regions: reachable.map(p=>p.name),
+      note:`${listJoin(reachable.map(p=>p.name))} ${reachable.length>1?'operate regions':'operates regions'} in ${cname}, but our data does not confirm this specific model is served from them. Check the provider's model-by-region matrix before assuming ${cname} residency.`
     };
   }
 
-  // Check on-prem option
-  if (model.deploy && model.deploy.onPrem) {
+  // 5 ── No SaaS route in-country, but the vendor sells an on-prem build.
+  if (onPrem) {
     return {
-      status: 'partial',
-      badge: '🟡 On-Prem Option',
-      note: `No SaaS region in ${cp.name}. Enterprise on-premise deployment available — host on ${cp.name} infrastructure for full sovereignty.`
+      status:'partial', badge:'🟡 On-Prem Option',
+      regions:[`On-premises in ${cname}`],
+      note:`No in-country SaaS region. The vendor offers an enterprise on-premises deployment — host it on ${cname} infrastructure for full sovereignty.`
     };
   }
 
+  // 6 ── Nothing in-country and nothing in-bloc.
+  const where = getModelCloudZones(model).map(z=>z.replace('aws-','AWS ').replace('azure-','Azure ').replace('gcp-','GCP ').replace('openai-','OpenAI ').replace('alibaba-','Alibaba ').toUpperCase());
   return {
-    status: 'unavailable',
-    badge: '🔴 Not in Country',
-    note: `No ${cp.name} region for this SaaS model. Data exits country for inference. Not recommended for regulated ${cp.name} data without vendor DPA.`
+    status:'unavailable', badge:'🔴 Not Compliant',
+    regions: where.length ? where : ['Provider global infrastructure'],
+    note:`No ${cname} or in-bloc region for this model. Prompts and responses leave ${cname} for inference${where.length?` (served from ${where.join(', ')})`:''}. Not suitable for regulated ${cname} data without a vendor DPA covering the transfer.`
   };
+}
+
+// Models the catalogue no longer carries, remapped to their successor so the
+// per-country "Recommended" lists don't silently render empty.
+const RETIRED_MODEL_REMAP = {
+  'claude37':'claude-sonnet-5', 'claude35':'claude-haiku-45', 'claude3opus':'claude-opus-5',
+  'gpt35':'gpt-56-luna', 'gemini15flash':'gemini-35-flash-lite', 'grok3':'grok-46',
+  'bloom':'falcon3-40b',
+};
+function resolveModelId(id){
+  if (M.some(m=>m.id===id)) return id;
+  const r = RETIRED_MODEL_REMAP[id];
+  return (r && M.some(m=>m.id===r)) ? r : null;
 }
 
 // ── State ────────────────────────────────────────────────────────
 let sovFilter = 'all';
 let sovCurrentCountry = null;
+// The country every sovereignty badge across the app is evaluated against.
+// The Sovereignty page sets it; the Explorer, catalogue and modal follow.
+let ACTIVE_COUNTRY = 'UAE';
+// Defensive: these run from initExplorer(), which can fire before the
+// COUNTRY_PROFILES const further down the file has initialised.
+function _cprof(k){
+  try { return (typeof COUNTRY_PROFILES !== 'undefined' && COUNTRY_PROFILES[k]) || null; }
+  catch(e){ return null; }
+}
+function activeCountryName(){ return (_cprof(ACTIVE_COUNTRY)||{}).name || ACTIVE_COUNTRY; }
+function activeCountryFlag(){ return (_cprof(ACTIVE_COUNTRY)||{}).flag || '🌍'; }
 
 // ── Country search autocomplete ──────────────────────────────────
 const ALL_COUNTRY_NAMES = Object.keys(COUNTRY_PROFILES);
@@ -11767,6 +12241,7 @@ function onSovCountryKey(e) {
 
 function selectCountry(countryKey) {
   sovCurrentCountry = countryKey;
+  ACTIVE_COUNTRY = countryKey;
   sovFilter = 'all';
   const cp = COUNTRY_PROFILES[countryKey];
 
@@ -11776,35 +12251,66 @@ function selectCountry(countryKey) {
   const dd = document.getElementById('sovCountryDropdown');
   if (dd) dd.style.display = 'none';
 
-  // Update recent chips
+  // Show the selected country and nothing else. This used to keep a rolling
+  // list of the last four, which left previous countries on screen alongside
+  // the current one.
   const chipsEl = document.getElementById('sovCountryChips');
   if (chipsEl) {
-    const existing = Array.from(chipsEl.querySelectorAll('.sov-cs-chip')).map(c=>c.dataset.country);
-    const newRecent = [countryKey, ...existing.filter(c=>c!==countryKey)].slice(0,4);
-    chipsEl.innerHTML = newRecent.map(k => {
-      const p = COUNTRY_PROFILES[k];
-      return p ? `<div class="sov-cs-chip" data-country="${k}" onclick="selectCountry('${k}')">${p.flag} ${p.name}</div>` : '';
-    }).join('');
+    chipsEl.innerHTML = cp
+      ? `<div class="sov-cs-chip active" data-country="${countryKey}" title="Currently analysing ${cp.name}">
+           <span>${cp.flag} ${cp.name}</span>
+           <button class="sov-cs-chip-x" onclick="event.stopPropagation();clearSovCountry()" title="Clear selection" aria-label="Clear selection">✕</button>
+         </div>`
+      : '';
   }
 
   // Highlight quick-select buttons
   document.querySelectorAll('.sov-qs-btn').forEach(b=>{
-    b.classList.toggle('active-country', b.getAttribute('onclick').includes("'"+countryKey+"'"));
+    const oc = b.getAttribute('onclick') || '';
+    b.classList.toggle('active-country', oc.includes("'"+countryKey+"'"));
   });
 
   // Show analysis
   document.getElementById('sovDefaultState').style.display = 'none';
   document.getElementById('sovAnalysisPanel').style.display = 'block';
 
-  // Reset filter pills
-  document.querySelectorAll('.sov-pill').forEach(p => p.classList.toggle('active', p.getAttribute('onclick').includes("'all'")));
+  // Reset filter pills (scoped — .sov-pill is also used as a static label
+  // on the Pulse page, where there is no onclick to read)
+  sovPills().forEach(p => p.classList.toggle('active', (p.getAttribute('onclick')||'').includes("'all'")));
 
   renderSovereignty();
+
+  // Everything else that shows a sovereignty badge follows the same country.
+  try { if (document.getElementById('f-sov')) initExplorer(); } catch(e){}
+  try { renderCatalog(); } catch(e){}
+}
+
+// Only the interactive filter pills inside the sovereignty panel.
+function sovPills(){
+  const root = document.getElementById('page-sovereignty');
+  if (!root) return [];
+  return Array.from(root.querySelectorAll('.sov-pill[onclick]'));
+}
+
+// Reset back to the "no country selected" state, clearing every rendered panel
+// so nothing from the previous country survives.
+function clearSovCountry() {
+  sovCurrentCountry = null;
+  sovFilter = 'all';
+  ['sovCountryHeader','sovSummaryGrid','sovModelGrid','sovRecommended','sovTipBox','sovStatusLegend','sovCloudTableBody']
+    .forEach(id => { const e = document.getElementById(id); if (e) e.innerHTML = ''; });
+  const inp = document.getElementById('sovCountryInput'); if (inp) inp.value = '';
+  const chips = document.getElementById('sovCountryChips'); if (chips) chips.innerHTML = '';
+  const dd = document.getElementById('sovCountryDropdown'); if (dd) dd.style.display = 'none';
+  document.querySelectorAll('.sov-qs-btn').forEach(b => b.classList.remove('active-country'));
+  const panel = document.getElementById('sovAnalysisPanel'); if (panel) panel.style.display = 'none';
+  const def = document.getElementById('sovDefaultState'); if (def) def.style.display = 'block';
+  const lbl = document.getElementById('sovRecCountry'); if (lbl) lbl.textContent = 'this region';
 }
 
 function setSovFilter(f) {
   sovFilter = f;
-  document.querySelectorAll('.sov-pill').forEach(p => p.classList.toggle('active', p.getAttribute('onclick').includes("'"+f+"'")));
+  sovPills().forEach(p => p.classList.toggle('active', (p.getAttribute('onclick')||'').includes("'"+f+"'")));
   renderSovereigntyGrid();
   const grid = document.getElementById('sovModelGrid');
   if (grid) setTimeout(()=>grid.scrollIntoView({behavior:'smooth',block:'start'}), 80);
@@ -11816,6 +12322,7 @@ function setSovRegion(f) { setSovFilter(f); }
 function renderSovereignty() {
   if (!sovCurrentCountry) return;
   renderCountryHeader();
+  renderSovStatusLegend();
   renderSovereigntySummary();
   renderRecommended();
   renderSovereigntyGrid();
@@ -11848,28 +12355,76 @@ function renderCountryHeader() {
 }
 
 function sovStatusLabel(status) {
-  return {available:'🟢 Sovereign',partial:'🟡 Partial',unavailable:'🔴 Not Compliant',selfhost:'🟣 Self-Host'}[status]||status;
+  const b = blocForCountry(sovCurrentCountry || ACTIVE_COUNTRY);
+  return {
+    available:'🟢 In-country',
+    bloc: b ? `🔵 In-bloc (${b.short})` : '🔵 Regional',
+    partial:'🟡 Partial',
+    unavailable:'🔴 Not Compliant',
+    selfhost:'🟣 Self-Host'
+  }[status] || status;
+}
+
+// The legend has to restate itself per country — it used to hard-code "UAE".
+function renderSovStatusLegend(){
+  const el = document.getElementById('sovStatusLegend');
+  if (!el) return;
+  const key = sovCurrentCountry || ACTIVE_COUNTRY;
+  const cp  = COUNTRY_PROFILES[key] || {name:key};
+  const b   = blocForCountry(key);
+  const rows = [
+    ['available',  `🟢 In-country`,  `Inference region inside ${cp.name}`],
+    b ? ['bloc', b.strength==='legal'?`🔵 In-bloc (${b.short})`:`🔵 Regional (${b.short})`,
+         b.strength==='legal' ? `Stays inside the ${b.label} — lawful under ${b.basis}`
+                              : `Nearest regions are in the ${b.label}, outside ${cp.name} — no automatic adequacy`] : null,
+    ['partial',    `🟡 Partial`,     `Platform reaches ${cp.name} but this model is unconfirmed — verify`],
+    ['unavailable',`🔴 Not Compliant`,`Prompts leave ${cp.name} for inference`],
+    ['selfhost',   `🔓 Self-Host`,   `Open weights — deploy inside ${cp.name} yourself`],
+  ].filter(Boolean);
+  el.innerHTML = rows.map(([cls,label,desc])=>
+    `<span class="sov-leg-item"><span class="sov-badge ${cls}">${label}</span> ${desc}</span>`).join('');
 }
 
 function renderSovereigntySummary() {
   const el = document.getElementById('sovSummaryGrid');
   if (!el || !sovCurrentCountry) return;
-  const counts = {available:0,partial:0,unavailable:0,selfhost:0};
+  const cp = COUNTRY_PROFILES[sovCurrentCountry] || {name:sovCurrentCountry};
+  const b  = blocForCountry(sovCurrentCountry);
+  const counts = {available:0,bloc:0,partial:0,unavailable:0,selfhost:0};
   M.filter(m=>m.sovereignty).forEach(m=>{
     const s = getModelStatusForCountry(m, sovCurrentCountry);
     if (s && counts[s.status]!==undefined) counts[s.status]++;
   });
-  el.innerHTML = [
-    {k:'available',   n:counts.available,   color:'var(--lime)',   icon:'🟢', label:'Sovereign',          sub:'Click to list all sovereign models'},
-    {k:'partial',     n:counts.partial,     color:'var(--amber)',  icon:'🟡', label:'Partial',             sub:'Click to list partial models'},
-    {k:'unavailable', n:counts.unavailable, color:'var(--rose)',   icon:'🔴', label:'Not Compliant',       sub:'Click to list non-compliant models'},
-    {k:'selfhost',    n:counts.selfhost,    color:'var(--violet)', icon:'🟣', label:'Self-Host',           sub:'Click to list self-host options'},
-  ].map(c=>`
+  const usable = counts.available + counts.bloc + counts.selfhost;
+  const cards = [
+    {k:'available', n:counts.available, color:'var(--lime)',  icon:'🟢',
+     label:`Sovereign in ${cp.name}`, sub:'Inference region inside the country'},
+    b ? {k:'bloc', n:counts.bloc, color:'var(--sky)', icon:'🔵',
+         label: b.strength==='legal' ? `Compliant via ${b.short}` : `Regional (${b.short})`,
+         sub: b.strength==='legal' ? `Lawful under ${b.basis}` : `Close but outside ${cp.name} — no auto adequacy`} : null,
+    {k:'partial', n:counts.partial, color:'var(--amber)', icon:'🟡',
+     label:'Needs verification', sub:'Platform reaches the country; model unconfirmed'},
+    {k:'unavailable', n:counts.unavailable, color:'var(--rose)', icon:'🔴',
+     label:'Not compliant', sub:`Data leaves ${cp.name} for inference`},
+    {k:'selfhost', n:counts.selfhost, color:'var(--violet)', icon:'🟣',
+     label:'Self-host', sub:'Open weights — you choose the location'},
+  ].filter(Boolean);
+
+  el.innerHTML = cards.map(c=>`
     <div class="sov-sum-card" onclick="setSovFilter('${c.k}')" style="cursor:pointer;transition:.15s;border:1px solid ${c.k===sovFilter?'var(--gold-rim)':'var(--rim)'}">
       <div class="sov-sum-n" style="color:${c.color}">${c.n}</div>
       <div class="sov-sum-l">${c.icon} ${c.label}</div>
       <div class="sov-sum-sub">${c.sub}</div>
-    </div>`).join('');
+    </div>`).join('') + `
+    <div class="sov-sum-card" style="border:1px solid var(--rim);grid-column:1/-1;display:block;text-align:left;padding:13px 16px">
+      <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:baseline">
+        <div><span style="font-size:19px;font-weight:800;color:var(--text)">${usable}</span>
+          <span style="font-size:11px;color:var(--text2);margin-left:6px">of ${M.filter(m=>m.sovereignty).length} models are deployable for regulated ${cp.name} workloads</span></div>
+        <div style="font-size:11px;color:var(--text3)">⚖️ ${cp.laws || 'No regulatory profile on file'}</div>
+      </div>
+      ${(cp.compliance||[]).length?`<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">${cp.compliance.map(c=>`<span class="sov-region-tag">✔ ${c}</span>`).join('')}</div>`:''}
+      ${b && b.strength!=='legal' && counts.bloc ? `<div style="margin-top:9px;font-size:11px;color:var(--amber);line-height:1.6">⚠ The ${counts.bloc} “${b.short}” models sit outside ${cp.name}. ${b.label} proximity is not a legal transfer basis — treat them as cross-border unless your regulator says otherwise.</div>`:''}
+    </div>`;
 }
 
 function renderRecommended() {
@@ -11878,7 +12433,7 @@ function renderRecommended() {
   const cp = COUNTRY_PROFILES[sovCurrentCountry];
   if (!el || !cp) return;
   if (lbl) lbl.textContent = cp.name;
-  const recIds = cp.recommended || [];
+  const recIds = [...new Set((cp.recommended || []).map(resolveModelId).filter(Boolean))];
   const recModels = recIds.map(id=>M.find(m=>m.id===id)).filter(Boolean);
   el.innerHTML = recModels.map(m=>{
     const s = getModelStatusForCountry(m, sovCurrentCountry);
@@ -11897,12 +12452,17 @@ function renderRecommended() {
       </div>`;
   }).join('');
 
-  // Tip box
-  if (cp.tip) {
-    el.insertAdjacentHTML('afterend', `<div class="sov-tip" style="margin-bottom:20px"><div class="sov-tip-icon">💡</div><div><strong>Sovereignty Tip for ${cp.name}:</strong> ${cp.tip}</div></div>`);
-    // Remove previous tip if any
-    const tips = document.querySelectorAll('#sovAnalysisPanel .sov-tip');
-    if (tips.length > 1) tips[0].remove();
+  // Tip box.
+  // This used to insertAdjacentHTML('afterend') then delete `tips[0]`. Because
+  // 'afterend' puts the new node BEFORE the previous one in document order,
+  // tips[0] was the node just created — so every render deleted the new tip and
+  // kept the stale one. The tip stayed pinned to the first country ever
+  // selected. It now writes into a fixed container, so there is only ever one.
+  const tipBox = document.getElementById('sovTipBox');
+  if (tipBox) {
+    tipBox.innerHTML = cp.tip
+      ? `<div class="sov-tip" style="margin-bottom:20px"><div class="sov-tip-icon">💡</div><div><strong>Sovereignty Tip for ${cp.name}:</strong> ${cp.tip}</div></div>`
+      : '';
   }
 }
 
@@ -11921,17 +12481,21 @@ function renderSovereigntyGrid() {
     models = models.filter(m => (statusMap.get(m.id)||{}).status === sovFilter);
   }
 
-  const groups = {available:[],partial:[],unavailable:[],selfhost:[]};
+  const groups = {available:[],bloc:[],partial:[],unavailable:[],selfhost:[]};
   models.forEach(m => {
     const s = statusMap.get(m.id);
     if (s && groups[s.status]) groups[s.status].push({m,s});
   });
 
+  const _cp = COUNTRY_PROFILES[sovCurrentCountry] || {name:sovCurrentCountry};
+  const _b  = blocForCountry(sovCurrentCountry);
   const groupConfig = [
-    {key:'available',   label:'🟢 Sovereign',         desc:'In-country inference confirmed'},
-    {key:'partial',     label:'🟡 Partial',            desc:'Region exists; verify with provider'},
-    {key:'selfhost',    label:'🟣 Self-Host Option',   desc:'Open weights — deploy in-country'},
-    {key:'unavailable', label:'🔴 Not Compliant',      desc:'Data exits country'},
+    {key:'available',   label:`🟢 Sovereign in ${_cp.name}`, desc:'Inference region inside the country'},
+    {key:'bloc',        label: _b ? (_b.strength==='legal'?`🔵 Compliant via ${_b.label}`:`🔵 Regional — ${_b.label}`) : '🔵 Regional',
+                        desc: _b ? (_b.strength==='legal'?`Lawful under ${_b.basis}`:`Outside ${_cp.name} — no automatic adequacy`) : ''},
+    {key:'partial',     label:'🟡 Verify with provider', desc:`Platform reaches ${_cp.name}; this model unconfirmed`},
+    {key:'selfhost',    label:'🟣 Self-Host Option',     desc:`Open weights — deploy inside ${_cp.name}`},
+    {key:'unavailable', label:'🔴 Not Compliant',        desc:`Data exits ${_cp.name}`},
   ];
 
   let html = '';
@@ -11941,7 +12505,10 @@ function renderSovereigntyGrid() {
     html += `<div class="sov-section-label">${g.label} <span style="color:var(--text3);font-size:10px;font-weight:400;text-transform:none;letter-spacing:0;margin-left:4px">— ${g.desc} · ${grp.length} models</span></div>`;
     html += '<div class="sov-grid">';
     grp.forEach(({m,s})=>{
-      const regionTags = (m.sovereignty.regions||[]).map(r=>`<span class="sov-region-tag">📍 ${r}</span>`).join('');
+      // Region tags come from the country resolution, not the model's
+      // UAE-first `regions` array — that array is what used to print
+      // "AWS me-central-1 (UAE)" on the Germany view.
+      const regionTags = (s.regions||[]).map(r=>`<span class="sov-region-tag">📍 ${r}</span>`).join('');
       const deployBadges = [
         m.deploy&&m.deploy.saas ? '<span class="dbadge saas">SaaS</span>' : '',
         m.deploy&&m.deploy.onPrem ? '<span class="dbadge onprem">On-Prem</span>' : '',
